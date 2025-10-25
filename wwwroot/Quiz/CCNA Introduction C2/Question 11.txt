@@ -1,0 +1,12 @@
+Which two statements are true regarding the user EXEC mode?
+30
+4
+1
+All router commands are available.
+false
+The device prompt for this mode ends with the “>” symbol.
+true
+Interfaces and routing protocols can be configured.
+false
+Only some aspects of the router configuration can be viewed.
+true

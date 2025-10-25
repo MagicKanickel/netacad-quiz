@@ -1,0 +1,12 @@
+What is the prefix for the host address 2001:DB8:BC15:A:12AB::1/64?
+20
+4
+1
+2001:DB8:BC15
+false
+2001:DB8:BC15:A
+true
+2001:DB8:BC15:A:1
+false
+2001:DB8:BC15:A:12
+false

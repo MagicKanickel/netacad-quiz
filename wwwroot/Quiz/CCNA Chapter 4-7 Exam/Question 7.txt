@@ -1,0 +1,12 @@
+What are two characteristics of fiber-optic cable?
+20
+4
+2
+It is not affected by EMI or RFI.
+true
+Each pair of cables is wrapped in metallic foil.
+false
+It combines the technique of cancellation, shielding, and twisting to protect data.
+false
+It is more expensive than UTP cabling is.
+true

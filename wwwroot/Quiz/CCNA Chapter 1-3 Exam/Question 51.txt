@@ -1,0 +1,12 @@
+Which device performs the function of determining the path that messages should take through internetworks?
+20
+4
+1
+a router
+true
+a firewall
+false
+a web server
+false
+a DSL modem
+false

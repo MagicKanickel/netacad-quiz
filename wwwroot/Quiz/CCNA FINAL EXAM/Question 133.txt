@@ -1,0 +1,14 @@
+What two security solutions are most likely to be used only in a corporate environment? (Choose two.)
+20
+5
+2
+antispyware
+false
+virtual private networks
+true
+intrusion prevention systems
+true
+strong passwords
+false
+antivirus software
+false

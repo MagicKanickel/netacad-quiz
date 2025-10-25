@@ -1,0 +1,12 @@
+How many host addresses are available on the network 172.16.128.0 with a subnet mask of 255.255.252.0?
+30
+4
+1
+510
+false
+1022
+true
+1024
+false
+2048
+false

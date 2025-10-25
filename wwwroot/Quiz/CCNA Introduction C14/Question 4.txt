@@ -1,0 +1,12 @@
+What happens if part of an FTP message is not delivered to the destination?
+30
+4
+1
+The part of the FTP message that was lost is re-sent.
+true
+The entire FTP message is re-sent.
+false
+The FTP source host sends a query to the destination host.
+false
+The message is lost because FTP does not use a reliable delivery method.
+false

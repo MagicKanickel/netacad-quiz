@@ -1,0 +1,12 @@
+Match the phases to the functions during the boot up process of a Cisco router. (Not all options are used.) phase 3
+20
+4
+1
+enter setup mode
+false
+locate and load the Cisco IOS software
+false
+locate and load the startup configuration file
+true
+perform the POST and load the bootstrap program
+false

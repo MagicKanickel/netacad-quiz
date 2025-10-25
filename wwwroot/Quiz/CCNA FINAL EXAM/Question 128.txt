@@ -1,0 +1,12 @@
+Which type of security threat would be responsible if a spreadsheet add-on disables the local software firewall?
+20
+4
+1
+brute-force attack
+false
+Trojan horse
+true
+DoS
+false
+buffer overflow
+false

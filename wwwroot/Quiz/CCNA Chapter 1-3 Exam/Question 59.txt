@@ -1,0 +1,12 @@
+What term describes a computing model where server software runs on dedicated computers?
+20
+4
+1
+client/server
+true
+internet
+false
+intranet
+false
+extranet
+false

@@ -1,0 +1,12 @@
+What is the function of the CRC value that is found in the FCS field of a frame?
+20
+4
+1
+to verify the integrity of the received frame
+true
+to verify the physical address in the frame
+false
+to verify the logical address in the frame
+false
+to compute the checksum header for the data field in the frame
+false

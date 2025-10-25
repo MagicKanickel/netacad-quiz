@@ -1,0 +1,12 @@
+56. What OSI physical layer term describes the measure of usable data transferred over a given period of time?
+20
+4
+1
+goodput
+true
+fiber-optic cable
+false
+air
+false
+copper cable
+false

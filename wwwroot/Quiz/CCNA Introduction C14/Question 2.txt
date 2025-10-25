@@ -1,0 +1,12 @@
+What is a socket?
+60
+4
+1
+source and destination IP address and  Ethernet address
+false
+source IP address and port number or a destination IP address and port
+true
+source and destination sequence and acknowledgment numbers
+false
+source and destination sequence numbers and port numbers
+false

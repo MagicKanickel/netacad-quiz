@@ -1,0 +1,12 @@
+Which protocol provides feedback from the destination host to the source host about errors in packet delivery?
+20
+4
+1
+ARP
+false
+BOOTP
+false
+DNS
+false
+ICMP
+true

@@ -1,0 +1,16 @@
+Match the definition "aborts commands such as trace and ping" to the respective CLI hot key or shortcut
+20
+6
+1
+Tab
+false
+space bar
+false
+Up Arrow
+false
+Crtl+C
+false
+?
+false
+Crtl-Shift-6
+true

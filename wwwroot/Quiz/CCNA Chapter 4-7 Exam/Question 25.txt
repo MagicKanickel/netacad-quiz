@@ -1,0 +1,14 @@
+What three items are contained in an Ethernet header and trailer? (Choose three.)
+20
+5
+3
+source IP address
+false
+source MAC address
+true
+destination IP address
+false
+destination MAC address
+true
+error-checking information
+true

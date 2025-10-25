@@ -1,0 +1,14 @@
+What are two services provided by the OSI network layer? (Choose two.)
+20
+5
+2
+performing error detection
+false
+routing packets toward the destination
+true
+encapsulating PDUs from the transport layer
+true
+placement of frames on the media
+false
+collision detection
+false

@@ -1,0 +1,12 @@
+Some routers and switches in a wiring closet malfunctioned after an air conditioning unit failed. Type of threat?
+30
+4
+1
+configuration
+false
+environmental
+true
+electrical
+false
+maintenance
+false

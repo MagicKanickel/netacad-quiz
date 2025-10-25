@@ -1,0 +1,16 @@
+What three application layer protocols are part of the TCP/IP protocol suite? (Choose three.)
+20
+6
+3
+ARP
+false
+DHCP
+true
+DNS
+true
+FTP
+true
+NAT
+false
+PPP
+false

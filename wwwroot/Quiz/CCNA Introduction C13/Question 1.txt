@@ -1,0 +1,12 @@
+The helpdesk technician asks the user to ping the IP address of the default gateway. For what?
+20
+4
+1
+to obtain a dynamic IP address from the server
+false
+to request that gateway forward the connection request to the file server
+false
+to test that the host has the capability to reach hosts on other networks
+true
+to resolve the domain name of the file server to its IP address
+false

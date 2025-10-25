@@ -1,0 +1,12 @@
+Redundancy. Which physical topology requires that every node is attached to every other node on the network?
+20
+4
+1
+bus
+false
+hierarchical
+false
+star
+false
+mesh
+true

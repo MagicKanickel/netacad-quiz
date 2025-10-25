@@ -1,0 +1,12 @@
+What is the purpose of the FCS field in a frame?
+20
+4
+1
+to obtain the MAC address of the sending node
+false
+to verify the logical address of the sending node
+false
+to compute the CRC header for the data field
+false
+to determine if errors occurred in the transmission and reception
+true

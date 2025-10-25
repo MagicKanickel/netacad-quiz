@@ -1,0 +1,14 @@
+Which two functions are performed at the LLC sublayer of the OSI data link layer? (Choose two.)
+50
+5
+2
+Adds Layer 2 control information to network protocol data.
+true
+Enables IPv4 and IPv6 to utilize the same network interface and media.
+true
+Provides data link layer addressing.
+false
+Implements a trailer to detect transmission errors.
+false
+Provides synchronization between source and target nodes.
+false

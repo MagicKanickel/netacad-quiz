@@ -1,0 +1,12 @@
+Which layer of the TCP/IP model provides a route to forward messages through an internetwork?
+20
+4
+1
+application
+false
+network access
+false
+internet
+true
+transport
+false

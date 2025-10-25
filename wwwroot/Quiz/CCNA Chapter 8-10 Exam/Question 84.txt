@@ -1,0 +1,14 @@
+A network administrator requires access to manage routers and switches locally and remotely. Match the description to the access method. (Not all options are used.) remote access method that uses encryption
+20
+5
+1
+SSH
+true
+console
+false
+FTP
+false
+AUX
+false
+Telnet
+false

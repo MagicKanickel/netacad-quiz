@@ -1,0 +1,12 @@
+Which type of server relies on record types such as A, NS, AAAA, and MX in order to provide services?
+20
+4
+1
+DNS
+true
+email
+false
+file
+false
+web
+false

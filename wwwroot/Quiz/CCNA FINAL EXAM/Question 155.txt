@@ -1,0 +1,12 @@
+A wired laser printer is attached to a home computer. That printer has been shared so that other computers on the home network can also use the printer. What networking model is in use?
+20
+4
+1
+client-based
+false
+master-slave
+false
+point-to-point
+false
+peer-to-peer (P2P)
+true

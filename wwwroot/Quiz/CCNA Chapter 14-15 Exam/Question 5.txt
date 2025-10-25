@@ -1,0 +1,12 @@
+A PC is downloading a large file from a server. The TCP window is 1000 bytes. The server is sending the file using 100-byte segments. How many segments will the server send before it requires an acknowledgment from the PC?
+30
+4
+1
+1 segment
+false
+10 segment
+true
+100 segment
+false
+1000 segment
+false

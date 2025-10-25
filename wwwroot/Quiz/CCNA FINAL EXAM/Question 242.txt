@@ -1,0 +1,17 @@
+Refer to the exhibit. The switches have a default configuration. Host A needs to communicate with host D, but host A does not have the MAC address for the default gateway. Which network devices will receive the ARP request sent by host A?
+20
+6
+1
+only host D
+false
+only hosts A, B, C, and D
+false
+only hosts B and C
+false
+only hosts B, C, and router R1
+true
+only hosts A, B, and C
+false
+nly router R1
+false
+Question_127-image.png

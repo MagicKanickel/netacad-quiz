@@ -1,0 +1,12 @@
+Retrieving email messages, which protocol allows for easy, centralized storage and backup of emails for the business?
+20
+4
+1
+IMAP
+true
+POP
+false
+SMTP
+false
+HTTPS
+false

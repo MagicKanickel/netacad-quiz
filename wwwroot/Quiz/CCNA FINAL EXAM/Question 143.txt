@@ -1,0 +1,14 @@
+What are the three parts of an IPv6 global unicast address? (Choose three.)
+20
+5
+3
+subnet ID
+true
+subnet mask
+false
+broadcast address
+false
+global routing prefix
+true
+interface ID
+true

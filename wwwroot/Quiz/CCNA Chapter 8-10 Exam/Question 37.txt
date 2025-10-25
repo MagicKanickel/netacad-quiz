@@ -1,0 +1,12 @@
+A router boots and enters setup mode. What is the reason for this?
+20
+4
+1
+The IOS image is corrupt.
+false
+Cisco IOS is missing from flash memory.
+false
+The configuration file is missing from NVRAM.
+true
+The POST process has detected hardware failure.
+false

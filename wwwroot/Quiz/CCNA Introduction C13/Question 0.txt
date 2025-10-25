@@ -1,0 +1,12 @@
+You only have the IP of the end point device and no details of the intermediate devices. Command for the faulty node?
+60
+4
+1
+tracert
+true
+ping
+false
+ipconfig /flushdns
+false
+ipconfig /displaydns
+false

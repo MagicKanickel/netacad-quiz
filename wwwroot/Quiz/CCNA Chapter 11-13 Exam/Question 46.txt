@@ -1,0 +1,12 @@
+Three methods allow IPv6 and IPv4 to co-exist. Match each method with its description. The Ipv6 packet is transported inside an IPv4 Packet.
+20
+4
+1
+DHCP
+false
+translation
+false
+tunneling
+true
+dual-stack
+false

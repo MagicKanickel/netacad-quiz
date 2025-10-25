@@ -1,0 +1,12 @@
+Which malicious code attack is self-contained and tries to exploit a specific vulnerability in a system being attacked?
+20
+4
+1
+virus
+false
+worm
+true
+Trojan horse
+false
+social engineering
+false

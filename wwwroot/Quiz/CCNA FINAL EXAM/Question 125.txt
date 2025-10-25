@@ -1,0 +1,12 @@
+What characteristic describes antispyware?
+20
+4
+1
+applications that protect end devices from becoming infected with malicious software
+true
+a network device that filters access and traffic coming into a network
+false
+software on a router that filters traffic based on IP addresses or applications
+false
+a tunneling protocol that provides remote users with secure access into the network of an organization
+false

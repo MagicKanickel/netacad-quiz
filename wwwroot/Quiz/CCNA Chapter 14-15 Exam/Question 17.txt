@@ -1,0 +1,12 @@
+What kind of port must be requested from IANA in order to be used with a specific application?
+20
+4
+1
+registered port
+true
+private port
+false
+dynamic port
+false
+source port
+false

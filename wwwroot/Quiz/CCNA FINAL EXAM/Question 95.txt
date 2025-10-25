@@ -1,0 +1,14 @@
+What are two characteristics of IP? (Choose two.)
+20
+5
+2
+does not require a dedicated end-to-end connection
+true
+operates independently of the network media
+true
+retransmits packets if errors occur
+false
+re-assembles out of order packets into the correct order at the receiver end
+false
+guarantees delivery of packets
+false

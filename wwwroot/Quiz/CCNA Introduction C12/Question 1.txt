@@ -1,0 +1,12 @@
+What is the prefix associated with the IPv6 address 2001:CA48:D15:EA:CC44::1/64?
+20
+4
+1
+2001::/64
+false
+2001:CA48::/64​
+false
+2001:CA48:D15:EA::/64
+true
+2001:CA48:D15:EA:CC44::/64​
+false

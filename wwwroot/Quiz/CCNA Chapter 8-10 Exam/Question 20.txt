@@ -1,0 +1,12 @@
+What statement describes the function of the Address Resolution Protocol?
+20
+4
+1
+ARP is used to discover the IP address of any host on a different network.
+false
+ARP is used to discover the IP address of any host on the local network.
+false
+ARP is used to discover the MAC address of any host on a different network.
+false
+ARP is used to discover the MAC address of any host on the local network.
+true

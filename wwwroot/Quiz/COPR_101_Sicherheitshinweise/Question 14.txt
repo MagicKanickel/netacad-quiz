@@ -1,0 +1,12 @@
+Wie werden wir in der Werkstätte uns versuchen zu erden?
+20
+4
+1
+Nullleiter
+false
+unlackierte Heizungsrohre
+true
+Lackierte Heizungsrohre
+false
+Erdungskontakt
+true

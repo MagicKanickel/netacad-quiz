@@ -1,0 +1,12 @@
+What property of ARP causes the request to be flooded out all ports of a switch except for the port receiving the ARP request?
+20
+4
+1
+The destination MAC address FF-FF-FF-FF-FF-FF appears in the header of the Ethernet frame.
+true
+The type field 0x806 appears in the header of the Ethernet frame.
+false
+Entries in an ARP table are time-stamped and are purged after the timeout expires.
+false
+ARP replies are broadcast on the network when a host receives an ARP request.
+false

@@ -1,0 +1,12 @@
+A network administrator needs to keep the user ID, password, and session contents private when establishing remote CLI connectivity with a switch to manage it. Which access method should be chosen?
+20
+4
+1
+Telnet
+false
+AUX
+false
+SSH
+true
+Console
+false

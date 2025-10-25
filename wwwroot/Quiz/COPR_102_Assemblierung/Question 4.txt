@@ -1,0 +1,12 @@
+ODD sind
+20
+4
+1
+CD, DVD
+true
+MB, RAM
+false
+Netzteil, ROM
+false
+HDD,SSD
+false

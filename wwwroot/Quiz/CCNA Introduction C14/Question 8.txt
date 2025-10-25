@@ -1,0 +1,12 @@
+What is the purpose of using a source port number in a TCP communication?
+20
+4
+1
+to notify the remote device that the conversation is over
+false
+to assemble the segments that arrived out of order
+false
+to keep track of multiple conversations between devices
+true
+to inquire for a nonreceived segment
+false

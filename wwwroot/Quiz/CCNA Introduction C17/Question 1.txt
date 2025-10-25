@@ -1,0 +1,12 @@
+A technician is ordering new hardware for a small business. What is important when choosing new devices?
+20
+4
+1
+devices with a fixed number and type of interfaces
+false
+devices that have support for network monitoring
+false
+redundant devices
+false
+devices with support for modularity
+true

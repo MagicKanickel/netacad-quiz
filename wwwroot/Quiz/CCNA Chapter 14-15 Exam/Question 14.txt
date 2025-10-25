@@ -1,0 +1,12 @@
+Which flag in the TCP header is used in response to a received FIN in order to terminate connectivity between two network devices?
+20
+4
+1
+FIN
+false
+ACK
+true
+SYN
+false
+RST
+false

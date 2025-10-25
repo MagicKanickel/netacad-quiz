@@ -1,0 +1,12 @@
+What is a key characteristic of the peer-to-peer networking model?
+20
+4
+1
+wireless networking
+false
+social networking without the Internet
+false
+network printing using a print server
+false
+resource sharing without a dedicated server
+true

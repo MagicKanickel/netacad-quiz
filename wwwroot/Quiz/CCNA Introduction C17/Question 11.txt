@@ -1,0 +1,12 @@
+Which traffic types require delay sensitive delivery?
+20
+4
+1
+email
+false
+FTP
+false
+Voice
+true
+Video
+true

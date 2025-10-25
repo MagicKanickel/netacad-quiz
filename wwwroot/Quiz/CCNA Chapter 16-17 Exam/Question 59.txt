@@ -1,0 +1,12 @@
+Students who are connected to the same switch are having slower than normal response times. The administrator suspects a duplex setting issue. What is the best command to use to accomplish the task?
+20
+4
+1
+show interfaces
+true
+ipconfig getifaddr en0
+false
+copy running-config startup-config
+false
+show ip nat translations
+false

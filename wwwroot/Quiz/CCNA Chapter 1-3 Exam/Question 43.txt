@@ -1,0 +1,17 @@
+Refer to the exhibit. ServerB is attempting to contact HostA. Which two statements correctly identify the addressing that ServerB will generate in the process? (Choose two.)
+20
+6
+2
+ServerB will generate a packet with the destination IP address of RouterB.
+false
+ServerB will generate a frame with the destination MAC address of SwitchB.
+false
+ServerB will generate a packet with the destination IP address of RouterA.
+false
+ServerB will generate a frame with the destination MAC address of RouterB.
+true
+ServerB will generate a packet with the destination IP address of HostA.
+true
+ServerB will generate a frame with the destination MAC address of RouterA.
+false
+question_43.png

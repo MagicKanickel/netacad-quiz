@@ -1,0 +1,14 @@
+Which two host names follow the guidelines for naming conventions on Cisco IOS devices? (Choose two.)
+20
+5
+2
+Branch2!
+false
+RM-3-Switch-2A4
+true
+Floor(15)
+false
+HO Floor 17
+false
+SwBranch799
+true

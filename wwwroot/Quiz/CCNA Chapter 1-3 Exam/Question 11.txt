@@ -1,0 +1,12 @@
+What type of network traffic requires QoS?
+20
+4
+1
+email
+false
+on-line purchasing
+false
+video conferencing
+true
+wiki
+false

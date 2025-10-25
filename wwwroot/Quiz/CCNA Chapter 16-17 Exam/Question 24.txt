@@ -1,0 +1,12 @@
+Which method is used to send a ping message specifying the source address for the ping?
+20
+4
+1
+Issue the ping command from within interface configuration mode.
+false
+Issue the ping command without specifying a destination IP address.
+true
+Issue the ping command without extended commands.
+false
+Issue the ping command after shutting down un-needed interfaces.
+false

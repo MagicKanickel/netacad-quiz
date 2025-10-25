@@ -1,0 +1,16 @@
+What are characteristics of a MAC-Adresse (choose three)
+20
+6
+3
+contained in layer 3 header
+false
+contained in layer 2 header
+true
+seperated into OUI and a unique identifier
+true
+seperated into a network partition and a unique identifier
+false
+32 or 128 bits
+false
+48 bits
+true

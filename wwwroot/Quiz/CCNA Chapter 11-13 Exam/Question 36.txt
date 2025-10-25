@@ -1,0 +1,12 @@
+What is used in the EUI-64 process to create an IPv6 interface ID on an IPv6 enabled interface?
+20
+4
+1
+the MAC address of the IPv6 enabled interface
+true
+a randomly generated 64-bit hexadecimal address
+false
+an IPv6 address that is provided by a DHCPv6 server
+false
+an IPv4 address that is configured on the interface
+false

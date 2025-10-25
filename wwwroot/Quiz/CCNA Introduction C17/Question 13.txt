@@ -1,0 +1,12 @@
+Which statement is true about CDP on a Cisco device?​
+20
+4
+1
+The show cdd neighbor command will reveal the IP address of a neighbor
+false
+To disable CDP globally, the no cdp enable command  must be used.
+false
+CDP can be disabled globally or on a specific interface​.
+true
+runs at layer 2​, the CDP protocol can only be implemented in switches.
+false

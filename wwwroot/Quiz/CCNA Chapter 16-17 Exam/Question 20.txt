@@ -1,0 +1,12 @@
+What is an accurate description of redundancy?
+20
+4
+1
+configuring a router with a complete MAC address database to ensure that all frames can be forwarded to the correct destination
+false
+configuring a switch with proper security to ensure that all traffic forwarded through an interface is filtered
+false
+designing a network to use multiple virtual devices to ensure that all traffic uses the best path through the internetwork
+false
+designing a network to use multiple paths between switches to ensure there is no single point of failure
+true

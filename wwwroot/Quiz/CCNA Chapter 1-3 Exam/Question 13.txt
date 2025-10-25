@@ -1,0 +1,16 @@
+Passwords can be used to restrict access to all or parts of the Cisco IOS. Select the modes and interfaces that can be protected with passwords. (Choose three.)
+20
+6
+3
+VTY interface
+true
+console interface
+true
+Ethernet interface
+false
+boot IOS mode
+false
+privileged EXEC mode
+true
+router configuration mode
+false

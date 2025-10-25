@@ -1,0 +1,16 @@
+What are two ICMPv6 messages that are not present in ICMP for IPv4? (Choose two.)
+20
+6
+2
+Neighbor Solicitation
+true
+Destination Unreachable
+false
+Host Confirmation
+false
+Time Exceeded
+false
+Router Advertisement
+true
+Route Redirection
+false

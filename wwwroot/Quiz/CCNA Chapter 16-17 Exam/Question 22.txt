@@ -1,0 +1,12 @@
+What is the purpose of a small company using a protocol analyzer utility to capture network traffic on the network segments where the company is considering a network upgrade?
+20
+4
+1
+to identify the source and destination of local network traffic
+false
+to capture the Internet connection bandwidth requirement
+false
+to document and analyze network traffic requirements on each network segment
+true
+to establish a baseline for security analysis after the network is upgraded
+false

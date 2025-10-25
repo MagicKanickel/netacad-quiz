@@ -1,0 +1,14 @@
+What are two primary responsibilities of the Ethernet MAC sublayer? (Choose two.)
+20
+5
+2
+error detection
+false
+frame delimiting
+false
+accessing the media
+true
+data encapsulation
+true
+logical addressing
+false

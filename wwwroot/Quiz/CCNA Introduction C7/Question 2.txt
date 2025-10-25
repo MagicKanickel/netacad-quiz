@@ -1,0 +1,12 @@
+What is the special value assigned to the first 24 bits of a multicast MAC address?
+20
+4
+1
+01-5E-00
+false
+FF-00-5E
+false
+FF-FF-FF
+false
+01-00-5E﻿
+true

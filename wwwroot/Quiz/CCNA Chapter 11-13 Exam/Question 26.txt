@@ -1,0 +1,14 @@
+A company has a network address of 192.168.1.64 with a subnet mask of 255.255.255.192. The company wants to create two subnetworks that would contain 10 hosts and 18 hosts respectively. Which two networks would achieve that? (Choose two.)
+20
+5
+2
+192.168.1.16/28
+false
+192.168.1.64/27
+true
+192.168.1.128/27
+false
+192.168.1.96/28
+true
+192.168.1.192/28
+false

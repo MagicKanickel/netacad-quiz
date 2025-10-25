@@ -1,0 +1,12 @@
+Which layer defines services to segment and reassemble data for individual communications between end devices?
+20
+4
+1
+application
+false
+session
+false
+network
+false
+transport
+true

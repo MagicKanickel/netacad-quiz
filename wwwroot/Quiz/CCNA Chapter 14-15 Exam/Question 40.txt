@@ -1,0 +1,12 @@
+What is an advantage of SMB over FTP?​
+20
+4
+1
+Only with SMB can data transfers occur in both directions.
+false
+Only SMB establishes two simultaneous connections with the client, making the data transfer faster.​
+false
+SMB is more reliable than FTP because SMB uses TCP and FTP uses UDP.​
+false
+SMB clients can establish a long-term connection to the server.​
+true

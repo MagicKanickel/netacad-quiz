@@ -1,0 +1,12 @@
+Which TCP/IP model layer is closest to the end user?
+20
+4
+1
+Application
+true
+transport
+false
+internet
+false
+network access
+false

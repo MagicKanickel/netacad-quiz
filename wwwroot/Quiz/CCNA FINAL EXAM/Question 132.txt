@@ -1,0 +1,12 @@
+What service is provided by POP3
+20
+4
+1
+Retrieves email from the server by downloading the email to the local mail application of the client.
+true
+An application that allows real-time chatting among remote users.
+false
+Allows remote access to network devices and servers.
+false
+Uses encryption to provide secure remote access to network devices and servers.
+false

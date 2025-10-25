@@ -1,0 +1,12 @@
+Which command or key combination allows a user to return to the previous level in the command hierarchy?
+20
+4
+1
+end
+false
+exit
+true
+Ctrl-Z
+false
+Ctrl-C
+false

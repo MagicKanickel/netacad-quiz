@@ -1,0 +1,12 @@
+Refer to the exhibit. The PC is connected to the console port of the switch. All the other connections are made through FastEthernet links. Which types of UTP cables can be used to connect the devices?​
+20
+4
+1
+1 - rollover, 2 - crossover, 3 - straight-through
+false
+1 - rollover, 2 - straight-through, 3 - crossover
+true
+1 - crossover, 2 - rollover, 3 - straight-through
+false
+1 - crossover, 2 - straight-through, 3 - rollover
+false

@@ -1,0 +1,12 @@
+A network technician issues the arp -d * command on a PC after the router that is connected to the LAN is reconfigured. What is the result after this command is issued?
+20
+4
+1
+The ARP cache is cleared.
+true
+The current content of the ARP cache is displayed.
+false
+The detailed information of the ARP cache is displayed.
+false
+The ARP cache is synchronized with the router interface.
+false

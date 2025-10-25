@@ -1,0 +1,12 @@
+Match technological weakness
+20
+4
+1
+An employee is trying to guess the password of another user.
+false
+When implementing an access list on a router, a network engineer did not filter a type of malicous traffic.
+false
+A nework engineer is examining the operating system of a network device for vulnerabilities.
+true
+The network administrator did not fully consider the implications of unauthorized users accessing the network.
+false

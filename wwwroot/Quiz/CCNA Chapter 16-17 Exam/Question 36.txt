@@ -1,0 +1,12 @@
+Users are complaining that they are unable to browse certain websites on the Internet. An administrator can successfully ping a web server via its IP address, but cannot browse to the domain name of the website. Which troubleshooting tool would be most useful in determining where the problem is?
+20
+4
+1
+netstat
+false
+tracert
+false
+nslookup
+true
+ipconfig
+false

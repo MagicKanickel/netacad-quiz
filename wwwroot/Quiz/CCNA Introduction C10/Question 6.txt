@@ -1,0 +1,12 @@
+Which CLI mode allows users to access all device commands, such as those used for configuration, management, and ...
+20
+4
+1
+user EXEC mode
+false
+global configuration mode
+false
+interface configuration mode
+false
+privileged EXEC mode
+true

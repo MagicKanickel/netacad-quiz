@@ -1,0 +1,14 @@
+Which two fields or features does Ethernet examine to determine if a received frame is passed to the data link layer or discarded by the NIC? (Choose two.)
+20
+5
+1
+auto-MDIX
+false
+CEF
+true
+Frame Check Sequence
+true
+minimum frame size
+false
+source MAC address
+false

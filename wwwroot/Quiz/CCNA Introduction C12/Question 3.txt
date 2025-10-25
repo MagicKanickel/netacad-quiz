@@ -1,0 +1,12 @@
+Which IPv6 network prefix is only intended for local links and can not be routed?
+20
+4
+1
+2001::/3
+false
+FC00::/7
+false
+FE80::/10
+true
+FEC0::/10
+false

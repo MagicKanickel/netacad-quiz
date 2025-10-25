@@ -1,0 +1,12 @@
+A company has a file server that shares a folder named Public. The network security policy specifies that the Public folder is assigned Read-Only rights to anyone who can log into the server while the Edit rights are assigned only to the network admin group. Which component is addressed in the AAA network service framework?
+20
+4
+1
+automation
+false
+accounting
+false
+authentication
+false
+authorization
+true

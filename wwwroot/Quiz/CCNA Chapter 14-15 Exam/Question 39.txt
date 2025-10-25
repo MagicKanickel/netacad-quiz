@@ -1,0 +1,14 @@
+Which layer in the TCP/IP model is used for formatting, compressing, and encrypting data?
+20
+5
+1
+internetwork
+false
+session
+false
+presentation
+false
+application
+true
+network access
+false

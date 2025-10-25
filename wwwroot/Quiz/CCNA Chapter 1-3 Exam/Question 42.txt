@@ -1,0 +1,12 @@
+Which PDU format is used when bits are received from the network medium by the NIC of a host?
+20
+4
+1
+file
+false
+frame
+true
+packet
+false
+segment
+false

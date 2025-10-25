@@ -1,0 +1,12 @@
+A client creates a packet to send to a server. The client is requesting TFTP service. What number will be used as the destination port number in the sending packet?
+20
+4
+1
+69
+true
+67
+false
+53
+false
+80
+false

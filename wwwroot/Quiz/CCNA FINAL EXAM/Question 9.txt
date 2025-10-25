@@ -1,0 +1,16 @@
+What are three commonly followed standards for constructing and installing cabling? (Choose three.)
+20
+6
+3
+cost per meter (foot)
+false
+cable lengths
+true
+connector color
+false
+pinouts
+true
+connector types
+true
+tensile strength of plastic insulator
+false

@@ -1,0 +1,12 @@
+What is a characteristic of the LLC sublayer?
+20
+4
+1
+It provides the logical addressing required that identifies the device.
+false
+It provides delimitation of data according to the physical signaling requirements of the medium.
+false
+It places information in the frame allowing multiple Layer 3 protocols to use the same network interface and media
+true
+It defines software processes that provide services to the physical layer.
+false

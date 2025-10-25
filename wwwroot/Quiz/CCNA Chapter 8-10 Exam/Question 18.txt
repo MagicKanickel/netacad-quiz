@@ -1,0 +1,12 @@
+How do hosts ensure that their packets are directed to the correct network destination?
+40
+4
+1
+They have to keep their own local routing table that contains a route to the loopback interface, a local network route, and a remote default route.​
+true
+They always direct their packets to the default gateway, which will be responsible for the packet delivery.
+false
+They search in their own local routing table for a route to the network destination address and pass this information to the default gateway.
+false
+They send a query packet to the default gateway asking for the best route.
+false

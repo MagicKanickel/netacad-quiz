@@ -1,0 +1,12 @@
+This organization is responsible for overseeing and managing IP adress allocation, domain name management, and protocol identifiers.
+40
+4
+1
+ISOC
+false
+ISO
+false
+EIA
+false
+IANA
+true

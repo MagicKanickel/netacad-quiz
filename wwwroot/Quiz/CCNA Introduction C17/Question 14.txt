@@ -1,0 +1,12 @@
+What factor should be considered in the design of a small network when devices are being chosen?
+20
+4
+1
+cost of devices
+true
+redundancy
+false
+traffic analysis
+false
+ISP
+false

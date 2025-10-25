@@ -1,0 +1,12 @@
+On a home network, which device is most likely to provide dynamic IP addressing to clients on the home network?
+20
+4
+1
+a home router
+true
+an ISP DHCP server
+false
+a dedicated file server
+false
+a DNS server
+false

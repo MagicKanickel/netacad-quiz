@@ -1,0 +1,12 @@
+Which IPv6 prefix is reserved for communication between devices on the same link?
+20
+4
+1
+FE80::/10
+true
+FDFF::/7
+false
+2001::/32
+false
+FDFF::/22
+false

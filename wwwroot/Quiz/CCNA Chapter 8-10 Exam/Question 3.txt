@@ -1,0 +1,12 @@
+A router receives a packet from the Gigabit 0/0 interface and determines that the packet needs to be forwarded out the Gigabit 0/1 interface. What will the router do next?
+20
+4
+1
+route the packet out the Gigabit 0/1 interface
+false
+create a new Layer 2 Ethernet frame to be sent to the destination
+true
+look into the ARP cache to determine the destination IP address
+false
+look into the routing table to determine if the destination network is in the routing table
+false

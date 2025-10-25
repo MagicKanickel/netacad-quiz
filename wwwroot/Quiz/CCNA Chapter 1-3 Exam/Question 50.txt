@@ -1,0 +1,12 @@
+What is an advantage of network devices using open standard protocols?
+25
+4
+1
+Network communications is confined to data transfers between devices from the same vendor.
+false
+A client host and a server running different operating systems can successfully exchange data.
+true
+Internet access can be controlled by a single ISP in each market.
+false
+Competition and innovation are limited to specific types of products.
+false

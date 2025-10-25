@@ -1,0 +1,12 @@
+Which switching method has the lowest level of latency?
+20
+4
+1
+cut-through
+false
+store-and-forward
+false
+fragment-free
+false
+fast-forward
+true

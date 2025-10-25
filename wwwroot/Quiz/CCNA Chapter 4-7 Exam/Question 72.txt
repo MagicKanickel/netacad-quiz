@@ -1,0 +1,14 @@
+Which two functions are performed at the MAC sublayer of the OSI data link layer? (Choose two.)
+20
+5
+2
+Provides synchronisation between source and target nodes.
+true
+Integrates various physical technologies.
+true
+Communicates between the networking software at the upper layers and device hardware at the lower layers.
+false
+Adds Layer 2 control information to network protocol data.
+false
+Enables IPv4 and IPv6 to utilize the same noetwork interface and media.
+false

@@ -1,0 +1,12 @@
+How many bits must be borrowed from the host portion of an address to accommodate a router with five connected networks?
+30
+4
+1
+2
+false
+3
+true
+4
+false
+5
+false

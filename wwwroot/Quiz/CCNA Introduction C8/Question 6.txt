@@ -1,0 +1,12 @@
+Which field in an IPv4 packet header will typically stay the same during its transmission?
+20
+4
+1
+Flag
+false
+Time-to-Live
+false
+Packet Length
+false
+Destination Address
+true

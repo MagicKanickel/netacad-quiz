@@ -1,0 +1,14 @@
+A user is implementing security on a small office network. Which two actions would provide the minimum security requirements for this network? (Choose two.)
+20
+5
+2
+implementing a firewall
+true
+installing a wireless network
+false
+installing antivirus software
+true
+implementing an intrusion detection system
+false
+adding a dedicated intrusion prevention device
+false

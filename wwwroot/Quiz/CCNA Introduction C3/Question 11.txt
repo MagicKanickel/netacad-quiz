@@ -1,0 +1,12 @@
+Which three acronyms/initialisms represent standards organizations?&nbsp;
+20
+4
+1
+IANA
+true
+IETF
+true
+OSI
+false
+IEEE
+true

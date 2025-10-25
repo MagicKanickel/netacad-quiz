@@ -1,0 +1,12 @@
+This organization is the largest developer of international standards in the world for a wide variety of products and services. It is known for its Open Systems Interconnection (OSI) reference model.
+40
+4
+1
+ISOC
+false
+ISO
+true
+EIA
+false
+IANA
+false

@@ -1,0 +1,12 @@
+Die  Spannung sinkt bei
+20
+4
+1
+hoher Luftfeuchtigkeit
+true
+niedriger Luftfeuchtigkeit
+false
+langsamen Bewegungen
+false
+schnellen Bewegungen
+false

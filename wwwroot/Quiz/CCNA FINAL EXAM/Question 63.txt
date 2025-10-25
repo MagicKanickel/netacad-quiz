@@ -1,0 +1,8 @@
+location of a desktop PC in a classroom
+20
+2
+1
+physical topology diagram
+true
+logical topology
+false

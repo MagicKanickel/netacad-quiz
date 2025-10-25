@@ -1,0 +1,12 @@
+A user executes a traceroute over IPv6. At what point would a router in the path to the destination device drop the packet?
+20
+4
+1
+when the value of the Hop Limit field reaches 255
+false
+when the value of the Hop Limit field reaches zero
+true
+when the router receives an ICMP time exceeded message
+false
+when the target host responds with an ICMP echo reply message
+false

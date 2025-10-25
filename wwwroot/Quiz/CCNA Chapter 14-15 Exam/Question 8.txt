@@ -1,0 +1,16 @@
+Which three fields are used in a UDP segment header? (Choose three.)
+20
+6
+3
+Window Size
+false
+Length
+true
+Source Port
+true
+Acknowledgment Number
+false
+Checksum
+true
+Sequence Number
+false

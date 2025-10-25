@@ -1,0 +1,14 @@
+A new network administrator has been asked to enter a banner message on a Cisco device. What is the fastest way a network administrator could test whether the banner is properly configured?
+20
+5
+1
+Reboot the device.
+false
+Enter CTRL-Z at the privileged mode prompt.
+false
+Exit global configuration mode.
+false
+Power cycle the device.
+false
+Exit privileged EXEC mode and press Enter.
+true

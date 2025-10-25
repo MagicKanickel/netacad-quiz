@@ -1,0 +1,14 @@
+Which two functions are performed at the MAC sublayer of the OSI Data Link Layer to facilitate Ethernet communication? (Choose two.)
+20
+5
+2
+applies delimiting of Ethernet frame fields to synchronize communication between nodes
+true
+places information in the Ethernet frame that identifies which network layer protocol is being encapsulated by the frame
+false
+adds Ethernet control information to network protocol data
+false
+implements trailer with frame check sequence for error detection
+true
+handles communication between upper layer networking software and Ethernet NIC hardware
+false

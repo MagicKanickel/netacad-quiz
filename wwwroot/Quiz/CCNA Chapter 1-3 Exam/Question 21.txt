@@ -1,0 +1,14 @@
+What are two characteristics of RAM on a Cisco device? (Choose two.)
+20
+5
+2
+RAM provides nonvolatile storage.
+false
+The configuration that is actively running on the device is stored in RAM.
+true
+The contents of RAM are lost during a power cycle.
+true
+RAM is a component in Cisco switches but not in Cisco routers.
+false
+RAM is able to store multiple versions of IOS and configuration files.
+false

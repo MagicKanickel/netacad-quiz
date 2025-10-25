@@ -1,0 +1,16 @@
+Which of the following is a private adress?
+20
+6
+1
+64.102.90.23
+false
+169.254.1.5
+false
+192.0.2.123
+false
+240.2.6.255
+false
+172.19.20.5
+true
+127.0.0.1
+false

@@ -1,0 +1,12 @@
+Which adress is a broadcast address?
+60
+4
+1
+172.110.12.64/28
+false
+192.168.1.191/26
+true
+10.0.0.159/27
+true
+192.168.100.161/25
+false

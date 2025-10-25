@@ -1,0 +1,12 @@
+71. What action will occur if a switch receives a frame with the destination MAC address FF:FF:FF:FF:FF:FF?
+20
+4
+1
+The switch forwards it out all ports except the ingress port.
+true
+The switch shares the MAC address table entry with any connected switches.
+false
+The switch does not forward the frame.
+false
+The switch sends the frame to a connected router because the destination MAC address is not local.
+false

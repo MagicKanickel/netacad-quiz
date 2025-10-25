@@ -1,0 +1,12 @@
+What does the term vulnerability mean?
+30
+4
+1
+a weakness that makes a target susceptible to an attack
+true
+a computer that contains sensitive information
+false
+a method of attack to exploit a target
+false
+a known target or victim machine
+false

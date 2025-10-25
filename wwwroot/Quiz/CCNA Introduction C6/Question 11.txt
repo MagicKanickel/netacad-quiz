@@ -1,0 +1,12 @@
+What type of physical topology can be created by connecting all Ethernet cables to a central device?
+20
+4
+1
+star
+true
+bus
+false
+ring
+false
+mesh
+false

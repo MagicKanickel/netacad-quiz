@@ -1,0 +1,12 @@
+What process is used to place one message inside another message for transfer from the source to the destination?
+20
+4
+1
+access control
+false
+encapsulation
+true
+decoding
+false
+flow control
+false

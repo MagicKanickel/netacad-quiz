@@ -1,0 +1,12 @@
+A router receives, what information must be examined in order for the packet to be forwarded to a remote destination?
+30
+4
+1
+destination MAC address
+false
+source IP address
+false
+destination IP address
+true
+source MAC address
+false

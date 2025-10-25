@@ -1,0 +1,18 @@
+The application layer of the TCP/IP model performs the functions of what three layers of the OSI model?
+20
+7
+3
+physical
+false
+session
+true
+network
+false
+presentation
+true
+data link
+false
+transport
+false
+application
+true

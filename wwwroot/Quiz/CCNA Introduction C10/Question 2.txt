@@ -1,0 +1,12 @@
+Which of the following router commands achieves the goal of providing the highest level of security?
+30
+4
+1
+secret password trustknow1
+false
+enable password trustknow1
+false
+service password-encryption
+false
+enable secret trustknow1
+true

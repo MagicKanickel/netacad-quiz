@@ -1,0 +1,12 @@
+A network administrator establishes a connection to a switch via SSH. What characteristic describes the SSH connection?
+30
+4
+1
+remote access through the use of a telephone dialup connection
+false
+direct access to the switch through the use of a terminal emulation program
+false
+remote access to a switch where data is encrypted during the session
+true
+on-site access to a switch through connected PC and a console cable
+false

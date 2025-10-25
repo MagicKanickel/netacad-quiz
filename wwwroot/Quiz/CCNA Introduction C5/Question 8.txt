@@ -1,0 +1,12 @@
+What is the decimal equivalent of the hex number 0x3F?
+20
+4
+1
+63
+true
+87
+false
+93
+false
+77
+false

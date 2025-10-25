@@ -1,0 +1,12 @@
+During a routine inspection, a technician discovered that software that was installed on a computer was secretly collecting data about websites that were visited by users of the computer. Which type of threat is affecting this computer?
+20
+4
+1
+DoS attack​
+false
+identity theft
+false
+spyware
+true
+zero-day attack
+false

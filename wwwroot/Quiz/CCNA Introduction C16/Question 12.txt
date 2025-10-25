@@ -1,0 +1,12 @@
+What is the objective of a network reconnaissance attack?
+20
+4
+1
+unauthorized manipulation of data
+false
+disabling network systems or services
+false
+discovery and mapping of systems
+true
+denying access to resources by legitimate users
+false

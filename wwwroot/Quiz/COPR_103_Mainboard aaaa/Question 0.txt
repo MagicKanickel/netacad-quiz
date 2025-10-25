@@ -1,0 +1,12 @@
+Deutscher Ausdruck für Mainboard
+20
+4
+1
+Holzbrett
+false
+Mutterchipbrett
+false
+Hauptplatine
+true
+Hauptanlaufstelle
+false

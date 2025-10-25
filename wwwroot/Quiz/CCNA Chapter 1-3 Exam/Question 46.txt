@@ -1,0 +1,14 @@
+Which two OSI model layers have the same functionality as a single layer of the TCP/IP model? (Choose two.)
+20
+5
+2
+data link
+true
+network
+false
+physical
+true
+session
+false
+transport
+false

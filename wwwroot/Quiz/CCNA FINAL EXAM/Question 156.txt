@@ -1,0 +1,16 @@
+Which two statements accurately describe an advantage or a disadvantage when deploying NAT for IPv4 in a network? (Choose two.)
+20
+6
+2
+NAT adds authentication capability to IPv4.
+false
+NAT introduces problems for some applications that require end-to-end connectivity.
+true
+NAT will impact negatively on switch performance.
+false
+NAT provides a solution to slow down the IPv4 address depletion.
+true
+NAT improves packet handling.
+false
+NAT causes routing tables to include more information.
+false

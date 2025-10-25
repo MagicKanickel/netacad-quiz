@@ -1,0 +1,13 @@
+Refer to the exhibit. What is wrong with the displayed termination?
+20
+4
+1
+The woven copper braid should not have been removed.
+false
+The wrong type of connector is being used.
+false
+The untwisted length of each wire is too long.
+true
+The wires are too thick for the connector that is used.
+false
+Question_109-image.png

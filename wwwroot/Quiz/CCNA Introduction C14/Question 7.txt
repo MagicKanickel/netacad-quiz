@@ -1,0 +1,12 @@
+Which two operations are provided by TCP but not by UDP?
+20
+4
+1
+identifying the applications
+false
+acknowledging received data
+true
+tracking individual conversations
+false
+retransmitting any unacknowledged data
+true

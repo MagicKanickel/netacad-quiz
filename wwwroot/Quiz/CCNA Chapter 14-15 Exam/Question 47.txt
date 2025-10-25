@@ -1,0 +1,14 @@
+What are two characteristics of peer-to-peer networks? (Choose two.)
+20
+5
+2
+scalability
+false
+one way data flow
+false
+decentralized resources
+true
+centralized user accounts
+false
+resource sharing without a dedicated server
+true

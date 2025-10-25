@@ -1,0 +1,12 @@
+An administrator is troubleshooting connectivity issues and needs to determine the IP address of a website. What is the best command to use to accomplish the task?
+20
+4
+1
+nslookup
+true
+show ipv6 route
+false
+show ipv6 interface
+false
+copy startup-config running-config
+false

@@ -1,0 +1,12 @@
+When applied to a router, which command would help mitigate brute-force password attacks against the router?
+30
+4
+1
+exec-timeout 30
+false
+service password-encryption
+false
+banner motd $Max failed logins = 5$
+false
+login block-for 60 attempts 5 within 60
+true

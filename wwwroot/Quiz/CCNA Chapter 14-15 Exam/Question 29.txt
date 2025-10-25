@@ -1,0 +1,12 @@
+What is true about the Server Message Block protocol?
+20
+4
+1
+Different SMB message types have a different format.
+false
+Clients establish a long term connection to servers.
+true
+SMB messages cannot authenticate a session.
+false
+SMB uses the FTP protocol for communication.
+false

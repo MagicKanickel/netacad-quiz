@@ -1,0 +1,14 @@
+What information does the loopback test provide?
+20
+5
+1
+The TCP/IP stack on the device is working correctly.
+true
+The device has end-to-end connectivity.
+false
+DHCP is working correctly.
+false
+The Ethernet cable is working correctly.
+false
+The device has the correct IP address on the network.
+false

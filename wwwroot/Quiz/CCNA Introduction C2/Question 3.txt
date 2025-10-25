@@ -1,0 +1,12 @@
+What subnet does the IP address 10.1.100.50 belong if a subnet mask of 255.255.0.0 is used?
+20
+4
+1
+10.1.0.0
+true
+10.1.100.32
+false
+10.0.0.0
+false
+10.1.100.0
+false

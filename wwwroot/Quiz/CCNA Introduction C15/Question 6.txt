@@ -1,0 +1,12 @@
+Which three protocols or standards are used at the application layer of the TCP/IP model?
+30
+4
+1
+HTTP, MPEG, GIF
+true
+IP, UDP, TCP
+false
+HTTP, IP, TCP
+false
+TCP, UDP, HTTP
+false

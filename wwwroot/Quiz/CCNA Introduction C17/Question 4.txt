@@ -1,0 +1,12 @@
+A user is unable to reach ht​tp://ww​w.cisco.com in a web browser, but can reach ht​tp://72.163.4.161.What is the issue?
+20
+4
+1
+default gateway
+false
+DHCP
+false
+DNS
+true
+TCP/IP protocol stack
+false

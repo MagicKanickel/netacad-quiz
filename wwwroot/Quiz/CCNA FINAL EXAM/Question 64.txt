@@ -1,0 +1,8 @@
+path of cables that connect rooms to wiring closets
+20
+2
+1
+physical topology diagram
+true
+logical topology
+false

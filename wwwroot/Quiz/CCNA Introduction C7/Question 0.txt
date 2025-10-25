@@ -1,0 +1,12 @@
+Which two characteristics describe Ethernet technology?
+20
+4
+1
+It is supported by IEEE 802.5 standards.
+false
+It is supported by IEEE 802.3 standards.
+true
+It uses the CSMA/CD access control method
+true
+It uses a ring topology.
+false

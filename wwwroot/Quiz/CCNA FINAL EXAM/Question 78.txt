@@ -1,0 +1,14 @@
+A host is trying to send a packet to a device on a remote LAN segment, but there are currently no mappings in its ARP cache. How will the device obtain a destination MAC address?
+20
+5
+1
+It will send the frame and use its own MAC address as the destination.
+false
+It will send an ARP request for the MAC address of the destination device.
+false
+It will send the frame with a broadcast MAC address.
+false
+It will send a request to the DNS server for the destination MAC address.
+false
+It will send an ARP request for the MAC address of the default gateway.
+true

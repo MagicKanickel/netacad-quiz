@@ -1,0 +1,12 @@
+Which IPv4 address can a host use to ping the loopback interface?
+20
+4
+1
+126.0.0.1
+false
+127.0.0.0
+false
+126.0.0.0
+false
+127.0.0.1
+true

@@ -1,0 +1,12 @@
+A large corporation has modified its network to allow users to access network resources from their personal laptops and smart phones. Which networking trend does this describe?
+20
+4
+1
+cloud computing
+false
+online collaboration
+false
+bring your own device
+true
+video conferencing
+false

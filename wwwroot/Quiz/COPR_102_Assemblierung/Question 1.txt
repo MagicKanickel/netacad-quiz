@@ -1,0 +1,12 @@
+Was findet sich nicht in einem Computer?
+20
+4
+1
+Netzteil
+false
+Drucker
+true
+ODD
+false
+MB
+false

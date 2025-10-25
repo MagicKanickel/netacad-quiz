@@ -1,0 +1,12 @@
+At which OSI layer is data added to a PDU during the encapsulation process?
+20
+4
+1
+application layer
+true
+data link layer
+false
+network layer
+false
+transport layer
+false

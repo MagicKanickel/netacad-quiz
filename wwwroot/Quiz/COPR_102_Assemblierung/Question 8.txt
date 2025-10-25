@@ -1,0 +1,12 @@
+Was bedeutet GPU?
+20
+4
+1
+Simple Unit
+false
+Gun Procedure Unifierer
+false
+Graphic Processing Unit
+true
+Gone Processing Unit
+false

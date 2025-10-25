@@ -1,0 +1,12 @@
+Given IPv6 address prefix 2001:db8::/48, what will be the last subnet that is created if the subnet prefix is changed to /52?
+20
+4
+1
+2001:db8:0:f00::/52
+false
+2001:db8:0:8000::/52
+false
+2001:db8:0:f::/52
+false
+2001:db8:0:f000::/52
+true

@@ -1,0 +1,12 @@
+Which statement is true about the running configuration file in a Cisco IOS device?
+30
+4
+1
+It affects the operation of the device immediately when modified.
+true
+It is stored in NVRAM.
+false
+It should be deleted using the erase running-config command.
+false
+It is automatically saved when the router reboots.
+false

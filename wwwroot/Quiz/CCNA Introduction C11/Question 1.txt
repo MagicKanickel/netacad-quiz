@@ -1,0 +1,12 @@
+How many valid host addresses are available on an IPv4 subnet that is configured with a /26 mask?
+20
+4
+1
+254
+false
+192
+false
+62
+true
+64
+false

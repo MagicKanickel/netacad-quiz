@@ -1,0 +1,12 @@
+When a hostname is configured through the Cisco CLI, which three naming conventions are part of the guidelines?
+30
+4
+1
+the hostname should be fewer than 64 characters in length
+true
+the hostname should be written in all lower case characters
+false
+the hostname should contain no spaces
+true
+the hostname should begin with a letter
+true

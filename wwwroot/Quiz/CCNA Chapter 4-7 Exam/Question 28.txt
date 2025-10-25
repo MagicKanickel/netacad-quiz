@@ -1,0 +1,12 @@
+Which statement is true about the CSMA/CD access method that is used in Ethernet?
+20
+4
+1
+When a device hears a carrier signal and transmits, a collision cannot occur.
+false
+A jamming signal causes only devices that caused the collision to execute a backoff algorithm.
+false
+All network devices must listen before transmitting.
+true
+Devices involved in a collision get priority to transmit after the backoff period.
+false

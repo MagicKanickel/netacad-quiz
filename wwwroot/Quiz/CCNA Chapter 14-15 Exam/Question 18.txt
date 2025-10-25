@@ -1,0 +1,16 @@
+Which three application layer protocols use TCP? (Choose three.)
+20
+6
+3
+SMTP
+true
+FTP
+true
+SNMP
+false
+HTTP
+true
+TFTP
+false
+DHCP
+false

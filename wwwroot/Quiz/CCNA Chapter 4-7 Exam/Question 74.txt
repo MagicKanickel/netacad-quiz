@@ -1,0 +1,12 @@
+What action will occur if a host receives a frame with a destination MAC address of FF:FF:FF:FF:FF:FF?
+20
+4
+1
+The host will process the frame.
+true
+The host forwards the frame to the router.
+false
+The host sends the frame to the switch to update the MAC address table.
+false
+The host forwards the frame to all other hosts.
+false

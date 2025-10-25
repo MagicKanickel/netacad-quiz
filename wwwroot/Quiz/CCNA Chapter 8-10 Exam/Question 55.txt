@@ -1,0 +1,12 @@
+Which term describes a field in the IPv4 packet header used to limit the lifetime of a packet?
+20
+4
+1
+TTL
+true
+source IPv4 address
+false
+protocol
+false
+header checksum
+false

@@ -1,0 +1,12 @@
+What does a client do when it has UDP datagrams to send?
+20
+4
+1
+It just sends the datagrams.
+true
+It queries the server to see if it is ready to receive data.
+false
+It sends a simplified three-way handshake to the server.
+false
+It sends to the server a segment with the SYN flag set to synchronize the conversation.
+false

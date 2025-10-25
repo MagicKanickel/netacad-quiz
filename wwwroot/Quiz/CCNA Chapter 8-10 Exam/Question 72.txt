@@ -1,0 +1,14 @@
+Refer to the exhibit. A network administrator is connecting a new host to the Manager LAN. The host needs to communicate with remote networks. What IP address would be configured as the default gateway on the new host?
+20
+5
+1
+10.118.62.196
+true
+10.118.62.1
+false
+10.62.63.254
+false
+209.165.200.87
+false
+10.118.63.65
+false

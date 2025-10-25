@@ -1,0 +1,12 @@
+What characteristic describes identity theft?
+20
+4
+1
+the use of stolen credentials to access private data
+true
+software on a router that filters traffic based on IP addresses or applications
+false
+software that identifies fast-spreading threats
+false
+a tunneling protocol that provides remote users with secure access into the network of an organization
+false

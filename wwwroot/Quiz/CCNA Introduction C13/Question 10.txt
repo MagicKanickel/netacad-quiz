@@ -1,0 +1,12 @@
+Which protocol is used by IPv4 and IPv6 to provide error messaging?
+20
+4
+1
+ICMP
+true
+NDP
+false
+ARP
+false
+DHCP
+false

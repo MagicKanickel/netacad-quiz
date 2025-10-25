@@ -1,0 +1,12 @@
+Within a production network, what is the purpose of configuring a switch with a default gateway address?
+20
+4
+1
+Hosts that are connected to the switch can use the switch default gateway address to forward packets to a remote destination.
+false
+A switch must have a default gateway to be accessible by Telnet and SSH.
+false
+The default gateway address is used to forward packets originating from the switch to remote networks.
+true
+It provides a next-hop address for all traffic that flows through the switch.
+false

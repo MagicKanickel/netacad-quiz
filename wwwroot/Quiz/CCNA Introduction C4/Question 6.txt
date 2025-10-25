@@ -1,0 +1,12 @@
+What is the definition of bandwidth?
+60
+4
+1
+the measure of the transfer of bits across the media over time
+false
+the speed at which bits travel on the network
+false
+the amount of data that can flow from one place to another in a given time
+true
+the measure of usable data transferred over a given period of time
+false

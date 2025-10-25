@@ -1,0 +1,12 @@
+What addressing information is recorded by a switch to build its MAC address table?
+30
+4
+1
+the destination Layer 3 address of incoming packets
+false
+the source Layer 2 address of incoming frames
+true
+the source Layer 3 address of outgoing packets
+false
+the destination Layer 2 address of outgoing frames
+false

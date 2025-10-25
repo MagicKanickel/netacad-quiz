@@ -1,0 +1,14 @@
+method of managing segments of data loss
+20
+5
+1
+acknowledgment
+false
+retransmission
+true
+FCS
+false
+sequence numbers
+false
+window size
+false

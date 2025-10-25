@@ -1,0 +1,10 @@
+What IOS mode does this statement correspond to: changes made affect the operation of the device as a whole
+20
+3
+1
+user EXEC mode
+false
+privileged EXEC mode
+false
+global configuration mode
+true

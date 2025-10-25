@@ -1,0 +1,12 @@
+Users report that the network access is slow. After questioning the employees, the network administrator learned that one employee downloaded a third-party scanning program for the printer. What type of malware might be introduced that causes slow performance of the network?
+20
+4
+1
+virus
+false
+worm
+true
+phishing
+false
+spam
+false

@@ -1,0 +1,14 @@
+At which OSI layer is a source port number added to a PDU during the encapsulation process?
+25
+5
+1
+transport layer
+true
+application layer
+false
+network layer
+false
+presentation layer
+false
+data link layer
+false

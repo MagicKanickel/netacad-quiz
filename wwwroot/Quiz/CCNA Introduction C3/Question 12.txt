@@ -1,0 +1,12 @@
+What type of communication will send a message to all devices on a local area network?
+20
+4
+1
+broadcast
+true
+multicast
+false
+unicast
+false
+allcast
+false

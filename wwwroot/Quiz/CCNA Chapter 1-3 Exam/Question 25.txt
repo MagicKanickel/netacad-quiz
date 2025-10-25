@@ -1,0 +1,16 @@
+What are three characteristics of an SVI? (Choose three.)
+20
+6
+3
+It is designed as a security protocol to protect switch ports
+false
+It is not associated with any physical interface on a switch
+true
+It is a special interface that allows connectivity by different types of media
+false
+It is required to allow connectivity by any device at any location
+false
+It provides a means to remotely manage a switch
+true
+It is associated with VLAN1 by default
+true

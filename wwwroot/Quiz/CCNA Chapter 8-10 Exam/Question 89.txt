@@ -1,0 +1,16 @@
+Match the command with the device mode at which the command is entered. (Not all options are used.) ip adress 192.168.4.4.255.255.255.0
+20
+6
+1
+R1(config)#
+false
+R1>
+false
+R1(config-router)#
+false
+R1#
+false
+R1(config-line)#
+false
+R1(config-if)#
+true

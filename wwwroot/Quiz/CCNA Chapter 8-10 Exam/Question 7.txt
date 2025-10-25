@@ -1,0 +1,12 @@
+Why is NAT not needed in IPv6?​
+20
+4
+1
+Because IPv6 has integrated security, there is no need to hide the IPv6 addresses of internal networks.​
+false
+Any host or user can get a public IPv6 network address because the number of available IPv6 addresses is extremely large.​
+true
+The problems that are induced by NAT applications are solved because the IPv6 header improves packet handling by intermediate routers.​
+false
+The end-to-end connectivity problems that are caused by NAT are solved because the number of routes increases with the number of nodes that are connected to the Internet.
+false

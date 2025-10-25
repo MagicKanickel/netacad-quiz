@@ -1,0 +1,12 @@
+What is the prefix length notation for the subnet mask 255.255.255.224?
+20
+4
+1
+Subnet 25
+false
+Subnet 26
+false
+Subnet 27
+true
+Subnet 28
+false

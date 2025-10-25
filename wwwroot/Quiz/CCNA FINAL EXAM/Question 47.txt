@@ -1,0 +1,16 @@
+Which two statements describe features of an IPv4 routing table on a router? (Choose two.)
+20
+6
+2
+Directly connected interfaces will have two route source codes in the routing table: C and S .
+false
+If there are two or more possible routes to the same destination, the route associated with the higher metric value is included in the routing table.
+false
+The netstat -r command can be used to display the routing table of a router.​
+false
+The routing table lists the MAC addresses of each active interface.
+false
+It stores information about routes derived from the active router interfaces.
+true
+If a default static route is configured in the router, an entry will be included in the routing table with source code S .
+true

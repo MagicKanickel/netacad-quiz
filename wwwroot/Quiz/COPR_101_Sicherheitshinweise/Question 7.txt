@@ -1,0 +1,12 @@
+Wo wird Elektrostatik eingesetzt?
+20
+4
+1
+Maus
+false
+Lackieren
+true
+Drucker
+true
+Lautsprecher
+false

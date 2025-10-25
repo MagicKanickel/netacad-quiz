@@ -1,0 +1,12 @@
+Which memory location on a Cisco router or switch stores the startup configuration file?
+20
+4
+1
+RAM
+false
+NVRAM
+true
+ROM
+false
+flash
+false

@@ -1,0 +1,14 @@
+Which address is a valid IPv6 link-local unicast address?
+20
+5
+1
+FEC8:1::FFFF
+false
+FD80::1:1234
+false
+FE80::1:4545:6578:ABC1
+true
+FE0A::100:7788:998F
+false
+FC90:5678:4251:FFFF
+false

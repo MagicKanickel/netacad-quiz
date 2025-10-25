@@ -1,0 +1,14 @@
+Refer to the exhibit. A network administrator is connecting a new host to the Payroll LAN. The host needs to communicate with remote networks. What IP address would be configured as the default gateway on the new host?
+20
+5
+1
+10.27.14.148
+true
+10.27.14.1
+false
+10.14.15.254
+false
+203.0.113.39
+false
+10.27.15.17
+false

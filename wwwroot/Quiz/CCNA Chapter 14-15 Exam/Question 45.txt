@@ -1,0 +1,12 @@
+Which protocol is used by a client to communicate securely with a web server?
+20
+4
+1
+SMTP
+false
+SMB
+false
+IMAP
+false
+HTTPS
+true

@@ -1,0 +1,12 @@
+Which value, that is contained in an IPv4 header field, is decremented by each router that receives a packet?
+20
+4
+1
+Header Length
+false
+Differentiated Services
+false
+Time-to-Live
+true
+Fragment Offset
+false

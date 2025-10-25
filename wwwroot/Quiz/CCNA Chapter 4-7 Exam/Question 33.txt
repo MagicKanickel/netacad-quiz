@@ -1,0 +1,12 @@
+Which frame forwarding method receives the entire frame and performs a CRC check to detect errors before forwarding the frame?
+20
+4
+1
+cut-through switching
+false
+store-and-forward switching
+true
+fragment-free switching
+false
+fast-forward switching
+false

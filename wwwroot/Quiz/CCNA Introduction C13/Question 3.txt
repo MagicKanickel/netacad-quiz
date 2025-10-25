@@ -1,0 +1,12 @@
+Which ICMP message is used by the traceroute utility during the process of finding the path between two end hosts?
+30
+4
+1
+redirect
+false
+ping
+false
+time exceeded
+true
+destination unreachable
+false

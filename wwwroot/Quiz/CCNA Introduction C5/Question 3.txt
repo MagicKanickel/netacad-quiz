@@ -1,0 +1,12 @@
+What is the binary equivalent of the decimal number 232?
+30
+4
+1
+11101000
+true
+11000110
+false
+10011000
+false
+11110010
+false

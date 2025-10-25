@@ -1,0 +1,14 @@
+A network administrator is upgrading a small business network to give high priority to real-time applications traffic. What two types of network services is the network administrator trying to accommodate? (Choose two.)
+20
+5
+2
+voice
+true
+video
+true
+instant messaging
+false
+FTP
+false
+SNMP
+false

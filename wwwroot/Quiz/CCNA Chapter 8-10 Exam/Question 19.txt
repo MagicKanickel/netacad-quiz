@@ -1,0 +1,12 @@
+When transporting data from real-time applications, such as streaming audio and video, which field in the IPv6 header can be used to inform the routers and switches to maintain the same path for the packets in the same conversation?
+20
+4
+1
+Next Header
+false
+Flow Label
+true
+Traffic Class
+false
+Differentiated Services
+false

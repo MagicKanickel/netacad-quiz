@@ -1,0 +1,12 @@
+A client creates a packet to send to a server. The client is requesting SSH service. What number will be used as the destination port number in the sending packet?
+20
+4
+1
+22
+true
+69
+false
+67
+false
+80
+false

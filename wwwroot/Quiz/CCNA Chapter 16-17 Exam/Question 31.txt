@@ -1,0 +1,12 @@
+A network engineer is troubleshooting connectivity issues among interconnected Cisco routers and switches. Which command should the engineer use to find the IP address information, host name, and IOS version of neighboring network devices?
+40
+4
+1
+show version
+false
+show ip route
+false
+show interfaces
+false
+show cdp neighbors detail
+true

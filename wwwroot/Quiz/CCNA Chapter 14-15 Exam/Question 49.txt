@@ -1,0 +1,16 @@
+Which three layers of the OSI model provide similar network services to those provided by the application layer of the TCP/IP model? (Choose three.)
+20
+6
+3
+physical layer
+false
+session layer
+true
+transport layer
+false
+application layer
+true
+presentation layer
+true
+data link layer
+false

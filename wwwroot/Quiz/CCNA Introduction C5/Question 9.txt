@@ -1,0 +1,12 @@
+Dotted decimal representation of the IPv4 address which is represented as the binary 00001010.01100100.00010101.00000001
+90
+4
+1
+10.100.21.1
+true
+10.10.20.1
+false
+100.10.11.1
+false
+100.21.10.1
+false

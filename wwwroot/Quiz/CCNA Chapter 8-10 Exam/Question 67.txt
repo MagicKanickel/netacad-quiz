@@ -1,0 +1,12 @@
+What property of ARP causes the NICs receiving an ARP request to pass the data portion of the Ethernet frame to the ARP process?
+30
+4
+1
+The type field 0x806 appears in the header of the Ethernet frame.
+true
+The destination MAC address FF-FF-FF-FF-FF-FF appears in the header of the Ethernet frame.
+false
+Entries in an ARP table are time-stamped and are purged after the timeout expires.
+false
+ARP replies are broadcast on the network when a host receives an ARP request.
+false

@@ -1,0 +1,12 @@
+What type of address is automatically assigned to an interface when IPv6 is enabled on that interface?
+20
+4
+1
+global unicast
+false
+link-local
+true
+loopback
+false
+unique local
+false

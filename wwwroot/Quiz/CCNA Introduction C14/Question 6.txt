@@ -1,0 +1,12 @@
+Network congestion-> loss of TCP segments that were sent to the destination. Way that the TCP protocol addresses this?
+60
+4
+1
+source decreases the amount of data before receiveing an acknowledgement
+true
+source decreases the window size to decrease the rate of transmission
+false
+The destination decreases the window size.
+false
+destination sends fewer acknowledgement messages
+false

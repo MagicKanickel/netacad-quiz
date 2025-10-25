@@ -1,0 +1,12 @@
+192.168.1.64 255.255.255.192 should create 2 new subnetworks with 18 hosts. Which networks achieve that?
+90
+4
+1
+192.168.1.16/28
+false
+192.168.1.64/27*
+true
+192.168.1.128/27
+false
+192.168.1.96/28*
+true

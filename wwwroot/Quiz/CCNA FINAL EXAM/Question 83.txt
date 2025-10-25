@@ -1,0 +1,12 @@
+A technician with a PC is using multiple applications while connected to the Internet. How is the PC able to keep track of the data flow between multiple application sessions and have each application receive the correct packet flows?
+20
+4
+1
+The data flow is being tracked based on the destination MAC address of the technician PC.
+false
+The data flow is being tracked based on the source port number that is used by each application.
+true
+The data flow is being tracked based on the source IP address that is used by the PC of the technician.
+false
+The data flow is being tracked based on the destination IP address that is used by the PC of the technician.
+false

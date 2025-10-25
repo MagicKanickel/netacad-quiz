@@ -1,0 +1,12 @@
+Which ICMPv6 message is sent when the IPv6 hop limit field of a packet is decremented to zero and the packet cannot be forwarded?
+20
+4
+1
+network unreachable
+false
+time exceeded
+true
+protocol unreachable
+false
+port unreachable
+false

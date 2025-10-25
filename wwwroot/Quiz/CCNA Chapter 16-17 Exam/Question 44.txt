@@ -1,0 +1,12 @@
+What is considered the most effective way to mitigate a worm attack?
+20
+4
+1
+Change system passwords every 30 days.
+false
+Ensure that all systems have the most current virus definitions.
+false
+Ensure that AAA is configured in the network.
+false
+Download security updates from the operating system vendor and patch all vulnerable systems.
+true

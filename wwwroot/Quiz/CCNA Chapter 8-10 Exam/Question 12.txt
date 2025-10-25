@@ -1,0 +1,12 @@
+Which field in the IPv4 header is used to prevent a packet from traversing a network endlessly?
+20
+4
+1
+Time-to-Live
+true
+Sequence Number
+false
+Acknowledgment Number
+false
+Differentiated Services
+false

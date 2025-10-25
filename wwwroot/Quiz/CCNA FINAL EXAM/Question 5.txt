@@ -1,0 +1,12 @@
+Which two statements are correct in a comparison of IPv4 and IPv6 packet headers? (Choose two.)
+20
+4
+2
+The Source Address field name from IPv4 is kept in IPv6.
+true
+The Version field from IPv4 is not kept in IPv6.
+false
+The Header Checksum field name from IPv4 is kept in IPv6.
+false
+The Time-to-Live field from IPv4 has been replaced by the Hop Limit field in IPv6.
+true

@@ -1,0 +1,12 @@
+Which type of communication will send a message to a group of host destinations simultaneously?
+20
+4
+1
+broadcast
+false
+unicast
+false
+multicast
+true
+anycast
+false

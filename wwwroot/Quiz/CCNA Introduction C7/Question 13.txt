@@ -1,0 +1,12 @@
+What are the two sizes (minimum and expected maximum) of an Ethernet frame?
+30
+4
+1
+56 bytes
+false
+64 bytes
+true
+1024 byts
+false
+1518 bytes
+true

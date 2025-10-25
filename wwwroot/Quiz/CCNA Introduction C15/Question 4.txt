@@ -1,0 +1,12 @@
+Which protocol can be used to transfer messages from an email server to an email client?
+20
+4
+1
+SMTP
+false
+SNMP
+false
+POP3
+true
+HTTP
+false

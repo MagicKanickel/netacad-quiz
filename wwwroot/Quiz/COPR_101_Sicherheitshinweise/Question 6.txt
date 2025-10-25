@@ -1,0 +1,12 @@
+Wie hoch kann sich der menschliche Körper aufladen?
+20
+4
+1
+1000V
+false
+50 000V
+false
+30 000V
+true
+5V
+false

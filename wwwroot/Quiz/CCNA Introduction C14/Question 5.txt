@@ -1,0 +1,12 @@
+What type of applications are best suited for using UDP?
+30
+4
+1
+applications that need reliable delivery
+false
+applications that require retransmission of lost segments
+false
+applications that are sensitive to delay
+true
+applications that are sensitive to packet loss
+false

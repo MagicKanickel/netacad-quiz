@@ -1,0 +1,14 @@
+A network administrator requires access to manage routers and switches locally and remotely. Match the description to the access method. (Not all options are used.) unsecure remote access
+20
+5
+1
+SSH
+false
+console
+false
+FTP
+false
+AUX
+false
+Telnet
+true

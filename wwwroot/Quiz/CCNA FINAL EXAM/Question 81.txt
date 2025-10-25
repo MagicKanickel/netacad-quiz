@@ -1,0 +1,12 @@
+What characteristic describes a Trojan horse?
+20
+4
+1
+malicious software or code running on an end device
+true
+an attack that slows or crashes a device or network service
+false
+the use of stolen credentials to access private data
+false
+a network device that filters access and traffic coming into a network
+false

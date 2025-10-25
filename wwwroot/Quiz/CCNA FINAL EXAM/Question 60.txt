@@ -1,0 +1,15 @@
+A company uses the address block of 128.107.0.0/16 for its network. What subnet mask would provide the maximum number of equal size subnets while providing enough host addresses for each subnet in the exhibit?
+20
+5
+1
+255.255.255.192
+false
+255.255.255.0
+false
+255.255.255.128
+true
+255.255.255.240
+false
+255.255.255.224
+false
+Question_150-image.png

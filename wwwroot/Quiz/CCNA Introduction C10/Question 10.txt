@@ -1,0 +1,12 @@
+Allow for all forms of management access. Which configuration mode should be entered to do this task?
+20
+4
+1
+user executive mode
+false
+any line configuration mode
+true
+global configuration mode
+false
+privileged EXEC mode
+false

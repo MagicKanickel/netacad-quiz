@@ -1,0 +1,12 @@
+What is a function of the tracert command that differs from the ping command when they are used on a workstation?
+30
+4
+1
+The tracert command reaches the destination faster.
+false
+The tracert command shows the information of routers in the path.
+true
+The tracert command sends one ICMP message to each hop in the path.
+false
+The tracert command is used to test the connectivity between two devices.
+false

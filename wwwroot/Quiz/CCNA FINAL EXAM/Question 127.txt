@@ -1,0 +1,16 @@
+What are the two most effective ways to defend against malware? (Choose two.)
+20
+6
+2
+Implement a VPN.
+false
+Implement network firewalls.
+false
+Implement RAID.
+false
+Implement strong passwords.
+false
+Update the operating system and other application software.
+true
+Install and update antivirus software.
+true

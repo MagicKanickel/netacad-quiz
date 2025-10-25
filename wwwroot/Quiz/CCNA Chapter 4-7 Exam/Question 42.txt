@@ -1,0 +1,12 @@
+What is the auto-MDIX feature?
+20
+4
+1
+It enables a device to automatically configure an interface to use a straight-through or a crossover cable.
+true
+It enables a device to automatically configure the duplex settings of a segment.
+false
+It enables a device to automatically configure the speed of its interface.
+false
+It enables a switch to dynamically select the forwarding method.
+false

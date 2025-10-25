@@ -1,0 +1,12 @@
+What is true concerning physical and logical topologies?
+60
+4
+1
+The logical topology is always the same as the physical topology.
+false
+Physical topologies are concerned with how a network transfers frames.
+false
+Physical topologies display the IP addressing scheme of each network.
+false
+Logical topologies refer to how a network transfers data between devices.
+true

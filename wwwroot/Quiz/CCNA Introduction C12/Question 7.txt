@@ -1,0 +1,12 @@
+Which address type is not supported in IPv6?
+20
+4
+1
+broadcast
+true
+unicast
+false
+multicast
+false
+private
+false

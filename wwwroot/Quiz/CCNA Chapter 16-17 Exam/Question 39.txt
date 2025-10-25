@@ -1,0 +1,14 @@
+Refer to the exhibit. Baseline documentation for a small company had ping round trip time statistics of 36/97/132 between hosts H1 and H3. Today the network administrator checked connectivity by pinging between hosts H1 and H3 that resulted in a round trip time of 1458/2390/6066. What does this indicate to the network administrator?
+40
+5
+1
+Connectivity between H1 and H3 is fine.
+false
+H3 is not connected properly to the network.
+false
+Something is causing interference between H1 and R1.
+false
+Performance between the networks is within expected parameters.
+false
+Something is causing a time delay between the networks.
+true

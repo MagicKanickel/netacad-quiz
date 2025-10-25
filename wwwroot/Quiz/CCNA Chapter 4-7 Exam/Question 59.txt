@@ -1,0 +1,12 @@
+What OSI physical layer term describes the physical mediom for microwave transmissions?
+20
+4
+1
+air
+true
+goodput
+false
+latency
+false
+throughput
+false

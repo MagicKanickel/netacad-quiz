@@ -1,0 +1,12 @@
+What term describes a technology that allows devices to connect to the LAN using an electrical outlet?
+20
+4
+1
+powerline networking
+true
+internet
+false
+intranet
+false
+extranet
+false

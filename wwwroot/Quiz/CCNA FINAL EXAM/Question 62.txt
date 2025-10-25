@@ -1,0 +1,8 @@
+Ip adress of a server
+20
+2
+1
+physical topology diagram
+false
+logical topology
+true

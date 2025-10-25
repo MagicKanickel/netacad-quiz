@@ -1,0 +1,12 @@
+A technician is to document the current configurations of all network devices in a college, including those in off-site buildings. Which protocol would be best to use to securely access the network devices?
+20
+4
+1
+FTP
+false
+HTTP
+false
+SSH
+true
+Telnet
+false

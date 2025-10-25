@@ -1,0 +1,12 @@
+Which two functions are provided to users by the context-sensitive help feature of the Cisco IOS CLI?
+30
+4
+1
+providing an error message when a wrong command is submitted
+false
+displaying a list of all available commands within the current mode
+true
+allowing the user to complete the remainder of an abbreviated command
+false
+determining which option, keyword, or argument is available
+true

@@ -1,0 +1,12 @@
+What is an advantage to using a protocol that is defined by an open standard?
+20
+4
+1
+A company can monopolize the market.
+false
+The protocol can only be run on equipment from a specific vendor.
+false
+An open standard protocol is not controlled or regulated by standards organizations.
+false
+It encourages competition and promotes choices.
+true

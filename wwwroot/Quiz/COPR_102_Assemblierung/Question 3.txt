@@ -1,0 +1,12 @@
+Welche Gehäusettype wurde heute zerlegt?
+20
+4
+1
+Y-Tower
+false
+Mini-Tower
+false
+Big-Tower
+false
+Midi-Tower
+true

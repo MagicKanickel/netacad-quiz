@@ -1,0 +1,14 @@
+What subnet mask is needed if an IPv4 network has 40 devices that need IP addresses and address space is not to be wasted?
+20
+5
+1
+255.255.255.0
+false
+255.255.255.240
+false
+255.255.255.128
+false
+255.255.255.192
+true
+255.255.255.224
+false

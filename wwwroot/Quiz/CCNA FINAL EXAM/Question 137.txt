@@ -1,0 +1,16 @@
+An administrator defined a local user account with a secret password on router R1 for use with SSH. Which three additional steps are required to configure R1 to accept only encrypted SSH connections? (Choose three.)
+20
+6
+3
+Configure DNS on the router.
+false
+Generate two-way pre-shared keys.
+false
+Configure the IP domain name on the router.
+true
+Generate the SSH keys.
+true
+Enable inbound vty SSH sessions.
+true
+Enable inbound vty Telnet sessions.
+false

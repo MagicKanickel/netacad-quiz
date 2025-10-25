@@ -1,0 +1,16 @@
+Which three statements characterize UDP? (Choose three.)
+30
+6
+3
+UDP provides basic connectionless transport layer functions.
+true
+UDP provides connection-oriented, fast transport of data at Layer 3.
+false
+UDP relies on application layer protocols for error detection.
+true
+UDP is a low overhead protocol that does not provide sequencing or flow control mechanisms.
+true
+UDP relies on IP for error detection and recovery.
+false
+UDP provides sophisticated flow control mechanisms.
+false

@@ -1,0 +1,12 @@
+Gibt es auf aktuellen Mainboards noch die Northbridge?
+20
+4
+1
+Nein
+true
+Ja
+false
+nur bei Server
+false
+Nur bei Intel
+false

@@ -1,0 +1,12 @@
+Sombody spoofing the MAC, man-in-the-middle attack. Show Host MAC to default Gateway command?
+30
+4
+1
+ipconfig /all
+false
+route print
+false
+netstat -r
+false
+arp –a
+true

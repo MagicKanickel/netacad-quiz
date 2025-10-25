@@ -1,0 +1,12 @@
+At which OSI layer is a source IP address added to a PDU during the encapsulation process?
+20
+4
+1
+transport layer
+false
+data link layer
+false
+network layer
+true
+application layer
+false

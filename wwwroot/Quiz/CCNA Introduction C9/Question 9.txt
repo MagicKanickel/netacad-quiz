@@ -1,0 +1,12 @@
+What addresses are mapped by ARP?
+20
+4
+1
+destination MAC address to a destination IPv4 address
+true
+destination IPv4 address to the source MAC address
+false
+destination IPv4 address to the destination host name
+false
+destination MAC address to the source IPv4 address
+false

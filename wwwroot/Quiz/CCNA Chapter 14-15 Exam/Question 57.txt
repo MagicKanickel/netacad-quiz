@@ -1,0 +1,18 @@
+A client creates a packet to send to a server. The client is requesting POP3 service. What number will be used as the destination port number in the sending packet?
+20
+7
+1
+110
+true
+67
+false
+53
+false
+69
+false
+443
+false
+161
+false
+80
+false

@@ -1,0 +1,12 @@
+What message type is used by an HTTP client to request data from a web server?
+20
+4
+1
+GET
+true
+PUT
+false
+POST
+false
+ACK
+false

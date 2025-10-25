@@ -1,0 +1,12 @@
+Which port does Switch0 use to send frames to the host with the IPv4 address 10.1.1.5?
+20
+4
+1
+Fa0/1
+false
+Fa0/5
+false
+Fa0/9
+false
+Fa0/11
+true

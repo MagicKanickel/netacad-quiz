@@ -1,0 +1,12 @@
+What are two functions of end devices on a network?
+20
+4
+1
+They originate the data that flows through the network
+true
+They filter the flow of data
+false
+They direct data over alternate paths
+false
+They are interface between humans and network
+true

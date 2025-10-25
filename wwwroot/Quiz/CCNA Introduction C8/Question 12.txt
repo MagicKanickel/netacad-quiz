@@ -1,0 +1,12 @@
+Which characteristic describes an IPv6 enhancement over IPv4?​
+20
+4
+1
+IPv4 is based on 32-bit hierarchical addressing.
+false
+Both support authentication, only IPv6 supports privacy capabilities
+false
+The IPv6 header is simpler than the IPv4 header is, which improves handling
+true
+The IPv6 address space is four times bigger than the IPv4 address space.​
+false

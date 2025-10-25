@@ -1,0 +1,12 @@
+What is the function of the HTTP GET message?
+20
+4
+1
+to request an HTML page from a web server
+true
+to send error information from a web server to a web client
+false
+to upload content to a web server from a web client
+false
+to retrieve client email from an email server using TCP port 110
+false

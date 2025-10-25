@@ -1,0 +1,12 @@
+A high school in New York (school A) is using videoconferencing technology to establish student interactions with another high school (school B) in Russia. The videoconferencing is conducted between two end devices through the Internet. The network administrator of school A configures the end device with the IP address 209.165.201.10. The administrator sends a request for the IP address for the end device in school B and the response is 192.168.25.10. Neither school is using a VPN. The administrator knows immediately that this IP will not work. Why?
+80
+4
+1
+This is a loopback address.
+false
+This is a link-local address.
+false
+This is a private IP address.
+true
+There is an IP address conflict.
+false

@@ -1,0 +1,12 @@
+What is a benefit of using cloud computing in networking?
+20
+4
+1
+Technology is integrated into every-day appliances allowing them to interconnect with other devices, making them more ‘smart’ or automated.
+false
+Network capabilities are extended without requiring investment in new infrastructure, personnel, or software.
+true
+End users have the freedom to use personal tools to access information and communicate across a business network.
+false
+Home networking uses existing electrical wiring to connect devices to the network wherever there is an electrical outlet, saving the cost of installing data cables.
+false

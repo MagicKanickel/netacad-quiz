@@ -1,0 +1,12 @@
+Wie ist das Arbeiten grundsätzlich durchzuführen?
+20
+4
+1
+Stromführend
+false
+Widerstandslos
+false
+Atemlos
+false
+Stromlos
+true

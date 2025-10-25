@@ -1,0 +1,12 @@
+Although CSMA/CD is still a feature of Ethernet, why is it no longer necessary?
+20
+4
+1
+the virtually unlimited availability of IPv6&nbsp;addresses
+false
+the use of CSMA/CA
+false
+the use of Gigabit Ethernet speeds
+false
+the use of full-duplex capable Layer 2 switches
+true

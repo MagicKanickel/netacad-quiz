@@ -1,0 +1,12 @@
+What is auto-MDIX?
+20
+4
+1
+a type of Cisco switch
+false
+an Ethernet connector type
+false
+a type of port on a Cisco switch
+false
+a feature that detects Ethernet cable typ​e
+true

@@ -1,0 +1,12 @@
+What is the function of the shell in an OS?
+20
+4
+1
+It interacts with the device hardware.
+false
+It interfaces between the users and the kernel.
+true
+It provides dedicated firewall services.
+false
+It provides the intrusion protection services for the device.
+false

@@ -1,0 +1,12 @@
+In computer communication, what is the purpose of message encoding?
+30
+4
+1
+to convert information to the appropriate form for transmission
+true
+to interpret information
+false
+to break large messages into smaller frames
+false
+negotiate correct timing for successful communication
+false

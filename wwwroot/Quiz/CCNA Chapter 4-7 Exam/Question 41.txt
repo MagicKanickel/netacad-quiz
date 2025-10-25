@@ -1,0 +1,14 @@
+Which two statements describe features or functions of the logical link control sublayer in Ethernet standards?
+30
+5
+2
+Logical link control is implemented in software.
+true
+Logical link control is specified in the IEEE 802.3 standard.
+false
+The LLC sublayer adds a header and a trailer to the data.
+false
+The data link layer uses LLC to communicate with the upper layers of the protocol suite.
+true
+The LLC sublayer is responsible for the placement and retrieval of frames on and off the media.
+false

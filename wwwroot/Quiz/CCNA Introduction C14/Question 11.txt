@@ -1,0 +1,12 @@
+Which action is performed by a client when establishing communication with a server via the use of UDP?
+60
+4
+1
+The client sets the window size for the session.
+false
+The client sends an ISN to the server to start the 3-way handshake.
+false
+The client randomly selects a source port number.﻿
+true
+The client sends a synchronization segment to begin the session.
+false

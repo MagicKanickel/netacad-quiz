@@ -1,0 +1,12 @@
+In what networking model would eDonkey, eMule, BitTorrent, Bitcoin, and LionShare be used?
+20
+4
+1
+peer-to-peer
+true
+client-based
+false
+master-slave
+false
+point-to-point
+false

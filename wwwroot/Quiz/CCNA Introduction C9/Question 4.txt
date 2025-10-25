@@ -1,0 +1,12 @@
+What will a Layer 2 switch do when the destination MAC address of a received frame is not in the MAC table?
+60
+4
+1
+It initiates an ARP request.
+false
+It broadcasts the frame out of all ports on the switch.
+false
+It notifies the sending host that the frame cannot be delivered.
+false
+t forwards the frame out of all ports except for the port received.
+true

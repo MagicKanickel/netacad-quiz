@@ -1,0 +1,12 @@
+What is a basic characteristic of the IP protocol?
+20
+4
+1
+connectionless
+true
+media dependent
+false
+user data segmentation
+false
+reliable end-to-end delivery
+false

@@ -1,0 +1,12 @@
+Which functionality is provided by DHCP?
+20
+4
+1
+automatic assignment of an IP address to each host
+true
+remote switch management
+false
+translation of IP addresses to domain names
+false
+end-to-end connectivity test
+false

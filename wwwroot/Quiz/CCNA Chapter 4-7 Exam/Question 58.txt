@@ -1,0 +1,12 @@
+What OSI physical layer term describes the physical medium that uses the propagation of light?
+20
+4
+1
+fibre-optic cable
+true
+goodput
+false
+latency
+false
+througput
+false

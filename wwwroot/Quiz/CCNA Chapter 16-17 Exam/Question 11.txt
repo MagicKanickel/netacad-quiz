@@ -1,0 +1,14 @@
+Which two NTP details are displayed by issuing the show ntp associations command on a switch configured to use NTP? (Choose two.)
+30
+5
+2
+reference time
+false
+NTP server IP address
+true
+reference clock IP address
+true
+“Clock is synchronized” statement
+false
+NTP uptime
+false

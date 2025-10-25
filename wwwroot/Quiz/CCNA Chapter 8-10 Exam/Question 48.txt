@@ -1,0 +1,12 @@
+Open the PT activity. Perform the tasks in the activity instructions and then answer the question.Which interfaces in each router are active and operational?
+20
+4
+1
+R1: G0/0 and S0/0/0 R2: G0/0 and S0/0/0
+false
+R1: G0/1 and S0/0/1 R2: G0/0 and S0/0/1
+false
+R1: G0/0 and S0/0/0 R2: G0/1 and S0/0/0
+true
+R1: G0/0 and S0/0/1 R2: G0/1 and S0/0/1
+false

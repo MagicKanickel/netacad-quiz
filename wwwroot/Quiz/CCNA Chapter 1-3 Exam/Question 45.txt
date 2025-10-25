@@ -1,0 +1,12 @@
+A web client is receiving a response for a web page from a web server. From the perspective of the client, what is the correct order of the protocol stack that is used to decode the received transmission?
+20
+4
+1
+Ethernet, IP, TCP, HTTP
+true
+HTTP, TCP, IP, Ethernet
+false
+Ethernet, TCP, IP, HTTP
+false
+HTTP, Ethernet, IP, TCP
+false

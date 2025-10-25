@@ -1,0 +1,14 @@
+What important information is examined in the Ethernet frame header by a Layer 2 device in order to forward the data onward?
+20
+5
+1
+source MAC address
+false
+source IP address
+false
+destination MAC address
+true
+Ethernet type
+false
+destination IP address
+false

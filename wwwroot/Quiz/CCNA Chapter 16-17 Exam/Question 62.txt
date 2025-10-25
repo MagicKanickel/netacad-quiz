@@ -1,0 +1,12 @@
+A support technician needs to know the IP address of the wireless interface on a MAC. What is the best command to use to accomplish the task?
+30
+4
+1
+ipconfig getifaddr en0
+true
+copy running-config startup-config
+false
+show interfaces
+false
+show ip nat translations
+false

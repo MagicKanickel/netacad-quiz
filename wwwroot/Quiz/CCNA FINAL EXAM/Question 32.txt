@@ -1,0 +1,12 @@
+Which wireless technology has low-power and low-data rate requirements making it popular in IoT environments?
+20
+4
+1
+Bluetooth
+false
+Zigbee
+true
+WiMAX
+false
+Wi-Fi
+false

@@ -1,0 +1,12 @@
+What process is used to receive transmitted data and convert it into a readable message?
+20
+4
+1
+access control
+false
+encapsulation
+false
+decoding
+true
+flow control
+false

@@ -1,0 +1,14 @@
+Which two functions are performed at the LLC sublayer of the OSI data link layer?(Choose two.)
+20
+5
+2
+Enables IPv4 and IPv6 to utilize the same network interface and media.
+true
+Places information in the frame that identifies which network layer protocol is being used for the frame.
+true
+Integrates various physical technologies.
+false
+Implements a process to delimit fields within a Layer 2 frame.
+false
+Controls the NIC responsible for sending and receiving data on the physical medium.
+false

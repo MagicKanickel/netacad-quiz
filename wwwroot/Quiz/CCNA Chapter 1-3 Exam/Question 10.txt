@@ -1,0 +1,14 @@
+What two criteria are used to help select a network medium from various network media? (Choose two.)
+30
+5
+2
+the types of data that need to be prioritized
+false
+the cost of the end devices utilized in the network
+false
+the distance the selected medium can successfully carry a signal
+true
+the number of intermediate devices installed in the network
+false
+the environment where the selected medium is to be installed
+true

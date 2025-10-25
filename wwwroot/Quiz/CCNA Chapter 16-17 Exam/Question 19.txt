@@ -1,0 +1,12 @@
+A user is redesigning a network for a small company and wants to ensure security at a reasonable price. The user deploys a new application-aware firewall with intrusion detection capabilities on the ISP connection. The user installs a second firewall to separate the company network from the public network. Additionally, the user installs an IPS on the internal network of the company. What approach is the user implementing?
+20
+4
+1
+attack based
+false
+risk based
+false
+structured
+false
+layered
+true

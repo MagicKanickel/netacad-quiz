@@ -1,0 +1,14 @@
+What are two functions of NVRAM? (Choose two.)
+20
+5
+2
+to store the routing table
+false
+to retain contents when power is removed
+true
+to store the startup configuration file
+true
+to contain the running configuration file
+false
+to store the ARP table
+false

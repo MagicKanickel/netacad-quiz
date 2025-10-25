@@ -1,0 +1,12 @@
+What is the general term that is used to describe a piece of data at any layer of a networking model?
+20
+4
+1
+frame
+false
+protocol data unit
+true
+packet
+false
+segment
+false

@@ -1,0 +1,14 @@
+Match the type of information security threat to the scenario: identity theft
+20
+4
+1
+installing virus code to destroy surveillance recordings for certain days
+false
+pretending to be someone else by using stolen personal information to apply for a credit card
+true
+preventing users from accessing a website by sending a large number of link request in a short period
+false
+obtaining trade secret documents illegally
+false
+cracking the password of an administrator account on a server
+false

@@ -1,0 +1,12 @@
+Which method allows a computer to react accordingly when it requests data from a server and the server takes too long to respond?
+20
+4
+1
+encapsulation
+false
+flow control
+false
+acces method
+false
+response timeout
+true

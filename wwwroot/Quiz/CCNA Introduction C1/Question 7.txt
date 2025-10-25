@@ -1,0 +1,12 @@
+What are two characteristics of a scalable network?
+20
+4
+1
+grows in size without impacting existing users
+true
+suitable for modular devices that allow for expansion
+true
+is not reliable as a small network
+false
+offers limited number of applications
+false

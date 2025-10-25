@@ -1,0 +1,12 @@
+What type of information is contained in an ARP table?
+20
+4
+1
+switch ports associated with destination MAC addresses
+false
+domain name to IP address mappings
+false
+routes to reach destination networks
+false
+IP address to MAC address mappings
+true

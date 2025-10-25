@@ -1,0 +1,12 @@
+What type of traffic would most likely have the highest priority through the network?
+20
+4
+1
+FTP
+false
+instant messaging
+false
+voice
+true
+SNMP
+false

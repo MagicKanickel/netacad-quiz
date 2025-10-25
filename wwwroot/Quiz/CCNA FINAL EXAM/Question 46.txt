@@ -1,0 +1,14 @@
+What are two functions that are provided by the network layer? (Choose two.)
+20
+5
+2
+directing data packets to destination hosts on other networks
+true
+placing data on the network medium
+false
+carrying data between processes that are running on source and destination hosts
+false
+providing dedicated end-to-end connections
+false
+providing end devices with a unique network identifier
+true

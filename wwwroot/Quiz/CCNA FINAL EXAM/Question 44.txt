@@ -1,0 +1,12 @@
+Which information does the show startup-config command display?
+20
+4
+1
+the IOS image copied into RAM
+false
+the bootstrap program in the ROM
+false
+the contents of the current running configuration file in the RAM
+false
+the contents of the saved configuration file in the NVRAM
+true

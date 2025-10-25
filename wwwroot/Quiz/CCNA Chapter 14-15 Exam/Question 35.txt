@@ -1,0 +1,12 @@
+What is a common protocol that is used with peer-to-peer applications such as WireShare, Bearshare, and Shareaza?
+20
+4
+1
+Ethernet
+false
+Gnutella
+true
+POP
+false
+SMTP
+false

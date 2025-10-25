@@ -1,0 +1,16 @@
+What two ICMPv6 message types must be permitted through IPv6 access control lists to allow resolution of Layer 3 addresses to Layer 2 MAC addresses? (Choose two.)
+20
+6
+2
+neighbor solicitations
+true
+echo requests
+false
+neighbor advertisements
+true
+echo replies
+false
+router solicitations
+false
+router advertisements
+false

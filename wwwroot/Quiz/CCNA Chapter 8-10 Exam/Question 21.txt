@@ -1,0 +1,14 @@
+Under which two circumstances will a switch flood a frame out of every port except the port that the frame was received on? (Choose two.)
+20
+5
+2
+The frame has the broadcast address as the destination address.
+true
+The destination address is unknown to the switch.
+true
+The source address in the frame header is the broadcast address.
+false
+The source address in the frame is a multicast address.
+false
+The destination address in the frame is a known unicast address.
+false

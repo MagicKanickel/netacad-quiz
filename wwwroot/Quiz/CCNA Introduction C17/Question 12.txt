@@ -1,0 +1,12 @@
+A technician suspects that a network connection is having a duplex mismatch. Command to see the Layer 1+2 details?
+20
+4
+1
+show interfaces
+true
+show running-config
+false
+show ip interface brief​
+false
+show mac-address-table
+false

@@ -1,0 +1,12 @@
+A Layer 2 switch is used to switch incoming frames from a 1000BASE-T port to a port connected to a 100Base-T network. Which method of memory buffering would work best for this task?
+20
+4
+1
+port-based buffering
+false
+level 1 cache buffering
+false
+shared memory buffering
+true
+fixed configuration buffering
+false

@@ -1,0 +1,12 @@
+A particular network at the site must accommodate 126 hosts. Which subnet mask would be used that contains the required number of host bits?
+20
+4
+1
+255.255.255.0
+false
+255.255.255.128
+true
+255.255.255.224
+false
+255.255.255.240
+false

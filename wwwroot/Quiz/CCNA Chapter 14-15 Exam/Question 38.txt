@@ -1,0 +1,12 @@
+What is an example of network communication that uses the client-server model?
+20
+4
+1
+A user uses eMule to download a file that is shared by a friend after the file location is determined.
+false
+A workstation initiates an ARP to find the MAC address of a receiving host.
+false
+A user prints a document by using a printer that is attached to a workstation of a coworker.
+false
+A workstation initiates a DNS request when the user types www.cisco.com in the address bar of a web browser.
+true

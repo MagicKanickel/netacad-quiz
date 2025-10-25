@@ -1,0 +1,12 @@
+What is the advantage of using SSH over Telnet?
+20
+4
+1
+SSH is easier to use
+false
+SSH operates faster than Telnet.
+false
+SSH provides secure communications to access hosts.
+true
+SSH supports authentication for a connection request.
+false

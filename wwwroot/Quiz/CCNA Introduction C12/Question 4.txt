@@ -1,0 +1,12 @@
+Pv6 prefix 2001:0000:130F::/48 How many bits are available to create subnetworks if interface ID bits are not borrowed?
+60
+4
+1
+8
+false
+80
+false
+16
+true
+128
+false

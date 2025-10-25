@@ -1,0 +1,12 @@
+Which subnet mask would be used if 5 host bits are available?
+20
+4
+1
+255.255.255.0
+false
+255.255.255.128
+false
+255.255.255.240
+false
+255.255.255.224
+true

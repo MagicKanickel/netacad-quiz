@@ -1,0 +1,12 @@
+A  corporation has modified its network to allow users to access network resources from their personal PCs. Trend name?
+20
+4
+1
+cloud computing
+false
+bring your own device
+true
+online collaboration
+false
+video conferencing
+false

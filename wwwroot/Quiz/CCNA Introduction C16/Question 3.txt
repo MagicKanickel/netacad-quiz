@@ -1,0 +1,12 @@
+What type of attack may involve the use of tools such as nslookup and fping?
+20
+4
+1
+access attack
+false
+denial of service attack
+false
+reconnaissance attack
+true
+worm attack
+false

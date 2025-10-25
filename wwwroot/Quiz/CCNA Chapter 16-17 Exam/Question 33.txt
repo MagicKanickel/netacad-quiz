@@ -1,0 +1,12 @@
+Which command should be used on a Cisco router or switch to allow log messages to be displayed on remotely connected sessions using Telnet or SSH?
+20
+4
+1
+debug all
+false
+terminal monitor
+true
+show running-config
+false
+logging synchronous
+false

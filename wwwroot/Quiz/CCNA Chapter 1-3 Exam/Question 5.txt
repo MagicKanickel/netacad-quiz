@@ -1,0 +1,12 @@
+What is fault tolerance?
+20
+4
+1
+Protect the network from unauthorized acces.
+false
+Provide redundant links and devices.
+true
+Match the type of communication with a specific priority.
+false
+Expand the network without degrading the service for existing users.
+false

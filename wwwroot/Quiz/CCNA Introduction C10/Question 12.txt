@@ -1,0 +1,12 @@
+Which statement regarding the service password-encryption command is true?
+20
+4
+1
+It is configured in privileged EXEC mode.
+false
+It encrypts only line mode passwords.
+false
+password-encryption command set passwords formerly displayed in plain text
+true
+no service password-encryption command to see the passwords encrypted
+false

@@ -1,0 +1,12 @@
+Which information is used by routers to forward a data packet toward its destination?
+20
+4
+1
+source IP address
+false
+destination IP address
+true
+source data-link address
+false
+destination data-link address
+false

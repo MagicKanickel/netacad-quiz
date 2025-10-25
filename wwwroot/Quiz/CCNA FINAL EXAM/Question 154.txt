@@ -1,0 +1,14 @@
+A user is attempting to access http://www.cisco.com/ without success. Which two configuration values must be set on the host to allow this access? (Choose two.)
+20
+5
+2
+DNS server
+true
+source port number
+false
+HTTP server
+false
+source MAC address
+false
+default gateway
+true

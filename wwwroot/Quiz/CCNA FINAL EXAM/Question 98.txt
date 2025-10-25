@@ -1,0 +1,14 @@
+What are two common causes of signal degradation when using UTP cabling? (Choose two.)
+20
+5
+2
+improper termination
+true
+low-quality shielding in cable
+false
+installing cables in conduit
+false
+low-quality cable or connectors
+true
+loss of light over long distances
+false

@@ -1,0 +1,12 @@
+With the use of unshielded twisted-pair copper wire in a network, what causes crosstalk within the cable pairs?
+20
+4
+1
+the magnetic field around the adjacent pairs of wire
+true
+the use of braided wire to shield the adjacent wire pairs
+false
+the reflection of the electrical wave back from the far end of the cable
+false
+the collision caused by two nodes trying to use the media simultaneously
+false

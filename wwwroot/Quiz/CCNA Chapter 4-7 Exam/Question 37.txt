@@ -1,0 +1,12 @@
+Which advantage does the store-and-forward switching method have compared with the cut-through switching method?
+20
+4
+1
+collision detecting
+false
+frame error checking
+true
+faster frame forwarding
+false
+frame forwarding using IPv4 Layer 3 and 4 information
+false

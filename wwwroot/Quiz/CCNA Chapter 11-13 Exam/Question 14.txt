@@ -1,0 +1,14 @@
+Refer to the exhibit. An administrator must send a message to everyone on the router A network. What is the broadcast address for network 172.16.16.0/22?
+20
+5
+1
+172.16.16.255
+false
+172.16.20.255
+false
+172.16.19.255
+true
+172.16.23.255
+false
+172.16.255.255
+false

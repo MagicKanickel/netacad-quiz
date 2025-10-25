@@ -1,0 +1,12 @@
+What method is used to manage contention-based access on a wireless network?
+20
+4
+1
+token passing
+false
+CSMA/CA
+true
+priority ordering
+false
+CSMA/CD
+false

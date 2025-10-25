@@ -1,0 +1,12 @@
+What is a function of the data link layer?
+20
+4
+1
+provides the formatting of data
+false
+provides end-to-end delivery of data between hosts
+false
+provides delivery of data between two applications
+false
+provides for the exchange of frames over a common local media
+true

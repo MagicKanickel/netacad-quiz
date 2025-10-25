@@ -1,0 +1,12 @@
+Fibe cable is during digging cut. Network is working. What characteristic of the network is shown here?
+20
+4
+1
+quality of Service (QoS)
+false
+security
+false
+scalability
+false
+fault tolerance
+true

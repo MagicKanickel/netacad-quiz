@@ -1,0 +1,14 @@
+Refer to the exhibit. A user PC has successfully transmitted packets to www.cisco.com. Which IP address does the user PC target in order to forward its data off the local network?
+20
+5
+1
+172.24.255.17
+false
+172.24.1.22
+false
+172.20.0.254
+true
+172.24.255.4
+false
+172.20.1.18
+false

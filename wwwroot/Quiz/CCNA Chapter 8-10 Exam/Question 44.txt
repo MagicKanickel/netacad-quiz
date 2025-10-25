@@ -1,0 +1,14 @@
+Which two functions are primary functions of a router? (Choose two.)
+20
+5
+2
+packet forwarding
+true
+microsegmentation
+false
+domain name resolution
+false
+path selection
+true
+flow control
+false

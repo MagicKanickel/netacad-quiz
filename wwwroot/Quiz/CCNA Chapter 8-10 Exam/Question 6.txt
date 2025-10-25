@@ -1,0 +1,12 @@
+Which statement describes a feature of the IP protocol?
+20
+4
+1
+IP encapsulation is modified based on network media.
+false
+IP relies on Layer 2 protocols for transmission error control.
+false
+MAC addresses are used during the IP packet encapsulation.
+false
+IP relies on upper layer services to handle situations of missing or out-of-order packets.
+true

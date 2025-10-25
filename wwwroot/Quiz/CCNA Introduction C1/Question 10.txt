@@ -1,0 +1,12 @@
+What type of network must a home user access in order to do online shopping?
+20
+4
+1
+an intranet
+false
+the internet
+true
+an extranet
+false
+a local area network
+false

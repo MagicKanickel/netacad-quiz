@@ -1,0 +1,12 @@
+A user issues a ping fe80:65ab:dcc1::100 command and receives a response that includes a code of 4. What does this code represent?
+20
+4
+1
+port unreachable
+true
+host unreachable
+false
+protocol unreachable
+false
+network unreachable
+false

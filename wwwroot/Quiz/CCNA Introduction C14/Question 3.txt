@@ -1,0 +1,12 @@
+How does a networked server manage requests from multiple clients for different services?
+30
+4
+1
+The server sends all requests through a default gateway.
+false
+Each request is tracked through the physical address of the client.
+false
+The server uses IP addresses to identify different services.
+false
+Each request is assigned source and destination port numbers.
+true

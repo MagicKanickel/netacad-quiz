@@ -1,0 +1,12 @@
+What is a characteristic of multicast messages?
+20
+4
+1
+They are sent to a select group of hosts.
+true
+They are sent to all hosts on a network.
+false
+They must be acknowledged.
+false
+They are sent to a single destination.
+false

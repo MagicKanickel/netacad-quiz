@@ -1,0 +1,12 @@
+What is the technician configuring?
+20
+4
+1
+Telnet access
+false
+SVI
+true
+password encryption
+false
+physical switchport access
+false

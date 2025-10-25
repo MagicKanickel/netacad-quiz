@@ -1,0 +1,12 @@
+What does the term “attenuation” mean in data communication?
+20
+4
+1
+strengthening of a signal by a networking device
+false
+leakage of signals from one cable pair to another
+false
+time for a signal to reach its destination
+false
+loss of signal strength as distance increases
+true

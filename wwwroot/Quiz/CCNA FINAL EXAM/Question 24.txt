@@ -1,0 +1,8 @@
+Peer-to-peer aplication? (2 Answers)
+20
+2
+2
+requires a specific user interface
+true
+a background service is required
+true

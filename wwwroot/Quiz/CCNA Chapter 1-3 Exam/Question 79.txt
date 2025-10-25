@@ -1,0 +1,12 @@
+What usese coaxial cable as a medium
+20
+4
+1
+DSL
+false
+dialup
+false
+satellite
+false
+cable
+true

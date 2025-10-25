@@ -1,0 +1,12 @@
+Was passt nicht in einem PCI Express x1 Slot?
+20
+4
+1
+RAM Speicher
+true
+TV Karte
+false
+USB 3.0 Karte
+false
+Netzwerkkarte
+false

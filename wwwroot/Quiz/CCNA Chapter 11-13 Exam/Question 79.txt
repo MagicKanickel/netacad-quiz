@@ -1,0 +1,12 @@
+A user issues a ping 192.135.250.103 command and receives a response that includes a code of 1 . What does this code represent?
+20
+4
+1
+host unreachable
+true
+beyond scope of the source address
+false
+address unreachable
+false 
+communication with the destination administratively prohibited
+false

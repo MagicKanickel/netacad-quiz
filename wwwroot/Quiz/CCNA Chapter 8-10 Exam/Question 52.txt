@@ -1,0 +1,12 @@
+Which term describes a field in the IPv4 packet header used to detect corruption in the IPv4 header?
+20
+4
+1
+header checksum
+true
+source IPv4 address
+false
+protocol
+false
+TTL
+false

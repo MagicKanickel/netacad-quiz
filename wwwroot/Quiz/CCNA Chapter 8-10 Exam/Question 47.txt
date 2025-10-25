@@ -1,0 +1,14 @@
+What are two potential network problems that can result from ARP operation? (Choose two.)
+40
+5
+2
+Manually configuring static ARP associations could facilitate ARP poisoning or MAC address spoofing.
+false
+On large networks with low bandwidth, multiple ARP broadcasts could cause data communication delays.
+true
+Network attackers could manipulate MAC address and IP address mappings in ARP messages with the intent of intercepting network traffic.
+true
+Large numbers of ARP request broadcasts could cause the host MAC address table to overflow and prevent the host from communicating on the network.
+false
+Multiple ARP replies result in the switch MAC address table containing entries that match the MAC addresses of hosts that are connected to the relevant switch port.
+false

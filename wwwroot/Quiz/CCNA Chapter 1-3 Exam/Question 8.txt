@@ -1,0 +1,14 @@
+A networking technician is working on the wireless network at a medical clinic. The technician accidentally sets up the wireless network so that patients can see the medical records data of other patients. Which of the four network characteristics has been violated in this situation?
+20
+5
+1
+fault tolerance
+false
+scalability
+false
+security
+true
+Quality of Service (QoS)
+false
+reliability
+false

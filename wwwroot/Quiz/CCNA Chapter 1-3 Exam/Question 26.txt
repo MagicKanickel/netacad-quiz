@@ -1,0 +1,12 @@
+What command is used to verify the condition of the switch interfaces, including the status of the interfaces and a configured IP address?
+20
+4
+1
+ipconfig
+false
+ping
+false
+traceroute
+false
+show ip interface brief
+true

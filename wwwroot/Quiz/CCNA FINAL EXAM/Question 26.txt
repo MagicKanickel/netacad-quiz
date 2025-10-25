@@ -1,0 +1,12 @@
+A client packet is received by a server. The packet has a destination port number of 22. What service is the client requesting?
+20
+4
+1
+SSH
+true
+SMB/CIFS
+false
+HTTPS
+false
+SLP
+false

@@ -1,0 +1,12 @@
+Zur Vermeidung von ESD hilft
+20
+4
+1
+Antistatikbänder
+true
+ionisierte Luft
+true
+speziell Verpackt
+true
+Kunststofffolie
+false

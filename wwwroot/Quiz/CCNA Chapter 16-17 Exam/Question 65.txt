@@ -1,0 +1,12 @@
+Only employees connected to IPv6 interfaces are having difficulty connecting to remote networks. The analyst wants to verify that IPv6 routing has been enabled. What is the best command to use to accomplish the task?
+20
+4
+1
+show running-config
+true
+show interfaces
+false
+copy running-config startup-config
+false
+show ip nat translations
+false

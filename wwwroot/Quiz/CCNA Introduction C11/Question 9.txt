@@ -1,0 +1,12 @@
+Which adress is a host address?
+20
+4
+1
+192.168.100.161/25
+true
+203.0.113.100/24
+true
+172.110.12.64/28
+false
+10.10.10.128/25
+false

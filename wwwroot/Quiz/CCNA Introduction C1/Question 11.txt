@@ -1,0 +1,12 @@
+How does BYOD change the way in which businesses implement networks?​
+20
+4
+1
+it requires organisation to purchse laptops
+false
+is more expensive than devices form organisation
+false
+users are responible for their own network security
+false
+provides flexibility in where users can access
+true

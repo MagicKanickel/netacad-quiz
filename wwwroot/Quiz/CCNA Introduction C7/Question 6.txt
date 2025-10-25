@@ -1,0 +1,12 @@
+What type of address is 01-00-5E-0A-00-02?
+20
+4
+1
+an address that reaches every host inside a local subnet
+false
+an address that reaches one specific host
+false
+an address that reaches a specific group of hosts
+true
+an address that reaches every host in the network
+false

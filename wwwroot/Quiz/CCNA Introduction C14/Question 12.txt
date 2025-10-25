@@ -1,0 +1,12 @@
+Which two services or protocols use the preferred UDP protocol for fast transmission and low overhead?
+20
+4
+1
+FTP
+false
+VoIP
+true
+DNS
+true
+HTTP
+false

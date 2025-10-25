@@ -1,0 +1,12 @@
+What property of ARP allows MAC addresses of frequently used servers to be fixed in the ARP table?
+40
+4
+1
+A static IP-to-MAC address entry can be entered manually into an ARP table.
+true
+Entries in an ARP table are time-stamped and are purged after the timeout expires.
+false
+The type field 0x806 appears in the header of the Ethernet frame.
+false
+The port-to-MAC address table on a switch has the same entries as the ARP table on the switch.
+false

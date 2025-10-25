@@ -1,0 +1,12 @@
+What method can be used by two computers to ensure that packets are not dropped because too much data is being sent too quickly?
+20
+4
+1
+encapsulation
+false
+flow control
+true
+access method
+false
+response timeout
+false

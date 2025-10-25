@@ -1,0 +1,12 @@
+Which two things can be determined by using the ping command
+60
+4
+1
+the number of routers between the source and destination device
+false
+the average time it takes a packet to reach the destination
+true
+the destination device is reachable through the network
+true
+the IP address of the router nearest the destination device
+false

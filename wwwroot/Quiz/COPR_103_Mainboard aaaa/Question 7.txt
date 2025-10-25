@@ -1,0 +1,12 @@
+Aus welchen beiden Chips besteht der Chipsatz?
+20
+4
+1
+Golden and Silverbridge
+false
+West und Eastbrigde
+false
+South und Northbridge
+true
+es gibt keine, macht alles die CPU
+false

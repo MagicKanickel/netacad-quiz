@@ -1,0 +1,12 @@
+What information is used by TCP to reassemble and reorder received segments?
+20
+4
+1
+port numbers
+false
+sequence numbers
+true
+acknowledgment numbers
+false
+fragment numbers
+false

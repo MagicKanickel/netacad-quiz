@@ -1,0 +1,12 @@
+What is indicated by the term throughput?
+20
+4
+1
+the guaranteed data transfer rate offered by an ISP
+false
+the measure of the usable data transferred across the media
+false
+the measure of the bits transferred across the media over a given time
+true
+the capacity of a particular medium to carry data
+false

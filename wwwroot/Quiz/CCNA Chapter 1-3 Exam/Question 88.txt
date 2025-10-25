@@ -1,0 +1,16 @@
+Match the definition "scrolls backwords trough previously entered cammands" to the respective CLI hot key or shortcut
+20
+6
+1
+Tab
+false
+space bar
+false
+Up Arrow
+true
+Crtl+C
+false
+?
+false
+Crtl-Shift-6
+false

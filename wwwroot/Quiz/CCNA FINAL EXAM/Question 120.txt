@@ -1,0 +1,12 @@
+What service is provided by HTTP?
+20
+4
+1
+Uses encryption to secure the exchange of text, graphic images, sound, and video on the web.
+false
+Allows for data transfers between a client and a file server.
+false
+An application that allows real-time chatting among remote users.
+false
+A basic set of rules for exchanging text, graphic images, sound, video, and other multimedia files on the web.
+true

@@ -1,0 +1,16 @@
+What three requirements are defined by the protocols used in network communcations to allow message transmission across a network? (Choose three.)
+20
+6
+3
+message size
+true
+message encoding
+true
+connector specifications
+false
+media selection
+false
+delivery options
+true
+end-device installation
+false

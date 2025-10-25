@@ -1,0 +1,12 @@
+A user issues a ping 2001:db8:FACE:39::10 command and receives a response that includes a code of 3. What does this code represent?
+20
+4
+1
+address unreachable
+true
+network unreachable
+false
+host unreachable
+false
+protocol unreachable
+false

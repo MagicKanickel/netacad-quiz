@@ -1,0 +1,12 @@
+Where are IPv4 address to Layer 2 Ethernet address mappings maintained on a host computer?
+20
+4
+1
+neighbor table
+false
+ARP cache
+true
+routing table
+false
+MAC address table
+false

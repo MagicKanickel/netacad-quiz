@@ -1,0 +1,12 @@
+Which statement describes an extended star topology?
+20
+4
+1
+End devices connect to a central intermediate device, which in turn connects to other central intermediate devices.
+true
+End devices are connected together by a bus and each bus connects to a central intermediate device.
+false
+Each end system is connected to its respective neighbor via an intermediate device.
+false
+All end and intermediate devices are connected in a chain to each other
+false

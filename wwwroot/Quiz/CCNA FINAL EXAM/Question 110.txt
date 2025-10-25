@@ -1,0 +1,12 @@
+A technician can ping the IP address of the web server of a remote company but cannot successfully ping the URL address of the same web server. Which software utility can the technician use to diagnose the problem?
+20
+4
+1
+tracert
+false
+ipconfig
+false
+netstat
+false
+nslookup
+true

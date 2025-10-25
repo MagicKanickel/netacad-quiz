@@ -1,0 +1,12 @@
+What OSI physical layer term describes the capacity at which a medium can carry data?
+20
+4
+1
+bandwidth
+true
+IEEE
+false
+EIA/TIA
+false
+air
+false

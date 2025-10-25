@@ -1,0 +1,12 @@
+Defekt Stromkabel oder Steckdosen
+20
+4
+1
+Nur wichtig wenn PC eingeschalten
+false
+sind später zu reparieren
+false
+sind zu melden
+true
+sind egal da nur 230V
+false

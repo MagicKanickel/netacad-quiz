@@ -1,0 +1,12 @@
+What source IP address does a router use by default when the traceroute command is issued?
+20
+4
+1
+the highest configured IP address on the router
+fakse
+a loopback IP address
+false
+the IP address of the outbound interface
+true
+the lowest configured IP address on the router
+false

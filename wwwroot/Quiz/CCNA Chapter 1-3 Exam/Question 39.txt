@@ -1,0 +1,12 @@
+What process involves placing one PDU inside of another PDU?
+20
+4
+1
+encapsulation
+true
+encoding
+false
+segmentation
+false
+flow control
+false

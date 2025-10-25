@@ -1,0 +1,12 @@
+What is not suited for heavily wooded areas
+20
+4
+1
+DSL
+true
+dialup
+false
+satellite
+true
+cable
+false

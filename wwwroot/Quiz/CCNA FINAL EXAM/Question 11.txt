@@ -1,0 +1,12 @@
+Three bank employees are using the corporate network. The first employee uses a web browser to view a company web page in order to read some announcements. The second employee accesses the corporate database to perform some financial transactions. The third employee participates in an important live audio conference with other corporate managers in branch offices. If QoS is implemented on this network, what will be the priorities from highest to lowest of the different data types?
+20
+4
+1
+financial transactions, web page, audio conference
+false
+audio conference, financial transactions, web page
+true
+financial transactions, audio conference, web page
+false
+audio conference, web page, financial transactions
+false

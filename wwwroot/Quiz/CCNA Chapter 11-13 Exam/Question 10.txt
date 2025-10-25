@@ -1,0 +1,18 @@
+Match each IPv4 address to the appropriate address category : host address
+100
+7
+2
+192.168.100.161/25
+true
+192.168.1.191/26
+false
+10.10.10.128/25
+false
+224.10.0.254/24
+false
+203.0.113.100/24
+true
+172.110.12.64/28
+false
+10.0.0.159/27
+false

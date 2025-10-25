@@ -1,0 +1,12 @@
+What term describes storing personal files on servers over the internet to provide access anywhere, anytime, and on any device?
+20
+4
+1
+cloud
+true
+BYOD
+false
+quality of service
+false
+converged network
+false

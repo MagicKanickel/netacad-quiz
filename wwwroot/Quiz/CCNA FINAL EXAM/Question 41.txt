@@ -1,0 +1,14 @@
+Which two statements are correct about MAC and IP addresses during data transmission if NAT is not involved? (Choose two.)
+20
+5
+2
+Destination IP addresses in a packet header remain constant along the entire path to a target host.
+true
+Destination MAC addresses will never change in a frame that goes across seven routers.
+false
+Every time a frame is encapsulated with a new destination MAC address, a new destination IP address is needed.
+false
+Destination and source MAC addresses have local significance and change every time a frame goes from one LAN to another.
+true
+A packet that has crossed four routers has changed the destination IP address four times.
+false

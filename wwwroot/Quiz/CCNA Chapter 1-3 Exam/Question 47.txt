@@ -1,0 +1,12 @@
+At which layer of the OSI model would a logical address be added during encapsulation?
+20
+4
+1
+physical layer
+false
+data link layer
+false
+network layer
+true
+transport layer
+false

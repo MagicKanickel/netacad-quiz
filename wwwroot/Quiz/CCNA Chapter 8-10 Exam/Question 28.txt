@@ -1,0 +1,14 @@
+Refer to the exhibit. PC1 attempts to connect to File_server1 and sends an ARP request to obtain a destination MAC address. Which MAC address will PC1 receive in the ARP reply?
+20
+5
+1
+the MAC address of S1
+false
+the MAC address of the G0/0 interface on R1
+true
+the MAC address of the G0/0 interface on R2
+false
+the MAC address of S2
+false
+the MAC address of File_server1
+false

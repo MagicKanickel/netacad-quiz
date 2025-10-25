@@ -1,0 +1,12 @@
+Which functions or operations are performed by the MAC sublayer?
+30
+4
+1
+It is responsible for Media Access Control.
+true
+It performs the function of NIC driver software.
+false
+It adds a header and trailer to form an OSI Layer 2 PDU.
+true
+It handles communication between upper and lower layers.
+false

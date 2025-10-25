@@ -1,0 +1,12 @@
+Which address prefix range is reserved for IPv4 multicast?
+20
+4
+1
+240.0.0.0 – 254.255.255.255
+false
+224.0.0.0 – 239.255.255.255
+true
+169.254.0.0 – 169.254.255.255
+false
+127.0.0.0 – 127.255.255.255
+false

@@ -1,0 +1,12 @@
+Which component is designed to protect against unauthorized communications to and from a computer?
+20
+4
+1
+security center
+false
+port scanner
+false
+antivirus
+false
+firewall
+true

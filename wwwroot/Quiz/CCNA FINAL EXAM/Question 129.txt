@@ -1,0 +1,14 @@
+Which frame field is created by a source node and used by a destination node to ensure that a transmitted data signal has not been altered by interference, distortion, or signal loss?
+20
+5
+1
+User Datagram Protocol field
+false
+transport layer error check field
+false
+flow control field
+false
+frame check sequence field
+true
+error correction process field
+false

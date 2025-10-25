@@ -1,0 +1,12 @@
+What is one advantage that the IPv6 simplified header offers over IPv4?
+20
+4
+1
+smaller-sized header
+false
+little requirement for processing checksums
+false
+smaller-sized source and destination IP addresses
+false
+efficient packet handling
+true

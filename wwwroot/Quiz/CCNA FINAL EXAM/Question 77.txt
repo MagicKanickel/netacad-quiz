@@ -1,0 +1,12 @@
+Which wireless technology has low-power and data rate requirements making it popular in home automation applications?
+20
+4
+1
+ZigBee
+true
+LoRaWAN
+false
+5G
+false
+Wi-Fi
+false

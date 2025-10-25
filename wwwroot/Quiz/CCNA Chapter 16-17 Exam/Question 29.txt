@@ -1,0 +1,12 @@
+Why would a network administrator use the tracert utility?
+20
+4
+1
+to determine the active TCP connections on a PC
+false
+to check information about a DNS name in the DNS server
+false
+to identify where a packet was lost or delayed on a network
+true
+to display the IP address, default gateway, and DNS server address for a PC
+false

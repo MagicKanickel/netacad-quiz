@@ -1,0 +1,12 @@
+Which statement describes the treatment of ARP requests on the local link?
+20
+4
+1
+They must be forwarded by all routers on the local network.
+false
+They are received and processed by every device on the local network.
+true
+They are dropped by all switches on the local network.
+false
+They are received and processed only by the target device.
+false

@@ -1,0 +1,12 @@
+The installed software collecting data about websites. Type of threat?
+20
+4
+1
+DoS Attack
+false
+Spyware
+true
+Identity theft
+false
+Zero-day attack
+false

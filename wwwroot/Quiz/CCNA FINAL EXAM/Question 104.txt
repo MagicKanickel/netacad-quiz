@@ -1,0 +1,14 @@
+What are two features of ARP? (Choose two.)
+20
+5
+2
+When a host is encapsulating a packet into a frame, it refers to the MAC address table to determine the mapping of IP addresses to MAC addresses.
+false
+An ARP request is sent to all devices on the Ethernet LAN and contains the IP address of the destination host and its multicast MAC address.
+false
+If a host is ready to send a packet to a local destination device and it has the IP address but not the MAC address of the destination, it generates an ARP broadcast.
+true
+If no device responds to the ARP request, then the originating node will broadcast the data packet to all devices on the network segment.
+false
+If a device receiving an ARP request has the destination IPv4 address, it responds with an ARP reply.
+true

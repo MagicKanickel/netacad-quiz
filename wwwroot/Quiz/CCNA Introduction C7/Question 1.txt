@@ -1,0 +1,12 @@
+What statement describes a characteristic of MAC addresses?
+20
+4
+1
+They must be globally unique.
+true
+They are only routable within the private network.
+false
+They are added as part of a Layer 3 PDU.
+false
+They have a 32-bit binary value.
+false

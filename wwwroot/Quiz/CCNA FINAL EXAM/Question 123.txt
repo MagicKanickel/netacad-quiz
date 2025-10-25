@@ -1,0 +1,18 @@
+A group of Windows PCs in a new subnet has been added to an Ethernet network. When testing the connectivity, a technician finds that these PCs can access local network resources but not the Internet resources. To troubleshoot the problem, the technician wants to initially confirm the IP address and DNS configurations on the PCs, and also verify connectivity to the local router. Which three Windows CLI commands and utilities will provide the necessary information? (Choose three.)
+20
+7
+3
+netsh interface ipv6 show neighbor
+false
+arp -a
+false
+tracert
+false
+ping
+true
+ipconfig
+true
+nslookup
+true
+telnet
+false

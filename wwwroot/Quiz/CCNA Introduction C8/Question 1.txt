@@ -1,0 +1,12 @@
+A computer has to send a packet to a destination host in the same LAN. How will the packet be sent?
+60
+4
+1
+The packet will be sent to the default gateway first then, depending...
+false
+The packet will first be sent to the default gateway, it will ...
+false
+The packet will be sent directly to the destination host.
+true
+The packet will be sent only to the default gateway.
+false

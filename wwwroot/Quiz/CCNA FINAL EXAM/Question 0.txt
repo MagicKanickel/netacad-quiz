@@ -1,0 +1,14 @@
+Which two traffic types use the Real-Time Transport Protocol (RTP)? (Choose two.)
+20
+5
+2
+video
+true
+web
+false
+file transfer
+false
+voice
+true
+peer to peer
+false

@@ -1,0 +1,12 @@
+Was bedeutet CPU?
+20
+4
+1
+Central Processing Unit
+true
+Core Processing Unit
+false
+Cyan Plomb Unit
+false
+Candle Pre Utility
+false

@@ -1,0 +1,12 @@
+what has a bandwidth connection that runs over telephone line
+20
+4
+1
+DSL
+true
+dialup telephone
+false
+satellite
+false
+cable
+false

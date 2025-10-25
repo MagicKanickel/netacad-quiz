@@ -1,0 +1,12 @@
+Which characteristic describes crosstalk?
+20
+4
+1
+the distortion of the network signal from fluorescent lighting
+false
+the distortion of the transmitted messages from signals carried in adjacent wires
+true
+the weakening of the network signal over long cable lengths
+false
+the loss of wireless signal over excessive distance from the access point
+false

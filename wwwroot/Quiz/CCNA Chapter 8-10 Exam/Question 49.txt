@@ -1,0 +1,12 @@
+Which term describes a field in the IPv4 packet header used to identify the next level protocol?
+20
+4
+1
+protocol
+true
+destination IPv4 address
+false
+source IPv4 address
+false
+TTL
+false

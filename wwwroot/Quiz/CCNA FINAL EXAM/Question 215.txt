@@ -1,0 +1,17 @@
+Refer to the exhibit. Match the network with the correct IP address and prefix that will satisfy the usable host addressing requirements for each network. [Network C IS:]
+20
+6
+1
+192.168.0.0/24
+false
+192.168.0.192/27
+true
+192.168.0.228/32
+false
+192.168.0.0/25
+false
+192.168.0.224/30
+false
+192.168.0.128/26
+false
+Question_28-image3.png

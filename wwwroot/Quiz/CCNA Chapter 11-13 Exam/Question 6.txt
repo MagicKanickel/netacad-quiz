@@ -1,0 +1,14 @@
+What is the network address and subnet mask of the second usable subnet?
+20
+5
+1
+subnetwork 192.168.1.64 subnet mask 255.255.255.192
+true
+subnetwork 192.168.1.32 subnet mask 255.255.255.240
+false
+subnetwork 192.168.1.64 subnet mask 255.255.255.240
+false
+subnetwork 192.168.1.128 subnet mask 255.255.255.192
+false
+subnetwork 192.168.1.8 subnet mask 255.255.255.224
+false

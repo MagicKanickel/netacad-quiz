@@ -1,0 +1,16 @@
+Which three statements describe a DHCP Discover message? (Choose three.)
+20
+5
+3
+The source MAC address is 48 ones (FF-FF-FF-FF-FF-FF).
+false
+The destination IP address is 255.255.255.255.
+true
+The message comes from a server offering an IP address.
+false
+The message comes from a client seeking an IP address.
+true
+All hosts receive the message, but only a DHCP server replies.
+true
+Only the DHCP server receives the message.
+false

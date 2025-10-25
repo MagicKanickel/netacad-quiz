@@ -1,0 +1,12 @@
+Why are two strands of fiber used for a single fiber optic connection?
+20
+4
+1
+The two strands allow the data to travel for longer distances without degrading.
+false
+They prevent crosstalk from causing interference on the connection.
+false
+They increase the speed at which the data can travel.
+false
+They allow for full-duplex connectivity.
+true

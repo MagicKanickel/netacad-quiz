@@ -1,0 +1,12 @@
+What are the sublayers of the OSI model data link layer?&nbsp;
+20
+4
+1
+internet
+false
+LLC
+true
+MAC
+true
+transport
+false

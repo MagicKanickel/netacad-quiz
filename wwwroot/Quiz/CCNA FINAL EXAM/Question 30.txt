@@ -1,0 +1,16 @@
+Layer 2?(3 Answers)
+20
+6
+3
+802.2 header
+true
+FCS (Frame Check Sequence)
+true
+Destination MAC Address
+true
+Source IP Address
+false
+Destination Port Number
+false
+TTL
+false

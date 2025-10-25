@@ -1,0 +1,14 @@
+Which two fields are included in the TCP header but not in the UDP header? (Choose two.)
+20
+5
+2
+window
+true
+checksum
+false
+source port
+false
+destination port
+false
+sequence number
+true

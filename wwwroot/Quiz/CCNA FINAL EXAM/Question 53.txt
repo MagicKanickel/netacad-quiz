@@ -1,0 +1,12 @@
+A user sends an HTTP request to a web server on a remote network. During encapsulation for this request, what information is added to the address field of a frame to indicate the destination?
+20
+4
+1
+the network domain of the destination host
+false
+the IP address of the default gateway
+false
+the MAC address of the destination host
+false
+the MAC address of the default gateway
+true

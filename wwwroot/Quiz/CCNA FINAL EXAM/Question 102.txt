@@ -1,0 +1,16 @@
+Which three layers of the OSI model map to the application layer of the TCP/IP model? (Choose three.)
+20
+6
+3
+application
+true
+network
+false
+data link
+false
+session
+true
+presentation
+true
+transport
+false

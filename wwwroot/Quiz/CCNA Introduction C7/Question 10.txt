@@ -1,0 +1,12 @@
+What happens to runt frames received by a Cisco Ethernet switch?
+20
+4
+1
+The frame is dropped.
+true
+The frame is returned to the originating network device.
+false
+The frame is broadcast to all other devices on the same network.
+false
+The frame is sent to the default gateway.
+false

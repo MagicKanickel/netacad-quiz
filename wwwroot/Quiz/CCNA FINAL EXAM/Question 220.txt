@@ -1,0 +1,13 @@
+Refer to the exhibit. If PC1 is sending a packet to PC2 and routing has been configured between the two routers, what will R1 do with the Ethernet frame header attached by PC1?
+20
+4
+1
+nothing, because the router has a route to the destination network
+false
+open the header and use it to determine whether the data is to be sent out S0/0/0
+false
+open the header and replace the destination MAC address with a new one
+false
+remove the Ethernet header and configure a new Layer 2 header before sending it out S0/0/0
+true
+Question_47-image.png

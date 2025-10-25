@@ -1,0 +1,12 @@
+A client is using SLAAC to obtain an IPv6 address for its interface. After an address has been generated and applied to the interface, what must the client do before it can begin to use this IPv6 address?
+20
+4
+1
+It must send a DHCPv6 INFORMATION-REQUEST message to request the address of the DNS server.
+false
+It must send a DHCPv6 REQUEST message to the DHCPv6 server to request permission to use this address.
+false
+It must send an ICMPv6 Router Solicitation message to determine what default gateway it should use.
+false
+It must send an ICMPv6 Neighbor Solicitation message to ensure that the address is not already in use on the network.
+true

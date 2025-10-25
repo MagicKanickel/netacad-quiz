@@ -1,0 +1,12 @@
+What is a primary role of the Physical layer in transmitting data on the network?
+20
+4
+1
+create the signals that represent the bits in each frame on to the media
+true
+provide physical addressing to the devices
+false
+determine the path packets take through the network
+false
+control data access to the media
+false

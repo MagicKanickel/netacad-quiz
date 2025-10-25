@@ -1,0 +1,14 @@
+Match the commands to the correct actions. (Not all options are used.) provides security on the console
+20
+5
+1
+Router(config)# hostname CL1
+false
+Router(config)# enable password Cisco
+false
+Router(config-line)# password class
+true
+Router(config)# password Cisco
+false
+Router(config)# banner motd #
+false

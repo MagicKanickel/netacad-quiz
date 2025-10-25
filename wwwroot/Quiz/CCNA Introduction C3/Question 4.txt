@@ -1,0 +1,12 @@
+What are two benefits of using a layered network model?
+30
+4
+1
+It assists in protocol design.
+true
+It speeds up packet delivery.
+false
+It prevents technology in one layer from affecting other layers.
+true
+It prevents designers from creating their own model.
+false

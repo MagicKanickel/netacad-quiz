@@ -1,0 +1,12 @@
+In which scenario would the use of a WISP be recommended?
+20
+4
+1
+an internet cafe inn a city
+false
+any home with multple wireless devices
+false
+a farm in a rural area without wired broadband access
+true
+a apartment in a bilding with cable access to the internet
+false

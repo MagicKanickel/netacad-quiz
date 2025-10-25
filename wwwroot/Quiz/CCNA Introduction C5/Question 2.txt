@@ -1,0 +1,12 @@
+How many binary bits exist within an IPv6 address?
+20
+4
+1
+32
+false
+48
+false
+128
+true
+256
+false

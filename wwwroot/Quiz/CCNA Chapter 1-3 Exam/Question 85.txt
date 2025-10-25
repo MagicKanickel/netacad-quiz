@@ -1,0 +1,10 @@
+What IOS mode does this statement correspond to: limited numner of basic monitoring commands
+20
+3
+1
+user EXEC mode
+true
+privileged EXEC mode
+false
+global configuration mode
+false

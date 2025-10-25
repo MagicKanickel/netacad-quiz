@@ -1,0 +1,12 @@
+Which type of IPv6 address refers to any unicast address that is assigned to multiple hosts?
+20
+4
+1
+unique local
+false
+global unicast
+fasle
+anycast
+true
+link-local
+false

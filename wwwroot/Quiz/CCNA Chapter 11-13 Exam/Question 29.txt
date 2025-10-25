@@ -1,0 +1,12 @@
+A network administrator has received the IPv6 prefix 2001:DB8::/48 for subnetting. Assuming the administrator does not subnet into the interface ID portion of the address space, how many subnets can the administrator create from the /48 prefix?
+20
+4
+1
+16
+false
+256
+false
+4096
+false
+65536
+true

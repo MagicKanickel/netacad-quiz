@@ -1,0 +1,12 @@
+Which command can an administrator execute to determine what interface a router will use to reach remote networks?
+20
+4
+1
+show arp
+false
+show interfaces
+false
+show ip route
+true
+show protocols
+false

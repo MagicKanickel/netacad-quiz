@@ -1,0 +1,16 @@
+What are characteristics of an IP-Adresse? (choose three)
+20
+6
+3
+contained in layer 3 header
+true
+contained in layer 2 header
+false
+seperated into OUI and a unique identifier
+false
+seperated into a network partition and a unique identifier
+true
+32 or 128 bits
+true
+48 bits
+false

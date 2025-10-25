@@ -1,0 +1,12 @@
+Which is the compressed format of the IPv6 address fe80:0000:0000:0000:0220:0b3f:f0e0:0029?
+20
+4
+1
+fe80::220:b3f:f0e0:29
+true
+fe80:9ea:0:2200::fe0:290
+false
+fe80:9ea0::2020:0:bf:e0:9290
+false
+fe80:9ea0::2020::bf:e0:9290
+false

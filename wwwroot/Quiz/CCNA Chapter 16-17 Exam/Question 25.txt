@@ -1,0 +1,12 @@
+A network engineer is analyzing reports from a recently performed network baseline. Which situation would depict a possible latency issue?
+20
+4
+1
+a change in the bandwidth according to the show interfaces output
+false
+a next-hop timeout from a traceroute
+false
+an increase in host-to-host ping response times
+true
+a change in the amount of RAM according to the show version output
+false

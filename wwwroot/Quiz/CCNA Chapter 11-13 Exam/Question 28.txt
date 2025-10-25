@@ -1,0 +1,16 @@
+Which of these addresses is the shortest abbreviation for the IP address: 3FFE:1044:0000:0000:00AB:0000:0000:0057?
+20
+6
+1
+3FFE:1044::AB::57
+false
+3FFE:1044::00AB::0057
+false
+3FFE:1044:0:0:AB::57
+true
+3FFE:1044:0:0:00AB::0057
+false
+3FFE:1044:0000:0000:00AB::57
+false
+3FFE:1044:0000:0000:00AB::0057
+false

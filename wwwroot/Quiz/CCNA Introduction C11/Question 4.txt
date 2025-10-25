@@ -1,0 +1,12 @@
+The IP Adress 192.168.1.68 is  included in which subnetwork?
+60
+4
+1
+192.168.1.64/27
+true
+192.168.1.32/27
+false
+192.168.1.128/27
+false
+192.168.1.96/27
+false

@@ -1,0 +1,14 @@
+Match each type of frame field to its function. [error detection]
+20
+5
+1
+This field checks if the frame has been damaged during the transfer.
+true
+This field identifies special flow control services.
+false
+This field helps to direct the frame toward its destination.
+false
+This field identifies the beginning of a frame.
+false
+This field is used by the LLC to identify the Layer 3 procotol.
+false

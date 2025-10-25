@@ -1,0 +1,13 @@
+Refer to the exhibit. Which protocol was responsible for building the table that is shown?
+20
+4
+1
+DHCP
+false
+ARP
+true
+DNS
+false
+ICMP
+false
+Question_18-image.png

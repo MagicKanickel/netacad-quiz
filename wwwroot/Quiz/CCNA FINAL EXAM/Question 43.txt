@@ -1,0 +1,16 @@
+What are three characteristics of the CSMA/CD process? (Choose three.)
+20
+6
+3
+The device with the electronic token is the only one that can transmit after a collision.
+false
+A device listens and waits until the media is not busy before transmitting.
+true
+After detecting a collision, hosts can attempt to resume transmission after a random time delay has expired.
+true
+All of the devices on a segment see data that passes on the network medium.
+true
+A jam signal indicates that the collision has cleared and the media is not busy.
+false
+Devices can be configured with a higher transmission priority.
+false

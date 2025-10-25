@@ -1,0 +1,12 @@
+Why does HTTP use TCP as the transport layer protocol?
+20
+4
+1
+to ensure the fastest possible download speed
+false
+because HTTP is a best-effort protocol
+false
+because transmission errors can be tolerated easily
+false
+because HTTP requires reliable delivery
+true

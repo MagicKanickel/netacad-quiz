@@ -1,0 +1,12 @@
+Welche Mainboard Bauform gibt es nicht?
+20
+4
+1
+ATX
+false
+Mikro ATX
+false
+BTX
+false
+Midi ATX
+true

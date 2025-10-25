@@ -1,0 +1,16 @@
+Match the subnetwork to a host address that would be included within the subnetwork. (Not all options are used.)
+20
+4
+
+192.168.1.32/27
+192.168.1.48
+true
+
+
+192.168.1.64/27
+192.168.1.68
+true
+
+192.168.1.96/27
+192.168.1.121
+true

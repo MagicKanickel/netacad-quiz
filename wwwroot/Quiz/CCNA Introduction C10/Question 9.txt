@@ -1,0 +1,12 @@
+What is the purpose of the banner motd command?
+30
+4
+1
+It configures a message that will identify printed documents to LAN users.
+false
+A way that routers communicate the status of their links with one another
+false
+easy way of communicating with any user attached to a router’s LANs.
+false
+It provides a way to make announcements to those who log in to a router.
+true

@@ -1,0 +1,12 @@
+What mechanism can be implemented in a small network to help minimize latency for real-time streaming applications?
+20
+4
+1
+QoS
+true
+PoE
+false
+AAA
+false
+ICMP
+false

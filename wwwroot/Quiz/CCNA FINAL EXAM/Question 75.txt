@@ -1,0 +1,12 @@
+16. What service is provided by Internet Messenger?
+20
+4
+1
+An application that allows real-time chatting among remote users.
+true
+Allows remote access to network devices and servers.
+false
+Resolves domain names, such as cisco.com, into IP addresses.
+false
+Uses encryption to provide secure remote access to network devices and servers.
+false

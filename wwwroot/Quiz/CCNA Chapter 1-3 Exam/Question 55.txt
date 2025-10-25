@@ -1,0 +1,12 @@
+What term describes a network owned by one organization that provides safe and secure access to individuals who work for a different organization?
+20
+4
+1
+extranet
+true
+cloud
+false
+BYOD
+false
+quality of service
+false

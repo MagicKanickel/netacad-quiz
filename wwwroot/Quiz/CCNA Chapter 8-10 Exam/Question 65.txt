@@ -1,0 +1,12 @@
+What property of ARP causes a reply only to the source sending an ARP request?
+20
+4
+1
+The source MAC address appears in the header of the Ethernet frame.
+true
+The destination MAC address FF-FF-FF-FF-FF-FF appears in the header of the Ethernet frame.
+false
+The type field 0x806 appears in the header of the Ethernet frame.
+false
+ARP replies are broadcast on the network when a host receives an ARP request.
+false

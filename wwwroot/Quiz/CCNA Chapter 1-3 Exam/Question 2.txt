@@ -1,0 +1,12 @@
+Which term refers to a network that provides secure access to the corporate offices by suppliers, customers and collaborators?
+20
+4
+1
+Internet
+false
+intranet
+false
+extranet
+true
+extendednet
+false

@@ -1,0 +1,10 @@
+When data is encoded as pulses of light, which media is being used to transmit the data?
+20
+3
+1
+Wireless
+false
+Fire optic cable
+true
+Copper cable
+false

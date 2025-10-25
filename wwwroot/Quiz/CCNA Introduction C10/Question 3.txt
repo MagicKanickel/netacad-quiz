@@ -1,0 +1,12 @@
+What will be the response from the router after the command, “router(config)# hostname portsmouth” is entered?
+20
+4
+1
+portsmouth#
+false
+portsmouth(config)#
+true
+router(config-host)#
+false
+portsmouth#
+false

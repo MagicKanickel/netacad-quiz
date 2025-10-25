@@ -1,0 +1,12 @@
+Was erzeugt höhere Spannungen?
+20
+4
+1
+Aufstehen und Hinsetzen
+false
+PVC Boden
+false
+über Teppich gehen
+true
+Klarsichtfolien
+false

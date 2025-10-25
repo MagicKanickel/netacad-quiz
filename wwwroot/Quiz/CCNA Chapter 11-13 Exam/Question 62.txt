@@ -1,0 +1,12 @@
+Which subnet would include the address 192.168.1.96 as a usable host address?
+20
+4
+1
+192.168.1.64/26
+true
+192.168.1.32/27
+false
+192.168.1.32/28
+false
+192.168.1.64/29
+false

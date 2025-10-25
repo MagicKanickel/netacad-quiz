@@ -1,0 +1,12 @@
+Which data link layer media access control method does Ethernet use with legacy Ethernet hubs?
+20
+4
+1
+CSMA/CD﻿
+true
+turn taking
+false
+token passing
+false
+turn taking
+false

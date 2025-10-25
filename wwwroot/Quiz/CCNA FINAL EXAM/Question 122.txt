@@ -1,0 +1,14 @@
+What are two problems that can be caused by a large number of ARP request and reply messages? (Choose two.)
+20
+5
+2
+Switches become overloaded because they concentrate all the traffic from the attached subnets.
+false
+The ARP request is sent as a broadcast, and will flood the entire subnet.
+true
+The network may become overloaded because ARP reply messages have a very large payload due to the 48-bit MAC address and 32-bit IP address that they contain.
+false
+A large number of ARP request and reply messages may slow down the switching process, leading the switch to make many changes in its MAC table.
+false
+All ARP request messages must be processed by all nodes on the local network.
+true

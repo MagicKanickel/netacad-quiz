@@ -1,0 +1,12 @@
+What is used for long-haul networks?
+20
+4
+1
+Copper Cables
+false
+Fiber Optic
+true
+Wireless
+false
+nothing
+false

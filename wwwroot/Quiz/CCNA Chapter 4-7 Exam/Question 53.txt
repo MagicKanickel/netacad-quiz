@@ -1,0 +1,12 @@
+What OSI physical layer term describes the measure of the transfer of bits across a medium over a given period of time?
+20
+4
+1
+throughput
+true
+bandwidth
+false
+latency
+false
+goodput
+false

@@ -1,0 +1,12 @@
+A computer can access devices on the same network but cannot access devices on other networks. What is the probable cause of this problem?
+20
+4
+1
+The cable is not connected properly to the NIC.
+false
+The computer has an invalid IP address.
+false
+The computer has an incorrect subnet mask.
+false
+The computer has an invalid default gateway address.
+true

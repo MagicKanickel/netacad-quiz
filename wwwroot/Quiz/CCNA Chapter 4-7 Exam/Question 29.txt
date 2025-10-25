@@ -1,0 +1,12 @@
+In the show running-config command, which part of the syntax is represented by running-config ?
+20
+4
+1
+the command
+false
+a keyword
+true
+a variable
+false
+a prompt
+false

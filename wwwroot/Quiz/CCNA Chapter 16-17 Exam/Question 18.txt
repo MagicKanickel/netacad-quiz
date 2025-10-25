@@ -1,0 +1,12 @@
+What is the role of an IPS?
+20
+4
+1
+detecting and blocking of attacks in real time
+true
+connecting global threat information to Cisco network security devices
+false
+authenticating and validating traffic
+false
+filtering of nefarious websites
+true

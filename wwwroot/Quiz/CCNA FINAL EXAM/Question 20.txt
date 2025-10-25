@@ -1,0 +1,12 @@
+What technique is used with UTP cable to help protect against signal interference from crosstalk?
+20
+4
+1
+Wrapping a foil shield around the wire pairs
+false
+twisting the wires together into pairs
+true
+terminating the cable with special grounded connectors
+false
+encasing the cables within flexible plastic sheath
+false

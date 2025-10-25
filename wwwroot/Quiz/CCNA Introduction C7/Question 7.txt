@@ -1,0 +1,12 @@
+Which network device makes forwarding decisions based on the destination MAC address that is contained in the frame?
+30
+4
+1
+router
+false
+switch
+true
+repeater
+false
+hub
+false

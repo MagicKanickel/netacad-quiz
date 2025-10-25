@@ -1,0 +1,14 @@
+Match the firewall function to the type of threat protection it provides to the network. [prevents unsolicited incoming sessions]
+20
+5
+1
+Packet filtering
+false
+URL filtering
+false
+network address translator
+false
+stateful packet inspection
+true
+application filtering
+false

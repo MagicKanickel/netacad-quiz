@@ -1,0 +1,12 @@
+What is the Internet?
+20
+4
+1
+It is a network based on Ethernet technology
+false
+It provides connections through interconnected global networks
+true
+It provides network access for mobile devices
+false
+It is a private network for organisation with LAN and WAN
+false

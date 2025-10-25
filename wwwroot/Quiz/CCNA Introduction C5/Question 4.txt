@@ -1,0 +1,12 @@
+Which statements are correct about IPv4 and IPv6 addresses?
+20
+4
+1
+IPv4 addresses are represented by hexadecimal numbers
+false
+IPv6 addresses are represented by hexadecimal numbers
+true
+IPv4&nbsp;addresses are 32 bits in length
+true
+Pv6 addresses are 64 bits in length
+false

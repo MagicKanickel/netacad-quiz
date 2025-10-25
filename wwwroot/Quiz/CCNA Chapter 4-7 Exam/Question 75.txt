@@ -1,0 +1,12 @@
+What action will occur if a switch receives a frame and does have the source MAC address in the MAC table?
+20
+4
+1
+The switch refreshes the timer on that entry.
+true
+The switch adds it to its MAC address table associated with the port number.
+false
+The switch forwards the frame to the associated port.
+false
+The switch sends the frame to a connected router because the destination MAC address is not local.
+false

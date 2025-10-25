@@ -1,0 +1,12 @@
+What happens when the transport input ssh command is entered on the switch vty lines?
+20
+4
+1
+The SSH client on the switch is enabled.
+false
+The switch requires a username/password combination for remote access.
+false
+Communication between the switch and remote users is encrypted.
+true
+The switch requires remote connections via a proprietary client software.
+false

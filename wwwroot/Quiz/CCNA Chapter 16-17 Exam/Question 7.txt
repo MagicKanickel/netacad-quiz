@@ -1,0 +1,14 @@
+Which example of malicious code would be classified as a Trojan horse?
+20
+4
+1
+malware that was written to look like a video game 
+true
+malware that requires manual user intervention to spread between systems
+false
+malware that attaches itself to a legitimate program and spreads to other programs when launched
+false
+malware that can automatically spread from one system to another by exploiting a vulnerability in the target
+false
+
+

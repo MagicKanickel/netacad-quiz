@@ -1,0 +1,12 @@
+In welchen Slot wird die Grafikkarte eingebaut?
+20
+4
+1
+PCI
+false
+PCI-X x1
+false
+AGP
+false
+PCI-X x16
+true

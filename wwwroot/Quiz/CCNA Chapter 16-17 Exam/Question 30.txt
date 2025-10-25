@@ -1,0 +1,12 @@
+A ping fails when performed from router R1 to directly connected router R2. The network administrator then proceeds to issue the show cdp neighbors command. Why would the network administrator issue this command if the ping failed between the two routers?
+30
+4
+1
+The network administrator suspects a virus because the ping command did not work.
+false
+The network administrator wants to verify Layer 2 connectivity.
+true
+The network administrator wants to verify the IP address configured on router R2.
+false
+The network administrator wants to determine if connectivity can be established from a non-directly connected network.
+false

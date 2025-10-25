@@ -1,0 +1,12 @@
+A student wants to save a router configuration to NVRAM. What is the best command to use to accomplish the task?
+30
+4
+1
+copy running-config startup-config
+true
+show interfaces
+false
+show ip nat translations
+false
+show ip route
+false

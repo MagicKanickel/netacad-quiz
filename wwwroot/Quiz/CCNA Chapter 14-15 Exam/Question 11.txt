@@ -1,0 +1,12 @@
+What important information is added to the TCP/IP transport layer header to ensure communication and connectivity with a remote network device?
+20
+4
+1
+timing and synchronization
+false
+destination and source port numbers
+true
+destination and source physical addresses
+false
+destination and source logical network addresses
+false

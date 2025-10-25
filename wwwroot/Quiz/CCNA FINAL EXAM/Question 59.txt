@@ -1,0 +1,14 @@
+recived by a sender before transmitting more segments in a session
+20
+5
+1
+acknowledgment
+true
+retransmission
+false
+FCS
+false
+sequence numbers
+false
+window size
+false

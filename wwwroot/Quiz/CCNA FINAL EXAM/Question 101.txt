@@ -1,0 +1,12 @@
+What is the consequence of configuring a router with the ipv6 unicast-routing global configuration command?​
+20
+4
+1
+All router interfaces will be automatically activated.
+false
+The IPv6 enabled router interfaces begin sending ICMPv6 Router Advertisement messages.
+true
+Each router interface will generate an IPv6 link-local address.​
+false
+It statically creates a global unicast address on this router.​
+false

@@ -1,0 +1,12 @@
+What attribute of a NIC would place it at the data link layer of the OSI model?
+20
+4
+1
+attached Ethernet cable
+false
+IP address
+false
+MAC address
+true
+RJ-45 port
+false

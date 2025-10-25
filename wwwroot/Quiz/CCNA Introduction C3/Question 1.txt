@@ -1,0 +1,12 @@
+What is done to an IP packet before it is transmitted over the physical medium?
+30
+4
+1
+It is tagged with information guaranteeing reliable delivery.
+false
+It is segmented into smaller individual pieces.
+false
+It is encapsulated into a TCP segment.
+false
+It is encapsulated in a Layer 2 frame.
+true

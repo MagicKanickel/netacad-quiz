@@ -1,0 +1,16 @@
+Match the definition "completes abbreviated commands and parameters" to the respective CLI hot key or shortcut
+20
+6
+1
+Tab
+true
+space bar
+false
+Up Arrow
+false
+Crtl+C
+false
+?
+false
+Crtl-Shift-6
+false

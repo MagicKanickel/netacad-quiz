@@ -1,0 +1,12 @@
+A message is sent to all hosts on a remote network. Which type of message is it?
+20
+4
+1
+limited broadcast
+false
+multicast
+false
+unicast
+false
+direct broadcast
+true

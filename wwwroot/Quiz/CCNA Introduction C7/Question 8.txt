@@ -1,0 +1,12 @@
+Which network device has to send data to a specific destination based on the information found in the MAC table?
+20
+4
+1
+switch
+true
+modem
+false
+hub
+false
+router
+false

@@ -1,0 +1,12 @@
+What type of cable is used to connect a workstation serial port to a Cisco router console port?
+20
+4
+1
+crossover
+false
+rollover
+true
+straight-through
+false
+coaxial
+false

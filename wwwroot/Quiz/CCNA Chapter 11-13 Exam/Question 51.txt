@@ -1,0 +1,12 @@
+Which protocol is used by the traceroute command to send and receive echo-requests and echo-replies?
+20
+4
+1
+SNMP
+false
+ICMP
+true
+Telnet
+false
+TCP
+false

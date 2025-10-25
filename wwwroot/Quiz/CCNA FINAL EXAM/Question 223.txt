@@ -1,0 +1,14 @@
+Match the type of threat with the cause. --> [electrical threats]
+20
+5
+1
+poor handling of key electrical components (electrostatic discharge), lack of critical spare parts, poor cabling, and poor labling
+false
+unauthorized access resulting in loss of data
+false
+temperature extremes (too hot or too cold) or humidity extremes (too wet or too dry)
+false
+physical damage to servers, routers, switches, cabling plant, and workstations
+false
+voltage spikes, insufficient supply, voltage (brownouts), unconditioned power (noise), and total power loss
+true

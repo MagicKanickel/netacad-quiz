@@ -1,0 +1,12 @@
+Which is a valid hexadecimal number
+20
+4
+1
+F
+true
+j
+false
+G
+false
+h
+false

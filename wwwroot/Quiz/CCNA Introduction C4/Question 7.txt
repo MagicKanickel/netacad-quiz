@@ -1,0 +1,12 @@
+Which statement correctly describes frame encoding?
+60
+4
+1
+t uses the characteristic of one wave to modify another wave.
+false
+It transmits data signals along with a clock signal
+false
+It generates the electrical, optical, or wireless signals&nbsp;
+false
+It converts bits into a predefined code to have predictable pattern
+true

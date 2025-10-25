@@ -1,0 +1,12 @@
+What is the purpose of the startup configuration file on a Cisco router?
+30
+4
+1
+to facilitate the basic operation of the hardware components of a device
+false
+to contain the commands that are used to initially configure a router on st
+true
+to contain the configuration commands that the router IOS is using
+false
+to provide a limited backup version of the IOS
+false

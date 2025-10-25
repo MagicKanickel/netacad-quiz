@@ -1,0 +1,12 @@
+An administrator decides to use “RobErT” as the password on a newly installed router. Which statement applies to the password choice?
+30
+4
+1
+It is weak since it uses easily found personal information.
+true
+It is strong because it uses a passphrase.
+false
+It is strong because it uses a minimum of 10 numbers, letters and special characters.
+false
+It is strong because it contains 10 numbers and special characters.
+false

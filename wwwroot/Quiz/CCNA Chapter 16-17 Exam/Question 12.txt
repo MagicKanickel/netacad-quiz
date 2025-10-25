@@ -1,0 +1,12 @@
+Refer to the exhibit. A network administrator has configured R2 for PAT. Why is the configuration incorrect?
+30
+4
+1
+The overload keyword should not have been applied.
+false
+The ACL does not define the list of addresses to be translated.
+false
+The static NAT entry is missing.
+false
+NAT-POOL2 is bound to the wrong ACL.
+true

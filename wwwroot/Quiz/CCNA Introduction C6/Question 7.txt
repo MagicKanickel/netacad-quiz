@@ -1,0 +1,12 @@
+Which is a function of the Logical Link Control (LLC) sublayer?
+20
+4
+1
+to define the media access processes that are performed by the hardware
+false
+to identify which network layer protocol is being used
+true
+to provide data link layer addressing
+false
+to accept segments and package them into data units that are called packets
+false

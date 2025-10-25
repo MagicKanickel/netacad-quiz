@@ -1,0 +1,12 @@
+A web client request for a webpage. Perspective client correct order?
+20
+4
+1
+HTTP, IP, TCP, Ethernet
+false
+HTTP, TCP, IP, Ethernet
+true
+Ethernet, TCP, IP, HTTP
+false
+Ethernet, IP, TCP, HTTP
+false

@@ -1,0 +1,12 @@
+What describes the ability to use personal devices across a business or campus network?
+20
+4
+1
+BYOD
+true
+internet
+false
+intranet
+false
+extranet
+false

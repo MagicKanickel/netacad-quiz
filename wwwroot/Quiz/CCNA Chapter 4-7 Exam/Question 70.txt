@@ -1,0 +1,12 @@
+What is used for desktop Pcs in an enterprise office?
+20
+4
+1
+Copper Cables
+true
+Fiber Optic
+false
+Wireless
+false
+nothing
+false

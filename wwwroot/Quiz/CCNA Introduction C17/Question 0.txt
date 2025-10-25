@@ -1,0 +1,12 @@
+Which network design consideration would be more important to a large corporation than to a small business?
+20
+4
+1
+Internet router
+false
+firewall
+false
+low port density switch
+false
+redundancy﻿
+true

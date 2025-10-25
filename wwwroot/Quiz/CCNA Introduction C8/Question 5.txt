@@ -1,0 +1,12 @@
+Which statement accurately describes a characteristic of IPv4?
+30
+4
+1
+All IPv4 addresses are assignable to hosts.​
+false
+An IPv4 header has fewer fields than an IPv6 header has
+false
+IPv4 has a 32-bit address space
+true
+IPv4 natively supports IPsec
+false

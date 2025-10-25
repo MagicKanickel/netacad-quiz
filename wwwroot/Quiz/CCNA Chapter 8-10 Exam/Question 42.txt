@@ -1,0 +1,16 @@
+Which three commands are used to set up secure access to a router through a connection to the console interface? (Choose three.)
+20
+6
+3
+interface fastethernet 0/0
+false
+line vty 0 4
+false
+line console 0
+true
+enable secret cisco
+false
+login
+true
+password cisco
+true

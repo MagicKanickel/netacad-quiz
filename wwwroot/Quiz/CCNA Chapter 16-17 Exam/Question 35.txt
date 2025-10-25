@@ -1,0 +1,12 @@
+By following a structured troubleshooting approach, a network administrator identified a network issue after a conversation with the user. What is the next step that the administrator should take?
+20
+4
+1
+Verify full system functionality.
+false
+Test the theory to determine cause.
+false
+Establish a theory of probable causes.
+true
+Establish a plan of action to resolve the issue.	
+false

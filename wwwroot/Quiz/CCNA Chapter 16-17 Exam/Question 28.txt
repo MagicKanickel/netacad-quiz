@@ -1,0 +1,12 @@
+Which statement is true about Cisco IOS ping indicators?​
+20
+4
+1
+‘!’ indicates that the ping was unsuccessful and that the device may have issues finding a DNS server.
+false
+‘U’ may indicate that a router along the path did not contain a route to the destination address and that the ping was unsuccessful.
+true
+‘.’ indicates that the ping was successful but the response time was longer than normal.
+false
+A combination of ‘.’ and ‘!’ indicates that a router along the path did not have a route to the destination address and responded with an ICMP unreachable message.​
+false

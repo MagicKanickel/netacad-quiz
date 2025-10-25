@@ -1,0 +1,12 @@
+﻿What is an ISP?
+20
+4
+1
+It is a standard body that develops cabling and wire standards.
+false
+It is a organisation that enables users to connect to the internet
+true
+It is a protocol that establishes how computer communicate.
+false
+It is a networking device that combines network devices.
+false

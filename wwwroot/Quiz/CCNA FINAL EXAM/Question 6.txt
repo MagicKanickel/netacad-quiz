@@ -1,0 +1,16 @@
+A network administrator wants to have the same network mask for all networks at a particular small site. 22 addresses,20 addresses,2 addresses,2 addresses needed. 192.168.10.0/24 use for the four subnetworks?
+20
+6
+1
+255.255.255.192
+false
+255.255.255.252
+false
+255.255.255.240
+false
+255.255.255.248
+false
+255.255.255.0
+false
+255.255.255.224
+true

@@ -1,0 +1,17 @@
+Refer to the exhibit. If Host1 were to transfer a file to the server, what layers of the TCP/IP model would be used?
+20
+6
+1
+only application and Internet layers
+false
+only Internet and network access layers
+false
+only application, Internet, and network access layers
+false
+application, transport, Internet, and network access layers
+true
+only application, transport, network, data link, and physical layers
+false
+application, session, transport, network, data link, and physical layers
+false
+Question_13-image.png

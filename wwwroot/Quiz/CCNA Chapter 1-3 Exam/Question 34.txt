@@ -1,0 +1,12 @@
+Which statement accurately describes a TCP/IP encapsulation process when a PC is sending data to the network?
+20
+4
+1
+Data is sent from the internet layer to the network access layer.
+false
+Packets are sent from the network access layer to the transport layer.
+false
+Segments are sent from the transport layer to the internet layer.
+true
+Frames are sent from the network access layer to the internet layer.
+false

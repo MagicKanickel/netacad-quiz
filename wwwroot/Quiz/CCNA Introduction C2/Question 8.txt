@@ -1,0 +1,12 @@
+Which memory location on a Cisco router or switch will lose all content when the device is restarted?
+20
+4
+1
+ROM
+false
+NVRAM
+false
+flash
+false
+RAM
+true

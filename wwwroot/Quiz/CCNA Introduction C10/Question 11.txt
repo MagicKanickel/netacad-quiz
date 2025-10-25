@@ -1,0 +1,12 @@
+What is stored in the NVRAM of a Cisco router?
+20
+4
+1
+the Cisco IOS
+false
+the running configuration
+false
+the bootup instructions
+false
+the startup configuration
+true

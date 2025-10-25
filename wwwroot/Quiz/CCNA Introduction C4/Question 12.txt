@@ -1,0 +1,12 @@
+Which standards organization oversees development of wireless LAN standards?
+20
+4
+1
+IANA
+false
+IEEE
+true
+ISO
+false
+TIA
+false

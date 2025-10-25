@@ -1,0 +1,12 @@
+Which switching method drops frames that fail the FCS check?
+20
+4
+1
+store-and-forward switching
+true
+borderless switching
+false
+ingress port buffering
+false
+cut-through switching
+false

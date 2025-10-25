@@ -1,0 +1,12 @@
+What term describes a private collection of LANs and WANs that belongs to an organisation?
+20
+4
+1
+intranet
+true
+internet
+false
+extranet
+false
+peer-to-peer
+false

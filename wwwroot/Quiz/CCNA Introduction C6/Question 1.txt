@@ -1,0 +1,12 @@
+Which engineering organizations define open standards and protocols that apply to the data link layer?
+20
+4
+1
+Institute of Electrical and Electroics Enginees (IEEE)
+true
+Internet Assigned Numbers Authority (IANA)
+false
+Electronic Industries Alliance (EIA)
+false
+International Telecommunication Union (ITU)
+true

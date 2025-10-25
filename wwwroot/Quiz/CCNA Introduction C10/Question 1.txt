@@ -1,0 +1,12 @@
+Which command is used to encrypt all passwords in a router configuration file?
+20
+4
+1
+Router_A (config) # enable secret
+false
+Router_A (config) # enable password
+false
+Router_A (config) # service password-encryption
+true
+Router_A (config) # encrypt password
+false

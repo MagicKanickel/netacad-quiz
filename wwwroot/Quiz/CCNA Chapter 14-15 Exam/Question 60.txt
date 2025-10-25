@@ -1,0 +1,12 @@
+A client creates a packet to send to a server. The client is requesting SMTP service. What number will be used as the destination port number in the sending packet?
+20
+4
+1
+25
+true
+443
+false
+161
+false
+110
+false

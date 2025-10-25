@@ -1,0 +1,12 @@
+Why would a technician enter the command&nbsp;copy startup-config running-config?
+30
+4
+1
+to remove all configurations from the switch
+false
+to save an active configuration to NVRAM
+false
+to copy an existing configuration into RAM
+true
+to make a changed configuration the new startup configuration
+false

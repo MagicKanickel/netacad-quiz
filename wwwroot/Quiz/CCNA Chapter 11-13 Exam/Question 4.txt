@@ -1,0 +1,16 @@
+A network administrator subnets the 192.168.10.0/24 network into subnets with /26 masks. How many equal-sized subnets are created?
+20
+6
+1
+1
+false
+2
+false
+4
+true
+8
+false
+16
+false
+64
+false

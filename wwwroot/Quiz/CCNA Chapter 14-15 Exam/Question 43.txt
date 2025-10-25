@@ -1,0 +1,12 @@
+What type of information is contained in a DNS MX record?
+20
+4
+1
+the FQDN of the alias used to identify a service
+false
+the IP address for an FQDN entry
+false
+the domain name mapped to mail exchange servers
+true
+the IP address of an authoritative name server
+false

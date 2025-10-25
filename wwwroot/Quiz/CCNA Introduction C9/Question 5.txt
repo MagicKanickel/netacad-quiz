@@ -1,0 +1,12 @@
+Which ICMPv6 messages are used during the Ethernet MAC address resolution process?
+20
+4
+1
+router solicitation
+false
+neighbor solicitation
+true
+neighbor advertisement
+true
+echo request
+false

@@ -1,0 +1,14 @@
+On which two interfaces or ports can security be improved by configuring executive timeouts? (Choose two.)
+30
+5
+2
+Fast Ethernet interfaces
+false
+console ports
+true
+serial interfaces
+false
+vty ports
+true
+loopback interfaces
+false

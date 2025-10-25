@@ -1,0 +1,16 @@
+What are two characteristics shared by TCP and UDP? (Choose two.)
+20
+6
+2
+default window size
+false
+connectionless communication
+false
+port numbering
+true
+3-way handshake
+false
+ability to to carry digitized voice
+false
+use of checksum
+true

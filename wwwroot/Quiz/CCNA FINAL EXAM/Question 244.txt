@@ -1,0 +1,17 @@
+Refer to the exhibit. If host A sends an IP packet to host B, what will the destination address be in the frame when it leaves host A?
+20
+6
+1
+DD:DD:DD:DD:DD:DD
+false
+172.168.10.99
+false
+CC:CC:CC:CC:CC:CC
+false
+172.168.10.65
+false
+BB:BB:BB:BB:BB:BB
+true
+AA:AA:AA:AA:AA:AA
+false
+Question_134-image.png

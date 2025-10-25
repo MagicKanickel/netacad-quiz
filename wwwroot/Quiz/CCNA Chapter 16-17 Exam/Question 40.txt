@@ -1,0 +1,12 @@
+40. Which network service automatically assigns IP addresses to devices on the network?
+20
+4
+1
+DHCP
+true
+Telnet
+false
+DNS
+false
+traceroute
+false

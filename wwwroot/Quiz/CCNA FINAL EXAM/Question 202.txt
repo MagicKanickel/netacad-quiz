@@ -1,0 +1,12 @@
+This network portion of the address is assigned by the provider.[IPV6]
+20
+4
+1
+global routing prefix
+true
+subnet mask
+false
+subnet ID
+false
+interface ID
+false

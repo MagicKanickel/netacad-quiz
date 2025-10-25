@@ -1,0 +1,16 @@
+Which three addresses are valid public addresses? (Choose three.)
+20
+6
+3
+198.133.219.17
+true
+192.168.1.245
+false
+10.15.250.5
+false
+128.107.12.117
+true
+172.31.1.25
+false
+64.104.78.227
+true

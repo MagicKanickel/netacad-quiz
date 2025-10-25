@@ -1,0 +1,12 @@
+A company has only one router as the exit point to its ISP.Which solution could be adopted to maintain connectivity?
+30
+4
+1
+Activate another router interface that is connected to the ISP
+false
+Have a second router that is connected to another ISP
+true
+Purchase a second leastcost link from another ISP to connect to this router
+false
+Add more interfaces to the router that is connected to the internal network
+false

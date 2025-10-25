@@ -1,0 +1,12 @@
+How does the ARP process use an IP address?
+30
+4
+1
+to determine the MAC address of the remote destination host
+false
+to determine the MAC address of a device on the same network
+true
+to determine the amount of time a packet takes when traveling
+false
+to determine the network number based on the number of bits in the IP
+false

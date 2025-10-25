@@ -1,0 +1,12 @@
+What feature of SSH makes it more secure than Telnet for a device management connection?
+20
+4
+1
+confidentiality with IPsec
+false
+stronger password requirement
+false
+random one-time port connection
+false
+login information and data encryption
+true

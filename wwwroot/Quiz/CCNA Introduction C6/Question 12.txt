@@ -1,0 +1,12 @@
+What are the services performed by the data link layer of the OSI model?
+30
+4
+1
+It encrypts data packets.
+false
+It accepts Layer 3 packets and encapsulates them into frames.
+true
+It provides media access control and performs error detection
+true
+It determines the path to forward packets.
+false

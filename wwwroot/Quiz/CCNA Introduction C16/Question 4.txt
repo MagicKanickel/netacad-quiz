@@ -1,0 +1,12 @@
+Which benefit does SSH offer over Telnet for remotely managing a router?
+20
+4
+1
+Encryption
+true
+TCP usage
+false
+authorization
+false
+connections via multiple VTY lines
+false

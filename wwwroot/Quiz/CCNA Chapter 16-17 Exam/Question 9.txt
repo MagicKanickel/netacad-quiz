@@ -1,0 +1,12 @@
+Which attack involves a compromise of data that occurs between two end points?
+20
+4
+1
+denial-of-service
+false
+man-in-the-middle attack
+true
+extraction of security parameters
+false
+username enumeration
+false

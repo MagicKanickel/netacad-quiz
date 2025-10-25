@@ -1,0 +1,14 @@
+What will happen if the default gateway address is incorrectly configured on a host?
+40
+5
+1
+The host cannot communicate with other hosts in the local network.
+false
+The switch will not forward packets initiated by the host.
+false
+The host will have to use ARP to determine the correct address of the default gateway.
+false
+The host cannot communicate with hosts in other networks.
+true
+A ping from the host to 127.0.0.1 would not be successful.
+false

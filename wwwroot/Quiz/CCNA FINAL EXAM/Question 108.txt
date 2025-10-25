@@ -1,0 +1,12 @@
+A client packet is received by a server. The packet has a destination port number of 80. What service is the client requesting?
+20
+4
+1
+DHCP
+false
+SMTP
+false
+DNS
+false
+HTTP
+true

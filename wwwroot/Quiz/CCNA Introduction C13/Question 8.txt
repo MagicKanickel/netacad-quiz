@@ -1,0 +1,12 @@
+Ping server at www.cisco.com OK, another company web server Not OK. Which tool would help identify the specific router?
+20
+4
+1
+ipconfig
+false
+netstat
+false
+telnet
+false
+traceroute
+true

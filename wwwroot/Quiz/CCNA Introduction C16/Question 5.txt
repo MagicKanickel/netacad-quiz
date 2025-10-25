@@ -1,0 +1,12 @@
+What is one of the most effective security tools available for protecting users from external threats?
+20
+4
+1
+Firewalls
+true
+router that run AAA services
+false
+patch servers
+false
+password encryption techniques
+false

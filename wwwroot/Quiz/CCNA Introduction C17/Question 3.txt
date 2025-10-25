@@ -1,0 +1,12 @@
+A technician is investigating network connectivity from a PC to a remote host with the address 10.1.1.5. Path command?
+20
+4
+1
+trace 10.1.1.5
+false
+traceroute 10.1.1.5
+false
+tracert 10.1.1.5
+true
+ping 10.1.1.5
+false

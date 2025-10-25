@@ -1,0 +1,16 @@
+Which two statements describe the services provided by the data link layer? (Choose two.)
+20
+6
+2
+It defines the end-to-end delivery addressing scheme.
+false
+It maintains the path between the source and destination devices during the data transmission.
+false
+It manages the access of frames to the network media.
+true
+It provides reliable delivery through link establishment and flow control.
+false
+It ensures that application data will be transmitted according to the prioritization.
+false
+It packages various Layer 3 PDUs into a frame format that is compatible with the network interface.
+true

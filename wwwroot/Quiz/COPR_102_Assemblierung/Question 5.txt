@@ -1,0 +1,12 @@
+Festplatten sind
+20
+4
+1
+CD, DVD
+false
+MB, RAM
+false
+Netzteil, ROM
+false
+HDD,SSD
+true

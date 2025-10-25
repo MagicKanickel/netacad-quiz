@@ -1,0 +1,12 @@
+This part of the address is used by an organisation to identify subnets.
+20
+4
+1
+global routing prefix
+false
+subnet mask
+false
+subnet ID
+true
+interface ID
+false

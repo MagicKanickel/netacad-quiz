@@ -1,0 +1,14 @@
+What are two types of IPv6 unicast addresses? (Choose two.)
+20
+5
+1
+multicast
+false
+loopback
+true
+link-local
+true
+anycast
+false
+broadcast
+false

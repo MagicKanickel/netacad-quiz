@@ -1,0 +1,12 @@
+Which router component holds the routing table, ARP cache, and running configuration file?
+20
+4
+1
+RAM
+true
+Flash
+false
+NVRAM
+false
+ROM
+false

@@ -1,0 +1,12 @@
+An IPv6 enabled device sends a data packet with the destination address of FF02::2. What is the target of this packet?​
+20
+4
+1
+all IPv6 enabled devices on the local link​
+false
+all IPv6 DHCP servers​
+false
+all IPv6 enabled devices across the network​
+false
+all IPv6 configured routers on the local link​
+true

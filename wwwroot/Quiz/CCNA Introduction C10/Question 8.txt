@@ -1,0 +1,12 @@
+Which characteristic describes the default gateway of a host computer?
+60
+4
+1
+the logical address of the router interface on the same network as the host
+true
+the physical address of the switch interface connected to the host computer
+false
+the physical address of the router interface on the same network
+false
+the logical address assigned to the switch interface connected to the route
+false

@@ -1,0 +1,12 @@
+When should an administrator establish a network baseline?
+20
+4
+1
+when the traffic is at peak in the network
+false
+when there is a sudden drop in traffic
+false
+at the lowest point of traffic in the network
+false
+at regular intervals over a period of time
+true

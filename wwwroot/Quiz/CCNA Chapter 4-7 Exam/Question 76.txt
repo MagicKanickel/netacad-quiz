@@ -1,0 +1,12 @@
+What action will occur if a host receives a frame with a destination MAC address of FF:FF:FF:FF:FF:FF?
+20
+4
+1
+The host will process the frame.
+true
+The host returns the frame to the switch.
+false
+The host replies to the switch with its own IP address.
+false
+The host forwards the frame to all other hosts.
+false

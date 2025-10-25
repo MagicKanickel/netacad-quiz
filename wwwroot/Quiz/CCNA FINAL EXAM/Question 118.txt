@@ -1,0 +1,12 @@
+A disgruntled employee is using some free wireless networking tools to determine information about the enterprise wireless networks. This person is planning on using this information to hack the wireless network. What type of attack is this?
+20
+4
+1
+DoS
+false
+access
+false
+reconnaissance
+true
+Trojan horse
+false

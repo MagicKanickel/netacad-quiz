@@ -1,0 +1,14 @@
+What command will prevent all unencrypted passwords from displaying in plain text in a configuration file?
+20
+5
+1
+(config)# enable password secret
+false
+(config)# enable secret Secret_Password
+false
+(config-line)# password secret
+false
+(config)# service password-encryption
+true
+(config)# enable secret Encrypted_Password
+false

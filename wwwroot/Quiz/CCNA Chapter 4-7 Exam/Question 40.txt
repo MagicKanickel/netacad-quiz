@@ -1,0 +1,14 @@
+What are two actions performed by a Cisco switch? (Choose two.)
+20
+5
+2
+building a routing table that is based on the first IP address in the frame header
+false
+using the source MAC addresses of frames to build and maintain a MAC address table
+true
+forwarding frames with unknown destination IP addresses to the default gateway
+false
+utilizing the MAC address table to forward frames via the destination MAC address
+true
+examining the destination MAC address to add new entries to the MAC address table
+false

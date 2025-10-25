@@ -1,0 +1,12 @@
+What is the purpose of the network security accounting function?
+20
+4
+1
+to require users to prove who they are
+false
+to determine which resources a user can access
+false
+to keep track of the actions of a user
+true
+to provide challenge and response questions
+false

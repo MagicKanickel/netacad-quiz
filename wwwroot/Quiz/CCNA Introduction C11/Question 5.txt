@@ -1,0 +1,12 @@
+Create four subnetworks from address 192.168.1.0/24. Network address and subnet mask of the second useable subnet?
+90
+4
+1
+subnetwork 192.168.1.64 subnet mask 255.255.255.192
+true
+subnetwork 192.168.1.32subnet mask 255.255.255.240
+false
+subnetwork 192.168.1.64 subnet mask 255.255.255.240
+false
+subnetwork 192.168.1.128subnet mask 255.255.255.192
+false

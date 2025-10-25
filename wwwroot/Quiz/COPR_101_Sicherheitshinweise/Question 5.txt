@@ -1,0 +1,12 @@
+Verletzungsgefahr bei Computer
+20
+4
+1
+Extrem hohe Spannungen
+false
+hohe Temperaturen
+false
+niedrige Spannungen
+false
+scharfe Kanten
+true

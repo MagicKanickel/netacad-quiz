@@ -1,0 +1,12 @@
+Which factor determines TCP window size?
+20
+4
+1
+the amount of data to be transmitted
+false
+the number of services included in the TCP segment
+false
+the amount of data the destination can process at one time
+true
+the amount of data the source is capable of sending at one time
+false

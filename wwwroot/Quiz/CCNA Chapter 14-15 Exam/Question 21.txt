@@ -1,0 +1,12 @@
+Which field in the TCP header indicates the status of the three-way handshake process?
+20
+4
+1
+window
+false
+reserved
+false
+checksum
+false
+control bits
+true

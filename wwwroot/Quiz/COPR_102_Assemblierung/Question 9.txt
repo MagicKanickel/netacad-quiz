@@ -1,0 +1,12 @@
+An welche Schnittstellen werden HDD angeschlossen?
+20
+4
+1
+RAM, ROM
+false
+HDD, SSD
+false
+12V, 5V
+false
+IDE, SATA
+true

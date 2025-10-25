@@ -1,0 +1,12 @@
+Which is a multicast MAC address?
+20
+4
+1
+FF-FF-FF-FF-FF-FF
+false
+5C-26-0A-4B-19-3E
+false
+01-00-5E-00-00-03
+true
+00-26-0F-4B-00-3E
+false

@@ -1,0 +1,14 @@
+What is the usable number of host IP addresses on a network that has a /26 mask?
+20
+5
+1
+256
+false
+254
+false
+64
+false
+32
+true
+16
+false

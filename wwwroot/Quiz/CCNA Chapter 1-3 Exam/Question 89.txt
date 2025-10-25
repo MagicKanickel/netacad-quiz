@@ -1,0 +1,16 @@
+Match the definition "provides context-sensitive" to the respective CLI hot key or shortcut
+20
+6
+1
+Tab
+false
+space bar
+false
+Up Arrow
+false
+Crtl+C
+false
+?
+true
+Crtl-Shift-6
+false

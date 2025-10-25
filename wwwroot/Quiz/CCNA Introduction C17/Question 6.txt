@@ -1,0 +1,12 @@
+Which element of scaling a network involves identifying the physical and logical topologies?
+20
+4
+1
+traffic analysis
+false
+network documentation
+true
+device inventory
+false
+cost analysis
+false

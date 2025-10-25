@@ -1,0 +1,14 @@
+number of bytes a destination device can accept and process at one time 
+20
+5
+1
+acknowledgment
+false
+retransmission
+false
+FCS
+false
+sequence numbers
+false
+window size
+true

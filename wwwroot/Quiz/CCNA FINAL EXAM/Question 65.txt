@@ -1,0 +1,16 @@
+What two pieces of information are displayed in the output of the show ip interface brief command? (Choose two.)
+20
+6
+2
+IP addresses
+true
+interface descriptions
+false
+MAC addresses
+false
+next-hop addresses
+false
+Layer 1 statuses
+true
+speed and duplex settings
+false

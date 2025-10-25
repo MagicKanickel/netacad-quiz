@@ -1,0 +1,12 @@
+Was erhöht das Risiko eines Stromschlages?
+20
+4
+1
+Luftfeuchtigkeit
+true
+schwitzen
+true
+Unvernunft
+true
+Zeit
+false

@@ -1,0 +1,12 @@
+Which media communication type does not require media arbitration in the data link layer?
+20
+4
+1
+deterministic
+false
+half-duplex
+false
+full-duplex
+true
+controlled access
+false

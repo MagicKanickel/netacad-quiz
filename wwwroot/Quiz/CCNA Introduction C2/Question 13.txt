@@ -1,0 +1,12 @@
+What is the default SVI on a Cisco switch?
+20
+4
+1
+VLAN1
+true
+VLAN100
+false
+VLAN99
+false
+VLAN999
+false

@@ -1,0 +1,12 @@
+Two pings were issued from a host on a local network. The first ping was issued to the IP address of the default gateway of the host and it failed. The second ping was issued to the IP address of a host outside the local network and it was successful. What is a possible cause for the failed ping?
+20
+4
+1
+The default gateway is not operational.
+false
+The default gateway device is configured with the wrong IP address.
+false
+Security rules are applied to the default gateway device, preventing it from processing ping requests.
+true
+The TCP/IP stack on the default gateway is not working properly.
+false

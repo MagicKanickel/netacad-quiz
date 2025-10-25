@@ -1,0 +1,12 @@
+Was versteht man unter dem Begriff Assemblierung?
+20
+4
+1
+Schnittstellen beschreiben
+false
+Beschriften von Computer
+false
+Zusammenbau verschiedener Komponenten
+true
+Modellversionen finden
+false

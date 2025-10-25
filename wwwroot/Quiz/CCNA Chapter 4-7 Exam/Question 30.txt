@@ -1,0 +1,12 @@
+After making configuration changes on a Cisco switch, a network administrator issues a copy running-config startup-config command. What is the result of issuing this command?
+40
+4
+1
+The new configuration will be stored in flash memory.
+false
+The new configuration will be loaded if the switch is restarted.
+true
+The current IOS file will be replaced with the newly configured file.
+false
+The configuration changes will be removed and the original configuration will be restored.
+false

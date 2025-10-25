@@ -1,0 +1,16 @@
+Which two types of IPv6 messages are used in place of ARP for address resolution?
+20
+6
+2
+anycast
+false
+broadcast
+false
+echo reply
+false
+echo request
+false
+neighbor solicitation
+true
+neighbor advertisement
+true

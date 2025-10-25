@@ -1,0 +1,12 @@
+Which statement describes the half-duplex mode of data transmission?
+60
+4
+1
+Data that is transmitted over the network can only flow in one direction.
+false
+Data that is transmitted over the network flows in one direction at a time.
+true
+Data flows in one direction to different destinations simultaneously.
+false
+Data that is transmitted over the network flows in both directions.
+false

@@ -1,0 +1,16 @@
+Data is being sent from a source PC to a destination server. Which three statements correctly describe the function of TCP or UDP in this situation? (Choose three.)
+20
+6
+3
+The source port field identifies the running application or service that will handle data returning to the PC.
+true
+The TCP process running on the PC randomly selects the destination port when establishing a session with the server.
+false
+UDP segments are encapsulated within IP packets for transport across the network.
+true
+The UDP destination port number identifies the application or service on the server which will handle the data.
+true
+TCP is the preferred protocol when a function requires lower network overhead.
+false
+The TCP source port number identifies the sending host on the network.
+false

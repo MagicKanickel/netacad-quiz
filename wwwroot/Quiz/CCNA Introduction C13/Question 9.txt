@@ -1,0 +1,12 @@
+What message is sent by a host to check the uniqueness of an IPv6 address before using that address?
+20
+4
+1
+neighbor solicitation
+true
+ARP request
+false
+echo request
+false
+router solicitation
+false

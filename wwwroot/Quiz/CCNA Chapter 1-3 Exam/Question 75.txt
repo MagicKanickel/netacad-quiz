@@ -1,0 +1,12 @@
+What is fault scalability?
+15
+4
+1
+Protect the network from unauthorized acces.
+false
+Provide redundant links and devices.
+false
+Match the type of communication with a specific priority.
+false
+Expand the network without degrading the service for existing users.
+true

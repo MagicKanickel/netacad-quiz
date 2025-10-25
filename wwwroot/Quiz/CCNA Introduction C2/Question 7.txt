@@ -1,0 +1,12 @@
+An administrator has just changed the IP address of an interface on an IOS device. What else must be done?
+30
+4
+1
+Copy the running configuration to the startup configuration file.
+false
+Reload the device and type yes when prompted to save the configuration.
+false
+Copy the information in the startup conf. file to the running conf.
+false
+Nothing must be done.&nbsp;
+true

@@ -1,0 +1,13 @@
+An employee complains that a Windows PC cannot connect to the Internet. A network technician issues the ipconfig command on the PC and is shown an IP address of 169.254.10.3. Which two conclusions can be drawn? (Choose two.)
+40
+2
+The PC cannot contact a DHCP server.
+true
+The DNS server address is misconfigured.
+false
+The default gateway address is not configured.
+false
+The PC is configured to obtain an IP address automatically.
+true
+The enterprise network is misconfigured for dynamic routing
+false

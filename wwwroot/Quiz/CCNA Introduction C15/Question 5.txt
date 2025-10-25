@@ -1,0 +1,12 @@
+Which application layer protocol uses message types such as GET, PUT, and POST?
+20
+4
+1
+HTTP
+true
+DHCP
+false
+DNS
+false
+POP3
+false

@@ -1,0 +1,12 @@
+A network technician is troubleshooting an issue and needs to verify the IP addresses of all interfaces on a router. What is the best command to use to accomplish the task?
+20
+4
+1
+show ip interface brief
+true
+nslookup
+false
+ipconfig getifaddr en0
+false
+show ip route
+false

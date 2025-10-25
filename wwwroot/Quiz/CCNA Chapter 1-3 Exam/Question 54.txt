@@ -1,0 +1,21 @@
+Refer to the exhibit. An administrator is trying to configure the switch but receives the error message that is displayed in the exhibit. What is the problem?
+20
+4
+1
+
+
+Switch1> config t
+	    ^
+% invalid input detected at '^' marker.
+
+
+
+
+The entire command, configure terminal, must be used.
+false
+The administrator is already in global configuration mode.
+false
+The administrator must first enter privileged EXEC mode before issuing the command.
+true
+The administrator must connect via the console port to access global configuration mode.
+false

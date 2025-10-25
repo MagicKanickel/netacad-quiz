@@ -1,0 +1,12 @@
+A user issues a ping fe80:65ab:dcc1::100 command and receives a response that includes a code of 3 . What does this code represent?
+20
+4
+1
+address unreachable
+true
+communication with the destination administratively prohibited
+false
+beyond scope of the source address
+false
+no route to destination
+false

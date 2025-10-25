@@ -1,0 +1,12 @@
+What is a responsibility of transport layer protocols?
+20
+4
+1
+providing network access
+false
+translating private IP addresses to public IP addresses
+false
+determining the best path to forward a packet
+false
+tracking individual conversations
+true

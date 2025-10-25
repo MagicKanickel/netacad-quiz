@@ -1,0 +1,12 @@
+Given the binary address of 11101100 00010001 00001100 00001010, which address does this represent in dotted decimal?
+90
+4
+1
+234.17.10.9
+false
+234.16.12.10
+false
+236.17.12.6
+false
+236.17.12.10
+true

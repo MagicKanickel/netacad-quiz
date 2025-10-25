@@ -1,0 +1,12 @@
+While trying to solve a network issue, a technician made multiple changes to the current router configuration file. The changes did not solve the problem and were not saved. What action can the technician take to discard the changes and work with the file in NVRAM?
+20
+4
+1
+Issue the reload command without saving the running configuration.
+true
+Delete the vlan.dat file and reboot the device.
+false
+Close and reopen the terminal emulation software.
+false
+Issue the copy startup-config running-config command.
+false

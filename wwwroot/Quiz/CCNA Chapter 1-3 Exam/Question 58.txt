@@ -1,0 +1,12 @@
+What term describes a type of network used by people who work from home or from a small remote office?
+20
+4
+1
+SOHO network
+true
+BYOD
+false
+quality of service
+false
+converged network
+false

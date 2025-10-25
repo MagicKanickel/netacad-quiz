@@ -1,0 +1,12 @@
+During the encapsulation process, what occurs at the data link layer for a PC connected to an Ethernet network?
+20
+4
+1
+An IP address is added.
+false
+The logical address is added
+false
+The physical address is added.
+true
+The process port number is added
+false

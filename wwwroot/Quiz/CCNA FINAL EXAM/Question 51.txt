@@ -1,0 +1,14 @@
+message sizing
+20
+5
+1
+the process of determining when to begin sending messages on a network
+false
+the process of converting information from one format into another acceptable for tansmission 
+false
+the process of placing one message format inside another message format
+false
+the process of unpacking one message format from another message format
+false
+the process of breaking up a long message into individual pieces before being send over the network
+true

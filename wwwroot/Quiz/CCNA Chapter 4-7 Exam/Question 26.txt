@@ -1,0 +1,12 @@
+What type of communication rule would best describe CSMA/CD?
+20
+4
+1
+access method
+true
+flow control
+false
+flow contro
+false
+message encoding
+false

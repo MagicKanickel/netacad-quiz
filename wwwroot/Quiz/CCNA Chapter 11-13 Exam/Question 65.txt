@@ -1,0 +1,12 @@
+A host is transmitting a unicast. Which host or hosts will receive it?
+20
+4
+1
+one specific host
+true
+a specially defined group of hosts
+false
+all hosts on the Internet
+false
+the closest neighbor on the same network
+false

@@ -1,0 +1,12 @@
+What command can be used on a Windows PC to see the IP configuration of that computer?
+20
+4
+1
+show ip interface brief
+false
+ping
+false
+show interfaces
+false
+ipconfig
+true

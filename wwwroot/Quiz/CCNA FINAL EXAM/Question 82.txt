@@ -1,0 +1,12 @@
+What service is provided by HTTPS?
+20
+4
+1
+Uses encryption to provide secure remote access to network devices and servers.
+false
+Resolves domain names, such as cisco.com, into IP addresses.
+false
+Uses encryption to secure the exchange of text, graphic images, sound, and video on the web.
+true
+Allows remote access to network devices and servers.
+false

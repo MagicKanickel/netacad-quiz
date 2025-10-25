@@ -1,0 +1,14 @@
+A network administrator notices that some newly installed Ethernet cabling is carrying corrupt and distorted data signals. The new cabling was installed in the ceiling close to fluorescent lights and electrical equipment. Which two factors may interfere with the copper cabling and result in signal distortion and data corruption? (Choose two.)
+20
+5
+2
+crosstalk
+false
+extended length of cabling
+false
+RFI​
+true
+EMI
+true
+signal attenuation
+false

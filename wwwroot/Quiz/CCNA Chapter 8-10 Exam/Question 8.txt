@@ -1,0 +1,12 @@
+Which parameter does the router use to choose the path to the destination when there are multiple routes available?
+20
+4
+1
+the lower metric value that is associated with the destination network
+true
+the lower gateway IP address to get to the destination network
+false
+the higher metric value that is associated with the destination network
+false
+the higher gateway IP address to get to the destination network
+false

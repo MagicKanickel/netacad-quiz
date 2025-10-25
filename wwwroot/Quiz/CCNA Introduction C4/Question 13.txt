@@ -1,0 +1,12 @@
+Under which situation would a wireless connection be recommended?
+30
+4
+1
+The end-user device only has an Ethernet NIC.
+false
+needed mobility when connecting to the network
+true
+because of performance requirements
+false
+because the area has a high concentration of RFI.
+false

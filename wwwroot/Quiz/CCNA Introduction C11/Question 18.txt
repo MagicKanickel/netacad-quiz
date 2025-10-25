@@ -1,0 +1,12 @@
+Which address is a valid public address?
+60
+4
+1
+198.133.219.17
+true
+192.168.1.245
+false
+64.104.78.227
+true
+10.15.250.5
+false

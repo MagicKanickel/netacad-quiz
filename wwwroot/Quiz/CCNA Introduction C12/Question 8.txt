@@ -1,0 +1,12 @@
+What is the minimum configuration for a router interface that is participating in IPv6 routing?
+30
+4
+1
+to have only a link-local IPv6 address
+true
+to have both an IPv4 and an IPv6 address
+false
+to have a self-generated loopback address
+false
+to have both a link-local and a global unicast IPv6 address
+false

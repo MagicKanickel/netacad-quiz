@@ -1,0 +1,12 @@
+What is the purpose of the command ping ::1?
+20
+4
+1
+It tests the internal configuration of an IPv6 host.
+true
+It tests the broadcast capability of all hosts on the subnet.
+false
+It tests the multicast connectivity to all hosts on the subnet.
+false
+It tests the reachability of the default gateway for the network.
+false

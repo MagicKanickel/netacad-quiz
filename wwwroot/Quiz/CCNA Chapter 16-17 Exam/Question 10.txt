@@ -1,0 +1,12 @@
+What is a feature or purpose of NTP peers?
+30
+4
+1
+NTP peers are NTP clients that share a common NTP server.
+false
+An NTP client that loses connection with an NTP server can synchronize the time with an NTP peer.
+false
+NTP peers query each other to synchronize their clocks.
+true
+An NTP peer that loses connection with another NTP peer loses all NTP synchronization.
+false

@@ -1,0 +1,14 @@
+Which destination address is used in an ARP request frame?
+20
+5
+1
+0.0.0.0
+false
+255.255.255.255
+false
+FFFF.FFFF.FFFF
+true
+AAAA.AAAA.AAAA
+false
+the physical address of the destination host
+false

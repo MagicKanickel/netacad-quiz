@@ -1,0 +1,15 @@
+Refer to the exhibit. The network administrator has assigned the LAN of LBMISS an address range of 192.168.10.0. This address range has been subnetted using a /29 prefix. In order to accommodate a new building, the technician has decided to use the fifth subnet for configuring the new network (subnet zero is the first subnet). By company policies, the router interface is always assigned the first usable host address and the workgroup server is given the last usable host address. Which configuration should be entered into the properties of the workgroup server to allow connectivity to the Internet?
+20
+5
+1
+IP address: 192.168.10.65 subnet mask: 255.255.255.240, default gateway: 192.168.10.76
+false
+IP address: 192.168.10.38 subnet mask: 255.255.255.240, default gateway: 192.168.10.33
+false
+IP address: 192.168.10.38 subnet mask: 255.255.255.248, default gateway: 192.168.10.33
+true
+IP address: 192.168.10.41 subnet mask: 255.255.255.248, default gateway: 192.168.10.46
+false
+IP address: 192.168.10.254 subnet mask: 255.255.255.0, default gateway: 192.168.10.1
+false
+Question_118-image.png

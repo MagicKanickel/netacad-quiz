@@ -1,0 +1,12 @@
+What characteristic describes an IPS?
+20
+4
+1
+a tunneling protocol that provides remote users with secure access into the network of an organization
+false
+a network device that filters access and traffic coming into a network
+true
+software that identifies fast-spreading threats
+false
+software on a router that filters traffic based on IP addresses or applications
+false

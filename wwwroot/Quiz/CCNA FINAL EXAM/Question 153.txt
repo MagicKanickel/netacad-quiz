@@ -1,0 +1,12 @@
+What service is provided by FTP?
+20
+4
+1
+A basic set of rules for exchanging text, graphic images, sound, video, and other multimedia files on the web.
+false
+An application that allows real-time chatting among remote users.
+false
+Allows for data transfers between a client and a file server.
+true
+Uses encryption to secure the exchange of text, graphic images, sound, and video on the web.
+false

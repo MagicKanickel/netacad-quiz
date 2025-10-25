@@ -1,0 +1,12 @@
+What is the purpose of protocols in data communications?
+30
+4
+1
+specifying the bandwidth or medium for each type of communication
+false
+specifying the device operating systems that will support the communication
+false
+providing the rules required for a specific type of communication to occur
+true
+dictating the content of the message sent during communication
+false

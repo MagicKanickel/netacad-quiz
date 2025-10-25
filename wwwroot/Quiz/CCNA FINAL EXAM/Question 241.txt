@@ -1,0 +1,15 @@
+Refer to the exhibit. A network engineer has been given the network address of 192.168.99.0 and a subnet mask of 255.255.255.192 to subnet across the four networks shown. How many total host addresses are unused across all four subnets?
+20
+5
+1
+88
+false
+200
+true
+72
+false
+224
+false
+158
+false
+Question_121-image.png

@@ -1,0 +1,12 @@
+Which message delivery option is used when all devices need to receive the same message simultaneously?
+20
+4
+1
+duplex
+false
+unicast
+false
+multicast
+false
+broadcast
+true

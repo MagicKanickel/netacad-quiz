@@ -1,0 +1,12 @@
+What is the dotted decimal representation of the IPv4 address 11001011.00000000.01110001.11010011?
+90
+4
+1
+192.0.2.199
+false
+209.165.201.223
+false
+203.0.113.211
+true
+198.51.100.201
+false

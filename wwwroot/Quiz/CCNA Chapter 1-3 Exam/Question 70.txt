@@ -1,0 +1,12 @@
+At which OSI layer is a destination IP address added to a PDU during the encapsulation process?
+20
+4
+1
+network layer
+true
+application layer
+false
+transport layer
+false
+presentation layer
+false

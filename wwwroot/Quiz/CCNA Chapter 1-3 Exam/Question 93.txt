@@ -1,0 +1,12 @@
+This organization promotes the open development, evolution, and use of the Internet throughout the world.
+40
+4
+1
+ISOC
+true
+ISO
+false
+EIA
+false
+IANA
+false

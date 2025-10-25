@@ -1,0 +1,12 @@
+Which term describes a field in the IPv4 packet header that contains an 8-bit binary value used to determine the priority of each packet?
+20
+4
+1
+differentiated services
+true
+destination IPv4 address
+false
+source IPv4 address
+false
+protocol
+false

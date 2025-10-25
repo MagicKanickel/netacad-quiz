@@ -1,0 +1,12 @@
+Users are reporting longer delays in authentication and in accessing network resources during certain time periods of the week. What kind of information should network engineers check to find out if this situation is part of a normal network behavior?
+20
+4
+1
+syslog records and messages
+false
+the network performance baseline
+true
+debug output and packet captures
+false
+network configuration files
+false

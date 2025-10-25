@@ -1,0 +1,12 @@
+Kann Elektrostatik Bauelemente zerstören?
+20
+4
+1
+ja
+true
+ja ab 1000V
+false
+ja ab 30 000V
+false
+nein
+false

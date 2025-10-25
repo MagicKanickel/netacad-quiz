@@ -1,0 +1,12 @@
+Which IPv4 address format was created for ease of use by people and is expressed as 201.192.1.14?
+20
+4
+1
+binary
+false
+dotted decimal
+true
+hexadecimal
+false
+ASCII
+false

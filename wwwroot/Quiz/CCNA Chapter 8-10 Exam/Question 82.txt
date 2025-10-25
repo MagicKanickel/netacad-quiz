@@ -1,0 +1,14 @@
+Match the commands to the correct actions. (Not all options are used.) configures a name on the router
+20
+5
+1
+Router(config)# hostname CL1
+true
+Router(config)# enable password Cisco
+false
+Router(config-line)# password class
+false
+Router(config)# password Cisco
+false
+Router(config)# banner motd #
+false

@@ -1,0 +1,12 @@
+What is the purpose of ARP in an IPv4 network?
+30
+4
+1
+to forward data onward based on the destination IP address
+false
+to forward data onward based on the destination MAC address.
+false
+to obtain a specific MAC address when an IP address is known
+true
+to build the MAC table in a switch from the information that is gathered
+false

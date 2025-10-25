@@ -1,0 +1,12 @@
+Which process failed if a computer cannot access the internet and received an IP address of 169.254.142.5?
+20
+4
+1
+IP
+false
+DNS
+false
+DHCP
+true
+HTTP
+false

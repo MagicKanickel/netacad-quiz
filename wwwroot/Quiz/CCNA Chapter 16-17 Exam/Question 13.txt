@@ -1,0 +1,12 @@
+Which firewall feature is used to ensure that packets coming into a network are legitimate responses to requests initiated from internal hosts?
+30
+4
+1
+stateful packet inspection
+true
+URL filtering
+false
+application filtering
+false
+packet filtering
+false

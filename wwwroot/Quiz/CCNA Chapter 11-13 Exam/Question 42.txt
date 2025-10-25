@@ -1,0 +1,12 @@
+Match the IPv6 address with the IPv6 address type. ::1
+20
+4
+1
+all node multicast
+false
+loopback
+true 
+unique local
+false
+link-local
+false 

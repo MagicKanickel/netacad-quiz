@@ -1,0 +1,12 @@
+How does the network layer use the MTU value?
+60
+4
+1
+The MTU is passed to the network layer by the data link layer.
+true
+To increase speed of delivery, the network layer ignores the MTU.
+false
+The network layer adjusts the speed of transmission to accommodate it.
+false
+The network layer depends on the higher level layers to determine the MTU.
+false

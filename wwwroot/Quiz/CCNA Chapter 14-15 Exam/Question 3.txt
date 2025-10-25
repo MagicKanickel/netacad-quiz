@@ -1,0 +1,12 @@
+What is the complete range of TCP and UDP well-known ports?
+30
+4
+1
+0 to 255
+false
+0 to 1023
+true
+256 – 1023
+false
+1024 – 49151
+false

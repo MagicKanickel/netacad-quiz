@@ -1,0 +1,12 @@
+Which scenario describes a function provided by the transport layer?
+20
+4
+1
+A student is using a classroom VoIP phone to call home. The unique identifier burned into the phone is a transport layer address used to contact another network device on the same network.
+false
+A student is playing a short web-based movie with sound. The movie and sound are encoded within the transport layer header.
+false
+A student has two web browser windows open in order to access two web sites. The transport layer ensures the correct web page is delivered to the correct browser window.
+true
+A corporate worker is accessing a web server located on a corporate network. The transport layer formats the screen so the web page appears properly no matter what device is being used to view the web site.
+false

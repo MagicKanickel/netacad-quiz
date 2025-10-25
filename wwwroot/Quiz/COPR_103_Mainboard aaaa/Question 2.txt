@@ -1,0 +1,12 @@
+Was bedeutet beim CPU Sockel LGA?
+20
+4
+1
+Landing Grid Area
+false
+Loop Gain Array
+false
+Land Grid Array
+true
+Leichtgängig und austauschbar
+false

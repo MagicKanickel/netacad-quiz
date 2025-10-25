@@ -1,0 +1,12 @@
+Which statement is true about MAC addresses?
+30
+4
+1
+MAC addresses are implemented by software.
+false
+The ISO is responsible for MAC addresses regulations.
+false
+A NIC only needs a MAC address if connected to a WAN.
+false
+The first three bytes are used by the vendor assigned OUI.
+true

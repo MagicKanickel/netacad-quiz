@@ -1,0 +1,12 @@
+An administrator decides to use “WhatAreyouwaiting4” as the password on a newly installed router. Which statement applies to the password choice?
+20
+4
+1
+It is strong because it uses a passphrase.
+true
+It is weak because it is often the default password on new devices.
+false
+It is weak since it uses easily found personal information.
+false
+It is weak since it is a word that is easily found in the dictionary.
+false

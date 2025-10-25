@@ -1,0 +1,12 @@
+A wireless host needs to request an IP address. What protocol would be used to process the request?
+20
+4
+1
+FTP
+false
+SNMP
+false
+HTTP
+false
+DHCP
+true

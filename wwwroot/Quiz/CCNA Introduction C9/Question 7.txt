@@ -1,0 +1,12 @@
+What is one function of the ARP protocol?
+30
+4
+1
+obtaining an IPv4 address automatically
+false
+mapping a domain name to its IP address
+false
+resolving an IPv4 address to a MAC address
+true
+maintaining a table of domain names with their resolved IP addresses
+false

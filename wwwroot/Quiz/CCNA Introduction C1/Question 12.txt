@@ -1,0 +1,12 @@
+An employee wants to access the network of the organization remotely, in the safest possible way.
+20
+4
+1
+ACL
+false
+IPS
+false
+VPN
+true
+BYOD
+false

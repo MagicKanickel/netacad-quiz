@@ -1,0 +1,14 @@
+Which procedure is used to reduce the effect of crosstalk in copper cables?
+20
+5
+1
+requiring proper grounding connections
+false
+twisting opposing circuit wire pairs together
+true
+wrapping the bundle of wires with metallic shielding
+false
+designing a cable infrastructure to avoid crosstalk interference
+false
+avoiding sharp bends during installation
+false

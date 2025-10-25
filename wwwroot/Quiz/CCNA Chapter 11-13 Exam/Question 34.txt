@@ -1,0 +1,12 @@
+Refer to the exhibit. A company is deploying an IPv6 addressing scheme for its network. The company design document indicates that the subnet portion of the IPv6 addresses is used for the new hierarchical network design, with the s ite subsection to represent multiple geographical sites of the company, the s ub-site section to represent multiple campuses at each site, and the s ubnet section to indicate each network segment separated by routers. With such a scheme, what is the maximum number of subnets achieved per sub-site ?
+60
+4
+1
+0
+false
+4
+false
+16
+true
+256
+false

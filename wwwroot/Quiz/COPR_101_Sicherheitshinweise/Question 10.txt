@@ -1,0 +1,12 @@
+Bei falscher Handhabung führt ESD zu  Fehler die
+20
+4
+1
+leicht sichtbar sind
+false
+führen immer zum Totalschaden
+false
+nur Kunststoff angreifen
+false
+nicht sichtbar sind
+true

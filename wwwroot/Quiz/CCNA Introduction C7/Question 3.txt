@@ -1,0 +1,12 @@
+What will a host on an Ethernet network do if it receives a frame with a destination MAC that does not match its own?
+30
+4
+1
+It will discard the frame.
+true
+It will forward the frame to the next host.
+false
+It will remove the frame from the media.
+false
+It will strip off the data-link frame to check the destination IP address.
+false

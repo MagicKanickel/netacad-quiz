@@ -1,0 +1,12 @@
+What characteristic describes a virus?
+20
+4
+1
+a network device that filters access and traffic coming into a network
+false
+the use of stolen credentials to access private data
+false
+an attack that slows or crashes a device or network service
+false
+malicious software or code running on an end device
+true

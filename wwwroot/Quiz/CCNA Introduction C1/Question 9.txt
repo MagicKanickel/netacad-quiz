@@ -1,0 +1,12 @@
+Which two Internet connection options do not require that physical cables be run to the building?
+20
+4
+1
+DSL
+false
+cellular
+true
+satellite
+true
+dedicated leased line
+false

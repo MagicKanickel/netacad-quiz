@@ -1,0 +1,12 @@
+Which action is taken by a Layer 2 switch when it receives a Layer 2 broadcast frame?
+30
+4
+1
+It drops the frame.
+false
+It sends the frame to all ports that are registered
+false
+It sends the frame to all ports except the port on which it received
+true
+It sends the frame to all ports.
+false

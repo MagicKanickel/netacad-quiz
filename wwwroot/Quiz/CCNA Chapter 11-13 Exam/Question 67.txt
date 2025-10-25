@@ -1,0 +1,12 @@
+A host is transmitting a multicast. Which host or hosts will receive it?
+20
+4
+1
+a specially defined group of hosts
+true
+the closest neighbor on the same network
+false
+one specific host
+false
+directly connected network devices
+false

@@ -1,0 +1,12 @@
+A user wants to know the IP address of the PC. What is the best command to use to accomplish the task?
+20
+4
+1
+ipconfig
+true
+copy running-config startup-config
+false
+show interfaces
+false
+show ip nat translations
+false

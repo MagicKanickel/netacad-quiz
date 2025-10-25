@@ -1,0 +1,12 @@
+Ping 127.0.0.1 in a command prompt. Result 4 positive replies. What conclusion can be drawn based on this test?
+60
+4
+1
+The PC can access the Internet. However, the web browser may not work.
+false
+The IP address obtained from the DHCP server is correct.
+false
+The PC can access the network.
+false
+The TCP/IP implementation is functional.
+true

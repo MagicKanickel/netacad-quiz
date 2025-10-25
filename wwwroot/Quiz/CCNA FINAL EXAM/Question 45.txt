@@ -1,0 +1,14 @@
+Which two commands can be used on a Windows host to display the routing table?
+20
+5
+2
+netstat -s
+false
+route print
+true
+show ip route
+false
+netstat -r
+true
+tracert
+false

@@ -1,0 +1,12 @@
+Which statement is true about FTP?
+20
+4
+1
+The client can choose if establish one or two connections with the server.
+false
+The client can download data from or upload data to the server.
+true
+FTP is a peer-to-peer application.
+false
+FTP does not provide reliability during data transmission.
+false

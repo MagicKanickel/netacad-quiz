@@ -1,0 +1,12 @@
+What is the aim of an ARP spoofing attack?
+20
+4
+1
+to flood the network with ARP reply broadcasts
+false
+to fill switch MAC address tables with bogus addresses
+false
+to associate IP addresses to the wrong MAC address
+true
+to overwhelm network hosts with ARP requests
+false

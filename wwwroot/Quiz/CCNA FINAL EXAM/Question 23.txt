@@ -1,0 +1,8 @@
+Peer-to-peer network? (2 Answers)
+20
+2
+2
+no dedicated server is required
+true
+client and server roles are set on a per request basis
+true

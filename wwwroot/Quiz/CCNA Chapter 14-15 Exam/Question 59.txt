@@ -1,0 +1,12 @@
+59. A client creates a packet to send to a server. The client is requesting SNMP service. What number will be used as the destination port number in the sending packet?
+20
+4
+1
+161
+true
+443
+false
+110
+false
+80
+false

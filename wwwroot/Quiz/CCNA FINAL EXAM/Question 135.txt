@@ -1,0 +1,12 @@
+What mechanism is used by a router to prevent a received IPv4 packet from traveling endlessly on a network?
+20
+4
+1
+It checks the value of the TTL field and if it is 0, it discards the packet and sends a Destination Unreachable message to the source host.
+false
+It checks the value of the TTL field and if it is 100, it discards the packet and sends a Destination Unreachable message to the source host.
+false
+It decrements the value of the TTL field by 1 and if the result is 0, it discards the packet and sends a Time Exceeded message to the source host.
+true
+It increments the value of the TTL field by 1 and if the result is 100, it discards the packet and sends a Parameter Problem message to the source host.
+false

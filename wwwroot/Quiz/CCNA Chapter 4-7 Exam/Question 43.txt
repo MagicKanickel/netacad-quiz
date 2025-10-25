@@ -1,0 +1,12 @@
+What is one advantage of using the cut-through switching method instead of the store-and-forward switching method?
+40
+4
+1
+has a positive impact on bandwidth by dropping most of the invalid frames
+false
+makes a fast forwarding decision based on the source MAC address of the frame
+false
+has a lower latency appropriate for high-performance computing applications​
+true
+provides the flexibility to support any mix of Ethernet speeds
+false

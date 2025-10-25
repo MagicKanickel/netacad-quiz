@@ -1,0 +1,12 @@
+What three blocks of addresses are defined by RFC 1918 for private network use?
+20
+4
+1
+10.0.0.0/8
+true
+172.16.0.0/12
+true
+192.168.0.0/16
+true
+169.254.0.0/16
+false

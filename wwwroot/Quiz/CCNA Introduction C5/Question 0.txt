@@ -1,0 +1,12 @@
+What is the binary representation for the decimal number 173?
+120
+4
+1
+10100111
+false
+10100101
+false
+10101101
+true
+10110101
+false

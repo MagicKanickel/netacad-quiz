@@ -1,0 +1,15 @@
+Refer to the exhibit. On the basis of the output, which two statements about network connectivity are correct? (Choose two.)
+20
+5
+1
+This host does not have a default gateway configured.
+false
+There are 4 hops between this device and the device at 192.168.100.1.
+true
+There is connectivity between this device and the device at 192.168.100.1.
+true
+The connectivity between these two hosts allows for videoconferencing calls.
+false
+The average transmission time between the two hosts is 2 milliseconds.
+false
+Question_43-image.png

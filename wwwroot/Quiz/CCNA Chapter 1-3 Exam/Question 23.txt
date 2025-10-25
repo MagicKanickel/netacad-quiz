@@ -1,0 +1,12 @@
+How is SSH different from Telnet?
+20
+4
+1
+SSH makes connections over the network, whereas Telnet is for out-of-band access.
+false
+SSH provides security to remote sessions by encrypting messages and using user authentication. Telnet is considered insecure and sends messages in plaintext.
+true
+SSH requires the use of the PuTTY terminal emulation program. Tera Term must be used to connect to devices through the use of Telnet.
+false
+SSH must be configured over an active network connection, whereas Telnet is used to connect to a device from a console connection.
+false

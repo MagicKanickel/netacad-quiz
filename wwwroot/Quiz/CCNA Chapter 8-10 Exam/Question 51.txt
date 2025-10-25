@@ -1,0 +1,12 @@
+Which term describes a field in the IPv4 packet header that contains a 32-bit binary value associated with an interface on the sending device?
+20
+4
+1
+source IPv4 address
+true
+destination IPv4 address
+false
+protocol
+false
+TTL
+false

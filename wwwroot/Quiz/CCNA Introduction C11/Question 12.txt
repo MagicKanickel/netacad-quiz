@@ -1,0 +1,12 @@
+What is the broadcast address for network 172.16.16.0/22?
+20
+4
+1
+172.16.16.255
+false
+172.16.20.255
+false
+172.16.17.255
+false
+172.16.19.255
+true

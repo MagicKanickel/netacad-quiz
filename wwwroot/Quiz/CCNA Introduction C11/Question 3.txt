@@ -1,0 +1,12 @@
+Subnetting the 192.168.10.0/24 network into subnets with /26 masks. How many subnets are created?
+60
+4
+1
+1
+false
+4
+true
+16
+false
+64
+false

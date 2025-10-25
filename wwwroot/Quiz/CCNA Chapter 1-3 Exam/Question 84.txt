@@ -1,0 +1,10 @@
+What IOS mode does this statement correspond to: identified by a prompt ending with the # character
+20
+3
+1
+user EXEC mode
+false
+privileged EXEC mode
+true
+global configuration mode
+false

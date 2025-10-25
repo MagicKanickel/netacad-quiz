@@ -1,0 +1,12 @@
+What OSI physical layer term describes the process by which one wave modifies another wave?
+20
+4
+1
+modulation
+true
+IEEE
+false
+EIA/TIA
+false
+air
+false

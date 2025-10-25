@@ -1,0 +1,12 @@
+What is one main characteristic of the data link layer?
+20
+4
+1
+It generates the electrical or optical signals that represent the 1 and 0 on the media.
+false
+It converts a stream of data bits into a predefined code.
+false
+It shields the upper layer protocol from being aware of the physical medium to be used in the communication.
+true
+It accepts Layer 3 packets and decides the path by which to forward the packet to a remote network.
+false

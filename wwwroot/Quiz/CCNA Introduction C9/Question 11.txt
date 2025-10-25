@@ -1,0 +1,12 @@
+The ARP table in a switch maps which two types of address together?
+20
+4
+1
+Layer 3 address to a Layer 2 address
+true
+Layer 3 address to a Layer 4 address
+false
+Layer 4 address to a Layer 2 address
+false
+Layer 2 address to a Layer 4 address
+false

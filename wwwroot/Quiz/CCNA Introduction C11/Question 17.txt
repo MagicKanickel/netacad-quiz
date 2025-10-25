@@ -1,0 +1,12 @@
+You receive a networkadress from another person. 192.168.25.10 Can you start a video conference?
+30
+4
+1
+This is a loopback address.
+false
+This is a link-local address.
+false
+There is an IP address conflict.
+false
+This is a private IP address
+true

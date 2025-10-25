@@ -1,0 +1,12 @@
+How are port numbers used in the TCP/IP encapsulation process?
+20
+4
+1
+Source port numbers and destination port numbers are not necessary when UDP is the transport layer protocol being used for the communication.
+false
+Source port and destination port numbers are randomly generated.
+false
+If multiple conversations occur that are using the same service, the source port number is used to track the separate conversations.
+true
+Destination port numbers are assigned automatically and cannot be changed.
+false

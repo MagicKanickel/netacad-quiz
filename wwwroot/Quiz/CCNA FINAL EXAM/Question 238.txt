@@ -1,0 +1,17 @@
+Refer to the exhibit. Which two network addresses can be assigned to the network containing 10 hosts? Your answers should waste the fewest addresses, not reuse addresses that are already assigned, and stay within the 10.18.10.0/24 range of addresses. (Choose two.)
+20
+6
+2
+10.18.10.200/28
+false
+10.18.10.208/28
+true
+10.18.10.240/27
+false
+10.18.10.200/27
+false
+10.18.10.224/27
+false
+10.18.10.224/28
+true
+Question_113-image.png

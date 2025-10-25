@@ -1,0 +1,12 @@
+Backbone cabeling is used in....
+20
+4
+1
+Copper Cables
+false
+Fiber Optic
+true
+Wireless
+false
+nothing
+false

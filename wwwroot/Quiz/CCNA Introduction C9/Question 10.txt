@@ -1,0 +1,12 @@
+When an IP packet is sent to a host on a remote network, what information is provided by ARP?
+30
+4
+1
+the IP address of the destination host
+false
+the MAC address of the router interface closest to the sending host
+true
+the IP address of the default gateway
+false
+the MAC address of the switch port that connects to the sending host
+false

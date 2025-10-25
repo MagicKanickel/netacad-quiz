@@ -1,0 +1,12 @@
+A network technician is troubleshooting an issue and needs to verify all of the IPv6 interface addresses on a router. What is the best command to use to accomplish the task?
+30
+4
+1
+show ipv6 interface
+true
+show interfaces
+false
+show ip nat translations
+false
+show ip route
+false

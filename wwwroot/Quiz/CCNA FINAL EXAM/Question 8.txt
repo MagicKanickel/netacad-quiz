@@ -1,0 +1,12 @@
+A network administrator is adding a new LAN to a branch office. The new LAN must support 200 connected devices. What is the smallest network mask that the network administrator can use for the new network?
+20
+4
+1
+255.255.255.240
+false
+255.255.255.0
+true
+255.255.255.248
+false
+255.255.255.224
+false

@@ -1,0 +1,14 @@
+A network administrator requires access to manage routers and switches locally and remotely. Match the description to the access method. (Not all options are used.) preferred out-of-band access method
+20
+5
+1
+SSH
+false
+console
+true
+FTP
+false
+AUX
+false
+Telnet
+false

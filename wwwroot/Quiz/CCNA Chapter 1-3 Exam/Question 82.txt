@@ -1,0 +1,14 @@
+24. An administrator is configuring a switch console port with a password. In what order will the administrator travel through the IOS modes of operation in order to reach the mode in which the configuration commands will be entered? (Not all options are used.) (final mode)
+20
+4
+1
+interface configuration mode
+false
+privileged Exec mode
+false
+line configuration mode
+true
+global configuration mode
+false
+user EXEC mode
+false

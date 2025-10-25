@@ -1,0 +1,16 @@
+A network administrator is designing the layout of a new wireless network. Which three areas of concern should be accounted for when building a wireless network? (Choose three.)
+20
+6
+3
+extensive cabling
+false
+mobility options
+false
+packet collision
+false
+interference
+true
+security
+true
+coverage area
+true

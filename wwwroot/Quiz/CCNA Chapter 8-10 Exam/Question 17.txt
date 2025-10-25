@@ -1,0 +1,12 @@
+What routing table entry has a next hop address associated with a destination network?
+20
+4
+1
+directly-connected routes
+false
+local routes
+false
+remote routes
+true
+C and L source routes
+false

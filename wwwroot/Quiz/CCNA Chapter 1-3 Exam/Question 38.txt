@@ -1,0 +1,12 @@
+When IPv4 addressing is manually configured on a web server, which property of the IPv4 configuration identifies the network and host portion for an IPv4 address?
+25
+4
+1
+DNS server address
+false
+subnet mask
+true
+default gateway
+false
+DHCP server address
+false

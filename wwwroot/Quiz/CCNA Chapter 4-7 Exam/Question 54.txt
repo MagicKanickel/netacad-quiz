@@ -1,0 +1,12 @@
+What OSI physical layer term describes the amount of time, including delays, for data to travel from one point to another?
+20
+4
+1
+latency
+true
+bandwidth
+false
+throughput
+false
+goodput
+false

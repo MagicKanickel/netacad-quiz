@@ -1,0 +1,12 @@
+Which range of link-local addresses can be assigned to an IPv6-enabled interface?
+20
+4
+1
+FEC0::/10
+false
+FDEE::/7
+false
+FE80::/10
+true
+FF00::/8
+false

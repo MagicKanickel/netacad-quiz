@@ -1,0 +1,12 @@
+Where are Cisco IOS debug output messages sent by default?
+20
+4
+1
+memory buffers
+false
+vty lines
+false
+Syslog server
+false
+console line
+true

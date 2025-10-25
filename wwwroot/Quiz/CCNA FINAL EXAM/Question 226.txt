@@ -1,0 +1,14 @@
+Match a statement to the related network model. [peer-to-peer network] (2 Answers)
+20
+5
+1
+no dedicated server is required
+true
+client and server roles are set on a per request basis
+true
+devices can only function in one role at a time
+false
+requires a specific user interface
+false
+a background service is required
+false

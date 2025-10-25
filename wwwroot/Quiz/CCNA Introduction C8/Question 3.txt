@@ -1,0 +1,12 @@
+A connectionless protocol is in use at a lower layer of the OSI model, how is missing data detected and retransmitted?
+60
+4
+1
+Connectionless acknowledgements are used to request retransmission.
+false
+Network layer IP protocols manage the communication sessions
+false
+The best-effort delivery process guarantees
+false
+Upper-layer connection-oriented protocols keep track of the data received
+true

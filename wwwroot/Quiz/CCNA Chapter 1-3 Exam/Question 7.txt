@@ -1,0 +1,12 @@
+Which statement describes the use of powerline networking technology?
+20
+4
+1
+New “smart” electrical cabling is used to extend an existing home LAN.
+false
+A home LAN is installed without the use of physical cabling.
+false
+A device connects to an existing home LAN using an adapter and an existing electrical outlet.
+true
+Wireless access points use powerline adapters to distribute data through the home LAN.
+false

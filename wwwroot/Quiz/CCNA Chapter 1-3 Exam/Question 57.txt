@@ -1,0 +1,12 @@
+What term describes a network where one computer can be both client and server?
+20
+4
+1
+peer-to-peer
+true
+cloud
+false
+BYOD
+false
+quality of service
+false

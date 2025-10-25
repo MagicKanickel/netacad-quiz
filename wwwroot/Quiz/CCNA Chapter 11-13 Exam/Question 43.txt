@@ -1,0 +1,12 @@
+Which protocol supports Stateless Address Autoconfiguration (SLAAC) for dynamic assignment of IPv6 addresses to a host?
+20
+4
+1
+ARPv6
+false
+DHCPv6
+false
+ICMPv6
+true
+UDP
+false

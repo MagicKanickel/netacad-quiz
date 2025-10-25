@@ -1,0 +1,16 @@
+Which three protocols operate at the application layer of the TCP/IP model? (Choose three.)
+20
+6
+3
+ARP
+false
+TCP
+false
+UDP
+false
+FTP
+true
+POP3
+true
+DHCP
+true

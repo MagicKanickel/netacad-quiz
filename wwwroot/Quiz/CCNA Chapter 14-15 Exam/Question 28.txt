@@ -1,0 +1,16 @@
+Which two protocols may devices use in the application process that sends email? (Choose two.)
+20
+6
+2
+HTTP
+false
+SMTP
+true
+POP
+false
+IMAP
+false
+DNS
+true
+POP3
+false

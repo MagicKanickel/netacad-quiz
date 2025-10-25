@@ -1,0 +1,14 @@
+Refer to the exhibit. An administrator is trying to troubleshoot connectivity between PC1 and PC2 and uses the tracert command from PC1 to do it. Based on the displayed output, where should the administrator begin troubleshooting?
+20
+5
+1
+PC2
+false
+R1
+true
+SW2
+false
+R2
+false
+SW1
+false

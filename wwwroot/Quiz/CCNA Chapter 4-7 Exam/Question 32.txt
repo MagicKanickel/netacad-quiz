@@ -1,0 +1,14 @@
+A network administrator enters the service password-encryption command into the configuration mode of a router. What does this command accomplish?
+20
+5
+1
+This command encrypts passwords as they are transmitted across serial WAN links.
+false
+This command prevents someone from viewing the running configuration passwords.
+true
+This command enables a strong encryption algorithm for the enable secret password command.
+false
+This command automatically encrypts passwords in configuration files that are currently stored in NVRAM.
+false
+This command provides an exclusive encrypted password for external service personnel who are required to do router maintenance.
+false

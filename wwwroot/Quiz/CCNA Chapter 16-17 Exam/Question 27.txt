@@ -1,0 +1,12 @@
+A user reports a lack of network connectivity. The technician takes control of the user machine and attempts to ping other computers on the network and these pings fail. The technician pings the default gateway and that also fails. What can be determined for sure by the results of these tests?
+20
+4
+1
+The NIC in the PC is bad.
+false
+The TCP/IP protocol is not enabled
+false
+The router that is attached to the same network as the workstation is down.
+false
+Nothing can be determined for sure at this point.
+true

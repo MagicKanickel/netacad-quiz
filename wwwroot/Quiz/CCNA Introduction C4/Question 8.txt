@@ -1,0 +1,12 @@
+What is a characteristic of UTP cabling?
+20
+4
+1
+Cancellation
+true
+cladding
+false
+immunity to electrical hazards
+false
+woven copper braid or metallic foil
+false

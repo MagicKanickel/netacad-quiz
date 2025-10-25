@@ -1,0 +1,12 @@
+what is used in horizontal cabeling structures?
+20
+4
+1
+Copper Cables
+true
+Fiber Optic
+false
+Wireless
+false
+nothing
+false

@@ -1,0 +1,14 @@
+Which two statements describe how to assess traffic flow patterns and network traffic types using a protocol analyzer? (Choose two.)
+20
+5
+2
+Capture traffic on the weekends when most employees are off work.
+false
+Capture traffic during peak utilization times to get a good representation of the different traffic types.
+true
+Only capture traffic in the areas of the network that receive most of the traffic such as the data center.
+false
+Perform the capture on different network segments.
+true
+Only capture WAN traffic because traffic to the web is responsible for the largest amount of traffic on a network.
+false

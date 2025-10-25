@@ -1,0 +1,12 @@
+Refer to the exhibit. Consider the IP address configuration shown from PC1. What is a description of the default gateway address?
+20
+4
+1
+It is the IP address of the Router1 interface that connects the company to the Internet.
+false
+It is the IP address of the Router1 interface that connects the PC1 LAN to Router1.
+true
+It is the IP address of Switch1 that connects PC1 to other devices on the same LAN.
+false
+It is the IP address of the ISP network device located in the cloud.
+false

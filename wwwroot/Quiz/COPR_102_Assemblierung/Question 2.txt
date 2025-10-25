@@ -1,0 +1,12 @@
+Welche Arten von Gewinde für Schrauben werden beim Computer verwendet?
+20
+4
+1
+Feingewinde
+true
+Steilgewinde
+false
+Flachgewinde
+false
+Grobgewinde
+true

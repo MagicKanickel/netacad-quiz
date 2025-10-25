@@ -1,0 +1,16 @@
+Which three basic parts are common to all frame types supported by the data link layer? (Choose three.
+20
+6
+1
+header
+true
+type field
+false
+MTU size
+false
+data
+true
+trailer
+true
+CRC value
+false

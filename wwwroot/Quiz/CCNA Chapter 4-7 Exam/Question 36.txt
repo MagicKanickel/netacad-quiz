@@ -1,0 +1,16 @@
+A network administrator is connecting two modern switches using a straight-through cable. The switches are new and have never been configured. Which three statements are correct about the final result of the connection? (Choose three.)
+20
+6
+3
+The link between the switches will work at the fastest speed that is supported by both switches.
+true
+The link between switches will work as full-duplex.
+true
+If both switches support different speeds, they will each work at their own fastest speed.
+false
+The auto-MDIX feature will configure the interfaces eliminating the need for a crossover cable.
+true
+The connection will not be possible unless the administrator changes the cable to a crossover cable.
+false
+The duplex capability has to be manually configured because it cannot be negotiated.
+false

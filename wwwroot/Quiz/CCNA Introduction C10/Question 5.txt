@@ -1,0 +1,12 @@
+Which command can be used on a Cisco router to display all interfaces, the IPv4 address assigned, and the current status
+20
+4
+1
+ping
+false
+show ip route
+false
+show ip interface brief
+true
+show interface fa0/1
+false

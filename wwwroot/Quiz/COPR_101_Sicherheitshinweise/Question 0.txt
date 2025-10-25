@@ -1,0 +1,12 @@
+Welche Spannung kann für den Menschen bereits gefährlich sein?
+20
+4
+1
+60Volt
+true
+230Volt
+false
+600Volt
+false
+24Volt
+false

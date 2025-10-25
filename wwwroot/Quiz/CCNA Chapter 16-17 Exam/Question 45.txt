@@ -1,0 +1,12 @@
+Which statement describes the ping and tracert commands?
+20
+4
+1
+Tracert shows each hop, while ping shows a destination reply only.
+true
+Tracert uses IP addresses; ping does not.
+false
+Both ping and tracert can show results in a graphical display.
+false
+Ping shows whether the transmission is successful; tracert does not.
+false

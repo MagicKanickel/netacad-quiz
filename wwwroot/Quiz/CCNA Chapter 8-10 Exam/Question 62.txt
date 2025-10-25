@@ -1,0 +1,12 @@
+What property of ARP allows hosts on a LAN to send traffic to remote networks?
+20
+4
+1
+Local hosts learn the MAC address of the default gateway.
+true
+The destination MAC address FF-FF-FF-FF-FF-FF appears in the header of the Ethernet frame.
+false
+The source MAC address appears in the header of the Ethernet frame.
+false
+The port-to-MAC address table on a switch has the same entries as the ARP table on the switch.
+false

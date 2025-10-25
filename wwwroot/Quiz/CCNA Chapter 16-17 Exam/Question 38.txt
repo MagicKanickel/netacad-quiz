@@ -1,0 +1,12 @@
+Refer to the exhibit. Host H3 is having trouble communicating with host H1. The network administrator suspects a problem exists with the H3 workstation and wants to prove that there is no problem with the R2 configuration. What tool could the network administrator use on router R2 to prove that communication exists to host H1 from the interface on R2, which is the interface that H3 uses when communicating with remote networks?
+20
+4
+1
+traceroute
+false
+show cdp neighbors
+false
+Telnet
+false
+an extended ping
+true

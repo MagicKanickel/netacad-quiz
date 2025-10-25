@@ -1,0 +1,12 @@
+What are proprietary protocols?
+20
+4
+1
+protocols developed by private organizations to operate on any vendor hardware
+false
+protocols that can be freely used by any organization or vendor
+false
+protocols developed by organizations who have control over their definition and operation
+true
+a collection of protocols known as the TCP/IP protocol suite
+false

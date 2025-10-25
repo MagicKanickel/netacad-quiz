@@ -1,0 +1,12 @@
+A client packet is received by a server. The packet has a destination port number of 67. What service is the client requesting?
+20
+4
+1
+FTP
+false
+DHCP
+true
+Telnet
+false
+SSH
+false

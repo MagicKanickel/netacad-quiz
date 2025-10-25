@@ -1,0 +1,14 @@
+A technician uses the ping 127.0.0.1 command. What is the technician testing?
+20
+5
+1
+the TCP/IP stack on a network host
+true
+connectivity between two adjacent Cisco devices
+false
+connectivity between a PC and the default gateway
+false
+connectivity between two PCs on the same network
+false
+physical connectivity of a particular PC and the network
+false

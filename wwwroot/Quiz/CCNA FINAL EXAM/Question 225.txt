@@ -1,0 +1,15 @@
+Refer to the exhibit. PC1 issues an ARP request because it needs to send a packet to PC2. In this scenario, what will happen next?
+20
+5
+1
+SW1 will send an ARP reply with the SW1 Fa0/1 MAC address.​
+false
+SW1 will send an ARP reply with the PC2 MAC address.​
+false
+PC2 will send an ARP reply with the PC2 MAC address.
+true
+RT1 will send an ARP reply with the RT1 Fa0/0 MAC address.​
+false
+RT1 will send an ARP reply with the PC2 MAC address.​
+false
+Question_92-image.png

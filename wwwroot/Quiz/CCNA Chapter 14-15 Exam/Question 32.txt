@@ -1,0 +1,12 @@
+Which networking model is being used when an author uploads one chapter document to file server of a book publisher?
+20
+4
+1
+peer-to-peer
+false
+master-slave
+false
+client/server
+true
+point-to-point
+false

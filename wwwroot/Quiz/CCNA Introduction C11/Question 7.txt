@@ -1,0 +1,12 @@
+How many host addresses are available on the 192.168.10.128/26 network?
+20
+4
+1
+30
+false
+60
+false
+62
+true
+64
+false

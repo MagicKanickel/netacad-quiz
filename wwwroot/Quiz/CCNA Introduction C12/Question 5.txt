@@ -1,0 +1,12 @@
+What is the subnet address for the IPv6 address 2001:D12:AA04:B5::1/64?
+20
+4
+1
+2001::/64
+false
+2001:D12:AA04::/64​
+false
+2001:D12::/64​
+false
+2001:D12:AA04:B5::/64
+true

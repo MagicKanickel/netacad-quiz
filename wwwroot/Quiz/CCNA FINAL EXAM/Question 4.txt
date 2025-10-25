@@ -1,0 +1,12 @@
+How does the service password-encryption command enhance password security on Cisco routers and switches?
+20
+4
+1
+It requires encrypted passwords to be used when connecting remotely to a router or switch with Telnet.
+false
+It encrypts passwords that are stored in router or switch configuration files.
+true
+It requires that a user type encrypted passwords to gain console access to a router or switch.
+false
+It encrypts passwords as they are sent across the network.
+false

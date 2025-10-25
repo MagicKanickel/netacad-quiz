@@ -1,0 +1,14 @@
+Refer to the exhibit. The exhibit shows a small switched network and the contents of the MAC address table of the switch. PC1 has sent a frame addressed to PC3. What will the switch do with the frame?
+20
+5
+1
+The switch will discard the frame.
+false
+The switch will forward the frame only to port 2.
+false
+The switch will forward the frame to all ports except port 4.
+true
+The switch will forward the frame to all ports.
+false
+The switch will forward the frame only to ports 1 and 3.
+false

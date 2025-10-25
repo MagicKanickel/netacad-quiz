@@ -1,0 +1,12 @@
+The configuration file has an enable secret password but no console password. Router boots up, which mode will display?
+20
+4
+1
+global configuration mode
+false
+setup mode
+false
+Oprivileged EXEC mode
+false
+user EXEC mode
+true

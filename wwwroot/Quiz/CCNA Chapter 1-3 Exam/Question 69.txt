@@ -1,0 +1,12 @@
+Which of the following is the name for all computers connected to a network that participate directly in network communication?
+20
+4
+1
+Servers
+false
+Intermediary device
+false
+Host
+true
+media
+false

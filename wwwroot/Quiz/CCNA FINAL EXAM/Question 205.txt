@@ -1,0 +1,16 @@
+Match the characteristic to the forwarding method. --> [Cut-through][Answers 3]
+20
+6
+3
+has low latency
+true
+forward runt frames
+true
+begins forwarding when the desination address is received
+true
+always stores the entire frame
+false
+checks the CRC before forwarding
+false
+checks the frame length before forwarding
+false

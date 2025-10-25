@@ -1,0 +1,12 @@
+ Refer to the graphic. What type of cabling is shown?
+20
+4
+1
+STP
+False
+UTP
+True
+Coax
+false
+Fiber
+false

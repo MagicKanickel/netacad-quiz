@@ -1,0 +1,12 @@
+What are two possible causes of the signal distortion in WLAN?
+30
+4
+1
+the microwave oven
+true
+the large number of trees that surround the office
+false
+the cellular phones that are used by the employees
+true
+the number of wireless devices that are used in the wireless LAN
+false

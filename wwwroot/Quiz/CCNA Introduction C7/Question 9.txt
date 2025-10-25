@@ -1,0 +1,12 @@
+Which function or operation is performed by the LLC sublayer?
+30
+4
+1
+It performs data encapsulation.
+false
+It communicates with upper protocol layers.
+true
+It is responsible for media access control.
+false
+It adds a header and trailer to a packet to form an OSI Layer 2 PDU.
+false

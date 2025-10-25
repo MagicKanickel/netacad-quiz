@@ -1,0 +1,14 @@
+Match the commands to the correct actions. (Not all options are used.) display a message when the router is accessed
+20
+5
+1
+Router(config)# hostname CL1
+false
+Router(config)# enable password Cisco
+false
+Router(config-line)# password class
+false
+Router(config)# password Cisco
+false
+Router(config)# banner motd #
+true

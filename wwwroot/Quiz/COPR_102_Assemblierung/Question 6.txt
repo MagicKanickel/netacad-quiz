@@ -1,0 +1,12 @@
+Mainboard wird wie abgekürzt?
+20
+4
+1
+Bo
+false
+MA
+false
+MB
+true
+MD
+false

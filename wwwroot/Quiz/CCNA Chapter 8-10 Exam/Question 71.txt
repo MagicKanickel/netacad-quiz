@@ -1,0 +1,14 @@
+Refer to the exhibit. A network administrator is connecting a new host to the Registrar LAN. The host needs to communicate with remote networks. What IP address would be configured as the default gateway on the new host?
+20
+5
+1
+192.168.225.223
+true
+192.168.225.1
+false
+10.224.225.254
+false
+203.0.113.246
+false
+192.168.224.103
+false

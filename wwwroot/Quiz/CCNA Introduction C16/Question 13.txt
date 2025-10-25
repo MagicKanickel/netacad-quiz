@@ -1,0 +1,12 @@
+A network administrator needs to ensure that local computers cannot ping each other. Which settings can accomplish this?
+30
+4
+1
+smartcard settings
+false
+firewall settings
+true
+MAC address settings
+false
+file system settings
+false

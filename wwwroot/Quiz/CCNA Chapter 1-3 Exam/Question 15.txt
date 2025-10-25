@@ -1,0 +1,12 @@
+What function does pressing the Tab key have when entering a command in IOS?
+20
+4
+1
+It aborts the current command and returns to configuration mode.
+false
+It exits configuration mode and returns to user EXEC mode.
+false
+It moves the cursor to the beginning of the next line.
+false
+It completes the remainder of a partially typed word in a command.
+true

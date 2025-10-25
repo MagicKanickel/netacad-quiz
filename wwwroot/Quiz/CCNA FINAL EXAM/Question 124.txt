@@ -1,0 +1,12 @@
+During the process of forwarding traffic, what will the router do immediately after matching the destination IP address to a network on a directly connected routing table entry?
+20
+4
+1
+analyze the destination IP address
+false
+switch the packet to the directly connected interface
+true
+look up the next-hop address for the packet
+false
+discard the traffic after consulting the route table
+false

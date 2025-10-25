@@ -1,0 +1,12 @@
+What do the client/server and peer-to-peer network models have in common?
+20
+4
+1
+Both models have dedicated servers.
+false
+Both models support devices in server and client roles.
+true
+Both models require the use of TCP/IP-based protocols.
+false
+Both models are used only in the wired network environment.
+false

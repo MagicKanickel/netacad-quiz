@@ -1,0 +1,12 @@
+Which service provides dynamic global IPv6 addressing to end devices without using a server that keeps a record of available IPv6 addresses?
+20
+4
+1
+stateful DHCPv6
+false
+SLAAC
+true
+static IPv6 addressing
+false
+stateless DHCPv6
+false

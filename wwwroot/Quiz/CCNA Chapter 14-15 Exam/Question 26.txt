@@ -1,0 +1,16 @@
+What are three responsibilities of the transport layer? (Choose three.)
+20
+6
+3
+meeting the reliability requirements of applications, if any
+true
+multiplexing multiple communication streams from many users or applications on the same network
+true
+identifying the applications and services on the client and server that should handle transmitted data
+true
+directing packets towards the destination network
+false
+formatting data into a compatible form for receipt by the destination devices
+false
+conducting error detection of the contents in frames
+false

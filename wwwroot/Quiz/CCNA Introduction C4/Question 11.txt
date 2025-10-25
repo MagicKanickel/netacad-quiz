@@ -1,0 +1,12 @@
+What is one advantage of using fiber optic cabling rather than copper cabling?
+30
+4
+1
+It is usually cheaper than copper cabling.
+false
+It is able to be installed around sharp bends.
+false
+It is easier to terminate and install than copper cabling.
+false
+It is able to carry signals much farther than copper cabling.
+true

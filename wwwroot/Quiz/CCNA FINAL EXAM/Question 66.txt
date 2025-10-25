@@ -1,0 +1,12 @@
+A user is complaining that an external web page is taking longer than normal to load.The web page does eventually load on the user machine. Which tool should the technician use with administrator privileges in order to locate where the issue is in the network?
+20
+4
+1
+ping
+false
+nslookup
+false
+tracert
+true
+ipconfig /displaydns
+false

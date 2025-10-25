@@ -1,0 +1,13 @@
+Refer to the exhibit. The IP address of which device interface should be used as the default gateway setting of host H1?
+20
+4
+1
+R1: S0/0/0
+false
+R2: S0/0/1
+false
+R1: G0/0
+true
+R2: S0/0/0
+false
+Question_15-image.png

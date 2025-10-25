@@ -1,0 +1,12 @@
+Which command can an administrator issue on a Cisco router to send debug messages to the vty lines?
+20
+4
+1
+terminal monitor
+true
+logging console
+false
+logging buffered
+false
+logging synchronous
+false

@@ -1,0 +1,12 @@
+Which type of access is secured on a Cisco router or switch with the&nbsp;enable secret&nbsp;command?
+20
+4
+1
+virtual terminal
+false
+AUX port
+false
+privileged EXEC
+true
+console line
+false

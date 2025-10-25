@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QuizWeb</title>
+<style>
+:root{--bg:#0f0f12;--card:#1b1b20;--accent:#e7b96f;--text:#eee;--muted:#aaa;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,Segoe UI,Roboto,Arial}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid #333;background:#131317;position:sticky;top:0}
+header h1{margin:0;font-size:20px;letter-spacing:.5px}
+header nav button{margin-left:8px;padding:8px 12px;background:#26262c;border:1px solid #3b3b44;border-radius:10px;color:var(--text);cursor:pointer}
+.container{max-width:1100px;margin:24px auto;padding:0 16px}
+.card{background:var(--card);border:1px solid #2a2a33;border-radius:16px;padding:16px;margin:12px 0}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+input[type=email],input[type=password],input[type=text]{width:260px;padding:10px;border-radius:10px;border:1px solid #3b3b44;background:#121217;color:#fff}
+label{font-size:14px;color:var(--muted)}
+button.primary{background:var(--accent);border:0;color:#1b1205;font-weight:600}
+a{color:var(--accent);text-decoration:none}
+.hidden{display:none}
+.muted{color:var(--muted)}
+
+/* Bücherregal (vorbereitet) */
+.shelf{position:relative;padding:22px;border:1px solid #2d2d33;border-radius:18px;background:linear-gradient(180deg,#16161b,#121217 60%,#101015)}
+.shelf .sign{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#2a2a2f;color:#e9d8b4;border:1px solid #3b3b44;border-radius:10px;padding:6px 12px;font-size:14px}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin-top:8px}
+.book{height:180px;border-radius:8px;border:1px solid #3b2f28;background:
+  linear-gradient(90deg,#3b2f28 0 6px,transparent 6px),
+  radial-gradient(ellipse at 40% 10%,#6a4c3a 0 40%,#4c372c 60%),
+  #3a2a22;
+box-shadow:inset 0 0 30px #0008; color:#f4e9d2; display:flex;align-items:center;justify-content:center;text-align:center;padding:12px; cursor:pointer; transition:.2s ease; transform-origin:left bottom;}
+.book:hover{transform:perspective(600px) rotateY(-8deg) translateY(-3px); box-shadow:0 12px 30px #0007,inset 0 0 30px #000a}
+.book small{display:block;color:#d9caa8;margin-top:6px;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>🧭 QuizWeb</h1>
+  <nav>
+    <span id="authStatus" class="muted">Lade …</span>
+    <button id="btnLogout" class="hidden" onclick="logout()">Logout</button>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- Startseite -->
+  <div id="home" class="card">
+    <h2>Willkommen</h2>
+    <p>Bitte registriere dich mit deinem <b>einmaligen Zugangsschlüssel</b> oder logge dich ein.</p>
+    <div class="row">
+      <div class="card">
+        <h3>Registrieren</h3>
+        <div class="row">
+          <input id="regEmail" type="email" placeholder="E-Mail">
+          <input id="regPass" type="password" placeholder="Passwort">
+          <input id="regKey" type="text" placeholder="Registrierungsschlüssel">
+        </div>
+        <label><input id="regTos" type="checkbox"> AGB akzeptieren</label>
+        <div class="muted" id="passMeter">Passwortstärke: –</div>
+        <div class="row"><button class="primary" onclick="register()">Registrieren</button></div>
+        <div class="muted">Nach der Registrierung bekommst du eine Bestätigungsmail. Ein Klick genügt – du bist dann automatisch eingeloggt.</div>
+      </div>
+
+      <div class="card">
+        <h3>Login</h3>
+        <div class="row">
+          <input id="logEmail" type="email" placeholder="E-Mail">
+          <input id="logPass" type="password" placeholder="Passwort">
+        </div>
+        <div class="row"><button onclick="login()">Login</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bücherregal / Kapitel -->
+  <div id="app" class="hidden">
+    <div class="shelf">
+      <div class="sign" id="shelfSign">Kapitel auswählen …</div>
+      <div id="books" class="books"></div>
+    </div>
+
+    <div id="quizArea" class="card hidden">
+      <h3 id="quizTitle">Quiz</h3>
+      <div id="quiz"></div>
+      <div class="row"><button onclick="submitQuiz()" class="primary">Abgeben</button> <button onclick="backToShelf()">Zurück</button></div>
+      <div id="result" class="card hidden"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let current=[], answers=new Map(), currentChapter=null;
+
+function $(id){return document.getElementById(id);}
+function show(id){["home","app"].forEach(x=>$(x).classList.add("hidden")); $(id).classList.remove("hidden");}
+
+async function refreshStatus(){
+  const r=await fetch('/api/auth/status'); const s=await r.json();
+  $('authStatus').textContent = s.isAuthenticated ? `Angemeldet: ${s.email}` : 'Nicht angemeldet';
+  $('btnLogout').classList.toggle('hidden', !s.isAuthenticated);
+  if(s.isAuthenticated){ await loadChapters(); show('app'); } else { show('home'); }
+}
+async function register(){
+  const email=$('regEmail').value.trim(), password=$('regPass').value, key=$('regKey').value.trim(), tos=$('regTos').checked;
+  const r=await fetch('/api/auth/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password,registrationKey:key,acceptTos:tos})});
+  const j=await r.json(); alert(j.info || j.error || (r.ok?'OK':'Fehler'));
+}
+async function login(){
+  const email=$('logEmail').value.trim(), password=$('logPass').value;
+  const r=await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});
+  const j=await r.json(); if(!r.ok) alert(j.error||'Fehler'); await refreshStatus();
+}
+async function logout(){ await fetch('/api/auth/logout',{method:'POST'}); await refreshStatus(); }
+
+// einfacher Passwortmeter
+$('regPass').addEventListener('input', e=>{
+  const v=e.target.value;
+  let score=0; if(v.length>=8)score++; if(/[A-Z]/.test(v))score++; if(/[a-z]/.test(v))score++; if(/\d/.test(v))score++; if(/\W/.test(v))score++;
+  const map=['sehr schwach','schwach','okay','gut','stark','sehr stark']; $('passMeter').textContent = 'Passwortstärke: ' + map[Math.min(score,5)];
+});
+
+// Kapitel laden + „Bücherregal“ rendern
+async function loadChapters(){
+  const r=await fetch('/api/chapters'); const list=await r.json();
+  const b=$('books'); b.innerHTML='';
+  list.forEach(ch=>{
+    const div=document.createElement('div'); div.className='book'; div.innerHTML=`<div>${ch}</div><small>Klicken zum Start</small>`;
+    div.onmouseenter=()=>$('shelfSign').textContent=ch;
+    div.onmouseleave=()=>$('shelfSign').textContent='Kapitel auswählen …';
+    div.onclick=()=>startQuiz(ch);
+    b.appendChild(div);
+  });
+
+  // Außerdem ein „Buch“ für Falsche Antworten (optional befüllen wir später über eigenen Endpoint)
+  const wrong=document.createElement('div'); wrong.className='book'; wrong.style.background='#3a2230';
+  wrong.innerHTML=`<div>Falsch beantwortet</div><small>Wiederholen</small>`;
+  wrong.onmouseenter=()=>$('shelfSign').textContent='Falsch beantwortet';
+  wrong.onmouseleave=()=>$('shelfSign').textContent='Kapitel auswählen …';
+  wrong.onclick=()=>startQuiz(null,true);
+  b.appendChild(wrong);
+}
+
+async function startQuiz(chapter, mistakes=false){
+  currentChapter=chapter; $('quizArea').classList.remove('hidden'); $('result').classList.add('hidden');
+  const url = mistakes ? '/api/quiz?chapter=' + encodeURIComponent('__mistakes__') // Platzhalter – du kannst später speziellen Endpunkt nutzen
+                       : '/api/quiz?chapter=' + encodeURIComponent(chapter||'');
+  const r=await fetch(url); current=await r.json();
+  answers.clear();
+  const qdiv=$('quiz'); qdiv.innerHTML='';
+  let i=0;
+  current.forEach(q=>{
+    const card=document.createElement('div'); card.className='card';
+    card.innerHTML = `<b>${++i}) ${q.text}</b>` + (q.assets?.map(a=>`<div><img src="${a}" style="max-width:100%;margin-top:8px;border-radius:8px"></div>`).join('')||'');
+    q.choices.forEach(c=>{
+      const btn=document.createElement('div'); btn.className='choice'; btn.style.cssText='padding:8px;border:1px solid #3b3b44;border-radius:10px;margin:6px 0;cursor:pointer';
+      btn.textContent=c.text;
+      btn.onclick=()=>{ const set=answers.get(q.id)||new Set(); set.has(c.id)?set.delete(c.id):set.add(c.id); answers.set(q.id,set); btn.classList.toggle('selected'); btn.style.background=btn.classList.contains('selected')?'#2b2b33':'transparent'; };
+      card.appendChild(btn);
+    });
+    qdiv.appendChild(card);
+  });
+  $('quizTitle').textContent = chapter ? `Kapitel: ${chapter}` : 'Quiz';
+}
+
+function backToShelf(){ $('quizArea').classList.add('hidden'); }
+
+async function submitQuiz(){
+  const payload={answers: current.map(q=>({questionId:q.id, choiceIds:Array.from(answers.get(q.id)||[]) }))};
+  const r=await fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  const data=await r.json();
+  const res=$('result'); res.classList.remove('hidden');
+  res.innerHTML = `<h3>Ergebnis</h3><p>${data.correct}/${data.total} richtig (${Math.round((data.correct||0)*100/(data.total||1))}%).</p>` +
+    (data.wrongs?.length ? data.wrongs.map((w,i)=>`<div class="card"><b>${i+1}) ${w.question}</b><div>Deine Antwort: ${w.your}<br>Richtig: ${w.correct}</div></div>`).join('') : '<p>Keine Fehler 🎉</p>');
+}
+
+refreshStatus();
+</script>
+</body>
+</html>

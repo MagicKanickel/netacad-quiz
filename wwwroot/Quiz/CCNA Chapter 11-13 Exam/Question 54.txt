@@ -1,0 +1,12 @@
+What is the purpose of ICMP messages?
+20
+4
+1
+to inform routers about network topology changes
+false
+to ensure the delivery of an IP packet
+false
+to provide feedback of IP packet transmissions
+true
+to monitor the process of a domain name to IP address resolution
+false

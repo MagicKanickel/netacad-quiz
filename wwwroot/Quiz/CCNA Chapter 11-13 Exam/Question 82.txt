@@ -1,0 +1,12 @@
+A user issues a ping 10.10.14.67 command and receives a response that includes a code of 0 . What does this code represent?
+20
+4
+1
+network unreachable
+true
+protocol unreachable
+false
+port unreachable
+false
+host unreachable
+false

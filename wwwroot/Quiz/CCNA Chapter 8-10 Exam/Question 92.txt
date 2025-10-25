@@ -1,0 +1,12 @@
+Match the configuration mode with the command that is available in that mode. (Not all options are used.) R1#
+20
+4
+1
+enable
+false
+copy running-config startup-config
+true
+login
+false
+interface fastethernet 0/0
+false

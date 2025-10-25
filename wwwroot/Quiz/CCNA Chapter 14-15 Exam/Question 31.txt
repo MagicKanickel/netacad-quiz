@@ -1,0 +1,12 @@
+Which OSI layer provides the interface between the applications used to communicate and the underlying network over which messages are transmitted?
+20
+4
+1
+application
+true
+presentation
+false
+session
+false
+transport
+false

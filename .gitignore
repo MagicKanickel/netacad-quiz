@@ -1,0 +1,27 @@
+# Build & IDE
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Secrets (falls vorhanden)
+appsettings.Development.Local.json
+appsettings.Local.json
+
+# Local databases / cache
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Publish output
+/out/

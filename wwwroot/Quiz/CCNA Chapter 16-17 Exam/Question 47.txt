@@ -1,0 +1,12 @@
+Open the PT Activity. Perform the tasks in the activity instructions and then answer the question. Which command has to be configured on the router to complete the SSH configuration?
+20
+4
+1
+service password-encryption
+false
+transport input ssh
+true
+enable secret class
+false
+ip domain-name cisco.com
+false

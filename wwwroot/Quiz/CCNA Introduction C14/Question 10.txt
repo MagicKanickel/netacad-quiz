@@ -1,0 +1,12 @@
+What is the TCP mechanism used in congestion avoidance?
+30
+4
+1
+three-way handshake
+false
+socket pair
+false
+two-way handshake
+false
+sliding window
+true

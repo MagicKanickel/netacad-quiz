@@ -1,0 +1,12 @@
+What part of the URL, http://www.cisco.com/index.html, represents the top-level DNS domain?
+20
+4
+1
+http
+false
+www
+false
+index
+false
+.com
+true

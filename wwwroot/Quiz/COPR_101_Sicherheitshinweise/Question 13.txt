@@ -1,0 +1,12 @@
+Verpackungen die vor ESD schützen haben eine Kennzeichnung.
+20
+4
+1
+sonic sensitive devices
+false
+stable saturated devices
+false
+Energy sensitive devices
+false
+static sensitive devices
+true

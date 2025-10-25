@@ -1,0 +1,16 @@
+What makes fiber preferable to copper cabling for interconnecting buildings? (Choose three.)
+20
+6
+3
+greater distances per cable run
+true
+lower installation cost
+false
+limited susceptibility to EMI/RFI
+true
+durable connections
+false
+greater bandwidth potential
+true
+easily terminated
+false

@@ -1,0 +1,12 @@
+What information about a Cisco router can be verified using the show version command?
+20
+4
+1
+the routing protocol version that is enabled
+false
+the value of the configuration register
+true
+the operational status of serial interfaces
+false
+the administrative distance used to reach networks
+false

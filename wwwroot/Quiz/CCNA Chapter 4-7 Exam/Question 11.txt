@@ -1,0 +1,14 @@
+In addition to the cable length, what two factors could interfere with the communication carried over UTP cables? (Choose two.)
+35
+5
+2
+crosstalk
+true
+bandwidth
+false
+size of the network
+false
+signal modulation technique
+false
+electromagnetic interference
+true

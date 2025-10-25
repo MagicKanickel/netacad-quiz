@@ -1,0 +1,12 @@
+Which command will block login attempts on RouterA for a period of 30 seconds if there are 2 failed login attempts within 10 seconds?
+20
+4
+1
+RouterA(config)# login block-for 10 attempts 2 within 30
+false
+RouterA(config)# login block-for 30 attempts 2 within 10
+true
+RouterA(config)# login block-for 2 attempts 30 within 10
+false
+RouterA(config)# login block-for 30 attempts 10 within 2
+false

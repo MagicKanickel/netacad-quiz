@@ -1,0 +1,12 @@
+Why is DHCP preferred for use on large networks?
+30
+4
+1
+DHCP uses a reliable transport layer protocol.
+false
+It prevents sharing of files that are copyrighted.
+false
+more efficient way to manage IP addresses than static address assignment.
+true
+large networks require more IP addressing configuration settings than small
+false

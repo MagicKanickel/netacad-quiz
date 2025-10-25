@@ -1,0 +1,12 @@
+Refer to the exhibit. An administrator is testing connectivity to a remote device with the IP address 10.1.1.1. What does the output of this command indicate?
+20
+4
+1
+Connectivity to the remote device was successful.
+false
+A router along the path did not have a route to the destination.
+true
+A ping packet is being blocked by a security device along the path.
+false
+The connection timed out while waiting for a reply from the remote device.
+false

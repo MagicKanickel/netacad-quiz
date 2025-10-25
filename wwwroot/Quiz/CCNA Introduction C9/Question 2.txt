@@ -1,0 +1,12 @@
+PC obtain IP address from 192.168.1.0/24. Arp –a shows 192.168.1.255 ff-ff-ff-ff-ff-ff. Which statement describes this?
+60
+4
+1
+This is a static map entry.
+true
+This is a dynamic map entry.
+false
+This entry refers to the PC itself.
+false
+This entry maps to the default gateway.
+false

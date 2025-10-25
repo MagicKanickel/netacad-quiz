@@ -1,0 +1,12 @@
+What field content is used by ICMPv6 to determine that a packet has expired?
+20
+4
+1
+TTL field
+false
+CRC field
+false
+Hop Limit field﻿
+true
+Time Exceeded field
+false

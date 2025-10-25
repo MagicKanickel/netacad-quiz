@@ -1,0 +1,12 @@
+Why would a Layer 2 switch need an IP address?
+20
+4
+1
+to enable the switch to send broadcast frames to attached PCs
+false
+to enable the switch to function as a default gateway
+false
+to enable the switch to be managed remotely
+true
+to enable the switch to receive frames from attached PCs
+false

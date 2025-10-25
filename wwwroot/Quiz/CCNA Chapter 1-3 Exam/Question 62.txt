@@ -1,0 +1,12 @@
+What term describes a policy that allows network devices to manage the flow of data to give priority to voice and video?
+20
+4
+1
+quality of service
+true
+internet
+false
+intranet
+false
+extranet
+false

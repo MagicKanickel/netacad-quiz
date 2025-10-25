@@ -1,0 +1,14 @@
+Match the firewall function to the type of threat protection it provides to the network. [prevents access based on IP or MAC address]
+20
+5
+1
+Packet filtering
+true
+URL filtering
+false
+network address translator
+false
+stateful packet inspection
+false
+application filtering
+false

@@ -1,0 +1,12 @@
+What is used for guest access in a coffee shop?
+20
+4
+1
+Copper Cables
+false
+Fiber Optic
+false
+Wireless
+true
+nothing
+false

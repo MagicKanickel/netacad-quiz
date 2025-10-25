@@ -1,0 +1,12 @@
+What action will occur if a host receives a frame with a destination MAC address it does not recognize?
+20
+4
+1
+The host will discard the frame.
+true
+The host replies to the switch with its own IP address.
+false
+The host forwards the frame to all other hosts.
+false
+The host returns the frame to the switch.
+false

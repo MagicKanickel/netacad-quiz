@@ -1,0 +1,12 @@
+Which is the compressed format of the IPv6 address 2001:0db8:0000:0000:0000:a0b0:0008:0001?
+20
+4
+1
+2001:db8::a0b0:8:1
+True
+2001:db8::ab8:1:0:1000
+False
+2001:db80:0:1::80:1
+False
+2001:db8:0:1::8:1
+False

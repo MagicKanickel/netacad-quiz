@@ -1,0 +1,12 @@
+An organization is assigned an IPv6 address block of 2001:db8:0:ca00::/56. How many subnets can be created without using bits in the interface ID space?
+20
+4
+1
+256
+true
+512
+false
+1024
+false
+4096
+false

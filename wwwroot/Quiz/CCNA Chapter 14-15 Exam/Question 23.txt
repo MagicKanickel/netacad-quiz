@@ -1,0 +1,14 @@
+Which two types of applications are best suited for UDP? (Choose two.
+20
+5
+2
+applications that need data flow control
+false
+applications that require reliable delivery
+false
+applications that handle reliability themselves
+true
+applications that need the reordering of segments
+false
+applications that can tolerate some data loss, but require little or no delay
+true

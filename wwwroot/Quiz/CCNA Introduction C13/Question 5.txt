@@ -1,0 +1,12 @@
+Which command can be used to test connectivity between two devices using echo request and echo reply messages?
+20
+4
+1
+netstat
+false
+traceroute
+false
+ICMP
+false
+ping
+true

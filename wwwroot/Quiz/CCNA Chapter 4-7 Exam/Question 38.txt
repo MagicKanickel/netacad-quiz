@@ -1,0 +1,12 @@
+When the store-and-forward method of switching is in use, what part of the Ethernet frame is used to perform an error check?
+20
+4
+1
+CRC in the trailer
+true
+source MAC address in the header
+false
+destination MAC address in the header
+false
+protocol type in the header
+false

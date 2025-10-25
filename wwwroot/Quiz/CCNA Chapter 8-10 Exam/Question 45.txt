@@ -1,0 +1,12 @@
+What is the effect of using the Router# copy running-config startup-config command on a router?
+20
+4
+1
+The contents of ROM will change.
+false
+The contents of RAM will change.
+false
+The contents of NVRAM will change.
+true
+The contents of flash will change.
+false

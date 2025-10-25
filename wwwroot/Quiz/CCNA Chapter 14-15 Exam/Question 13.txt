@@ -1,0 +1,12 @@
+A client application needs to terminate a TCP communication session with a server. Place the termination process steps in the order that they will occur. (Not all options are used.)
+20
+4
+1
+client sends ACK - client sends FIN - server sends ACK - server sends FIN
+false
+client sends FIN - server sends ACK - server sends FIN - client sends ACK
+true
+client sends ACK - server sends ACK - client sends FIN - server sends FIN
+false
+client sends FIN - client sends ACK - server sends ACK - server sends FIN
+false

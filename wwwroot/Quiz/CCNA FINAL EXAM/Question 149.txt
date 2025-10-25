@@ -1,0 +1,12 @@
+What is the purpose of the TCP sliding window?
+30
+4
+1
+to ensure that segments arrive in order at the destination
+false
+to end communication when data transmission is complete
+false
+to inform a source to retransmit data from a specific point forward
+false
+to request that a source decrease the rate at which it transmits data
+true

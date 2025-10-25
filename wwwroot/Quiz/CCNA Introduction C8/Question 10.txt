@@ -1,0 +1,12 @@
+What information is added during encapsulation at OSI Layer 3?
+30
+4
+1
+source and destination MAC
+false
+source and destination port number
+false
+source and destination IP address
+true
+source and destination application protocol
+false

@@ -1,0 +1,12 @@
+Which statement describes a characteristic of the frame header fields of the data link layer?
+20
+4
+1
+They all include the flow control and logical connection fields.
+false
+Ethernet frame header fields contain Layer 3 source and destination addresses.
+false
+They vary depending on protocols.
+true
+They include information on user applications.
+false

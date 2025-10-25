@@ -1,0 +1,12 @@
+What configuration steps must be performed to implement SSH access to a router?
+20
+4
+1
+a password on the console line
+false
+an IP domain name
+true
+a unique hostname
+true
+a user account
+true

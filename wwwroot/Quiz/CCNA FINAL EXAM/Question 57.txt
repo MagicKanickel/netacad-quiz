@@ -1,0 +1,14 @@
+used to identify missing segments of data
+20
+5
+1
+acknowledgment
+false
+retransmission
+false
+FCS
+false
+sequence numbers
+true
+window size
+false

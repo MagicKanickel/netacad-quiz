@@ -1,0 +1,12 @@
+Which protocol uses encryption?
+20
+4
+1
+DHCP
+false
+FTP
+false
+DNS
+false
+HTTPS
+true

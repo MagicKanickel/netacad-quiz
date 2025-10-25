@@ -1,0 +1,12 @@
+What is the purpose of the OSI physical layer?
+20
+4
+1
+controlling access to media
+false
+transmitting bits across the local media
+true
+performing error detection on received frames
+false
+exchanging frames between nodes over physical network media
+false

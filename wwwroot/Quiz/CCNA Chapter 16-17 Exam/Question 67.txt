@@ -1,0 +1,12 @@
+What is a characteristic of UDP?
+20
+4
+1
+UDP datagrams take the same path and arrive in the correct order at the destination.​
+false
+Applications that use UDP are always considered unreliable.​
+false
+UDP reassembles the received datagrams in the order they were received.
+true
+UDP only passes data to the network when the destination is ready to receive the data.
+false

@@ -1,0 +1,12 @@
+Which set of commands will allow the required login using a password of cisco?
+20
+4
+1
+line vty 0 4;password manage;exit;enable password cisco
+false
+line vty 0 4;password cisco;login
+false
+line console 0;password cisco;login
+true
+line console 0;password cisco;exit;service password-encryption
+false

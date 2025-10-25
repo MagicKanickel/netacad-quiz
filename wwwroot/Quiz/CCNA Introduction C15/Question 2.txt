@@ -1,0 +1,12 @@
+What are the characteristics of the application layer of the TCP/IP model?
+30
+4
+1
+responsibility for logical addressing
+false
+the establishing of window size
+false
+closest to the end user
+true
+dialogue between source and destination applications
+true

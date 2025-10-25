@@ -1,0 +1,12 @@
+What service is provided by SMTP?
+20
+4
+1
+Allows clients to send email to a mail server and the servers to send email to other servers.
+true
+Allows remote access to network devices and servers.
+false
+Uses encryption to provide secure remote access to network devices and servers.
+false
+An application that allows real-time chatting among remote users.
+false

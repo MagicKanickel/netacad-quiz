@@ -1,0 +1,12 @@
+Which two devices are intermediary devices? (Choose two)
+20
+4
+2
+Host
+false
+Router
+true
+Switch
+true
+Servers
+false

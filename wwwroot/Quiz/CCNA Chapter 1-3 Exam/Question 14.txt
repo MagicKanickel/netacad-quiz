@@ -1,0 +1,12 @@
+14. Which interface allows remote management of a Layer 2 switch?
+20
+4
+1
+the AUX interface
+false
+the console port interface
+false
+the switch virtual interface
+true
+the first Ethernet port interface
+false

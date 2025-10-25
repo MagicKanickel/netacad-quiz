@@ -1,0 +1,10 @@
+What IOS mode does this statement correspond to: accessed by entering the "configure terminal"-command
+20
+3
+1
+user EXEC mode
+false
+privileged EXEC mode
+false
+global configuration mode
+true

@@ -1,0 +1,12 @@
+Which term describes a field in the IPv4 packet header that contains a unicast, multicast, or broadcast address?
+20
+4
+1
+destination IPv4 address
+true
+protocol
+false
+TTL
+false
+header checksum
+false

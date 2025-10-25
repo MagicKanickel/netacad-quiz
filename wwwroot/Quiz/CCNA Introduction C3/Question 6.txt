@@ -1,0 +1,12 @@
+Which logical address is used for delivery of data to a remote network?
+20
+4
+1
+destination MAC address
+false
+destination port number
+false
+destination IP address
+true
+source MAC address
+false

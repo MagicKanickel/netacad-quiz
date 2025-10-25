@@ -1,0 +1,12 @@
+What characteristic describes a VPN?
+20
+4
+1
+software on a router that filters traffic based on IP addresses or applications
+false
+software that identifies fast-spreading threats
+false
+a tunneling protocol that provides remote users with secure access into the network of an organization
+true
+a network device that filters access and traffic coming into a network
+false

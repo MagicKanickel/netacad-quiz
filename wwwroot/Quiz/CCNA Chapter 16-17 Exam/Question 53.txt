@@ -1,0 +1,12 @@
+An administrator decides to use “admin” as the password on a newly installed router. Which statement applies to the password choice?
+20
+4
+1
+It is weak because it is often the default password on new devices.
+true
+It is strong because it uses a passphrase.
+false
+It is strong because it uses a minimum of 10 numbers, letters and special characters.
+false
+It is strong because it contains 10 numbers and special characters.
+false

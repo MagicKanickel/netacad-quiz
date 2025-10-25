@@ -1,0 +1,12 @@
+For the TCP/IP protocol suite, what is the SECOND event when a Telnet message is being prepared to be sent over the network?
+20
+4
+1
+The IP Header is added.
+false
+The TCP header is added.
+true
+The Ethernet header is added.
+false
+The Telnet-formatted data is provided to the next layer.
+false

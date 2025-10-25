@@ -1,0 +1,12 @@
+Which type of IPv6 address is not routable and used only for communication on a single subnet?
+20
+4
+1
+global unicast address
+false
+link-local address
+true
+loopback address
+false
+unique local address
+false

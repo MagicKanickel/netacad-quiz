@@ -1,0 +1,14 @@
+a experimental adress
+20
+5
+1
+127.0.0.1
+false
+172.18.45.9
+false
+240.2.6.255
+true
+198.133.219.2
+false
+169.254.1.5
+false

@@ -1,0 +1,16 @@
+Refer to the exhibit. The addresses already used having to remain within the 10.16.10.0/24 network range, which subnet address could be assigned to the network containing 25 hosts?
+20
+6
+1
+10.16.10.160/26
+false
+10.16.10.128/28
+false
+10.16.10.64/27
+true
+10.16.10.224/26
+false
+10.16.10.240/27
+false
+10.16.10.240/28
+false

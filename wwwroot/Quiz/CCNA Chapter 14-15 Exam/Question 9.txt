@@ -1,0 +1,14 @@
+What are two roles of the transport layer in data communication on a network? (Choose two.)
+20
+4
+2
+identifying the proper application for each communication stream
+true
+tracking the individual communication between applications on the source and destination hosts
+true
+providing frame delimiting to identify bits making up a frame
+false
+performing a cyclic redundancy check on the frame for errors
+false
+providing the interface between applications and the underlying network over which messages are transmitted
+false

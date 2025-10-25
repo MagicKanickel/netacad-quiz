@@ -1,0 +1,12 @@
+Was bedeutet beim CPU Sockel PGA?
+20
+4
+1
+Power Gain Alert
+false
+Pin Grid Array
+true
+Pin Gain Alternate
+false
+Pin Grid Alternate
+false

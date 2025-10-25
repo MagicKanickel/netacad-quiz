@@ -1,0 +1,14 @@
+Match the firewall function to the type of threat protection it provides to the network. [prevents access to websites]
+20
+5
+1
+Packet filtering
+false
+URL filtering
+true
+network address translator
+false
+stateful packet inspection
+false
+application filtering
+false

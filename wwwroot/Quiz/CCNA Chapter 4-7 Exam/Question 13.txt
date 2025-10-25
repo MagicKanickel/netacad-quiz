@@ -1,0 +1,16 @@
+Which two devices commonly affect wireless networks? (Choose two.)
+20
+6
+2
+Blu-ray players
+False
+home theaters
+False
+cordless phones
+True
+microwaves
+True
+incandescent light bulbs
+False
+external hard drives
+False

@@ -1,0 +1,12 @@
+What identifier is used at the data link layer to uniquely identify an Ethernet device?
+20
+4
+1
+IP address
+false
+MAC Address
+true
+TCP port number
+false
+sequence number
+false

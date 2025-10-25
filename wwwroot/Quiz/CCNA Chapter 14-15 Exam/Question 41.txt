@@ -1,0 +1,16 @@
+A manufacturing company subscribes to certain hosted services from its ISP. The services that are required include hosted world wide web, file transfer, and e-mail. Which protocols represent these three key applications? (Choose three.)
+20
+6
+3
+FTP
+true
+HTTP
+true
+DNS
+false
+SNMP
+false
+DHCP
+false
+SMTP
+true

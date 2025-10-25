@@ -1,0 +1,14 @@
+Refer to the exhibit. A network administrator is connecting a new host to the Store LAN. The host needs to communicate with remote networks. What IP address would be configured as the default gateway on the new host?
+20
+5
+1
+172.19.98.230
+true
+172.19.98.1
+false
+10.98.99.254
+false
+209.165.200.120
+false
+172.19.99.99
+false

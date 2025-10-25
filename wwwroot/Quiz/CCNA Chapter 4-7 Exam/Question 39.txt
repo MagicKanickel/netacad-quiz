@@ -1,0 +1,12 @@
+Which switching method uses the CRC value in a frame?
+20
+4
+1
+cut-through
+false
+fast-forward
+false
+fragment-free
+false
+store-and-forward
+true

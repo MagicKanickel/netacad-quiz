@@ -1,0 +1,12 @@
+Which number or set of numbers represents a socket?
+20
+4
+1
+01-23-45-67-89-AB
+false
+192.168.1.1:80
+true
+21
+false
+10.1.1.15
+false

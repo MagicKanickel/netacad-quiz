@@ -1,0 +1,12 @@
+Which field in an IPv6 packet is used by the router to determine if a packet has expired and should be dropped?
+20
+4
+1
+TTL
+false
+Hop Limit
+true
+Address Unreachable
+false
+No Route to Destination
+false

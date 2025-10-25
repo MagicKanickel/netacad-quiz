@@ -1,0 +1,12 @@
+Which two flags in the TCP header are used in a TCP three-way handshake to establish connectivity?
+20
+4
+1
+ACK
+true
+SYN
+true
+FIN
+false
+PSH
+false

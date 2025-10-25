@@ -1,0 +1,12 @@
+Which type of network threat is intended to prevent authorized users from accessing resources?
+20
+4
+1
+DoS attacks
+true
+access attacks
+false
+reconnaissance attacks
+false
+trust exploitation
+false

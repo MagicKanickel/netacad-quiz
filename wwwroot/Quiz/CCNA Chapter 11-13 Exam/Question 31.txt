@@ -1,0 +1,12 @@
+Consider the following range of addresses: 2001:0DB8:BC15:00A0:0000:: bis 2001:0DB8:BC15:00AF:0000::?
+60
+4
+1
+/40
+false
+/50
+false
+/60
+true
+/70
+false

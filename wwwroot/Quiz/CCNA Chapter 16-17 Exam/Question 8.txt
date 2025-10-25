@@ -1,0 +1,12 @@
+What is the difference between a virus and a worm?
+20
+4
+1
+Viruses self-replicate but worms do not.
+false
+Worms self-replicate but viruses do not.
+true
+Worms require a host file but viruses do not.
+false
+Viruses hide in legitimate programs but worms do not.
+false

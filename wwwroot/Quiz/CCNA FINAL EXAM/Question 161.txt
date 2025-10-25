@@ -1,0 +1,12 @@
+When a switch configuration includes a user-defined error threshold on a per-port basis, to which switching method will the switch revert when the error threshold is reached?
+20
+4
+1
+cut-through
+false
+store-and-forward
+true
+fast-forward
+false
+fragment-free
+false

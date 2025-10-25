@@ -1,0 +1,16 @@
+Refer to the exhibit. Match the packets with their destination IP address to the exiting interfaces on the router. packets with destination of 172.17.12.10
+20
+6
+1
+FastEthernet0/0
+false
+FastEthernet0/1
+false
+FastEthernet1/0
+true
+FastEthernet1/1
+false
+Serial0/0/0
+false
+The packet is dropped.
+false

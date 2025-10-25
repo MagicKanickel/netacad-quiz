@@ -1,0 +1,14 @@
+In what two situations would UDP be better than TCP as the preferred transport protocol? (Choose two.)
+20
+5
+2
+when applications need to guarantee that a packet arrives intact, in sequence, and unduplicated
+false
+when a faster delivery mechanism is needed
+true
+when delivery overhead is not an issue
+false
+when applications do not need to guarantee delivery of the data
+true
+when destination port numbers are dynamic
+false

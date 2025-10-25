@@ -1,0 +1,12 @@
+Uploading documents from a personal computer to a file server. Whats the role?
+20
+4
+1
+Client
+true
+master
+false
+slave
+false
+transient
+false

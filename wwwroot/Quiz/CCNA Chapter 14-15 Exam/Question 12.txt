@@ -1,0 +1,13 @@
+Which two characteristics are associated with UDP sessions? (Choose two.)
+20
+4
+2
+Destination devices receive traffic with minimal delay.
+true
+Transmitted data segments are tracked.
+false
+Destination devices reassemble messages and pass them to an application.
+Received data is unacknowledged.
+true
+Unacknowledged data packets are retransmitted.
+false

@@ -1,0 +1,12 @@
+What characteristic describes spyware?
+20
+4
+1
+a network device that filters access and traffic coming into a network
+false
+software that is installed on a user device and collects information about the user
+true
+an attack that slows or crashes a device or network service
+false
+the use of stolen credentials to access private data
+false

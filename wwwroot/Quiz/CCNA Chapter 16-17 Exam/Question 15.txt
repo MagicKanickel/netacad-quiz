@@ -1,0 +1,18 @@
+Identify the steps NOT needed to configure a switch for SSH (Choose two)
+20
+7
+2
+Create a local user
+false
+Generate RSA keys.
+false
+Use the login command.
+true
+Configure a domain name.
+false
+Use the login local command.
+false
+Use the password cisco command.
+true
+Use the transport input ssh command.
+false

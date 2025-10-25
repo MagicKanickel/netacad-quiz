@@ -1,0 +1,12 @@
+An administrator uses the Ctrl-Shift-6 key combination on a switch after issuing the ping command. What is the purpose of using these keystrokes?
+20
+4
+1
+to restart the ping process
+false
+to interrupt the ping process
+true
+to exit to a different configuration mode
+false
+to allow the user to complete the command
+false

@@ -1,0 +1,16 @@
+What are three ways that media access control is used in networking? (Choose three.)
+20
+6
+3
+Ethernet utilizes CSMA/CD.
+true
+Media access control provides placement of data frames onto the media.
+true
+Contention-based access is also known as deterministic
+false
+802.11 utilizes CSMA/CD.
+false
+Data link layer protocols define the rules for access to different media
+true
+Networks with controlled access have reduced performance due to data collisions.
+false

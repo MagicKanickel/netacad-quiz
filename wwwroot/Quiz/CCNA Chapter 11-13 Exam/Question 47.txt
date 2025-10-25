@@ -1,0 +1,12 @@
+Three methods allow IPv6 and IPv4 to co-exist. Match each method with its description. IPv4 packets are converted into IPv4 packets, an vce versa.
+20
+4
+1
+DHCP
+false
+translation
+true
+tunneling
+false
+dual-stack
+false

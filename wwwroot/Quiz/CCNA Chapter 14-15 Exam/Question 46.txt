@@ -1,0 +1,12 @@
+Which applications or services allow hosts to act as client and server at the same time?
+20
+4
+1
+client/server applications
+false
+email applications
+false
+P2P applications
+true
+authentication services
+false

@@ -1,0 +1,12 @@
+What property of ARP causes cached IP-to-MAC mappings to remain in memory longer?
+20
+4
+1
+Entries in an ARP table are time-stamped and are purged after the timeout expires.
+true
+A static IP-to-MAC address entry can be entered manually into an ARP table.
+false
+The type field 0x806 appears in the header of the Ethernet frame.
+false
+The port-to-MAC address table on a switch has the same entries as the ARP table on the switch.
+false

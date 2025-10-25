@@ -1,0 +1,12 @@
+What was the reason for the creation and implementation of IPv6?
+30
+4
+1
+to make reading a 32-bit address easier
+false
+to provide more address space in the Internet Names Registry
+false
+to relieve IPv4 address depletion
+true
+to allow NAT support for private addressing
+false

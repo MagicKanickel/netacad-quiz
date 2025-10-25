@@ -1,0 +1,12 @@
+What characteristic of a network enables it to quickly grow to support new users without impacting the existing?
+20
+4
+1
+reliability
+false
+quality of service
+false
+scalability
+true
+accessibility
+false

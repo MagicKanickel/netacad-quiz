@@ -1,0 +1,12 @@
+A network administrator is measuring the transfer of bits across the company backbone for a mission critical financial application. The administrator notices that the network throughput appears lower than the bandwidth expected. Which three factors could influence the differences in throughput?
+20
+4
+3
+the amount of traffic that is currently crossing the network
+true
+the sophistication of the encapsulation method applied to the data
+false
+the type of traffic that is crossing the network
+true
+the latency that is created by the number of network devices that the data is crossing
+true

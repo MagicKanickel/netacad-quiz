@@ -1,0 +1,14 @@
+A network technician is researching the use of fiber optic cabling in a new technology center. Which two issues should be considered before implementing fiber optic media? (Choose two.)
+20
+5
+2
+Fiber optic cabling requires different termination and splicing expertise from what copper cabling requires.
+true
+Fiber optic cabling requires specific grounding to be immune to EMI.
+false
+Fiber optic cabling is susceptible to loss of signal due to RFI.
+false
+Fiber optic cable is able to withstand rough handling.
+false
+Fiber optic provides higher data capacity but is more expensive than copper cabling.
+true

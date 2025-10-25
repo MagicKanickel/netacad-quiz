@@ -1,0 +1,12 @@
+What layer is responsible for routing messages through an internetwork in the TCP/IP model?
+20
+4
+1
+internet
+true
+transport
+false
+network access
+false
+session
+false

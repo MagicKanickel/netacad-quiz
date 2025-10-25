@@ -1,0 +1,12 @@
+What is the binary representation of 0xCA?
+30
+4
+1
+10111010
+false
+11010101
+false
+11011010
+false
+11001010
+true

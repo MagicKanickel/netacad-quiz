@@ -1,0 +1,12 @@
+What IPv4 header field identifies the upper layer protocol carried in the packet?
+20
+4
+1
+Protocol
+true
+Identification
+false
+Version
+false
+Differentiated Services
+false

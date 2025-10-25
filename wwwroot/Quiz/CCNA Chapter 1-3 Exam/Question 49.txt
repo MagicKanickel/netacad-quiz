@@ -1,0 +1,12 @@
+Which statement is correct about network protocols?
+25
+4
+1
+Network protocols define the type of hardware that is used and how it is mounted in racks.
+false
+They define how messages are exchanged between the source and the destination.
+true
+They all function in the network access layer of TCP/IP.
+false
+They are only required for exchange of messages between devices on remote networks.
+false

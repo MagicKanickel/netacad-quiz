@@ -1,0 +1,12 @@
+Which transport layer feature is used to establish a connection-oriented session?
+20
+4
+1
+UDP ACK flag
+false
+TCP 3-way handshake
+true
+UDP sequence number
+false
+TCP port number
+false

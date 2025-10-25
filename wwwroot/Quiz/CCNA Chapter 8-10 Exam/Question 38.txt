@@ -1,0 +1,12 @@
+The global configuration command ip default-gateway 172.16.100.1 is applied to a switch. What is the effect of this command?
+20
+4
+1
+The switch will have a management interface with the address 172.16.100.1.
+false
+The switch can be remotely managed from a host on another network.
+true
+The switch can communicate with other hosts on the 172.16.100.0 network.
+false
+The switch is limited to sending and receiving frames to and from the gateway 172.16.100.1.
+false

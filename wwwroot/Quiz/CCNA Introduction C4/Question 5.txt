@@ -1,0 +1,12 @@
+Which type of UTP cable is used to connect a PC to a switch port?
+20
+4
+1
+console
+false
+crossover
+false
+straight-through
+true
+rollover
+false

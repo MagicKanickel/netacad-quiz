@@ -1,0 +1,12 @@
+Which tasks can be performed by a local DNS server?
+20
+4
+1
+mapping name-to-IP addresses for internal hosts
+true
+retrieving email messages
+false
+forwarding name resolution requests between servers
+true
+providing IP addresses to local hosts
+false

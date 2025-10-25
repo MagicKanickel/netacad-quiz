@@ -1,0 +1,12 @@
+What is the decimal equivalent of the binary number 10010101?
+30
+4
+1
+149
+true
+157
+false
+168
+false
+192
+false

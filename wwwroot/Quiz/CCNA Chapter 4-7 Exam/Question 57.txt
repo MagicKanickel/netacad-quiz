@@ -1,0 +1,12 @@
+What OSI physical layer term describes the physical medium whih uses electrical pulses?
+20
+4
+1
+copper cable
+true
+fibre-optic cable
+false
+air
+false
+goodput
+false

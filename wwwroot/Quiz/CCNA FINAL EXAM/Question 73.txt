@@ -1,0 +1,14 @@
+A user is executing a tracert to a remote device. At what point would a router, which is in the path to the destination device, stop forwarding the packet?
+20
+5
+1
+when the router receives an ICMP Time Exceeded message
+false
+when the RTT value reaches zero
+false
+when the host responds with an ICMP Echo Reply message
+false
+when the value in the TTL field reaches zero
+true
+when the values of both the Echo Request and Echo Reply messages reach zero
+false

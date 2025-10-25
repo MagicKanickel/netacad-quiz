@@ -1,0 +1,13 @@
+Refer to the exhibit. Host B on subnet Teachers transmits a packet to host D on subnet Students. Which Layer 2 and Layer 3 addresses are contained in the PDUs that are transmitted from host B to the router?
+20
+4
+1
+Layer 2 destination address = 00-00-0c-94-36-ab; Layer 2 source address = 00-00-0c-94-36-bb; Layer 3 destination address = 172.16.20.200; Layer 3 source address = 172.16.10.200
+true
+Layer 2 destination address = 00-00-0c-94-36-dd; Layer 2 source address = 00-00-0c-94-36-bb; Layer 3 destination address = 172.16.20.200; Layer 3 source address = 172.16.10.200
+false
+Layer 2 destination address = 00-00-0c-94-36-cd; Layer 2 source address = 00-00-0c-94-36-bb; Layer 3 destination address = 172.16.20.99; Layer 3 source address = 172.16.10.200
+false
+Layer 2 destination address = 00-00-0c-94-36-ab; Layer 2 source address = 00-00-0c-94-36-bb; Layer 3 destination address = 172.16.20.200; Layer 3 source address = 172.16.100.200
+false
+Question_33-image.png

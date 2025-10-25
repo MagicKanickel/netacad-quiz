@@ -1,0 +1,14 @@
+Which application protocols belong to TCP?
+20
+5
+3
+FTP
+true
+DHCP
+false
+SMTP
+true
+TFTP
+false
+HTTP
+true

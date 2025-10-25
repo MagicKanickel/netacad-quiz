@@ -1,0 +1,14 @@
+Refer to the exhibit. A network administrator is connecting a new host to the Medical LAN. The host needs to communicate with remote networks. What IP address would be configured as the default gateway on the new host?
+20
+5
+1
+192.168.201.200
+true
+192.168.201.1
+false
+10.200.201.254
+false
+203.0.113.222
+false
+192.168.200.80
+false

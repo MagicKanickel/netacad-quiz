@@ -1,0 +1,14 @@
+Which two functions are performed at the LLC sublayer of the OSI Data Link Layer to facilitate Ethernet communication? (Choose two.)
+20
+5
+2
+integrates Layer 2 flows between 10 Gigabit Ethernet over fiber and 1 Gigabit Ethernet over copper
+false
+places information in the Ethernet frame that identifies which network layer protocol is being encapsulated by the frame
+true
+implements CSMA/CD over legacy shared half-duplex media
+false
+adds Ethernet control information to network protocol data
+true
+applies source and destination MAC addresses to Ethernet frame
+false

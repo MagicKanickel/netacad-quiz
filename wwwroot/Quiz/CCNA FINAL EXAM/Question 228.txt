@@ -1,0 +1,17 @@
+Refer to the exhibit. What three facts can be determined from the viewable output of the show ip interface brief command? (Choose three.)
+20
+6
+3
+Two physical interfaces have been configured.
+false
+The switch can be remotely managed.
+true
+One device is attached to a physical interface.
+true
+Passwords have been configured on the switch.
+false
+Two devices are attached to the switch.
+false
+The default SVI has been configured.
+true
+Question_98-image.png

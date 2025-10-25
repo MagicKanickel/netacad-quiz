@@ -1,0 +1,12 @@
+What is an advantage for small organizations of adopting IMAP instead of POP?
+20
+4
+1
+POP only allows the client to store messages in a centralized way, while IMAP allows distributed storage.
+false
+Messages are kept in the mail servers until they are manually deleted from the email client.
+true
+When the user connects to a POP server, copies of the messages are kept in the mail server for a short time, but IMAP keeps them for a long time.
+false
+IMAP sends and retrieves email, but POP only retrieves email.
+false

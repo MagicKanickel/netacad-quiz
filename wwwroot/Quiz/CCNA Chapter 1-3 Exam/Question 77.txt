@@ -1,0 +1,12 @@
+What has typically a very low bandwidth
+20
+4
+1
+DSL
+false
+dialup
+true
+satellite
+false
+cable
+false

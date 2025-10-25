@@ -1,0 +1,12 @@
+What is a socket?
+30
+4
+1
+the combination of the source and destination IP address and source and destination Ethernet address
+false
+the combination of a source IP address and port number or a destination IP address and port number
+true
+the combination of the source and destination sequence and acknowledgment numbers
+false
+the combination of the source and destination sequence numbers and port numbers
+false
