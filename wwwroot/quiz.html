@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>NetAcad-Quiz – Quiz</title>
+  <link rel="stylesheet" href="/styles.css"/>
+  <script defer src="/app.js"></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', async () => {
+      await NetAcad.requireAuthOrRedirect(); // redirectet auf login, wenn nicht eingeloggt
+      const out = document.getElementById('out');
+
+      // Kapitel laden
+      try {
+        const chapters = await NetAcad.api('/api/chapters');
+        const list = document.getElementById('chapters');
+        if (chapters.length === 0) {
+          out.textContent = 'Keine Kapitel gefunden.';
+        }
+        chapters.forEach(ch => {
+          const a = document.createElement('a');
+          a.href = '#';
+          a.textContent = ch;
+          a.className = 'btn';
+          a.style.marginRight = '8px';
+          a.onclick = (e) => { e.preventDefault(); startQuiz(ch); };
+          list.appendChild(a);
+        });
+      } catch {
+        out.textContent = 'Fehler beim Laden der Kapitel.';
+      }
+    });
+
+    async function startQuiz(chapter){
+      // Hier kannst du deinen bestehenden Quiz-Flow aufrufen.
+      alert('Quiz starten: ' + chapter + ' (hier deinen bestehenden UI-Flow einbinden)');
+    }
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="brand">NetAcad-Quiz</div>
+    <button class="burger">☰ Menü</button>
+    <nav class="menu">
+      <a href="/index.html">Home</a>
+      <a href="/quiz.html">Quiz</a>
+      <a href="/login.html">Login</a>
+      <a href="/info.html">Info</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <h1 style="margin-top:0">Kapitel wählen</h1>
+      <div id="chapters" class="row" style="flex-wrap:wrap"></div>
+      <p id="out" class="helper" style="margin-top:10px;"></p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container center">
+      <div class="links">
+        <a href="/terms.html">Terms & Services</a>
+        <a href="/info.html">Info</a>
+        <a href="mailto:info.netacad.quiz@gmail.com">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

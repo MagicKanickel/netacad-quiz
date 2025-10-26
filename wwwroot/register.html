@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>NetAcad-Quiz – Registrierung</title>
+  <link rel="stylesheet" href="/styles.css"/>
+  <script defer src="/app.js"></script>
+  <script defer>
+    async function submitRegister(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const regKey = document.getElementById('regkey').value.trim();
+      const out = document.getElementById('out'); out.textContent='';
+
+      try{
+        const res = await NetAcad.api('/api/auth/register', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({
+            email, password,
+            registrationKey: regKey,
+            acceptTos: true // Text statt Checkbox – senden wir true
+          })
+        });
+        out.textContent = 'Bestätigungs-E-Mail gesendet. Bitte Posteingang prüfen.';
+      }catch(err){
+        out.textContent = 'Registrierung fehlgeschlagen. Key/E-Mail prüfen.';
+      }
+    }
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="brand">NetAcad-Quiz</div>
+    <button class="burger">☰ Menü</button>
+    <nav class="menu">
+      <a href="/index.html">Home</a>
+      <a href="/quiz.html">Quiz</a>
+      <a href="/login.html">Login</a>
+      <a href="/info.html">Info</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="card" style="max-width:520px;margin: 0 auto;">
+      <h1 style="margin-top:0">Registrieren</h1>
+      <form class="form" onsubmit="submitRegister(event)">
+        <label class="label">E-Mail</label>
+        <input class="input" id="email" type="email" required />
+        <label class="label">Passwort</label>
+        <input class="input" id="password" type="password" required />
+        <label class="label">Registrierungsschlüssel</label>
+        <input class="input" id="regkey" type="text" required />
+
+        <p class="helper">
+          Mit der Registrierung stimmst du unseren
+          <a href="/terms.html">Terms & Services</a> zu.
+        </p>
+
+        <button class="btn btn-primary" type="submit">Konto erstellen</button>
+        <p class="helper">Schon ein Konto? <a href="/login.html">Jetzt anmelden</a></p>
+        <p id="out" class="helper" style="color:#f6baba"></p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container center">
+      <div class="links">
+        <a href="/terms.html">Terms & Services</a>
+        <a href="/info.html">Info</a>
+        <a href="mailto:info.netacad.quiz@gmail.com">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

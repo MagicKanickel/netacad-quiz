@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>NetAcad-Quiz – Login</title>
+  <link rel="stylesheet" href="/styles.css"/>
+  <script defer src="/app.js"></script>
+  <script defer>
+    async function submitLogin(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const rememberMe = document.getElementById('remember').checked;
+      const out = document.getElementById('out');
+      out.textContent = '';
+
+      try {
+        const res = await NetAcad.api('/api/auth/login', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ email, password, rememberMe })
+        });
+        location.href = '/quiz.html';
+      } catch(err){
+        out.textContent = 'Login fehlgeschlagen. Prüfe E-Mail/Passwort.';
+      }
+    }
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="brand">NetAcad-Quiz</div>
+    <button class="burger">☰ Menü</button>
+    <nav class="menu">
+      <a href="/index.html">Home</a>
+      <a href="/quiz.html">Quiz</a>
+      <a href="/login.html">Login</a>
+      <a href="/info.html">Info</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="card" style="max-width:520px;margin: 0 auto;">
+      <h1 style="margin-top:0">Anmelden</h1>
+      <form class="form" onsubmit="submitLogin(event)">
+        <label class="label">E-Mail</label>
+        <input class="input" id="email" type="email" required />
+        <label class="label">Passwort</label>
+        <input class="input" id="password" type="password" required />
+
+        <div class="row">
+          <input type="checkbox" id="remember" />
+          <label for="remember" class="label">Keep me logged in</label>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Einloggen</button>
+        <p class="helper">Noch kein Konto? <a href="/register.html">Jetzt registrieren</a></p>
+        <p id="out" class="helper" style="color:#f6baba"></p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container center">
+      <div class="links">
+        <a href="/terms.html">Terms & Services</a>
+        <a href="/info.html">Info</a>
+        <a href="mailto:info.netacad.quiz@gmail.com">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
