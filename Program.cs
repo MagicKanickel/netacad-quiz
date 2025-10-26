@@ -1,13 +1,8 @@
 ﻿// =========================================================
 // USINGs
 // =========================================================
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text.Json;
-using System.Threading.Tasks;
-
+using MailKit.Net.Smtp;
+using MailKit.Security;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -16,12 +11,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
-using MailKit.Net.Smtp;
 using MimeKit;
-
 // Modelle/DbContext liegen im Namespace QuizWeb:
 using QuizWeb;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Text.Json;
+using System.Threading.Tasks;
 // Alias, damit es im Top-Level keine Mehrdeutigkeit gibt:
 using Db = QuizWeb.QuizDb;
 
@@ -184,6 +182,19 @@ app.MapPost("/api/auth/logout", async (SignInManager<AppUser> signIn) =>
     return Results.Ok(new { ok = true });
 });
 
+app.MapGet("/api/testmail", async (IEmailSender mail) =>
+{
+    await mail.SendAsync(
+        "deine.email@adresse.at",
+        "NetAcad-Quiz – Testmail",
+        "<h1>Glückwunsch 🎉</h1><p>Dein SMTP-Setup funktioniert!</p>"
+    );
+    return Results.Ok(new { ok = true });
+});
+
+
+
+
 
 // -----------------------------
 // QUIZ APIs (geschützt)
@@ -293,27 +304,57 @@ namespace QuizWeb
     public class SmtpEmailSender : IEmailSender
     {
         private readonly IConfiguration _cfg;
+
         public SmtpEmailSender(IConfiguration cfg) => _cfg = cfg;
 
         public async Task SendAsync(string to, string subject, string html)
         {
-            var host = _cfg["SMTP_HOST"];
-            var port = int.Parse(_cfg["SMTP_PORT"] ?? "587");
-            var user = _cfg["SMTP_USER"];
-            var pass = _cfg["SMTP_PASS"];
-            var from = _cfg["SMTP_FROM"] ?? user ?? "no-reply@example.com";
+            // --- Read with ENV-first, then fallback to appsettings.json ---
+            string Get(string env, string jsonPath, string? defaultValue = null) =>
+                Environment.GetEnvironmentVariable(env)
+                ?? _cfg[jsonPath]
+                ?? defaultValue;
 
+            var host = Get("SMTP_HOST", "EmailSettings:Host");
+            var portStr = Get("SMTP_PORT", "EmailSettings:Port", "587");
+            var user = Get("SMTP_USER", "EmailSettings:UserName");
+            var pass = Get("SMTP_PASS", "EmailSettings:Password"); // ENV wins
+            var from = Get("SMTP_FROM", "EmailSettings:SenderEmail", user ?? "no-reply@example.com");
+            var fromName = Get("SMTP_FROM_NAME", "EmailSettings:SenderName", "NetAcad-Quiz");
+            var sslStr = Get("SMTP_SSL", "EmailSettings:EnableSSL", "true");
+
+            if (string.IsNullOrWhiteSpace(host))
+                throw new InvalidOperationException("SMTP host missing (SMTP_HOST / EmailSettings:Host).");
+            if (!int.TryParse(portStr, out var port))
+                port = 587;
+
+            var enableSsl = bool.TryParse(sslStr, out var b) ? b : true;
+
+            // --- Build message ---
             var msg = new MimeMessage();
-            msg.From.Add(new MailboxAddress("Quiz", from));
+            msg.From.Add(new MailboxAddress(fromName, from));
             msg.To.Add(MailboxAddress.Parse(to));
             msg.Subject = subject;
-            msg.Body = new BodyBuilder { HtmlBody = html }.ToMessageBody();
 
-            using var smtp = new SmtpClient();
-            await smtp.ConnectAsync(host, port, MailKit.Security.SecureSocketOptions.StartTls);
-            if (!string.IsNullOrWhiteSpace(user)) await smtp.AuthenticateAsync(user, pass);
-            await smtp.SendAsync(msg);
-            await smtp.DisconnectAsync(true);
+            var builder = new BodyBuilder { HtmlBody = html };
+            msg.Body = builder.ToMessageBody();
+
+            // --- Send ---
+            using var client = new MailKit.Net.Smtp.SmtpClient();
+
+            // 587 + StartTls ist bei Brevo richtig
+            await client.ConnectAsync(host, port, SecureSocketOptions.StartTls);
+
+            if (!string.IsNullOrEmpty(user))
+            {
+                if (string.IsNullOrEmpty(pass))
+                    throw new InvalidOperationException("SMTP password missing (SMTP_PASS / EmailSettings:Password).");
+
+                await client.AuthenticateAsync(user, pass);
+            }
+
+            await client.SendAsync(msg);
+            await client.DisconnectAsync(true);
         }
     }
 
