@@ -560,6 +560,7 @@ namespace QuizWeb
     }
 
     // --- Entities ---
+
     public partial class Question
     {
         public Guid Id { get; set; }
@@ -571,7 +572,7 @@ namespace QuizWeb
         public List<QuestionAsset> Assets { get; set; } = new();
     }
 
-    public class Choice
+    public partial class Choice
     {
         public Guid Id { get; set; }
         public Guid QuestionId { get; set; }
@@ -580,7 +581,7 @@ namespace QuizWeb
         public bool IsCorrect { get; set; }
     }
 
-    public class QuestionAsset
+    public partial class QuestionAsset
     {
         public Guid Id { get; set; }
         public Guid QuestionId { get; set; }
@@ -588,7 +589,7 @@ namespace QuizWeb
         public string RelativePath { get; set; } = "";
     }
 
-    public class Mistake
+    public partial class Mistake
     {
         public Guid Id { get; set; }
         public string UserId { get; set; } = "";
@@ -597,7 +598,7 @@ namespace QuizWeb
         public DateTime CreatedAt { get; set; }
     }
 
-    public class RegistrationKey
+    public partial class RegistrationKey
     {
         public string Key { get; set; } = "";
         public bool Used { get; set; }
@@ -605,6 +606,54 @@ namespace QuizWeb
         public DateTime? UsedAtUtc { get; set; }
         public DateTime? ExpiresUtc { get; set; }
     }
+
+
+
+    //public class Question
+    //{
+    //    public Guid Id { get; set; }
+    //    public string Text { get; set; } = "";
+    //    public string Chapter { get; set; } = "";
+    //    public int TimeLimitSeconds { get; set; }
+    //    public int CorrectCount { get; set; }
+    //    public List<Choice> Choices { get; set; } = new();
+    //    public List<QuestionAsset> Assets { get; set; } = new();
+    //}
+
+    //public class Choice
+    //{
+    //    public Guid Id { get; set; }
+    //    public Guid QuestionId { get; set; }
+    //    public Question? Question { get; set; }
+    //    public string Text { get; set; } = "";
+    //    public bool IsCorrect { get; set; }
+    //}
+
+    //public class QuestionAsset
+    //{
+    //    public Guid Id { get; set; }
+    //    public Guid QuestionId { get; set; }
+    //    public Question? Question { get; set; }
+    //    public string RelativePath { get; set; } = "";
+    //}
+
+    //public class Mistake
+    //{
+    //    public Guid Id { get; set; }
+    //    public string UserId { get; set; } = "";
+    //    public Guid QuestionId { get; set; }
+    //    public string? ChosenChoiceIdsCsv { get; set; }
+    //    public DateTime CreatedAt { get; set; }
+    //}
+
+    //public class RegistrationKey
+    //{
+    //    public string Key { get; set; } = "";
+    //    public bool Used { get; set; }
+    //    public string? UsedByUserId { get; set; }
+    //    public DateTime? UsedAtUtc { get; set; }
+    //    public DateTime? ExpiresUtc { get; set; }
+    //}
 
     // --- DTOs ---
     public record RegisterDto(string Email, string Password, string RegistrationKey, bool AcceptTos);
