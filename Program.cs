@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -231,6 +232,61 @@ app.MapPost("/api/auth/logout", async (SignInManager<AppUser> signIn) =>
     await signIn.SignOutAsync();
     return Results.Ok(new { ok = true });
 });
+
+
+// ----------------------------------------------------
+// RESEND CONFIRMATION EMAIL ENDPOINT
+// ----------------------------------------------------
+app.MapPost("/api/auth/resend",
+async (UserManager<AppUser> users, IEmailSender mail, IConfiguration cfg, HttpContext ctx, [FromBody] dynamic body) =>
+{
+    string email = body?.email;
+    string regKey = body?.registrationKey;
+
+    if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(regKey))
+        return Results.BadRequest(new { error = "Fehlende Angaben." });
+
+    var user = await users.FindByEmailAsync(email);
+    if (user is null)
+        return Results.BadRequest(new { error = "E-Mail ist nicht registriert." });
+
+    if (await users.IsEmailConfirmedAsync(user))
+        return Results.BadRequest(new { error = "E-Mail ist bereits bestätigt." });
+
+    var token = await users.GenerateEmailConfirmationTokenAsync(user);
+    var baseUrl = cfg["APP_BASEURL"]?.TrimEnd('/') ?? $"{ctx.Request.Scheme}://{ctx.Request.Host}";
+    var url = $"{baseUrl}/api/auth/confirm?uid={Uri.EscapeDataString(user.Id)}&token={Uri.EscapeDataString(token)}&rk={Uri.EscapeDataString(regKey)}";
+
+    await mail.SendAsync(email, "Bitte E-Mail bestätigen", $@"
+<!doctype html>
+<html lang=""de"">
+  <body style=""margin:0;padding:0;background:#f6f7fb;font-family:Arial,Helvetica,sans-serif;color:#111;"">
+    <table role=""presentation"" width=""100%"" cellpadding=""0"" cellspacing=""0"" style=""background:#f6f7fb;padding:24px 0"">
+      <tr><td align=""center"">
+        <table role=""presentation"" width=""600"" cellpadding=""0"" cellspacing=""0"" style=""background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e9ecf1"">
+          <tr><td style=""padding:24px 28px;"">
+            <h1 style=""margin:0 0 12px;font-size:20px;"">E-Mail-Adresse bestätigen</h1>
+            <p style=""margin:0 0 20px;line-height:1.5;"">Klicke auf den Button, um dein Konto zu aktivieren.</p>
+            <p style=""margin:0 0 28px;"">
+              <a href=""{WebUtility.HtmlEncode(url)}""
+                 style=""display:inline-block;background:#2563eb;color:#fff;text-decoration:none;
+                        padding:12px 20px;border-radius:8px;font-weight:600"">
+                E-Mail jetzt bestätigen
+              </a>
+            </p>
+            <p style=""margin:0 0 8px;font-size:13px;color:#555"">Falls der Button nicht funktioniert:</p>
+            <p style=""margin:0;word-break:break-all;font-size:12px;color:#2563eb"">{WebUtility.HtmlEncode(url)}</p>
+          </td></tr>
+        </table>
+      </td></tr>
+    </table>
+  </body>
+</html>");
+
+    return Results.Ok(new { ok = true, info = "Verifizierungs-Mail erneut versendet." });
+});
+
+
 
 // Testmail
 app.MapGet("/api/testmail", async (IEmailSender mail, string to) =>
