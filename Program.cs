@@ -7,44 +7,36 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MimeKit;
-using QuizWeb;
+using QuizWeb;               // Modelle/DbContext im Namespace QuizWeb
 using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
-// Alias, damit es im Top-Level keine Mehrdeutigkeit gibt:
+using System.Net.Http.Headers;
+// Alias für den DbContext
 using Db = QuizWeb.QuizDb;
 
 
 // =========================================================
-// TOP-LEVEL APP CODE (hier KEINE Klassen/Records/Namespaces deklarieren)
+// TOP-LEVEL APP CODE
 // =========================================================
 
 var builder = WebApplication.CreateBuilder(args);
 
-// --- DbContext (SQLite im App-Verzeichnis -> Render kann darin schreiben) ---
-builder.Services.AddDbContext<Db>(opt =>
+// --- DB ---
+builder.Services.AddDbContext<Db>(o =>
 {
-    var dbPath = Path.Combine(AppContext.BaseDirectory, "quiz.db");
-    opt.UseSqlite($"Data Source={dbPath}");
+    // SQLite-Datei im Container/App-Verzeichnis
+    o.UseSqlite("Data Source=quiz.db");
 });
-
-// --- E-Mail Service: Brevo API bevorzugt, sonst SMTP ---
-if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("BREVO_API_KEY")))
-    builder.Services.AddSingleton<IEmailSender, QuizWeb.BrevoApiEmailSender>();
-else
-    builder.Services.AddSingleton<IEmailSender, QuizWeb.SmtpEmailSender>();
 
 // --- Identity / Auth ---
 builder.Services
-    .AddIdentityCore<QuizWeb.AppUser>(opt =>
+    .AddIdentityCore<AppUser>(opt =>
     {
         opt.User.RequireUniqueEmail = true;
         opt.SignIn.RequireConfirmedAccount = true;
@@ -63,8 +55,6 @@ builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
     {
         o.Cookie.Name = "quiz.auth";
         o.LoginPath = "/";
-        o.SlidingExpiration = true;
-        o.ExpireTimeSpan = TimeSpan.FromDays(30); // für RememberMe
     });
 
 builder.Services.AddAuthorization();
@@ -74,15 +64,21 @@ builder.Services.ConfigureHttpJsonOptions(o =>
     o.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
 });
 
+// --- E-Mail Service (BREVO API bevorzugt, sonst SMTP) ---
+if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("BREVO_API_KEY")))
+    builder.Services.AddSingleton<IEmailSender, BrevoApiEmailSender>();
+else
+    builder.Services.AddSingleton<IEmailSender, SmtpEmailSender>();
+
 var app = builder.Build();
 
-// --- Pipeline ---
+// --- Static / Auth ---
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// --- DB-Migrate + Import + Seed ---
+// --- DB-Migrate + optionaler Import + Seed ---
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<Db>();
@@ -93,12 +89,26 @@ using (var scope = app.Services.CreateScope())
 
     db.Database.Migrate();
 
-    // Import aus wwwroot/Quiz (dein Importer kann hier befüllen)
-    var quizRoot = Path.Combine(env.WebRootPath, "Quiz");
-    Directory.CreateDirectory(quizRoot);
-    TxtImporter.ImportQuestions(db, quizRoot, "Quiz");
+    // Import NUR wenn explizit angefordert
+    var runImport = Environment.GetEnvironmentVariable("RUN_IMPORT") == "1";
+    if (runImport)
+    {
+        try
+        {
+            var quizRoot = Path.Combine(env.WebRootPath, "Quiz");
+            Directory.CreateDirectory(quizRoot);
 
-    // Beispiel-Registrierungsschlüssel
+            Console.WriteLine("[Import] Starte TxtImporter...");
+            TxtImporter.ImportQuestions(db, quizRoot, "Quiz");
+            Console.WriteLine("[Import] Fertig.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("[Import] Fehler: " + ex);
+        }
+    }
+
+    // Beispiel-Registrierungsschlüssel seed
     if (!db.RegistrationKeys.Any())
     {
         db.RegistrationKeys.Add(new RegistrationKey { Key = Guid.NewGuid().ToString("N") });
@@ -106,7 +116,6 @@ using (var scope = app.Services.CreateScope())
         Console.WriteLine($"[Seed] Registrierungsschlüssel: {db.RegistrationKeys.Select(k => k.Key).First()}");
     }
 }
-
 
 // -----------------------------
 // AUTH Endpunkte
@@ -122,6 +131,7 @@ app.MapPost("/api/auth/register",
 async (RegisterDto dto, UserManager<AppUser> users, SignInManager<AppUser> signIn,
        Db db, IEmailSender mail, IConfiguration cfg, HttpContext ctx) =>
 {
+    // Terms-Text auf der UI; hier nur harte Prüfung, falls du weiter enforce willst:
     if (!dto.AcceptTos) return Results.BadRequest(new { error = "Bitte AGB akzeptieren." });
 
     var key = await db.RegistrationKeys.FindAsync(dto.RegistrationKey);
@@ -141,52 +151,15 @@ async (RegisterDto dto, UserManager<AppUser> users, SignInManager<AppUser> signI
     var url = $"{baseUrl}/api/auth/confirm?uid={Uri.EscapeDataString(user.Id)}&token={Uri.EscapeDataString(token)}&rk={Uri.EscapeDataString(dto.RegistrationKey)}";
 
     await mail.SendAsync(
-    dto.Email,
-    "Bitte E-Mail bestätigen",
-    $@"
-<!doctype html>
-<html lang=""de"">
-  <body style=""margin:0;padding:0;background:#f6f7fb;font-family:Arial,Helvetica,sans-serif;color:#111;"">
-    <table role=""presentation"" width=""100%"" cellpadding=""0"" cellspacing=""0"" style=""background:#f6f7fb;padding:24px 0"">
-      <tr>
-        <td align=""center"">
-          <table role=""presentation"" width=""600"" cellpadding=""0"" cellspacing=""0"" style=""background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e9ecf1"">
-            <tr>
-              <td style=""padding:24px 28px;"">
-                <h1 style=""margin:0 0 12px;font-size:20px;"">E-Mail-Adresse bestätigen</h1>
-                <p style=""margin:0 0 20px;line-height:1.5;"">
-                  Hallo! Bitte bestätige deine E-Mail, um dein NetAcad-Quiz Konto zu aktivieren.
-                </p>
+        dto.Email,
+        "Bitte E-Mail bestätigen",
+        $@"<p>Hallo,</p>
+            <p>Klicke auf den Link, um deine Registrierung zu bestätigen und dich automatisch anzumelden:</p>
+            <p><a href=""{WebUtility.HtmlEncode(url)}"">E-Mail jetzt bestätigen</a></p>
+            <p>Falls der Button nicht funktioniert: {WebUtility.HtmlEncode(url)}</p>"
+    );
 
-                <p style=""margin:0 0 28px;"">
-                  <a href=""{WebUtility.HtmlEncode(url)}""
-                     style=""display:inline-block;background:#2563eb;color:#fff;text-decoration:none;
-                            padding:12px 20px;border-radius:8px;font-weight:600"">
-                    E-Mail jetzt bestätigen
-                  </a>
-                </p>
-
-                <p style=""margin:0 0 8px;line-height:1.5;font-size:13px;color:#555"">
-                  Falls der Button nicht funktioniert, kopiere diesen Link in die Adresszeile:
-                </p>
-                <p style=""margin:0;word-break:break-all;font-size:12px;color:#2563eb"">
-                  {WebUtility.HtmlEncode(url)}
-                </p>
-
-                <hr style=""border:none;border-top:1px solid #e9ecf1;margin:24px 0"" />
-                <p style=""margin:0;font-size:12px;color:#777"">
-                  Diese E-Mail wurde automatisch gesendet. Wenn du dich nicht registriert hast, kannst du sie ignorieren.
-                </p>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </body>
-</html>");
-
-
+    // UI kann nach diesem OK die „Mail gesendet“-Ansicht mit Timer anzeigen
     return Results.Ok(new { ok = true, info = "Bestätigungs-E-Mail gesendet." });
 });
 
@@ -221,7 +194,7 @@ async (LoginDto dto, SignInManager<AppUser> signIn, UserManager<AppUser> users) 
     if (user == null) return Results.BadRequest(new { error = "Falsche E-Mail oder Passwort." });
     if (!await users.IsEmailConfirmedAsync(user)) return Results.BadRequest(new { error = "E-Mail noch nicht bestätigt." });
 
-    var res = await signIn.PasswordSignInAsync(user, dto.Password, isPersistent: dto.RememberMe, lockoutOnFailure: false);
+    var res = await signIn.PasswordSignInAsync(user, dto.Password, isPersistent: dto.KeepSignedIn, lockoutOnFailure: false);
     if (!res.Succeeded) return Results.BadRequest(new { error = "Falsche E-Mail oder Passwort." });
 
     return Results.Ok(new { ok = true });
@@ -233,60 +206,28 @@ app.MapPost("/api/auth/logout", async (SignInManager<AppUser> signIn) =>
     return Results.Ok(new { ok = true });
 });
 
-
-// ----------------------------------------------------
-// RESEND CONFIRMATION EMAIL ENDPOINT
-// ----------------------------------------------------
-app.MapPost("/api/auth/resend",
-async (UserManager<AppUser> users, IEmailSender mail, IConfiguration cfg, HttpContext ctx, [FromBody] dynamic body) =>
+// Resend-Confirm für deine „30-Sekunden Timer“-UI
+app.MapPost("/api/auth/resend-confirm",
+async (string email, UserManager<AppUser> users, IEmailSender mail, IConfiguration cfg, HttpContext ctx) =>
 {
-    string email = body?.email;
-    string regKey = body?.registrationKey;
-
-    if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(regKey))
-        return Results.BadRequest(new { error = "Fehlende Angaben." });
-
     var user = await users.FindByEmailAsync(email);
-    if (user is null)
-        return Results.BadRequest(new { error = "E-Mail ist nicht registriert." });
-
-    if (await users.IsEmailConfirmedAsync(user))
-        return Results.BadRequest(new { error = "E-Mail ist bereits bestätigt." });
+    if (user is null) return Results.Ok(new { ok = true }); // keine Info leaken
+    if (await users.IsEmailConfirmedAsync(user)) return Results.Ok(new { ok = true });
 
     var token = await users.GenerateEmailConfirmationTokenAsync(user);
     var baseUrl = cfg["APP_BASEURL"]?.TrimEnd('/') ?? $"{ctx.Request.Scheme}://{ctx.Request.Host}";
-    var url = $"{baseUrl}/api/auth/confirm?uid={Uri.EscapeDataString(user.Id)}&token={Uri.EscapeDataString(token)}&rk={Uri.EscapeDataString(regKey)}";
+    var url = $"{baseUrl}/api/auth/confirm?uid={Uri.EscapeDataString(user.Id)}&token={Uri.EscapeDataString(token)}";
 
-    await mail.SendAsync(email, "Bitte E-Mail bestätigen", $@"
-<!doctype html>
-<html lang=""de"">
-  <body style=""margin:0;padding:0;background:#f6f7fb;font-family:Arial,Helvetica,sans-serif;color:#111;"">
-    <table role=""presentation"" width=""100%"" cellpadding=""0"" cellspacing=""0"" style=""background:#f6f7fb;padding:24px 0"">
-      <tr><td align=""center"">
-        <table role=""presentation"" width=""600"" cellpadding=""0"" cellspacing=""0"" style=""background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e9ecf1"">
-          <tr><td style=""padding:24px 28px;"">
-            <h1 style=""margin:0 0 12px;font-size:20px;"">E-Mail-Adresse bestätigen</h1>
-            <p style=""margin:0 0 20px;line-height:1.5;"">Klicke auf den Button, um dein Konto zu aktivieren.</p>
-            <p style=""margin:0 0 28px;"">
-              <a href=""{WebUtility.HtmlEncode(url)}""
-                 style=""display:inline-block;background:#2563eb;color:#fff;text-decoration:none;
-                        padding:12px 20px;border-radius:8px;font-weight:600"">
-                E-Mail jetzt bestätigen
-              </a>
-            </p>
-            <p style=""margin:0 0 8px;font-size:13px;color:#555"">Falls der Button nicht funktioniert:</p>
-            <p style=""margin:0;word-break:break-all;font-size:12px;color:#2563eb"">{WebUtility.HtmlEncode(url)}</p>
-          </td></tr>
-        </table>
-      </td></tr>
-    </table>
-  </body>
-</html>");
+    await mail.SendAsync(
+        email,
+        "Bestätige deine E-Mail",
+        $@"<p>Bitte bestätige deine E-Mail Adresse:</p>
+           <p><a href=""{WebUtility.HtmlEncode(url)}"">E-Mail jetzt bestätigen</a></p>
+           <p>Falls der Button nicht funktioniert: {WebUtility.HtmlEncode(url)}</p>"
+    );
 
-    return Results.Ok(new { ok = true, info = "Verifizierungs-Mail erneut versendet." });
+    return Results.Ok(new { ok = true });
 });
-
-
 
 // Testmail
 app.MapGet("/api/testmail", async (IEmailSender mail, string to) =>
@@ -303,7 +244,7 @@ app.MapGet("/api/testmail", async (IEmailSender mail, string to) =>
     catch (Exception ex)
     {
         Console.Error.WriteLine(ex);
-        return Results.Problem(title: "SMTP error", detail: ex.Message);
+        return Results.Problem(title: "SMTP/API error", detail: ex.Message);
     }
 });
 
@@ -318,7 +259,6 @@ app.MapGet("/api/chapters", async (Db db) =>
         .Distinct()
         .OrderBy(x => x)
         .ToListAsync();
-
     return Results.Ok(list);
 }).RequireAuthorization();
 
@@ -406,14 +346,14 @@ app.Run();
 
 
 // =========================================================
-// TYPEN / MODELLE (einmalig, sauber, im Namespace)
+// TYPEN / MODELLE
 // =========================================================
 namespace QuizWeb
 {
     // --- E-Mail ---
     public interface IEmailSender { Task SendAsync(string to, string subject, string html); }
 
-    // SMTP-Variante (Brevo SMTP)
+    // SMTP (Fallback)
     public class SmtpEmailSender : IEmailSender
     {
         private readonly IConfiguration _cfg;
@@ -439,10 +379,9 @@ namespace QuizWeb
             msg.Body = new BodyBuilder { HtmlBody = html }.ToMessageBody();
 
             using var client = new MailKit.Net.Smtp.SmtpClient();
+            client.Timeout = 15000;
 
-            client.Timeout = 15000; // 15s
-            var ssl = port == 465 ? SecureSocketOptions.SslOnConnect
-                                  : SecureSocketOptions.StartTls;
+            var ssl = port == 465 ? SecureSocketOptions.SslOnConnect : SecureSocketOptions.StartTls;
 
             try
             {
@@ -460,18 +399,18 @@ namespace QuizWeb
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine($"[SMTP] Host={host}:{port}, SSL={ssl}, User={(string.IsNullOrEmpty(user) ? "<none>" : "<set>")}");
+                Console.Error.WriteLine($"[SMTP] Host={host}:{port}, SSL={ssl}");
                 Console.Error.WriteLine(ex);
                 throw;
             }
             finally
             {
-                try { await client.DisconnectAsync(true); } catch { /* ignore */ }
+                try { await client.DisconnectAsync(true); } catch { }
             }
         }
     }
 
-    // Brevo REST API (v3)
+    // Brevo API (bevorzugt, wenn BREVO_API_KEY gesetzt)
     public class BrevoApiEmailSender : IEmailSender
     {
         private readonly HttpClient _http;
@@ -486,11 +425,9 @@ namespace QuizWeb
             _apiKey = Environment.GetEnvironmentVariable("BREVO_API_KEY")
                      ?? cfg["EmailSettings:BrevoApiKey"]
                      ?? throw new InvalidOperationException("BREVO_API_KEY fehlt.");
-
             _fromEmail = Environment.GetEnvironmentVariable("BREVO_FROM_EMAIL")
                      ?? cfg["EmailSettings:SenderEmail"]
                      ?? throw new InvalidOperationException("BREVO_FROM_EMAIL/EmailSettings:SenderEmail fehlt.");
-
             _fromName = Environment.GetEnvironmentVariable("BREVO_FROM_NAME")
                      ?? cfg["EmailSettings:SenderName"]
                      ?? "NetAcad-Quiz";
@@ -560,7 +497,6 @@ namespace QuizWeb
     }
 
     // --- Entities ---
-
     public partial class Question
     {
         public Guid Id { get; set; }
@@ -572,7 +508,7 @@ namespace QuizWeb
         public List<QuestionAsset> Assets { get; set; } = new();
     }
 
-    public partial class Choice
+    public class Choice
     {
         public Guid Id { get; set; }
         public Guid QuestionId { get; set; }
@@ -581,7 +517,7 @@ namespace QuizWeb
         public bool IsCorrect { get; set; }
     }
 
-    public partial class QuestionAsset
+    public class QuestionAsset
     {
         public Guid Id { get; set; }
         public Guid QuestionId { get; set; }
@@ -589,7 +525,7 @@ namespace QuizWeb
         public string RelativePath { get; set; } = "";
     }
 
-    public partial class Mistake
+    public class Mistake
     {
         public Guid Id { get; set; }
         public string UserId { get; set; } = "";
@@ -598,7 +534,7 @@ namespace QuizWeb
         public DateTime CreatedAt { get; set; }
     }
 
-    public partial class RegistrationKey
+    public class RegistrationKey
     {
         public string Key { get; set; } = "";
         public bool Used { get; set; }
@@ -607,57 +543,9 @@ namespace QuizWeb
         public DateTime? ExpiresUtc { get; set; }
     }
 
-
-
-    //public class Question
-    //{
-    //    public Guid Id { get; set; }
-    //    public string Text { get; set; } = "";
-    //    public string Chapter { get; set; } = "";
-    //    public int TimeLimitSeconds { get; set; }
-    //    public int CorrectCount { get; set; }
-    //    public List<Choice> Choices { get; set; } = new();
-    //    public List<QuestionAsset> Assets { get; set; } = new();
-    //}
-
-    //public class Choice
-    //{
-    //    public Guid Id { get; set; }
-    //    public Guid QuestionId { get; set; }
-    //    public Question? Question { get; set; }
-    //    public string Text { get; set; } = "";
-    //    public bool IsCorrect { get; set; }
-    //}
-
-    //public class QuestionAsset
-    //{
-    //    public Guid Id { get; set; }
-    //    public Guid QuestionId { get; set; }
-    //    public Question? Question { get; set; }
-    //    public string RelativePath { get; set; } = "";
-    //}
-
-    //public class Mistake
-    //{
-    //    public Guid Id { get; set; }
-    //    public string UserId { get; set; } = "";
-    //    public Guid QuestionId { get; set; }
-    //    public string? ChosenChoiceIdsCsv { get; set; }
-    //    public DateTime CreatedAt { get; set; }
-    //}
-
-    //public class RegistrationKey
-    //{
-    //    public string Key { get; set; } = "";
-    //    public bool Used { get; set; }
-    //    public string? UsedByUserId { get; set; }
-    //    public DateTime? UsedAtUtc { get; set; }
-    //    public DateTime? ExpiresUtc { get; set; }
-    //}
-
     // --- DTOs ---
     public record RegisterDto(string Email, string Password, string RegistrationKey, bool AcceptTos);
-    public record LoginDto(string Email, string Password, bool RememberMe);
+    public record LoginDto(string Email, string Password, bool KeepSignedIn);
     public record AuthStatusDto(bool IsAuthenticated, string? Email);
 
     public class SubmitDTO
@@ -670,6 +558,4 @@ namespace QuizWeb
         public Guid QuestionId { get; set; }
         public List<Guid> ChoiceIds { get; set; } = new();
     }
-
-    
 }
