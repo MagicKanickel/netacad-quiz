@@ -12,42 +12,38 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MimeKit;
-using QuizWeb; // Modelle/DbContext liegen im Namespace QuizWeb
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using QuizWeb;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-
 // Alias, damit es im Top-Level keine Mehrdeutigkeit gibt:
 using Db = QuizWeb.QuizDb;
 
 
 // =========================================================
-// TOP-LEVEL APP CODE
+// TOP-LEVEL APP CODE (hier KEINE Klassen/Records/Namespaces deklarieren)
 // =========================================================
+
 var builder = WebApplication.CreateBuilder(args);
 
+// --- DbContext (SQLite im App-Verzeichnis -> Render kann darin schreiben) ---
+builder.Services.AddDbContext<Db>(opt =>
+{
+    var dbPath = Path.Combine(AppContext.BaseDirectory, "quiz.db");
+    opt.UseSqlite($"Data Source={dbPath}");
+});
 
-builder.Services.AddDbContext<QuizWeb.QuizDb>(opt =>
-    opt.UseSqlite("Data Source=quiz.db"));
-// ---------------------------------------------------------
-// 1️⃣ Mail-Service automatisch wählen (BREVO bevorzugt)
-// ---------------------------------------------------------
+// --- E-Mail Service: Brevo API bevorzugt, sonst SMTP ---
 if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("BREVO_API_KEY")))
-    builder.Services.AddSingleton<IEmailSender, BrevoApiEmailSender>();
+    builder.Services.AddSingleton<IEmailSender, QuizWeb.BrevoApiEmailSender>();
 else
-    builder.Services.AddSingleton<IEmailSender, SmtpEmailSender>();
+    builder.Services.AddSingleton<IEmailSender, QuizWeb.SmtpEmailSender>();
 
-// ---------------------------------------------------------
-// 2️⃣ Identity + Auth
-// ---------------------------------------------------------
+// --- Identity / Auth ---
 builder.Services
-    .AddIdentityCore<AppUser>(opt =>
+    .AddIdentityCore<QuizWeb.AppUser>(opt =>
     {
         opt.User.RequireUniqueEmail = true;
         opt.SignIn.RequireConfirmedAccount = true;
@@ -75,19 +71,15 @@ builder.Services.ConfigureHttpJsonOptions(o =>
     o.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
 });
 
-// ---------------------------------------------------------
-// 3️⃣ App + Pipeline
-// ---------------------------------------------------------
 var app = builder.Build();
 
+// --- Pipeline ---
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// ---------------------------------------------------------
-// 4️⃣ DB-Migration + Seed
-// ---------------------------------------------------------
+// --- DB-Migrate + Import + Seed ---
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<Db>();
@@ -98,7 +90,7 @@ using (var scope = app.Services.CreateScope())
 
     db.Database.Migrate();
 
-    // Import aus wwwroot/Quiz
+    // Import aus wwwroot/Quiz (dein Importer kann hier befüllen)
     var quizRoot = Path.Combine(env.WebRootPath, "Quiz");
     Directory.CreateDirectory(quizRoot);
     TxtImporter.ImportQuestions(db, quizRoot, "Quiz");
@@ -112,9 +104,10 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-// ---------------------------------------------------------
-// 5️⃣ API: AUTH
-// ---------------------------------------------------------
+
+// -----------------------------
+// AUTH Endpunkte
+// -----------------------------
 app.MapGet("/api/auth/status", (HttpContext ctx) =>
 {
     var ok = ctx.User.Identity?.IsAuthenticated ?? false;
@@ -137,16 +130,16 @@ async (RegisterDto dto, UserManager<AppUser> users, SignInManager<AppUser> signI
 
     var user = new AppUser { UserName = dto.Email, Email = dto.Email };
     var res = await users.CreateAsync(user, dto.Password);
-    if (!res.Succeeded)
-        return Results.BadRequest(new { error = string.Join("; ", res.Errors.Select(e => e.Description)) });
+    if (!res.Succeeded) return Results.BadRequest(new { error = string.Join("; ", res.Errors.Select(e => e.Description)) });
 
+    // Bestätigungslink
     var token = await users.GenerateEmailConfirmationTokenAsync(user);
     var baseUrl = cfg["APP_BASEURL"]?.TrimEnd('/') ?? $"{ctx.Request.Scheme}://{ctx.Request.Host}";
     var url = $"{baseUrl}/api/auth/confirm?uid={Uri.EscapeDataString(user.Id)}&token={Uri.EscapeDataString(token)}&rk={Uri.EscapeDataString(dto.RegistrationKey)}";
 
     await mail.SendAsync(dto.Email, "Bitte E-Mail bestätigen", $@"
         <p>Hallo,</p>
-        <p>Klicke auf den Link, um deine Registrierung zu bestätigen:</p>
+        <p>Klicke auf den Link, um deine Registrierung zu bestätigen und dich automatisch anzumelden:</p>
         <p><a href=""{WebUtility.HtmlEncode(url)}"">E-Mail jetzt bestätigen</a></p>");
 
     return Results.Ok(new { ok = true, info = "Bestätigungs-E-Mail gesendet." });
@@ -195,9 +188,7 @@ app.MapPost("/api/auth/logout", async (SignInManager<AppUser> signIn) =>
     return Results.Ok(new { ok = true });
 });
 
-// ---------------------------------------------------------
-// 6️⃣ Testmail-Endpoint
-// ---------------------------------------------------------
+// Testmail
 app.MapGet("/api/testmail", async (IEmailSender mail, string to) =>
 {
     try
@@ -205,20 +196,21 @@ app.MapGet("/api/testmail", async (IEmailSender mail, string to) =>
         await mail.SendAsync(
             to,
             "NetAcad-Quiz – Testmail",
-            "<h1>Glückwunsch 🎉</h1><p>Dein E-Mail-Versand funktioniert!</p>"
+            "<h1>Glückwunsch 🎉</h1><p>Dein Mail-Setup funktioniert!</p>"
         );
         return Results.Ok(new { ok = true });
     }
     catch (Exception ex)
     {
         Console.Error.WriteLine(ex);
-        return Results.Problem(title: "Mail error", detail: ex.Message);
+        return Results.Problem(title: "SMTP error", detail: ex.Message);
     }
 });
 
-// ---------------------------------------------------------
-// 7️⃣ Quiz APIs
-// ---------------------------------------------------------
+
+// -----------------------------
+// QUIZ APIs (geschützt)
+// -----------------------------
 app.MapGet("/api/chapters", async (Db db) =>
 {
     var list = await db.Questions
@@ -226,17 +218,26 @@ app.MapGet("/api/chapters", async (Db db) =>
         .Distinct()
         .OrderBy(x => x)
         .ToListAsync();
+
     return Results.Ok(list);
 }).RequireAuthorization();
 
 app.MapGet("/api/quiz", async (Db db, string? chapter) =>
 {
     var rng = new Random();
-    var q = db.Questions.Include(x => x.Choices).Include(x => x.Assets).AsQueryable();
+
+    var q = db.Questions
+        .Include(x => x.Choices)
+        .Include(x => x.Assets)
+        .AsQueryable();
+
     if (!string.IsNullOrWhiteSpace(chapter))
         q = q.Where(x => x.Chapter == chapter);
 
-    var questions = await q.OrderBy(_ => EF.Functions.Random()).ToListAsync();
+    var questions = await q
+        .OrderBy(_ => EF.Functions.Random())
+        .ToListAsync();
+
     foreach (var item in questions)
         item.Choices = item.Choices.OrderBy(_ => rng.Next()).ToList();
 
@@ -257,8 +258,8 @@ app.MapPost("/api/submit",
 async (Db db, HttpContext ctx, SubmitDTO payload, UserManager<AppUser> users) =>
 {
     var uid = ctx.User.Identity?.IsAuthenticated == true
-        ? (await users.FindByEmailAsync(ctx.User.Identity!.Name!))?.Id
-        : null;
+              ? (await users.FindByEmailAsync(ctx.User.Identity!.Name!))?.Id
+              : null;
 
     int correct = 0;
     var wrongs = new List<object>();
@@ -271,8 +272,8 @@ async (Db db, HttpContext ctx, SubmitDTO payload, UserManager<AppUser> users) =>
 
         var chosen = (ans.ChoiceIds ?? new List<Guid>()).ToHashSet();
         var correctSet = q.Choices.Where(c => c.IsCorrect).Select(c => c.Id).ToHashSet();
-        bool ok = chosen.SetEquals(correctSet);
 
+        bool ok = chosen.SetEquals(correctSet);
         if (ok) correct++;
         else
         {
@@ -305,14 +306,72 @@ app.Run();
 
 
 // =========================================================
-// NAMESPACE QuizWeb – Typen & Email-Implementierungen
+// TYPEN / MODELLE (einmalig, sauber, im Namespace)
 // =========================================================
 namespace QuizWeb
 {
-    // --- IEmailSender ---
+    // --- E-Mail ---
     public interface IEmailSender { Task SendAsync(string to, string subject, string html); }
 
-    // --- Brevo API Mailer (Standard auf Render) ---
+    // SMTP-Variante (Brevo SMTP)
+    public class SmtpEmailSender : IEmailSender
+    {
+        private readonly IConfiguration _cfg;
+        public SmtpEmailSender(IConfiguration cfg) => _cfg = cfg;
+
+        public async Task SendAsync(string to, string subject, string html)
+        {
+            string Get(string env, string jsonPath, string? def = null) =>
+                Environment.GetEnvironmentVariable(env) ?? _cfg[jsonPath] ?? def;
+
+            var host = Get("SMTP_HOST", "EmailSettings:Host") ?? throw new InvalidOperationException("SMTP host missing");
+            var portStr = Get("SMTP_PORT", "EmailSettings:Port", "587");
+            var user = Get("SMTP_USER", "EmailSettings:UserName");
+            var pass = Get("SMTP_PASS", "EmailSettings:Password");
+            var from = Get("SMTP_FROM", "EmailSettings:SenderEmail", user ?? "no-reply@example.com")!;
+            var fromNm = Get("SMTP_FROM_NAME", "EmailSettings:SenderName", "NetAcad-Quiz")!;
+            if (!int.TryParse(portStr, out var port)) port = 587;
+
+            var msg = new MimeMessage();
+            msg.From.Add(new MailboxAddress(fromNm, from));
+            msg.To.Add(MailboxAddress.Parse(to));
+            msg.Subject = subject;
+            msg.Body = new BodyBuilder { HtmlBody = html }.ToMessageBody();
+
+            using var client = new MailKit.Net.Smtp.SmtpClient();
+
+            client.Timeout = 15000; // 15s
+            var ssl = port == 465 ? SecureSocketOptions.SslOnConnect
+                                  : SecureSocketOptions.StartTls;
+
+            try
+            {
+                await client.ConnectAsync(host, port, ssl);
+
+                if (!string.IsNullOrWhiteSpace(user))
+                {
+                    if (string.IsNullOrWhiteSpace(pass))
+                        throw new InvalidOperationException("SMTP password missing (SMTP_PASS / EmailSettings:Password).");
+
+                    await client.AuthenticateAsync(user, pass);
+                }
+
+                await client.SendAsync(msg);
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"[SMTP] Host={host}:{port}, SSL={ssl}, User={(string.IsNullOrEmpty(user) ? "<none>" : "<set>")}");
+                Console.Error.WriteLine(ex);
+                throw;
+            }
+            finally
+            {
+                try { await client.DisconnectAsync(true); } catch { /* ignore */ }
+            }
+        }
+    }
+
+    // Brevo REST API (v3)
     public class BrevoApiEmailSender : IEmailSender
     {
         private readonly HttpClient _http;
@@ -325,14 +384,16 @@ namespace QuizWeb
             _http = new HttpClient { Timeout = TimeSpan.FromSeconds(15) };
 
             _apiKey = Environment.GetEnvironmentVariable("BREVO_API_KEY")
-                      ?? cfg["EmailSettings:BrevoApiKey"]
-                      ?? throw new InvalidOperationException("BREVO_API_KEY fehlt.");
-            _fromEmail = Environment.GetEnvironmentVariable("SMTP_FROM")
-                      ?? cfg["EmailSettings:SenderEmail"]
-                      ?? "info.netacad.quiz@gmail.com";
-            _fromName = Environment.GetEnvironmentVariable("SMTP_FROM_NAME")
-                      ?? cfg["EmailSettings:SenderName"]
-                      ?? "NetAcad-Quiz";
+                     ?? cfg["EmailSettings:BrevoApiKey"]
+                     ?? throw new InvalidOperationException("BREVO_API_KEY fehlt.");
+
+            _fromEmail = Environment.GetEnvironmentVariable("BREVO_FROM_EMAIL")
+                     ?? cfg["EmailSettings:SenderEmail"]
+                     ?? throw new InvalidOperationException("BREVO_FROM_EMAIL/EmailSettings:SenderEmail fehlt.");
+
+            _fromName = Environment.GetEnvironmentVariable("BREVO_FROM_NAME")
+                     ?? cfg["EmailSettings:SenderName"]
+                     ?? "NetAcad-Quiz";
 
             _http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _http.DefaultRequestHeaders.Add("api-key", _apiKey);
@@ -360,69 +421,73 @@ namespace QuizWeb
         }
     }
 
-    // --- SMTP Fallback (lokal) ---
-    public class SmtpEmailSender : IEmailSender
-    {
-        private readonly IConfiguration _cfg;
-        public SmtpEmailSender(IConfiguration cfg) => _cfg = cfg;
-
-        public async Task SendAsync(string to, string subject, string html)
-        {
-            var host = _cfg["EmailSettings:Host"] ?? "smtp-relay.brevo.com";
-            var port = int.Parse(_cfg["EmailSettings:Port"] ?? "587");
-            var user = _cfg["EmailSettings:UserName"];
-            var pass = _cfg["EmailSettings:Password"];
-            var from = _cfg["EmailSettings:SenderEmail"] ?? user ?? "no-reply@example.com";
-            var fromNm = _cfg["EmailSettings:SenderName"] ?? "NetAcad-Quiz";
-
-            var msg = new MimeMessage();
-            msg.From.Add(new MailboxAddress(fromNm, from));
-            msg.To.Add(MailboxAddress.Parse(to));
-            msg.Subject = subject;
-            msg.Body = new BodyBuilder { HtmlBody = html }.ToMessageBody();
-
-            using var client = new MailKit.Net.Smtp.SmtpClient();
-            await client.ConnectAsync(host, port, SecureSocketOptions.StartTls);
-            if (!string.IsNullOrEmpty(user)) await client.AuthenticateAsync(user, pass);
-            await client.SendAsync(msg);
-            await client.DisconnectAsync(true);
-        }
-    }
-
-    // --- Identity + Entities + DTOs (unverändert) ---
+    // --- Identity User ---
     public class AppUser : IdentityUser { }
+
+    // --- DbContext ---
     public class QuizDb : IdentityDbContext<AppUser>
     {
         public QuizDb(DbContextOptions<QuizDb> opt) : base(opt) { }
+
         public DbSet<Question> Questions => Set<Question>();
         public DbSet<Choice> Choices => Set<Choice>();
         public DbSet<QuestionAsset> Assets => Set<QuestionAsset>();
         public DbSet<Mistake> Mistakes => Set<Mistake>();
         public DbSet<RegistrationKey> RegistrationKeys => Set<RegistrationKey>();
+
+        protected override void OnModelCreating(ModelBuilder b)
+        {
+            base.OnModelCreating(b);
+
+            b.Entity<Question>().HasKey(x => x.Id);
+            b.Entity<Choice>().HasKey(x => x.Id);
+            b.Entity<QuestionAsset>().HasKey(x => x.Id);
+            b.Entity<Mistake>().HasKey(x => x.Id);
+            b.Entity<RegistrationKey>().HasKey(x => x.Key);
+
+            b.Entity<Question>()
+                .HasMany(x => x.Choices)
+                .WithOne(x => x.Question!)
+                .HasForeignKey(x => x.QuestionId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            b.Entity<Question>()
+                .HasMany(x => x.Assets)
+                .WithOne(x => x.Question!)
+                .HasForeignKey(x => x.QuestionId)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
     }
 
+    // --- Entities ---
     public class Question
     {
         public Guid Id { get; set; }
         public string Text { get; set; } = "";
         public string Chapter { get; set; } = "";
         public int TimeLimitSeconds { get; set; }
+        public int CorrectCount { get; set; }
         public List<Choice> Choices { get; set; } = new();
         public List<QuestionAsset> Assets { get; set; } = new();
     }
+
     public class Choice
     {
         public Guid Id { get; set; }
         public Guid QuestionId { get; set; }
+        public Question? Question { get; set; }
         public string Text { get; set; } = "";
         public bool IsCorrect { get; set; }
     }
+
     public class QuestionAsset
     {
         public Guid Id { get; set; }
         public Guid QuestionId { get; set; }
+        public Question? Question { get; set; }
         public string RelativePath { get; set; } = "";
     }
+
     public class Mistake
     {
         public Guid Id { get; set; }
@@ -431,6 +496,7 @@ namespace QuizWeb
         public string? ChosenChoiceIdsCsv { get; set; }
         public DateTime CreatedAt { get; set; }
     }
+
     public class RegistrationKey
     {
         public string Key { get; set; } = "";
@@ -440,9 +506,21 @@ namespace QuizWeb
         public DateTime? ExpiresUtc { get; set; }
     }
 
+    // --- DTOs ---
     public record RegisterDto(string Email, string Password, string RegistrationKey, bool AcceptTos);
     public record LoginDto(string Email, string Password);
     public record AuthStatusDto(bool IsAuthenticated, string? Email);
-    public class SubmitDTO { public List<SubmitAnswer> Answers { get; set; } = new(); }
-    public class SubmitAnswer { public Guid QuestionId { get; set; } public List<Guid> ChoiceIds { get; set; } = new(); }
+
+    public class SubmitDTO
+    {
+        public List<SubmitAnswer> Answers { get; set; } = new();
+    }
+
+    public class SubmitAnswer
+    {
+        public Guid QuestionId { get; set; }
+        public List<Guid> ChoiceIds { get; set; } = new();
+    }
+
+    
 }
