@@ -62,6 +62,8 @@ builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
     {
         o.Cookie.Name = "quiz.auth";
         o.LoginPath = "/";
+        o.SlidingExpiration = true;
+        o.ExpireTimeSpan = TimeSpan.FromDays(30); // für RememberMe
     });
 
 builder.Services.AddAuthorization();
@@ -218,7 +220,7 @@ async (LoginDto dto, SignInManager<AppUser> signIn, UserManager<AppUser> users) 
     if (user == null) return Results.BadRequest(new { error = "Falsche E-Mail oder Passwort." });
     if (!await users.IsEmailConfirmedAsync(user)) return Results.BadRequest(new { error = "E-Mail noch nicht bestätigt." });
 
-    var res = await signIn.PasswordSignInAsync(user, dto.Password, isPersistent: true, lockoutOnFailure: false);
+    var res = await signIn.PasswordSignInAsync(user, dto.Password, isPersistent: dto.RememberMe, lockoutOnFailure: false);
     if (!res.Succeeded) return Results.BadRequest(new { error = "Falsche E-Mail oder Passwort." });
 
     return Results.Ok(new { ok = true });
@@ -550,7 +552,7 @@ namespace QuizWeb
 
     // --- DTOs ---
     public record RegisterDto(string Email, string Password, string RegistrationKey, bool AcceptTos);
-    public record LoginDto(string Email, string Password);
+    public record LoginDto(string Email, string Password, bool RememberMe);
     public record AuthStatusDto(bool IsAuthenticated, string? Email);
 
     public class SubmitDTO
