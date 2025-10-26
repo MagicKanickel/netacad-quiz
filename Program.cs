@@ -223,6 +223,25 @@ app.MapPost("/api/auth/logout", async (SignInManager<AppUser> signIn) =>
     return Results.Ok(new { ok = true });
 });
 
+// ---- DEBUG: list Quiz files in container (temporär!) ----
+app.MapGet("/api/debug/ls",
+(IWebHostEnvironment env) =>
+{
+    var root = env.WebRootPath ?? Path.Combine(env.ContentRootPath, "wwwroot");
+    var quizRoot = Path.Combine(root, "Quiz");
+    if (!Directory.Exists(quizRoot))
+        return Results.Ok(new { exists = false, path = quizRoot });
+
+    var dirs = Directory.GetDirectories(quizRoot).Select(Path.GetFileName).OrderBy(x => x).ToList();
+    var files = Directory.GetFiles(quizRoot, "*", SearchOption.AllDirectories)
+                         .Select(p => p.Replace(root, "").TrimStart(Path.DirectorySeparatorChar, '/'))
+                         .OrderBy(x => x)
+                         .ToList();
+
+    return Results.Ok(new { exists = true, path = quizRoot, chapterDirs = dirs, totalFiles = files.Count, sample = files.Take(20) });
+});
+
+
 // Bestätigungs-Mail erneut senden (Rate-Limit ~30s)
 app.MapPost("/api/auth/resend-confirmation",
 async (UserManager<AppUser> users, IEmailSender mail, IConfiguration cfg, HttpContext ctx) =>
