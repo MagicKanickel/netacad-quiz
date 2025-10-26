@@ -137,10 +137,52 @@ async (RegisterDto dto, UserManager<AppUser> users, SignInManager<AppUser> signI
     var baseUrl = cfg["APP_BASEURL"]?.TrimEnd('/') ?? $"{ctx.Request.Scheme}://{ctx.Request.Host}";
     var url = $"{baseUrl}/api/auth/confirm?uid={Uri.EscapeDataString(user.Id)}&token={Uri.EscapeDataString(token)}&rk={Uri.EscapeDataString(dto.RegistrationKey)}";
 
-    await mail.SendAsync(dto.Email, "Bitte E-Mail bestätigen", $@"
-        <p>Hallo,</p>
-        <p>Klicke auf den Link, um deine Registrierung zu bestätigen und dich automatisch anzumelden:</p>
-        <p><a href=""{WebUtility.HtmlEncode(url)}"">E-Mail jetzt bestätigen</a></p>");
+    await mail.SendAsync(
+    dto.Email,
+    "Bitte E-Mail bestätigen",
+    $@"
+<!doctype html>
+<html lang=""de"">
+  <body style=""margin:0;padding:0;background:#f6f7fb;font-family:Arial,Helvetica,sans-serif;color:#111;"">
+    <table role=""presentation"" width=""100%"" cellpadding=""0"" cellspacing=""0"" style=""background:#f6f7fb;padding:24px 0"">
+      <tr>
+        <td align=""center"">
+          <table role=""presentation"" width=""600"" cellpadding=""0"" cellspacing=""0"" style=""background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e9ecf1"">
+            <tr>
+              <td style=""padding:24px 28px;"">
+                <h1 style=""margin:0 0 12px;font-size:20px;"">E-Mail-Adresse bestätigen</h1>
+                <p style=""margin:0 0 20px;line-height:1.5;"">
+                  Hallo! Bitte bestätige deine E-Mail, um dein NetAcad-Quiz Konto zu aktivieren.
+                </p>
+
+                <p style=""margin:0 0 28px;"">
+                  <a href=""{WebUtility.HtmlEncode(url)}""
+                     style=""display:inline-block;background:#2563eb;color:#fff;text-decoration:none;
+                            padding:12px 20px;border-radius:8px;font-weight:600"">
+                    E-Mail jetzt bestätigen
+                  </a>
+                </p>
+
+                <p style=""margin:0 0 8px;line-height:1.5;font-size:13px;color:#555"">
+                  Falls der Button nicht funktioniert, kopiere diesen Link in die Adresszeile:
+                </p>
+                <p style=""margin:0;word-break:break-all;font-size:12px;color:#2563eb"">
+                  {WebUtility.HtmlEncode(url)}
+                </p>
+
+                <hr style=""border:none;border-top:1px solid #e9ecf1;margin:24px 0"" />
+                <p style=""margin:0;font-size:12px;color:#777"">
+                  Diese E-Mail wurde automatisch gesendet. Wenn du dich nicht registriert hast, kannst du sie ignorieren.
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>");
+
 
     return Results.Ok(new { ok = true, info = "Bestätigungs-E-Mail gesendet." });
 });
