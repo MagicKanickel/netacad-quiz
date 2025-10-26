@@ -32,6 +32,9 @@ using Db = QuizWeb.QuizDb;
 // =========================================================
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddDbContext<QuizWeb.QuizDb>(opt =>
+    opt.UseSqlite("Data Source=quiz.db"));
 // ---------------------------------------------------------
 // 1️⃣ Mail-Service automatisch wählen (BREVO bevorzugt)
 // ---------------------------------------------------------
