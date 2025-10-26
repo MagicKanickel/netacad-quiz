@@ -560,7 +560,7 @@ namespace QuizWeb
     }
 
     // --- Entities ---
-    public class Question
+    public partial class Question
     {
         public Guid Id { get; set; }
         public string Text { get; set; } = "";
