@@ -182,15 +182,25 @@ app.MapPost("/api/auth/logout", async (SignInManager<AppUser> signIn) =>
     return Results.Ok(new { ok = true });
 });
 
-app.MapGet("/api/testmail", async (IEmailSender mail) =>
+app.MapGet("/api/testmail", async (IEmailSender mail, string to) =>
 {
-    await mail.SendAsync(
-        "deine.email@adresse.at",
-        "NetAcad-Quiz – Testmail",
-        "<h1>Glückwunsch 🎉</h1><p>Dein SMTP-Setup funktioniert!</p>"
-    );
-    return Results.Ok(new { ok = true });
+    try
+    {
+        await mail.SendAsync(
+            to,
+            "NetAcad-Quiz – Testmail",
+            "<h1>Glückwunsch 🎉</h1><p>Dein SMTP-Setup funktioniert!</p>"
+        );
+        return Results.Ok(new { ok = true });
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine(ex);
+        return Results.Problem(title: "SMTP error", detail: ex.Message);
+    }
 });
+
+
 
 
 
