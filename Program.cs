@@ -241,6 +241,37 @@ app.MapGet("/api/debug/ls",
     return Results.Ok(new { exists = true, path = quizRoot, chapterDirs = dirs, totalFiles = files.Count, sample = files.Take(20) });
 });
 
+// ---- ADMIN: trigger TXT-import on demand (temporär!) ----
+app.MapPost("/api/admin/import", async (
+    HttpContext ctx,
+    IConfiguration cfg,
+    Db db,
+    IWebHostEnvironment env) =>
+{
+    var sent = ctx.Request.Headers["X-Admin-Key"].FirstOrDefault();
+    var need = cfg["ADMIN_IMPORT_KEY"];
+    if (string.IsNullOrWhiteSpace(need) || sent != need)
+        return Results.Unauthorized();
+
+    var webRoot = env.WebRootPath ?? Path.Combine(env.ContentRootPath, "wwwroot");
+    var quizRoot = Path.Combine(webRoot, "Quiz");
+
+    try
+    {
+        var before = await db.Questions.CountAsync();
+        TxtImporter.ImportQuestions(db, quizRoot, "Quiz");
+        var after = await db.Questions.CountAsync();
+
+        return Results.Ok(new { ok = true, quizRoot, before, after, added = after - before });
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine(ex);
+        return Results.Problem(ex.Message);
+    }
+});
+
+
 
 // Bestätigungs-Mail erneut senden (Rate-Limit ~30s)
 app.MapPost("/api/auth/resend-confirmation",
