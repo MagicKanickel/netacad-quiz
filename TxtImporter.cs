@@ -1,6 +1,8 @@
 ﻿// TxtImporter.cs
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace QuizWeb
 {
@@ -174,6 +176,7 @@ namespace QuizWeb
     // Ergänzung im Model für Upsert-Key
     public partial class Question
     {
+        [NotMapped]
         // Stabiler Schlüssel (Kapitel + Dateiname); in Migration nicht zwingend erforderlich
         public string? TextKey { get; set; }
     }
