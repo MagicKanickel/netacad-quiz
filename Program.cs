@@ -151,13 +151,30 @@ async (RegisterDto dto, UserManager<AppUser> users, SignInManager<AppUser> signI
     var url = $"{baseUrl}/api/auth/confirm?uid={Uri.EscapeDataString(user.Id)}&token={Uri.EscapeDataString(token)}&rk={Uri.EscapeDataString(dto.RegistrationKey)}";
 
     await mail.SendAsync(
-        dto.Email,
-        "Bitte E-Mail bestätigen",
-        $@"<p>Hallo,</p>
-            <p>Klicke auf den Link, um deine Registrierung zu bestätigen und dich automatisch anzumelden:</p>
-            <p><a href=""{WebUtility.HtmlEncode(url)}"">E-Mail jetzt bestätigen</a></p>
-            <p>Falls der Button nicht funktioniert: {WebUtility.HtmlEncode(url)}</p>"
-    );
+    dto.Email,
+    "Bitte E-Mail bestätigen",
+    $@"
+    <div style=""font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5;color:#111"">
+      <h2 style=""margin:0 0 12px"">Willkommen beim NetAcad-Quiz!</h2>
+      <p style=""margin:0 0 16px"">Klicke auf den Button, um deine Registrierung zu bestätigen und dich automatisch anzumelden:</p>
+
+      <p style=""margin:24px 0"">
+        <a href=""{WebUtility.HtmlEncode(url)}""
+           style=""display:inline-block;background:#111;color:#fff;text-decoration:none;
+                  padding:12px 18px;border-radius:8px;font-weight:600"">
+          E-Mail jetzt bestätigen
+        </a>
+      </p>
+
+      <p style=""margin:16px 0"">Falls der Button nicht funktioniert, öffne diesen Link im Browser:<br>
+        <span style=""font-size:13px;color:#555"">{WebUtility.HtmlEncode(url)}</span>
+      </p>
+
+      <hr style=""border:none;border-top:1px solid #eee;margin:24px 0"">
+      <p style=""font-size:12px;color:#777;margin:0"">Diese E-Mail wurde automatisch versendet.</p>
+    </div>"
+);
+
 
     // UI kann nach diesem OK die „Mail gesendet“-Ansicht mit Timer anzeigen
     return Results.Ok(new { ok = true, info = "Bestätigungs-E-Mail gesendet." });
@@ -205,6 +222,52 @@ app.MapPost("/api/auth/logout", async (SignInManager<AppUser> signIn) =>
     await signIn.SignOutAsync();
     return Results.Ok(new { ok = true });
 });
+
+// Bestätigungs-Mail erneut senden (Rate-Limit ~30s)
+app.MapPost("/api/auth/resend-confirmation",
+async (UserManager<AppUser> users, IEmailSender mail, IConfiguration cfg, HttpContext ctx) =>
+{
+    var email = ctx.User.Identity?.Name;
+    if (string.IsNullOrWhiteSpace(email))
+        return Results.Unauthorized();
+
+    var user = await users.FindByEmailAsync(email);
+    if (user is null) return Results.NotFound(new { error = "User nicht gefunden." });
+    if (await users.IsEmailConfirmedAsync(user))
+        return Results.BadRequest(new { error = "E-Mail ist bereits bestätigt." });
+
+    // simples Rate-Limit per Cache (pro User 30s)
+    var cacheKey = $"resend:{user.Id}";
+    if (ctx.Items.TryGetValue(cacheKey, out var _))
+        return Results.BadRequest(new { error = "Bitte warte kurz, bevor du erneut sendest." });
+
+    var token = await users.GenerateEmailConfirmationTokenAsync(user);
+
+    var baseUrl = cfg["APP_BASEURL"]?.TrimEnd('/') ?? $"{ctx.Request.Scheme}://{ctx.Request.Host}";
+    var url = $"{baseUrl}/api/auth/confirm?uid={Uri.EscapeDataString(user.Id)}&token={Uri.EscapeDataString(token)}&rk=";
+
+    await mail.SendAsync(
+        user.Email!,
+        "Bestätigung erneut senden",
+        $@"
+        <div style=""font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5;color:#111"">
+          <p style=""margin:0 0 12px"">Hier ist dein neuer Bestätigungs-Link:</p>
+          <p style=""margin:16px 0"">
+            <a href=""{WebUtility.HtmlEncode(url)}""
+               style=""display:inline-block;background:#111;color:#fff;text-decoration:none;
+                      padding:10px 16px;border-radius:8px;font-weight:600"">E-Mail bestätigen</a>
+          </p>
+          <p style=""margin:12px 0;font-size:13px;color:#555"">{WebUtility.HtmlEncode(url)}</p>
+        </div>"
+    );
+
+    // 30s Sperre
+    ctx.Items[cacheKey] = true;
+    _ = Task.Run(async () => { await Task.Delay(30_000); ctx.Items.Remove(cacheKey); });
+
+    return Results.Ok(new { ok = true });
+});
+
 
 // Resend-Confirm für deine „30-Sekunden Timer“-UI
 app.MapPost("/api/auth/resend-confirm",

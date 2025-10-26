@@ -1,183 +1,237 @@
-﻿// TxtImporter.cs
+﻿using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
-using System.Text.RegularExpressions;
-using System.ComponentModel.DataAnnotations.Schema;
-
 
 namespace QuizWeb
 {
-    /// <summary>
-    /// Liest Fragen aus wwwroot/Quiz/<Kapitel>/<Datei>.txt
-    /// Format:
-    ///   # Frage
-    ///   time=30           (optional, Sekunden)
-    ///   [x] richtige Antwort
-    ///   [ ] falsche Antwort
-    ///   [x] richtige Antwort
-    ///   ...
-    ///   assets=bild1.png;bilder/abb2.jpg  (optional, Semikolon-getrennt; Pfade relativ zum Kapitelordner)
-    ///
-    /// Jede .txt-Datei erzeugt genau 1 Frage.
-    /// </summary>
     public static class TxtImporter
     {
-        // Doppelte Einträge vermeiden: wir verwenden einen stabilen "NaturalKey" (Kapitel + Dateiname)
-        private static string BuildNaturalKey(string chapter, string fileNameWithoutExt)
-            => $"{chapter.Trim()}::{fileNameWithoutExt.Trim()}".ToLowerInvariant();
-
+        /// <summary>
+        /// Importiert alle Kapitel in quizRoot. Pro Kapitel werden existierende Fragen gelöscht
+        /// und aus den Textdateien neu aufgebaut. Bilder werden anhand der Nummer im Dateinamen
+        /// mit der Frage verknüpft (Question 18.txt -> Images/question_18.jpg usw.).
+        /// </summary>
+        /// <param name="db">DbContext</param>
+        /// <param name="quizRoot">Physischer Pfad zu wwwroot/Quiz</param>
+        /// <param name="webRootFolderName">Meist "Quiz" (für die RelativePath-Bildpfade)</param>
         public static void ImportQuestions(QuizDb db, string quizRoot, string webRootFolderName)
         {
-            if (!Directory.Exists(quizRoot))
-                return;
+            if (!Directory.Exists(quizRoot)) return;
 
-            // Bestehendes Kapitel/Fragen-Cache (für Idempotenz)
-            var existing = db.Questions
-                .Include(q => q.Choices)
-                .Include(q => q.Assets)
-                .AsNoTracking()
-                .ToList()
-                .ToDictionary(q => q.TextKey ?? "", q => q);
-
+            // alle Kapitel = alle Unterordner in wwwroot/Quiz
             foreach (var chapterDir in Directory.GetDirectories(quizRoot))
             {
-                var chapterName = Path.GetFileName(chapterDir) ?? "General";
+                var chapterName = Path.GetFileName(chapterDir).Trim();
 
-                foreach (var txtPath in Directory.GetFiles(chapterDir, "*.txt", SearchOption.TopDirectoryOnly))
+                // 1) Kapitel komplett löschen (inkl. Choices/Assets via Cascade)
+                var old = db.Questions.Where(q => q.Chapter == chapterName);
+                if (old.Any())
                 {
-                    var fileName = Path.GetFileNameWithoutExtension(txtPath);
-                    var textKey = BuildNaturalKey(chapterName, fileName);
+                    db.Questions.RemoveRange(old);
+                    db.SaveChanges();
+                }
 
-                    // Datei parsen
-                    var raw = File.ReadAllLines(txtPath)
-                                  .Where(l => !string.IsNullOrWhiteSpace(l))
-                                  .Select(l => l.Trim())
-                                  .ToList();
+                // 2) Bilderliste des Kapitels ermitteln (optional)
+                var imagesDir = Path.Combine(chapterDir, "Images");
+                var chapterImages = Directory.Exists(imagesDir)
+                    ? Directory.GetFiles(imagesDir, "*.*", SearchOption.TopDirectoryOnly)
+                        .Where(p => HasImageExtension(p))
+                        .ToList()
+                    : new List<string>();
 
-                    if (raw.Count == 0) continue;
+                // 3) Alle geeigneten Frage-Dateien (alle .txt außer wrong.txt)
+                var questionFiles = Directory.GetFiles(chapterDir, "*.txt", SearchOption.TopDirectoryOnly)
+                    .Where(p => !string.Equals(Path.GetFileName(p), "wrong.txt", StringComparison.OrdinalIgnoreCase))
+                    .OrderBy(p => NumericKeyFromFileName(p))
+                    .ToList();
 
-                    // 1. Frage (erste Nicht-leere Zeile, die nicht mit "time=" oder "assets=" beginnt)
-                    string? question = raw.FirstOrDefault(l => !(l.StartsWith("time=", StringComparison.OrdinalIgnoreCase) ||
-                                                                 l.StartsWith("assets=", StringComparison.OrdinalIgnoreCase)));
-                    if (question == null) continue;
+                foreach (var file in questionFiles)
+                {
+                    var text = File.ReadAllText(file);
+                    var parsed = ParseQuestionFile(text);
 
-                    int time = 30;
-                    var timeLine = raw.FirstOrDefault(l => l.StartsWith("time=", StringComparison.OrdinalIgnoreCase));
-                    if (timeLine != null && int.TryParse(timeLine.Substring(5).Trim(), out var t))
-                        time = Math.Clamp(t, 5, 300);
+                    if (parsed is null || parsed.Choices.Count == 0)
+                        continue; // überspringen, wenn nicht brauchbar
 
-                    // 2. Antworten: Zeilen mit [x] / [ ] am Anfang
-                    var choiceRegex = new Regex(@"^\[(x|\s)\]\s*(.+)$", RegexOptions.IgnoreCase);
-                    var choices = raw.Select(l => choiceRegex.Match(l))
-                                     .Where(m => m.Success)
-                                     .Select(m => new
-                                     {
-                                         IsCorrect = string.Equals(m.Groups[1].Value, "x", StringComparison.OrdinalIgnoreCase),
-                                         Text = m.Groups[2].Value.Trim()
-                                     })
-                                     .ToList();
-
-                    if (choices.Count == 0) continue;
-
-                    // 3. Assets (optional)
-                    var assetsLine = raw.FirstOrDefault(l => l.StartsWith("assets=", StringComparison.OrdinalIgnoreCase));
-                    var assets = new List<string>();
-                    if (assetsLine != null)
+                    var q = new Question
                     {
-                        var payload = assetsLine.Substring("assets=".Length).Trim();
-                        if (!string.IsNullOrWhiteSpace(payload))
+                        Id = Guid.NewGuid(),
+                        Text = parsed.QuestionText,
+                        Chapter = chapterName,
+                        TimeLimitSeconds = parsed.TimeLimitSeconds,
+                        CorrectCount = 0,
+                        Choices = new List<Choice>(),
+                        Assets = new List<QuestionAsset>()
+                    };
+
+                    // Antworten
+                    foreach (var c in parsed.Choices)
+                    {
+                        q.Choices.Add(new Choice
                         {
-                            assets = payload.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-                                            .ToList();
-                        }
+                            Id = Guid.NewGuid(),
+                            Text = c.Text,
+                            IsCorrect = c.IsCorrect
+                        });
                     }
 
-                    // Relative Pfade für Assets (damit sie unter /Quiz/... erreichbar sind)
-                    var relAssets = assets.Select(a =>
+                    // Bilder via Nummer im Dateinamen: Question 18.txt -> *18* im Bildnamen
+                    var num = NumericKeyFromFileName(file);
+                    if (num.HasValue && chapterImages.Count > 0)
                     {
-                        // Beispiel: "bild.png" -> "Quiz/<Kapitel>/bild.png"
-                        var norm = a.Replace("\\", "/").TrimStart('/');
-                        return Path.Combine(webRootFolderName, chapterName, norm).Replace("\\", "/");
-                    }).ToList();
+                        var hits = chapterImages
+                            .Where(p => FileNameContainsNumber(p, num.Value))
+                            .ToList();
 
-                    // Entweder upsert (überschreiben) oder neu einfügen
-                    if (existing.TryGetValue(textKey, out var old))
-                    {
-                        // Upsert: vorhandene Frage ersetzen
-                        var q = db.Questions
-                                  .Include(q => q.Choices)
-                                  .Include(q => q.Assets)
-                                  .First(x => x.Id == old.Id);
-
-                        q.Text = question;
-                        q.Chapter = chapterName;
-                        q.TimeLimitSeconds = time;
-                        q.CorrectCount = 0;
-
-                        // Choices ersetzen
-                        db.Choices.RemoveRange(q.Choices);
-                        q.Choices.Clear();
-                        foreach (var c in choices)
+                        foreach (var imgPath in hits)
                         {
-                            q.Choices.Add(new Choice
-                            {
-                                Id = Guid.NewGuid(),
-                                QuestionId = q.Id,
-                                Text = c.Text,
-                                IsCorrect = c.IsCorrect
-                            });
-                        }
+                            // Relative Path für das Web, z.B. "Quiz/CCNA Chapter 1-3 Exam/Images/question_18.jpg"
+                            var rel = Path.Combine(
+                                webRootFolderName,
+                                chapterName,
+                                "Images",
+                                Path.GetFileName(imgPath)
+                            ).Replace('\\', '/');
 
-                        // Assets ersetzen
-                        db.Assets.RemoveRange(q.Assets);
-                        q.Assets.Clear();
-                        foreach (var ra in relAssets)
-                        {
                             q.Assets.Add(new QuestionAsset
                             {
                                 Id = Guid.NewGuid(),
-                                QuestionId = q.Id,
-                                RelativePath = ra
+                                RelativePath = rel
                             });
                         }
-                        // done
                     }
-                    else
-                    {
-                        var newQ = new Question
-                        {
-                            Id = Guid.NewGuid(),
-                            Text = question,
-                            Chapter = chapterName,
-                            TimeLimitSeconds = time,
-                            CorrectCount = 0,
-                            TextKey = textKey,
-                            Choices = choices.Select(c => new Choice
-                            {
-                                Id = Guid.NewGuid(),
-                                Text = c.Text,
-                                IsCorrect = c.IsCorrect
-                            }).ToList(),
-                            Assets = relAssets.Select(a => new QuestionAsset
-                            {
-                                Id = Guid.NewGuid(),
-                                RelativePath = a
-                            }).ToList()
-                        };
 
-                        db.Questions.Add(newQ);
-                    }
+                    db.Questions.Add(q);
                 }
+
+                db.SaveChanges();
+            }
+        }
+
+        // ------------------- Parser -------------------
+
+        private static ParsedQuestion? ParseQuestionFile(string content)
+        {
+            // Normalisiere Zeilen
+            var lines = content
+                .Replace("\r\n", "\n")
+                .Replace("\r", "\n")
+                .Split('\n')
+                .Select(l => l.Trim())
+                .Where(l => l.Length > 0)
+                .ToList();
+
+            if (lines.Count == 0) return null;
+
+            // Frage = erste nicht-leere Zeile, sofern keine Überschrift "Question:" o.ä.
+            string questionText = lines[0];
+            if (questionText.StartsWith("Q:", StringComparison.OrdinalIgnoreCase) ||
+                questionText.StartsWith("Question:", StringComparison.OrdinalIgnoreCase))
+            {
+                questionText = questionText.Substring(questionText.IndexOf(':') + 1).Trim();
             }
 
-            db.SaveChanges();
-        }
-    }
+            // restliche Zeilen = Antworten
+            var choices = new List<ParsedChoice>();
 
-    // Ergänzung im Model für Upsert-Key
-    public partial class Question
-    {
-        [NotMapped]
-        // Stabiler Schlüssel (Kapitel + Dateiname); in Migration nicht zwingend erforderlich
-        public string? TextKey { get; set; }
+            // Erlaubte Marker für Korrekt
+            // 1) "+ " oder "* " als Prefix
+            // 2) "[x] " (checked)
+            // 3) "(correct)" am Ende
+            // Alles andere ist falsch.
+            for (int i = 1; i < lines.Count; i++)
+            {
+                var raw = lines[i];
+
+                bool isCorrect = false;
+                string text = raw;
+
+                // [x] korrekte
+                if (Regex.IsMatch(raw, @"^\[x\]\s*", RegexOptions.IgnoreCase))
+                {
+                    isCorrect = true;
+                    text = Regex.Replace(raw, @"^\[x\]\s*", "", RegexOptions.IgnoreCase);
+                }
+                // "+ " oder "* " als korrekt
+                else if (raw.StartsWith("+ ") || raw.StartsWith("* "))
+                {
+                    isCorrect = true;
+                    text = raw.Substring(2).Trim();
+                }
+                // "- " oder "[ ] " eher falsch → ohne Spezialbehandlung, nur Prefix abwerfen
+                else if (raw.StartsWith("- "))
+                {
+                    isCorrect = false;
+                    text = raw.Substring(2).Trim();
+                }
+                else if (Regex.IsMatch(raw, @"^\[\s\]\s*"))
+                {
+                    isCorrect = false;
+                    text = Regex.Replace(raw, @"^\[\s\]\s*", "");
+                }
+
+                // (correct) am Ende
+                var correctSuffix = Regex.Match(text, @"\s*\((correct|richtig)\)\s*$", RegexOptions.IgnoreCase);
+                if (correctSuffix.Success)
+                {
+                    isCorrect = true;
+                    text = text.Substring(0, correctSuffix.Index).Trim();
+                }
+
+                // Leere Antwort ignorieren
+                if (string.IsNullOrWhiteSpace(text)) continue;
+
+                choices.Add(new ParsedChoice { Text = text, IsCorrect = isCorrect });
+            }
+
+            // Mindestens 2 Antworten, mind. 1 korrekt
+            if (choices.Count < 2 || !choices.Any(c => c.IsCorrect))
+                return null;
+
+            return new ParsedQuestion
+            {
+                QuestionText = questionText,
+                TimeLimitSeconds = 60,
+                Choices = choices
+            };
+        }
+
+        // ------------------- Helpers -------------------
+
+        private static bool HasImageExtension(string path)
+        {
+            var ext = Path.GetExtension(path).ToLowerInvariant();
+            return ext is ".png" or ".jpg" or ".jpeg" or ".gif" or ".webp" or ".bmp";
+        }
+
+        private static int? NumericKeyFromFileName(string path)
+        {
+            // nimmt erste Zahl im Dateinamen, z.B. "Question 18.txt" -> 18
+            var name = Path.GetFileNameWithoutExtension(path);
+            var m = Regex.Match(name, @"(\d+)");
+            if (!m.Success) return null;
+            if (int.TryParse(m.Groups[1].Value, out var val)) return val;
+            return null;
+        }
+
+        private static bool FileNameContainsNumber(string path, int number)
+        {
+            var name = Path.GetFileNameWithoutExtension(path);
+            return Regex.IsMatch(name, $@"(^|[^0-9]){number}([^0-9]|$)");
+        }
+
+        // ------------------- DTOs -------------------
+
+        private class ParsedQuestion
+        {
+            public string QuestionText { get; set; } = "";
+            public int TimeLimitSeconds { get; set; }
+            public List<ParsedChoice> Choices { get; set; } = new();
+        }
+
+        private class ParsedChoice
+        {
+            public string Text { get; set; } = "";
+            public bool IsCorrect { get; set; }
+        }
     }
 }
