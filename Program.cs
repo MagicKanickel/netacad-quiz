@@ -353,7 +353,12 @@ namespace QuizWeb
             using var client = new MailKit.Net.Smtp.SmtpClient();
 
             // 587 + StartTls ist bei Brevo richtig
-            await client.ConnectAsync(host, port, SecureSocketOptions.StartTls);
+            // TLS-Modus abhängig vom Port (465 = SSL on connect, 587 = StartTLS).
+            var secure = port == 465 ? SecureSocketOptions.SslOnConnect
+                                     : SecureSocketOptions.StartTlsWhenAvailable;
+            // (Optional) automatische Erkennung ginge auch mit SecureSocketOptions.Auto
+            await client.ConnectAsync(host, port, secure);
+
 
             if (!string.IsNullOrEmpty(user))
             {
