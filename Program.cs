@@ -314,64 +314,67 @@ namespace QuizWeb
     public class SmtpEmailSender : IEmailSender
     {
         private readonly IConfiguration _cfg;
-
         public SmtpEmailSender(IConfiguration cfg) => _cfg = cfg;
 
         public async Task SendAsync(string to, string subject, string html)
         {
-            // --- Read with ENV-first, then fallback to appsettings.json ---
-            string Get(string env, string jsonPath, string? defaultValue = null) =>
-                Environment.GetEnvironmentVariable(env)
-                ?? _cfg[jsonPath]
-                ?? defaultValue;
+            string Get(string env, string jsonPath, string? def = null) =>
+                Environment.GetEnvironmentVariable(env) ?? _cfg[jsonPath] ?? def;
 
-            var host = Get("SMTP_HOST", "EmailSettings:Host");
+            var host = Get("SMTP_HOST", "EmailSettings:Host") ?? throw new InvalidOperationException("SMTP host missing");
             var portStr = Get("SMTP_PORT", "EmailSettings:Port", "587");
             var user = Get("SMTP_USER", "EmailSettings:UserName");
-            var pass = Get("SMTP_PASS", "EmailSettings:Password"); // ENV wins
-            var from = Get("SMTP_FROM", "EmailSettings:SenderEmail", user ?? "no-reply@example.com");
-            var fromName = Get("SMTP_FROM_NAME", "EmailSettings:SenderName", "NetAcad-Quiz");
-            var sslStr = Get("SMTP_SSL", "EmailSettings:EnableSSL", "true");
+            var pass = Get("SMTP_PASS", "EmailSettings:Password");
+            var from = Get("SMTP_FROM", "EmailSettings:SenderEmail", user ?? "no-reply@example.com")!;
+            var fromNm = Get("SMTP_FROM_NAME", "EmailSettings:SenderName", "NetAcad-Quiz")!;
+            if (!int.TryParse(portStr, out var port)) port = 587;
 
-            if (string.IsNullOrWhiteSpace(host))
-                throw new InvalidOperationException("SMTP host missing (SMTP_HOST / EmailSettings:Host).");
-            if (!int.TryParse(portStr, out var port))
-                port = 587;
-
-            var enableSsl = bool.TryParse(sslStr, out var b) ? b : true;
-
-            // --- Build message ---
+            // Nachricht bauen
             var msg = new MimeMessage();
-            msg.From.Add(new MailboxAddress(fromName, from));
+            msg.From.Add(new MailboxAddress(fromNm, from));
             msg.To.Add(MailboxAddress.Parse(to));
             msg.Subject = subject;
+            msg.Body = new BodyBuilder { HtmlBody = html }.ToMessageBody();
 
-            var builder = new BodyBuilder { HtmlBody = html };
-            msg.Body = builder.ToMessageBody();
-
-            // --- Send ---
             using var client = new MailKit.Net.Smtp.SmtpClient();
 
-            // 587 + StartTls ist bei Brevo richtig
-            // TLS-Modus abhängig vom Port (465 = SSL on connect, 587 = StartTLS).
-            var secure = port == 465 ? SecureSocketOptions.SslOnConnect
-                                     : SecureSocketOptions.StartTlsWhenAvailable;
-            // (Optional) automatische Erkennung ginge auch mit SecureSocketOptions.Auto
-            await client.ConnectAsync(host, port, secure);
+            // OPTIONAL: Kürzerer Timeout, damit Fehler schneller sichtbar werden
+            client.Timeout = 15000; // 15s
 
+            // *** WICHTIG: STARTTLS ERZINGEN ***
+            var ssl = port == 465 ? SecureSocketOptions.SslOnConnect
+                                  : SecureSocketOptions.StartTls;
 
-            if (!string.IsNullOrEmpty(user))
+            
+
+            try
             {
-                if (string.IsNullOrEmpty(pass))
-                    throw new InvalidOperationException("SMTP password missing (SMTP_PASS / EmailSettings:Password).");
+                await client.ConnectAsync(host, port, ssl);
 
-                await client.AuthenticateAsync(user, pass);
+                if (!string.IsNullOrWhiteSpace(user))
+                {
+                    if (string.IsNullOrWhiteSpace(pass))
+                        throw new InvalidOperationException("SMTP password missing (SMTP_PASS / EmailSettings:Password).");
+
+                    await client.AuthenticateAsync(user, pass);
+                }
+
+                await client.SendAsync(msg);
             }
-
-            await client.SendAsync(msg);
-            await client.DisconnectAsync(true);
+            catch (Exception ex)
+            {
+                // Mehr Kontext in den Logs hilft enorm
+                Console.Error.WriteLine($"[SMTP] Host={host}:{port}, SSL={ssl}, User={(string.IsNullOrEmpty(user) ? "<none>" : "<set>")}");
+                Console.Error.WriteLine(ex);
+                throw;
+            }
+            finally
+            {
+                try { await client.DisconnectAsync(true); } catch { /* ignore */ }
+            }
         }
     }
+
 
     // --- Identity User ---
     public class AppUser : IdentityUser { }
