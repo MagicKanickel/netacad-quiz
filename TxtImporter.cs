@@ -15,6 +15,7 @@ namespace QuizWeb
         /// <param name="webRootFolderName">Meist "Quiz" (für die RelativePath-Bildpfade)</param>
         public static void ImportQuestions(QuizDb db, string quizRoot, string webRootFolderName)
         {
+
             if (!Directory.Exists(quizRoot)) return;
 
             // alle Kapitel = alle Unterordner in wwwroot/Quiz
@@ -46,6 +47,7 @@ namespace QuizWeb
 
                 foreach (var file in questionFiles)
                 {
+                    Console.WriteLine("Found file: " + file);
                     var text = File.ReadAllText(file);
                     var parsed = ParseQuestionFile(text);
 
