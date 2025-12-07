@@ -241,6 +241,23 @@ app.MapGet("/api/debug/ls",
     return Results.Ok(new { exists = true, path = quizRoot, chapterDirs = dirs, totalFiles = files.Count, sample = files.Take(20) });
 });
 
+app.MapGet("/api/debug/testmail", async (IEmailSender mail) =>
+{
+    try
+    {
+        await mail.SendAsync("info.netacad.quiz@gmail.com",
+            "Testmail Debug",
+            "<p>Wenn du diese Mail siehst, funktioniert Brevo wieder!</p>");
+
+        return Results.Json(new { ok = true, message = "Mail attempt done" });
+    }
+    catch (Exception ex)
+    {
+        return Results.Json(new { ok = false, error = ex.Message, stack = ex.StackTrace });
+    }
+});
+
+
 // ---- ADMIN: trigger TXT-import on demand (temporär!) ----
 app.MapPost("/api/admin/import", async (
     HttpContext ctx,
