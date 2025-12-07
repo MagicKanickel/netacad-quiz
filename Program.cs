@@ -104,10 +104,24 @@ using (var scope = app.Services.CreateScope())
 
     db.Database.Migrate();
 
-    // Import aus wwwroot/Quiz (falls vorhanden)
+    // Import aus wwwroot/Quiz
     var quizRoot = Path.Combine(env.WebRootPath, "Quiz");
     Directory.CreateDirectory(quizRoot);
-    TxtImporter.ImportQuestions(db, quizRoot, "Quiz");
+
+    try
+    {
+        Console.WriteLine($"[Import] Versuche Import aus '{quizRoot}' ...");
+        TxtImporter.ImportQuestions(db, quizRoot, "Quiz");
+        Console.WriteLine("[Import] Import fertig (ohne kritische Fehler).");
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine("[Import] FATALER Fehler beim Import:");
+        Console.Error.WriteLine(ex);
+        // Wichtig: NICHT wieder throwen,
+        // damit der Host trotzdem weiterläuft
+    }
+
 
     // DEMO-Kapitel anlegen, falls noch keine Fragen existieren
     if (!db.Questions.Any())
