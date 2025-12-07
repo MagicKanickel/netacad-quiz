@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuizWeb;
 
@@ -10,9 +11,11 @@ using QuizWeb;
 namespace QuizWeb.Migrations
 {
     [DbContext(typeof(QuizDb))]
-    partial class QuizDbModelSnapshot : ModelSnapshot
+    [Migration("20251207171631_AddTextKeyToQuestion")]
+    partial class AddTextKeyToQuestion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
