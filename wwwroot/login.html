@@ -1,75 +1,58 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <title>NetAcad-Quiz – Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/css/main.css" />
-  <script src="/js/auth.js" defer></script>
+    <meta charset="UTF-8" />
+    <title>Login – NetAcad-Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <div class="app-shell">
-    <header class="app-header">
-      <div class="brand">
-        <div class="brand-title">NetAcad-Quiz</div>
-        <div class="brand-subtitle">Anmeldung</div>
-      </div>
-      <nav class="nav">
-        <a href="/index.html">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/info.html">Info</a>
-        <a href="/support.html">Support</a>
-      </nav>
-    </header>
+<body class="page">
+<header class="site-header">
+    <div class="logo">NetAcad-Quiz</div>
+    <button class="menu-toggle" aria-label="Menü öffnen">☰ Menü</button>
+    <nav class="site-nav" data-nav>
+        <a href="index.html">Home</a>
+        <a href="login.html" class="active">Login</a>
+        <a href="info.html">Info</a>
+        <a href="support.html">Support</a>
+    </nav>
+</header>
 
-    <main class="card">
-      <div class="card-header">
-        <h1 class="card-title">Login</h1>
-        <p class="card-subtitle">
-          Melde dich mit deiner Schuladresse an, um das Quiz zu starten.
-        </p>
-      </div>
+<main class="main">
+    <section class="card card-narrow">
+        <h1>Login</h1>
+        <p>Melde dich mit deiner Schul-E-Mail an, um auf das Quiz zuzugreifen.</p>
 
-      <form id="login-form" class="form" autocomplete="on">
-        <div>
-          <label for="login-email" class="form-label">Schul-E-Mail-Adresse</label>
-          <input
-            id="login-email"
-            name="email"
-            type="email"
-            class="form-input"
-            placeholder="z.B. 230050@studierende.htl-donaustadt.at"
-            required
-          />
-        </div>
+        <form id="login-form" class="form">
+            <label class="form-field">
+                <span>E-Mail-Adresse</span>
+                <input type="email" id="login-email" required
+                       placeholder="230050@studierende.htl-donaustadt.at" />
+            </label>
 
-        <div class="form-row-inline">
-          <input type="checkbox" id="login-remember" />
-          <label for="login-remember">Eingeloggt bleiben (Cookie)</label>
-        </div>
+            <label class="form-field">
+                <span>Passwort</span>
+                <input type="password" id="login-password" required
+                       minlength="6"
+                       placeholder="Mindestens 6 Zeichen" />
+            </label>
 
-        <button type="submit" class="btn btn-primary">
-          Einloggen &amp; Quiz starten
-        </button>
+            <label class="form-check">
+                <input type="checkbox" id="login-remember" />
+                <span>Keep me logged in</span>
+            </label>
 
-        <div id="login-message" class="msg"></div>
+            <button type="submit" class="btn-primary">Login</button>
 
-        <p class="content" style="font-size: 12px; margin-top: 10px;">
-          Hinweis: Der Login funktioniert derzeit ohne zusätzliche E-Mail-Verifizierung.
-          Es werden nur Adressen im Format
-          <code>######@studierende.htl-donaustadt.at</code> akzeptiert.
-        </p>
-      </form>
-    </main>
+            <p id="login-error" class="form-error" aria-live="polite"></p>
+        </form>
+    </section>
+</main>
 
-    <footer class="app-footer">
-      <span>© 2025 NetAcad-Quiz</span>
-      <span>
-        <a href="/about.html">About</a> ·
-        <a href="/info.html">Info</a> ·
-        <a href="/support.html">Support</a>
-      </span>
-    </footer>
-  </div>
+<footer class="site-footer">
+    <small>© 2025 NetAcad-Quiz</small>
+</footer>
+
+<script src="app.js"></script>
 </body>
 </html>

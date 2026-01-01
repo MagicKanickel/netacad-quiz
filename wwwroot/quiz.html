@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <title>Quiz – NetAcad-Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page">
+<header class="site-header">
+    <div class="logo">NetAcad-Quiz</div>
+    <button class="menu-toggle" aria-label="Menü öffnen">☰ Menü</button>
+    <nav class="site-nav" data-nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="info.html">Info</a>
+        <a href="support.html">Support</a>
+    </nav>
+</header>
+
+<main class="main quiz-layout">
+    <section class="card quiz-chapters">
+        <h1>Kapitel wählen</h1>
+        <p class="muted">Wähle ein Kapitel, das du üben möchtest.</p>
+        <div id="chapter-list" class="chapter-list">
+            <p>Lade Kapitel …</p>
+        </div>
+    </section>
+
+    <section class="card quiz-panel" id="quiz-panel">
+        <h2 id="quiz-title">Noch kein Kapitel ausgewählt</h2>
+        <div id="quiz-content" class="quiz-content muted">
+            <p>Wähle links ein Kapitel, um mit dem Quiz zu starten.</p>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <small>© 2025 NetAcad-Quiz</small>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
