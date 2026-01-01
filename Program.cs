@@ -96,73 +96,31 @@ app.UseAuthorization();
 // -----------------------------
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<Db>();
+    var db = scope.ServiceProvider.GetRequiredService<QuizDb>();
     var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
 
+    // wwwroot setzen und Quiz-Ordner sicherstellen
     env.WebRootPath ??= Path.Combine(env.ContentRootPath, "wwwroot");
     Directory.CreateDirectory(env.WebRootPath);
-
-    db.Database.Migrate();
-
-    // Import aus wwwroot/Quiz
     var quizRoot = Path.Combine(env.WebRootPath, "Quiz");
     Directory.CreateDirectory(quizRoot);
 
-    try
-    {
-        Console.WriteLine($"[Import] Versuche Import aus '{quizRoot}' ...");
-        TxtImporter.ImportQuestions(db, quizRoot, "Quiz");
-        Console.WriteLine("[Import] Import fertig (ohne kritische Fehler).");
-    }
-    catch (Exception ex)
-    {
-        Console.Error.WriteLine("[Import] FATALER Fehler beim Import:");
-        Console.Error.WriteLine(ex);
-        // Wichtig: NICHT wieder throwen,
-        // damit der Host trotzdem weiterläuft
-    }
+    // Migrationen ausführen
+    db.Database.Migrate();
 
-
-    // DEMO-Kapitel anlegen, falls noch keine Fragen existieren
+    // Wenn noch keine Fragen in der DB sind -> einmalig alles importieren
     if (!db.Questions.Any())
     {
-        var chapterName = "Demo – CCNA Kapitel 1";
-
-        var q1 = new Question
-        {
-            Id = Guid.NewGuid(),
-            Chapter = chapterName,
-            Text = "Wie viele Schichten hat das OSI-Modell?",
-            TimeLimitSeconds = 60,
-            Choices = new List<Choice>
-            {
-                new Choice { Id = Guid.NewGuid(), Text = "4", IsCorrect = false },
-                new Choice { Id = Guid.NewGuid(), Text = "7", IsCorrect = true },
-                new Choice { Id = Guid.NewGuid(), Text = "5", IsCorrect = false },
-                new Choice { Id = Guid.NewGuid(), Text = "8", IsCorrect = false }
-            }
-        };
-
-        var q2 = new Question
-        {
-            Id = Guid.NewGuid(),
-            Chapter = chapterName,
-            Text = "Welche Schicht ist hauptsächlich für MAC-Adressen zuständig?",
-            TimeLimitSeconds = 60,
-            Choices = new List<Choice>
-            {
-                new Choice { Id = Guid.NewGuid(), Text = "Transportschicht", IsCorrect = false },
-                new Choice { Id = Guid.NewGuid(), Text = "Sicherungsschicht", IsCorrect = true },
-                new Choice { Id = Guid.NewGuid(), Text = "Anwendungsschicht", IsCorrect = false },
-                new Choice { Id = Guid.NewGuid(), Text = "Netzwerkschicht", IsCorrect = false }
-            }
-        };
-
-        db.Questions.AddRange(q1, q2);
-        db.SaveChanges();
-        Console.WriteLine("[Seed] Demo-Quiz erstellt.");
+        Console.WriteLine("[Startup] Keine Fragen gefunden – starte Import aus wwwroot/Quiz …");
+        var added = TxtImporter.ImportAll(db, quizRoot, msg => Console.WriteLine(msg));
+        Console.WriteLine($"[Startup] Import fertig. Neu hinzugefügt: {added} Fragen.");
+    }
+    else
+    {
+        Console.WriteLine($"[Startup] DB enthält bereits {db.Questions.Count()} Fragen – kein Import nötig.");
     }
 }
+
 
 // =========================================================
 // AUTH Endpunkte (kannst du ignorieren, Quiz braucht sie nicht)

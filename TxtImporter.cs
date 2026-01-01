@@ -2,208 +2,239 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace QuizWeb
 {
+    /// <summary>
+    /// Sehr einfacher Importer:
+    /// - durchsucht wwwroot/Quiz nach Kapitelordnern
+    /// - liest alle QuestionX.txt Dateien
+    /// - erste nichtleere Zeile = Frage
+    /// - alle folgenden nichtleeren Zeilen = Antworten
+    /// - erste Antwort wird als korrekt markiert
+    /// - zugehöriges Bild: Images/question_X.* (falls vorhanden)
+    /// </summary>
+    /// 
+
+    // Wo muss der Quiz-Ordner liegen?
+    // Z.B. wwwroot/Quiz
+    // Was ist der aktuelle Pfad?
+    // Directory.GetCurrentDirectory()
+
+    // Was ist genau wwwroot?
+    // In ASP.NET Core ist wwwroot der Standardordner für statische Dateien.
+    // Liegt wwwroot neben der .exe Datei.
+    // Z.B. bei Debug-Ausführung: bin/Debug/net9.0/wwwroot
     public static class TxtImporter
     {
-        /// <summary>
-        /// Importiert alle Kapitel und Fragen aus wwwroot/Quiz/...
-        /// Erwartete Struktur:
-        /// wwwroot/
-        ///   Quiz/
-        ///     CCNA Chapter 1-3 Exam/
-        ///       Question 0.txt
-        ///       Question 1.txt
-        ///       ...
-        ///       Images/
-        ///         question_18.jpg
-        ///         question_19.png
-        ///         ...
-        /// </summary>
-        public static void ImportQuestions(QuizDb db, string quizRoot, string webRootFolderName)
+        public static int ImportAll(QuizDb db, string quizRoot, Action<string>? log = null)
         {
+            log ??= _ => { };
+
             if (!Directory.Exists(quizRoot))
             {
-                Console.WriteLine($"[Import] Quiz root '{quizRoot}' nicht gefunden.");
-                return;
-            }
-
-            Console.WriteLine($"[Import] Starte Import aus: {quizRoot}");
-
-            // Alte Daten entfernen, damit keine Duplikate entstehen
-            if (db.Questions.Any())
-            {
-                Console.WriteLine($"[Import] Entferne alte Fragen: {db.Questions.Count()}");
-
-                db.Assets.RemoveRange(db.Assets);
-                db.Choices.RemoveRange(db.Choices);
-                db.Questions.RemoveRange(db.Questions);
-                db.SaveChanges();
+                log($"[Import] Quiz-Root '{quizRoot}' nicht gefunden.");
+                return 0;
             }
 
             var chapterDirs = Directory.GetDirectories(quizRoot);
             if (chapterDirs.Length == 0)
             {
-                Console.WriteLine("[Import] Keine Kapitelordner gefunden.");
-                return;
+                log($"[Import] Keine Kapitelordner in '{quizRoot}' gefunden.");
+                return 0;
             }
 
-            foreach (var chapterDir in chapterDirs)
+            int added = 0;
+
+            foreach (var chapterDir in chapterDirs.OrderBy(p => p))
             {
                 var chapterName = Path.GetFileName(chapterDir);
-                Console.WriteLine($"[Import] Kapitel: {chapterName}");
-
-                var imagesDir = Path.Combine(chapterDir, "Images");
-                var imageFiles = Directory.Exists(imagesDir)
-                    ? Directory.GetFiles(imagesDir)
-                    : Array.Empty<string>();
-
-                var questionFiles = Directory.GetFiles(chapterDir, "Question *.txt", SearchOption.TopDirectoryOnly)
-                    .OrderBy(p => p, StringComparer.OrdinalIgnoreCase)
-                    .ToList();
-
-                if (questionFiles.Count == 0)
-                {
-                    Console.WriteLine($"[Import]   Keine Question-*.txt in '{chapterName}' gefunden.");
+                if (string.IsNullOrWhiteSpace(chapterName))
                     continue;
-                }
+
+                log($"[Import] Kapitel: {chapterName}");
+
+                // Alle Question*.txt außer wrong.txt
+                var questionFiles = Directory
+                    .EnumerateFiles(chapterDir, "*.txt", SearchOption.TopDirectoryOnly)
+                    .Where(p =>
+                    {
+                        var name = Path.GetFileName(p);
+                        return name.StartsWith("Question", StringComparison.OrdinalIgnoreCase)
+                               && !name.Equals("wrong.txt", StringComparison.OrdinalIgnoreCase);
+                    })
+                    .OrderBy(p => p)
+                    .ToList();
 
                 foreach (var file in questionFiles)
                 {
-                    var fileName = Path.GetFileName(file);
-                    Console.WriteLine($"[Import]   Frage: {fileName}");
-
-                    var rawLines = File.ReadAllLines(file);
-                    var lines = rawLines
-                        .Select(l => l.Trim())
-                        .Where(l => !string.IsNullOrWhiteSpace(l))
-                        .ToList();
-
-                    if (lines.Count == 0)
+                    try
                     {
-                        Console.WriteLine($"[Import]   -> Datei leer, übersprungen.");
-                        continue;
+                        added += ImportSingleFile(db, chapterName, chapterDir, file, log);
                     }
-
-                    int index = 0;
-
-                    // 1) Frage-Text
-                    string questionText = lines[index++];
-                    int timeLimit = 30;       // Default
-                    int choiceCount = 0;
-                    int correctCount = 0;
-
-                    // 2) Zeitlimit (zweite Zeile, Zahl)
-                    if (index < lines.Count && int.TryParse(lines[index], out var t))
+                    catch (Exception ex)
                     {
-                        timeLimit = t;
-                        index++;
-                    }
-
-                    // 3) Anzahl Antworten
-                    if (index < lines.Count && int.TryParse(lines[index], out var c))
-                    {
-                        choiceCount = c;
-                        index++;
-                    }
-
-                    // 4) Anzahl korrekter Antworten (optional, wir berechnen später zur Sicherheit nach)
-                    if (index < lines.Count && int.TryParse(lines[index], out var cc))
-                    {
-                        correctCount = cc;
-                        index++;
-                    }
-
-                    var questionId = Guid.NewGuid();
-                    var question = new Question
-                    {
-                        Id = questionId,
-                        Text = questionText,
-                        Chapter = chapterName,
-                        TimeLimitSeconds = timeLimit,
-                        CorrectCount = correctCount,
-                        Choices = new List<Choice>(),
-                        Assets = new List<QuestionAsset>()
-                    };
-
-                    var choices = new List<Choice>();
-
-                    // 5) Antworttexte + true/false
-                    while (index < lines.Count)
-                    {
-                        string choiceText = lines[index++];
-                        bool isCorrect = false;
-
-                        if (index < lines.Count && bool.TryParse(lines[index], out var flag))
-                        {
-                            isCorrect = flag;
-                            index++;
-                        }
-
-                        var choice = new Choice
-                        {
-                            Id = Guid.NewGuid(),
-                            QuestionId = questionId,
-                            Question = question,
-                            Text = choiceText,
-                            IsCorrect = isCorrect
-                        };
-
-                        choices.Add(choice);
-                    }
-
-                    // Falls correctCount 0 ist, aus den Choices ableiten
-                    if (correctCount <= 0)
-                    {
-                        correctCount = choices.Count(x => x.IsCorrect);
-                    }
-                    question.CorrectCount = correctCount;
-                    question.Choices = choices;
-
-                    db.Questions.Add(question);
-                    db.Choices.AddRange(choices);
-
-                    // 6) Bilder zuordnen: question_XYZ.* -> Question XYZ.txt
-                    var match = Regex.Match(fileName, @"Question\s+(\d+)\.txt", RegexOptions.IgnoreCase);
-                    if (match.Success && imageFiles.Length > 0)
-                    {
-                        var num = match.Groups[1].Value; // z.B. "18"
-                        var relatedImages = imageFiles.Where(p =>
-                        {
-                            var fn = Path.GetFileNameWithoutExtension(p).ToLowerInvariant();
-                            return fn.Contains($"question_{num}".ToLowerInvariant());
-                        });
-
-                        foreach (var img in relatedImages)
-                        {
-                            // Relativer Pfad aus Sicht von wwwroot, z.B.:
-                            // Quiz/CCNA Chapter 1-3 Exam/Images/question_18.jpg
-                            var relPath = Path.Combine(
-                                    webRootFolderName,
-                                    chapterName,
-                                    "Images",
-                                    Path.GetFileName(img))
-                                .Replace("\\", "/");
-
-                            var asset = new QuestionAsset
-                            {
-                                Id = Guid.NewGuid(),
-                                QuestionId = questionId,
-                                Question = question,
-                                RelativePath = relPath
-                            };
-
-                            question.Assets.Add(asset);
-                            db.Assets.Add(asset);
-                        }
+                        log($"[Import] Fehler bei Datei '{file}': {ex.Message}");
                     }
                 }
             }
 
-            db.SaveChanges();
-            Console.WriteLine($"[Import] Fertig. Importierte Fragen: {db.Questions.Count()}");
+            if (added > 0)
+            {
+                db.SaveChanges();
+            }
+
+            log($"[Import] Fertig. Neu hinzugefügt: {added} Fragen.");
+            return added;
+        }
+
+        private static int ImportSingleFile(
+            QuizDb db,
+            string chapterName,
+            string chapterDir,
+            string filePath,
+            Action<string> log)
+        {
+            var lines = File.ReadAllLines(filePath)
+                            .Select(l => l.Trim())
+                            .Where(l => !string.IsNullOrWhiteSpace(l))
+                            .ToList();
+
+            if (lines.Count == 0)
+            {
+                log($"[Import] Datei '{filePath}' leer, übersprungen.");
+                return 0;
+            }
+
+            // Frage = erste Zeile
+            var questionText = lines[0];
+            var choiceLines = lines.Skip(1).ToList();
+
+            if (choiceLines.Count == 0)
+            {
+                // Wenn keine Antworten da sind, machen wir eine Dummy-Antwort
+                choiceLines.Add("OK");
+            }
+
+            // Prüfen, ob eine ähnliche Frage schon existiert (grobe Dublettenvermeidung)
+            bool exists = db.Questions.Any(q =>
+                q.Chapter == chapterName &&
+                q.Text == questionText);
+
+            if (exists)
+            {
+                log($"[Import] Frage bereits vorhanden: '{questionText}'");
+                return 0;
+            }
+
+            var q = new Question
+            {
+                Id = Guid.NewGuid(),
+                Chapter = chapterName,
+                Text = questionText,
+                TimeLimitSeconds = 60,   // später fein einstellbar
+                CorrectCount = 1,
+                Choices = new List<Choice>(),
+                Assets = new List<QuestionAsset>()
+            };
+
+            // Antworten anlegen – erste Antwort als korrekt markieren
+            bool first = true;
+            foreach (var raw in choiceLines)
+            {
+                if (string.IsNullOrWhiteSpace(raw))
+                    continue;
+
+                var text = CleanupChoiceText(raw);
+
+                q.Choices.Add(new Choice
+                {
+                    Id = Guid.NewGuid(),
+                    QuestionId = q.Id,
+                    Question = q,
+                    Text = text,
+                    IsCorrect = first  // erste = korrekt
+                });
+
+                first = false;
+            }
+
+            // Versuchen, ein Bild zuzuordnen
+            TryAttachImage(q, chapterDir, filePath);
+
+            db.Questions.Add(q);
+            return 1;
+        }
+
+        private static string CleanupChoiceText(string line)
+        {
+            // Häufige Präfixe wie "A) ", "1. ", "- " entfernen
+            var trimmed = line.TrimStart('-', '•', '–', '*', '\t', ' ');
+
+            // Dinge wie "A) ", "a) ", "1) ", "1." entfernen
+            int idx = trimmed.IndexOf(')');
+            if (idx == 1 || idx == 2)
+            {
+                return trimmed[(idx + 1)..].Trim();
+            }
+
+            idx = trimmed.IndexOf('.');
+            if (idx == 1 || idx == 2)
+            {
+                return trimmed[(idx + 1)..].Trim();
+            }
+
+            return trimmed;
+        }
+
+        private static void TryAttachImage(Question q, string chapterDir, string questionFilePath)
+        {
+            try
+            {
+                var imagesDir = Path.Combine(chapterDir, "Images");
+                if (!Directory.Exists(imagesDir))
+                    return;
+
+                var fileName = Path.GetFileNameWithoutExtension(questionFilePath); // z.B. "Question 0"
+                // Nummer extrahieren
+                var numPart = new string(fileName.Where(char.IsDigit).ToArray());
+
+                if (string.IsNullOrEmpty(numPart))
+                    return;
+
+                var baseName = $"question_{numPart}";
+                var exts = new[] { ".png", ".jpg", ".jpeg", ".gif", ".webp" };
+
+                foreach (var ext in exts)
+                {
+                    var imgPath = Path.Combine(imagesDir, baseName + ext);
+                    if (File.Exists(imgPath))
+                    {
+                        // Relative Pfad, wie er später vom Browser geladen wird
+                        // Beispiel: "Quiz/CCNA Chapter 1-3 Exam/Images/question_0.png"
+                        var relative = Path.Combine(
+                            "Quiz",
+                            Path.GetFileName(chapterDir),
+                            "Images",
+                            Path.GetFileName(imgPath)
+                        ).Replace("\\", "/");
+
+                        q.Assets.Add(new QuestionAsset
+                        {
+                            Id = Guid.NewGuid(),
+                            QuestionId = q.Id,
+                            Question = q,
+                            RelativePath = relative
+                        });
+
+                        break;
+                    }
+                }
+            }
+            catch
+            {
+                // Bilder sind "nice to have" – Fehler hier ignorieren
+            }
         }
     }
 }
