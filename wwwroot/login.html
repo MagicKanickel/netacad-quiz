@@ -19,33 +19,46 @@
 </header>
 
 <main class="main">
-    <section class="card card-narrow">
-        <h1>Login</h1>
-        <p>Melde dich mit deiner Schul-E-Mail an, um auf das Quiz zuzugreifen.</p>
+    <section class="card hero">
+        <div class="hero-main">
+            <h1>Login</h1>
+            <p class="hero-sub">
+                Melde dich mit deiner Schul-E-Mail und einem Passwort an,
+                um auf alle Quiz-Kapitel zuzugreifen.
+            </p>
 
-        <form id="login-form" class="form">
-            <label class="form-field">
-                <span>E-Mail-Adresse</span>
-                <input type="email" id="login-email" required
-                       placeholder="230050@studierende.htl-donaustadt.at" />
-            </label>
+            <form id="login-form" class="form hero-form">
+                <label class="form-field">
+                    <span>E-Mail-Adresse</span>
+                    <input type="email"
+                           id="login-email"
+                           required
+                           autocomplete="email"
+                           placeholder="230050@studierende.htl-donaustadt.at" />
+                </label>
 
-            <label class="form-field">
-                <span>Passwort</span>
-                <input type="password" id="login-password" required
-                       minlength="6"
-                       placeholder="Mindestens 6 Zeichen" />
-            </label>
+                <label class="form-field">
+                    <span>Passwort</span>
+                    <input type="password"
+                           id="login-password"
+                           required
+                           minlength="6"
+                           autocomplete="new-password"
+                           placeholder="Mindestens 6 Zeichen" />
+                </label>
 
-            <label class="form-check">
-                <input type="checkbox" id="login-remember" />
-                <span>Keep me logged in</span>
-            </label>
+                <label class="form-check">
+                    <input type="checkbox" id="login-remember" />
+                    <span>Keep me logged in</span>
+                </label>
 
-            <button type="submit" class="btn-primary">Login</button>
+                <button type="submit" class="btn-primary hero-btn">
+                    ➜ Zum Quiz
+                </button>
 
-            <p id="login-error" class="form-error" aria-live="polite"></p>
-        </form>
+                <p id="login-error" class="form-error" aria-live="polite"></p>
+            </form>
+        </div>
     </section>
 </main>
 

@@ -1,6 +1,6 @@
 // app.js – Navigation, Login (mit Passwort) & Quiz-Logik
 
-// ---------- Helfer ----------
+// ----------------- Helpers -----------------
 
 function $(sel) {
     return document.querySelector(sel);
@@ -12,18 +12,16 @@ function showError(el, msg) {
     el.style.display = msg ? "block" : "none";
 }
 
-// Clientseitige "Session"
+// Clientseitige Session (nur Browser, kein echtes Konto)
 const SESSION_KEY = "netacadQuizSession";
 
 function saveSession(email, remember) {
-    const session = {
-        email,
-        createdAt: Date.now()
-    };
-    localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    const session = { email, createdAt: Date.now() };
+    try {
+        localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    } catch { /* ignore */ }
 
-    // Cookie nur, um auf anderen Seiten schnell zu prüfen
-    const maxAge = remember ? 60 * 60 * 24 * 30 : 60 * 60 * 4; // 30 Tage / 4 h
+    const maxAge = remember ? 60 * 60 * 24 * 30 : 60 * 60 * 4; // 30d / 4h
     document.cookie = `netacadQuizAuth=1; path=/; max-age=${maxAge}`;
 }
 
@@ -38,18 +36,18 @@ function loadSession() {
 }
 
 function requireLogin() {
-    const session = loadSession();
-    if (!session || !session.email) {
+    const s = loadSession();
+    if (!s || !s.email) {
         window.location.href = "login.html";
         return null;
     }
-    return session;
+    return s;
 }
 
-// ---------- Menü ----------
+// ----------------- Menü -----------------
 
 function setupMenu() {
-    const toggle = document.querySelector(".menu-toggle");
+    const toggle = $(".menu-toggle");
     const nav = document.querySelector("[data-nav]");
     if (!toggle || !nav) return;
 
@@ -58,18 +56,18 @@ function setupMenu() {
     });
 }
 
-// ---------- Login-Seite ----------
+// ----------------- Login-Seite -----------------
 
 function setupLoginPage() {
     const form = $("#login-form");
-    if (!form) return; // wir sind nicht auf der Login-Seite
+    if (!form) return; // wir sind nicht auf login.html
 
     const emailInput = $("#login-email");
     const passwordInput = $("#login-password");
     const rememberInput = $("#login-remember");
     const errorEl = $("#login-error");
 
-    form.addEventListener("submit", async (ev) => {
+    form.addEventListener("submit", (ev) => {
         ev.preventDefault();
         showError(errorEl, "");
 
@@ -81,7 +79,7 @@ function setupLoginPage() {
         if (!emailPattern.test(email)) {
             showError(
                 errorEl,
-                "Bitte gib deine Schul-E-Mail im Format 230050@studierende.htl-donaustadt.at ein."
+                "Bitte deine Schul-E-Mail im Format 230050@studierende.htl-donaustadt.at eingeben."
             );
             return;
         }
@@ -91,10 +89,7 @@ function setupLoginPage() {
             return;
         }
 
-        // *** WICHTIG ***
-        // Aktuell nur clientseitig: wir speichern die Session lokal
-        // und rufen KEIN Backend auf. Für echte Accounts müssen wir
-        // später ein API-Login mit Passwort-HASH bauen.
+        // (aktuell nur clientseitige Session)
         saveSession(email, !!rememberInput.checked);
 
         // Weiter zum Quiz
@@ -102,16 +97,15 @@ function setupLoginPage() {
     });
 }
 
-// ---------- Quiz-Seite ----------
+// ----------------- Quiz-Seite -----------------
 
 function setupQuizPage() {
     if (!location.pathname.endsWith("quiz.html")) return;
 
     const session = requireLogin();
-    if (!session) return; // redirect
+    if (!session) return;
 
     const chapterListEl = $("#chapter-list");
-    const quizPanel = $("#quiz-panel");
     const quizTitleEl = $("#quiz-title");
     const quizContentEl = $("#quiz-content");
 
@@ -135,6 +129,7 @@ function setupQuizPage() {
                 const btn = document.createElement("button");
                 btn.className = "chapter-item";
                 btn.textContent = name;
+                btn.type = "button";
                 btn.addEventListener("click", () => startQuiz(name));
                 chapterListEl.appendChild(btn);
             });
@@ -151,19 +146,41 @@ function setupQuizPage() {
         quizContentEl.innerHTML = "<p>Lade Fragen …</p>";
 
         try {
-            const url = "/api/questions?chapter=" + encodeURIComponent(chapterName);
-            const res = await fetch(url);
+            const res = await fetch(
+                "/api/questions?chapter=" + encodeURIComponent(chapterName)
+            );
             if (!res.ok) throw new Error("HTTP " + res.status);
             const data = await res.json();
 
-            // Erwartete Struktur:
-            // [{ id, text, answers: [..], correctIndex, imageUrl? }, ...]
-            questions = Array.isArray(data) ? data : [];
+            // Versuche verschiedene Property-Namen abzudecken
+            questions = (Array.isArray(data) ? data : []).map((q) => {
+                const answers =
+                    q.answers ||
+                    q.Answers ||
+                    q.choices ||
+                    q.Choices ||
+                    [];
+                const correctIndex =
+                    q.correctIndex ??
+                    q.CorrectIndex ??
+                    q.correct ??
+                    q.Correct ??
+                    0;
+
+                return {
+                    text: q.text || q.Text || "",
+                    answers,
+                    correctIndex: Number(correctIndex) || 0,
+                    imageUrl: q.imageUrl || q.ImageUrl || null
+                };
+            });
+
             currentIndex = 0;
             correctCount = 0;
 
             if (questions.length === 0) {
-                quizContentEl.innerHTML = "<p>Für dieses Kapitel wurden noch keine Fragen importiert.</p>";
+                quizContentEl.innerHTML =
+                    "<p>Für dieses Kapitel wurden noch keine Fragen importiert.</p>";
                 return;
             }
 
@@ -180,7 +197,8 @@ function setupQuizPage() {
         if (!q) {
             quizContentEl.innerHTML = `
                 <h3>Fertig!</h3>
-                <p>Du hast <strong>${correctCount}</strong> von <strong>${questions.length}</strong> Fragen richtig beantwortet.</p>
+                <p>Du hast <strong>${correctCount}</strong> von
+                   <strong>${questions.length}</strong> Fragen richtig beantwortet.</p>
                 <button class="btn-primary" id="restart-btn">Kapitel neu starten</button>
             `;
             const restartBtn = $("#restart-btn");
@@ -203,13 +221,14 @@ function setupQuizPage() {
         `;
 
         if (q.imageUrl) {
-            html += `<div class="quiz-image-wrapper">
-                        <img src="${q.imageUrl}" alt="Fragebild">
-                     </div>`;
+            html += `
+            <div class="quiz-image-wrapper">
+                <img src="${q.imageUrl}" alt="Fragebild">
+            </div>`;
         }
 
         html += `<ul class="quiz-answers">`;
-        (q.answers || []).forEach((ans, idx) => {
+        q.answers.forEach((ans, idx) => {
             html += `
                 <li>
                     <button class="answer-btn" data-index="${idx}">
@@ -221,8 +240,7 @@ function setupQuizPage() {
 
         quizContentEl.innerHTML = html;
 
-        const buttons = quizContentEl.querySelectorAll(".answer-btn");
-        buttons.forEach((btn) => {
+        quizContentEl.querySelectorAll(".answer-btn").forEach((btn) => {
             btn.addEventListener("click", () => {
                 const idx = Number(btn.dataset.index);
                 handleAnswer(idx);
@@ -236,22 +254,20 @@ function setupQuizPage() {
 
         const btns = quizContentEl.querySelectorAll(".answer-btn");
         btns.forEach((b, idx) => {
-            if (idx === correctIndex) {
-                b.classList.add("answer-correct");
-            }
+            if (idx === correctIndex) b.classList.add("answer-correct");
             if (idx === selectedIndex && idx !== correctIndex) {
                 b.classList.add("answer-wrong");
             }
             b.disabled = true;
         });
 
-        if (selectedIndex === correctIndex) {
-            correctCount++;
-        }
+        if (selectedIndex === correctIndex) correctCount++;
 
         const nextBtn = document.createElement("button");
         nextBtn.textContent =
-            currentIndex + 1 < questions.length ? "Nächste Frage" : "Ergebnis anzeigen";
+            currentIndex + 1 < questions.length
+                ? "Nächste Frage"
+                : "Ergebnis anzeigen";
         nextBtn.className = "btn-primary quiz-next-btn";
         nextBtn.addEventListener("click", () => {
             currentIndex++;
@@ -263,7 +279,7 @@ function setupQuizPage() {
     loadChapters();
 }
 
-// ---------- Initialisierung ----------
+// ----------------- Init -----------------
 
 document.addEventListener("DOMContentLoaded", () => {
     setupMenu();
