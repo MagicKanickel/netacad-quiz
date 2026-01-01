@@ -1,55 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>NetAcad-Quiz – Home</title>
-  <link rel="stylesheet" href="/styles.css"/>
-  <script defer src="/app.js"></script>
+  <meta charset="utf-8" />
+  <title>NetAcad-Quiz – Startseite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <script src="/js/auth.js" defer></script>
 </head>
 <body>
-  <header class="header">
-    <div class="brand">NetAcad-Quiz</div>
-    <button class="burger">☰ Menü</button>
-    <nav class="menu">
-      <a href="/index.html">Home</a>
-      <a href="/quiz.html">Quiz</a>
-      <a href="/login.html">Login</a>
-      <a href="/info.html">Info</a>
-    </nav>
-  </header>
-
-  <main class="container">
-    <section class="hero card">
-      <h1 class="h1">Willkommen beim NetAcad-Quiz!</h1>
-      <p class="p">Lerne effizient, wiederhole gezielt falsche Antworten und verfolge deinen Fortschritt.</p>
-      <p class="center" style="margin-top:22px">
-        <a class="btn btn-large btn-white" href="/quiz.html">→ Quiz</a>
-      </p>
-    </section>
-
-    <section class="card" style="margin-top:18px">
-      <h2 style="margin-top:0">So funktioniert’s</h2>
-      <ol>
-        <li>Registrieren & E-Mail bestätigen</li>
-        <li>Anmelden (gern mit „Keep me logged in“)</li>
-        <li>Kapitel wählen – los geht’s!</li>
-      </ol>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="links">
-        <a href="/index.html">Home</a>
-        <a href="/quiz.html">Quiz</a>
-        <a href="/login.html">Login</a>
-        <a href="/info.html">Info</a>
-        <a href="/terms.html">Terms & Services</a>
-        <a href="mailto:info.netacad.quiz@gmail.com">Support</a>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-title">NetAcad-Quiz</div>
+        <div class="brand-subtitle">CCNA Practice für HTL Donaustadt</div>
       </div>
-      <p class="center" style="margin-top:10px">© 2025 NetAcad-Quiz</p>
-    </div>
-  </footer>
+      <nav class="nav">
+        <a href="/index.html">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/info.html">Info</a>
+        <a href="/support.html">Support</a>
+        <a href="/login.html" class="nav-primary">Login</a>
+      </nav>
+    </header>
+
+    <main class="card">
+      <div class="card-header">
+        <p class="pill">Nur für @studierende.htl-donaustadt.at</p>
+        <h1 class="card-title">Willkommen beim NetAcad-Quiz! 🎓</h1>
+        <p class="card-subtitle">
+          Übe für deine Cisco-NetAcad-Tests mit echten Multiple-Choice-Fragen.
+        </p>
+      </div>
+
+      <div class="content">
+        <p>
+          Melde dich mit deiner Schuladresse an, um auf alle CCNA-Kapitel und
+          Prüfungs-Simulationen zuzugreifen.
+        </p>
+
+        <p>
+          <a href="/login.html" class="btn btn-primary">Jetzt einloggen &amp; Quiz starten</a>
+        </p>
+
+        <h3>Was dich erwartet</h3>
+        <ul>
+          <li>Kapitelweise CCNA-Übungsfragen</li>
+          <li>Ergebnisübersicht pro Quizlauf</li>
+          <li>Design im Darkmode – perfekt für lange Sessions 😉</li>
+        </ul>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <span>© 2025 NetAcad-Quiz · inoffizielles Schulprojekt</span>
+      <span>
+        <a href="/about.html">About</a> ·
+        <a href="/info.html">Info</a> ·
+        <a href="/support.html">Support</a>
+      </span>
+    </footer>
+  </div>
 </body>
 </html>

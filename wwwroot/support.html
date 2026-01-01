@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <title>NetAcad-Quiz – Info</title>
+  <title>NetAcad-Quiz – Support</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/css/main.css" />
   <script src="/js/auth.js" defer></script>
@@ -12,7 +12,7 @@
     <header class="app-header">
       <div class="brand">
         <div class="brand-title">NetAcad-Quiz</div>
-        <div class="brand-subtitle">Informationen</div>
+        <div class="brand-subtitle">Support</div>
       </div>
       <nav class="nav">
         <a href="/index.html">Home</a>
@@ -25,29 +25,30 @@
 
     <main class="card">
       <div class="card-header">
-        <h1 class="card-title">Info</h1>
+        <h1 class="card-title">Support</h1>
         <p class="card-subtitle">
-          Kurze Übersicht über Login-Regeln und Datenschutz.
+          Feedback, Bugreports oder Featurewünsche.
         </p>
       </div>
 
       <div class="content">
-        <h3>Login-Regeln</h3>
-        <ul>
-          <li>Es werden nur Schuladressen akzeptiert.</li>
-          <li>Format: <code>######@studierende.htl-donaustadt.at</code></li>
-          <li>Derzeit keine zusätzliche Mail-Verifizierung.</li>
-        </ul>
+        <p>
+          Wenn dir im Quiz Fehler auffallen (falsche Antworten, Tippfehler,
+          technische Probleme), kannst du sie gerne notieren und mir persönlich
+          oder per Schul-E-Mail melden.
+        </p>
 
-        <h3>Speicherung</h3>
-        <p>
-          Der Login wird lokal im Browser (SessionStorage / localStorage) und optional
-          in einem Cookie gespeichert, damit du eingeloggt bleiben kannst.
-        </p>
-        <p>
-          Später kann die Anmeldung mit einer Datenbank (z.B. bis 5000+ Einträge)
-          erweitert werden. Das Frontend ist bereits darauf vorbereitet.
-        </p>
+        <h3>Typische Fragen</h3>
+        <ul>
+          <li><strong>Ich kann mich nicht einloggen</strong><br />
+            Prüfe, ob deine Adresse exakt im Format
+            <code>######@studierende.htl-donaustadt.at</code> eingegeben ist.
+          </li>
+          <li><strong>Ich möchte ausgeloggt werden</strong><br />
+            Lösche die Cookies für <code>netacad-quiz.onrender.com</code> oder
+            klicke später den Logout-Button (kommt auf die Quiz-Seite).
+          </li>
+        </ul>
       </div>
     </main>
 
@@ -55,7 +56,7 @@
       <span>© 2025 NetAcad-Quiz</span>
       <span>
         <a href="/about.html">About</a> ·
-        <a href="/support.html">Support</a>
+        <a href="/info.html">Info</a>
       </span>
     </footer>
   </div>
