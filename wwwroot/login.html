@@ -1,71 +1,76 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8" />
-    <title>Login – NetAcad-Quiz</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/main.css">
+  <meta charset="UTF-8" />
+  <title>Login – NetAcad-Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/main.css">
+  <script defer src="/js/app.js"></script>
 </head>
+
 <body class="page">
 <header class="site-header">
-    <div class="logo">NetAcad-Quiz</div>
-    <button class="menu-toggle" aria-label="Menü öffnen">☰ Menü</button>
-    <nav class="site-nav" data-nav>
-        <a href="index.html">Home</a>
-        <a href="login.html" class="active">Login</a>
-        <a href="info.html">Info</a>
-        <a href="support.html">Support</a>
-    </nav>
+  <div class="logo">NetAcad-Quiz</div>
+
+  <button class="menu-toggle" aria-label="Menü öffnen" type="button">☰ Menü</button>
+
+  <nav class="site-nav" data-nav>
+    <a href="/index.html">Home</a>
+    <a href="/login.html" class="active">Login</a>
+    <a href="/info.html">Info</a>
+    <a href="/support.html">Support</a>
+  </nav>
 </header>
 
 <main class="main">
-    <section class="card hero">
-        <div class="hero-main">
-            <h1>Login</h1>
-            <p class="hero-sub">
-                Melde dich mit deiner Schul-E-Mail und einem Passwort an,
-                um auf alle Quiz-Kapitel zuzugreifen.
-            </p>
+  <section class="card hero">
+    <div class="hero-main">
+      <h1>Login</h1>
+      <p class="hero-sub">
+        Melde dich mit deiner Schul-E-Mail und deinem Passwort an, um das Quiz zu starten.
+      </p>
 
-            <form id="login-form" class="form hero-form">
-                <label class="form-field">
-                    <span>E-Mail-Adresse</span>
-                    <input type="email"
-                           id="login-email"
-                           required
-                           autocomplete="email"
-                           placeholder="E-Mail" />
-                </label>
+      <form id="login-form" class="form hero-form">
+        <label class="form-field">
+          <span>E-Mail-Adresse</span>
+          <input
+            type="email"
+            id="login-email"
+            required
+            autocomplete="email"
+            placeholder="230050@studierende.htl-donaustadt.at"
+          />
+        </label>
 
-                <label class="form-field">
-                    <span>Passwort</span>
-                    <input type="password"
-                           id="login-password"
-                           required
-                           minlength="6"
-                           autocomplete="new-password"
-                           placeholder="Mindestens 6 Zeichen" />
-                </label>
+        <label class="form-field">
+          <span>Passwort</span>
+          <input
+            type="password"
+            id="login-password"
+            required
+            minlength="6"
+            autocomplete="current-password"
+            placeholder="Mindestens 6 Zeichen"
+          />
+        </label>
 
-                <label class="form-check">
-                    <input type="checkbox" id="login-remember" />
-                    <span>Keep me logged in</span>
-                </label>
+        <label class="form-check">
+          <input type="checkbox" id="login-remember" />
+          <span>Keep me logged in</span>
+        </label>
 
-                <button type="submit" class="btn-primary hero-btn">
-                    ➜ Zum Quiz
-                </button>
+        <button type="submit" class="btn-primary hero-btn">
+          ➜ Zum Quiz
+        </button>
 
-                <p id="login-error" class="form-error" aria-live="polite"></p>
-            </form>
-        </div>
-    </section>
+        <p id="login-error" class="form-error" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
-    <small>© 2025 NetAcad-Quiz</small>
+  <small>© 2025 NetAcad-Quiz</small>
 </footer>
-
-<script src="app.js"></script>
 </body>
 </html>

@@ -248,7 +248,7 @@ app.MapGet("/api/testmail", async (IEmailSender mail, string to) =>
 });
 
 // =========================================================
-// QUIZ APIs (OHNE LOGIN!)
+// QUIZ APIs (MIT LOGIN!)
 // =========================================================
 
 // Kapitel-Liste
@@ -261,7 +261,8 @@ app.MapGet("/api/chapters", async (Db db) =>
         .ToListAsync();
 
     return Results.Ok(list);
-});
+})
+.RequireAuthorization();
 
 // Fragen für ein Kapitel
 app.MapGet("/api/quiz", async (Db db, string? chapter) =>
@@ -283,6 +284,7 @@ app.MapGet("/api/quiz", async (Db db, string? chapter) =>
     foreach (var item in questions)
         item.Choices = item.Choices.OrderBy(_ => rng.Next()).ToList();
 
+    // WICHTIG: KEIN IsCorrect an den Client schicken
     var dto = questions.Select(item => new
     {
         id = item.Id,
@@ -294,53 +296,11 @@ app.MapGet("/api/quiz", async (Db db, string? chapter) =>
     });
 
     return Results.Ok(dto);
-});
+})
+.RequireAuthorization();
 
-// Fragen für ein Kapitel (Alias für Frontend: /api/questions)
-// Liefert: [{ text, answers:[], correctIndex, imageUrl }]
-app.MapGet("/api/questions", async (Db db, string? chapter) =>
-{
-    var q = db.Questions
-        .Include(x => x.Choices)
-        .Include(x => x.Assets)
-        .AsQueryable();
-
-    if (!string.IsNullOrWhiteSpace(chapter))
-        q = q.Where(x => x.Chapter == chapter);
-
-    // zufällige Reihenfolge der Fragen
-    var questions = await q.OrderBy(_ => EF.Functions.Random()).ToListAsync();
-
-    // Fürs Frontend: answers[] + correctIndex + imageUrl
-    var dto = questions.Select(item =>
-    {
-        // Choices stabil sortieren (damit correctIndex stimmt)
-        var choices = item.Choices.OrderBy(c => c.Id).ToList();
-        var correct = choices.FindIndex(c => c.IsCorrect);
-        if (correct < 0) correct = 0;
-
-        // erstes Bild, falls vorhanden
-        var img = item.Assets
-            .OrderBy(a => a.Id)
-            .Select(a => "/" + a.RelativePath.Replace("\\", "/"))
-            .FirstOrDefault();
-
-        return new
-        {
-            text = item.Text,
-            answers = choices.Select(c => c.Text).ToList(),
-            correctIndex = correct,
-            imageUrl = img
-        };
-    });
-
-    return Results.Ok(dto);
-});
-
-
-// Auswertung
-app.MapPost("/api/submit",
-async (Db db, SubmitDTO payload) =>
+// Auswertung (später ersetzen wir das durch /api/answer pro Frage)
+app.MapPost("/api/submit", async (Db db, SubmitDTO payload) =>
 {
     int correct = 0;
     var wrongs = new List<object>();
@@ -368,7 +328,9 @@ async (Db db, SubmitDTO payload) =>
     }
 
     return Results.Ok(new { total = payload.Answers.Count, correct, wrongs });
-});
+})
+.RequireAuthorization();
+
 
 app.Run();
 
