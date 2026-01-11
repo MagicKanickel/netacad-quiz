@@ -11,11 +11,13 @@
 <body class="page">
 <header class="site-header">
   <div class="logo">NetAcad-Quiz</div>
+
   <button class="menu-toggle" aria-label="Menü öffnen" type="button">☰ Menü</button>
+
   <nav class="site-nav" data-nav>
     <a href="/index.html">Home</a>
-    <a href="/login.html">Login</a>
-    <a href="/register.html" class="active">Registrieren</a>
+    <a href="/overview.html">Dashboard</a>
+    <a href="/profile.html">Profil</a>
     <a href="/support.html">Support</a>
   </nav>
 </header>
@@ -24,29 +26,54 @@
   <section class="card hero">
     <div class="hero-main">
       <h1>Registrieren</h1>
-      <p class="hero-sub">Nur Schul-E-Mail-Adresse erlaubt.</p>
+      <p class="hero-sub">
+        Erstelle ein Konto mit deiner Schul-E-Mail. Danach wirst du automatisch angemeldet.
+      </p>
 
       <form id="register-form" class="form hero-form">
         <label class="form-field">
           <span>E-Mail-Adresse</span>
-          <input id="register-email" type="email" required placeholder="230050@studierende.htl-donaustadt.at" />
+          <input
+            type="email"
+            id="reg-email"
+            required
+            autocomplete="email"
+            placeholder="230050@studierende.htl-donaustadt.at"
+          />
         </label>
 
         <label class="form-field">
           <span>Passwort</span>
-          <input id="register-password" type="password" required minlength="6" placeholder="Mindestens 6 Zeichen" />
+          <input
+            type="password"
+            id="reg-password"
+            required
+            minlength="6"
+            autocomplete="new-password"
+            placeholder="Mindestens 6 Zeichen"
+          />
         </label>
 
-        <label class="form-check">
-          <input type="checkbox" id="register-remember" />
-          <span>Keep me logged in</span>
+        <label class="form-field">
+          <span>Passwort wiederholen</span>
+          <input
+            type="password"
+            id="reg-password2"
+            required
+            minlength="6"
+            autocomplete="new-password"
+            placeholder="Nochmals eingeben"
+          />
         </label>
 
-        <button type="submit" class="btn-primary hero-btn">➜ Account erstellen</button>
+        <button type="submit" class="btn-primary hero-btn">
+          ➜ Konto erstellen
+        </button>
+
         <p id="register-error" class="form-error" aria-live="polite"></p>
 
-        <p class="muted" style="margin-top:12px">
-          Schon registriert? <a href="/login.html">Zum Login</a>
+        <p class="muted" style="margin: 6px 0 0 0;">
+          Schon ein Konto? <a href="/login.html">Zum Login</a>
         </p>
       </form>
     </div>
