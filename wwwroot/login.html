@@ -4,52 +4,41 @@
   <meta charset="UTF-8" />
   <title>Login – NetAcad-Quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/css/main.css" />
-
-  <!-- JS -->
+  <link rel="stylesheet" href="/css/main.css">
   <script defer src="/app.js"></script>
 </head>
 
 <body class="page">
-
 <header class="site-header">
   <div class="logo">NetAcad-Quiz</div>
 
-  <button class="menu-toggle" aria-label="Menü öffnen" type="button">
-    ☰ Menü
-  </button>
+  <button class="menu-toggle" aria-label="Menü öffnen" type="button">☰ Menü</button>
 
   <nav class="site-nav" data-nav>
     <a href="/index.html">Home</a>
-    <a href="/login.html" class="active">Login</a>
-    <a href="/info.html">Info</a>
+    <a href="/overview.html">Dashboard</a>
+    <a href="/profile.html">Profil</a>
     <a href="/support.html">Support</a>
   </nav>
 </header>
 
 <main class="main">
   <section class="card hero">
-
     <div class="hero-main">
       <h1>Login</h1>
-
       <p class="hero-sub">
-        Melde dich mit deiner Schul-E-Mail und deinem Passwort an,
-        um auf alle Quiz-Kapitel zuzugreifen.
+        Melde dich mit deiner Schul-E-Mail und deinem Passwort an.
       </p>
 
-      <form id="login-form" class="form hero-form" novalidate>
-
+      <form id="login-form" class="form hero-form">
         <label class="form-field">
           <span>E-Mail-Adresse</span>
           <input
             type="email"
             id="login-email"
-            placeholder="230050@studierende.htl-donaustadt.at"
-            autocomplete="email"
             required
+            autocomplete="email"
+            placeholder="230050@studierende.htl-donaustadt.at"
           />
         </label>
 
@@ -58,10 +47,10 @@
           <input
             type="password"
             id="login-password"
-            placeholder="Mindestens 6 Zeichen"
-            autocomplete="current-password"
-            minlength="6"
             required
+            minlength="6"
+            autocomplete="current-password"
+            placeholder="Mindestens 6 Zeichen"
           />
         </label>
 
@@ -71,20 +60,17 @@
         </label>
 
         <button type="submit" class="btn-primary hero-btn">
-          ➜ Zum Quiz
+          ➜ Zum Dashboard
         </button>
 
         <p id="login-error" class="form-error" aria-live="polite"></p>
-
       </form>
     </div>
-
   </section>
 </main>
 
 <footer class="site-footer">
   <small>© 2025 NetAcad-Quiz</small>
 </footer>
-
 </body>
 </html>

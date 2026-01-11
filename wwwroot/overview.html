@@ -11,7 +11,9 @@
 <body class="page">
 <header class="site-header">
   <div class="logo">NetAcad-Quiz</div>
+
   <button class="menu-toggle" aria-label="Menü öffnen" type="button">☰ Menü</button>
+
   <nav class="site-nav" data-nav>
     <a href="/index.html">Home</a>
     <a href="/overview.html" class="active">Dashboard</a>
@@ -20,45 +22,50 @@
   </nav>
 </header>
 
-<main class="main" id="overview-root">
-  <section class="grid-2">
-    <!-- LEFT: chapters -->
-    <div class="card">
-      <div class="row-between">
-        <h2>Kapitel</h2>
-        <select id="chapters-filter" class="select">
-          <option value="all">Alle</option>
-          <option value="incomplete">Nicht abgeschlossen</option>
-          <option value="completed">Abgeschlossen</option>
-          <option value="timeouts">Mit Timeouts</option>
-        </select>
-      </div>
+<main class="main">
+  <section class="card">
+    <div class="section-head">
+      <h1>Kapitel</h1>
 
-      <div id="chapters-list" class="chapters-scroll"></div>
+      <div class="controls">
+        <label class="control">
+          <span>Filter</span>
+          <select id="chapter-filter">
+            <option value="all">Alle</option>
+            <option value="open">Nicht abgeschlossen</option>
+            <option value="done">Abgeschlossen</option>
+            <option value="faulty">Fehlerhaft</option>
+            <option value="timeouts">Timeouts</option>
+          </select>
+        </label>
+      </div>
     </div>
 
-    <!-- RIGHT: dashboard -->
-    <div class="card">
-      <div class="row-between">
-        <h2>Oversight</h2>
+    <div class="chapter-list" id="chapter-list">
+      <p class="muted">Lade Kapitel …</p>
+    </div>
+  </section>
 
-        <div class="practice-box">
-          <div class="practice-top">
-            <span class="muted">Mode:</span>
-            <strong id="practice-label">Off</strong>
-          </div>
+  <section class="card">
+    <h2>Oversight</h2>
 
-          <input id="practice-slider" class="slider" type="range" min="1" max="4" step="1" value="1" />
-          <div class="practice-steps">
-            <span>Off</span><span>Easy</span><span>Medium</span><span>Study</span>
-          </div>
+    <div class="mode-box">
+      <div class="mode-row">
+        <div class="mode-label">Mode: <strong id="mode-label">Off</strong></div>
+      </div>
+
+      <div class="mode-slider-wrap">
+        <input id="mode-slider" type="range" min="0" max="3" step="1" value="0" />
+        <div class="mode-ticks">
+          <span>Off</span>
+          <span>Easy</span>
+          <span>Medium</span>
+          <span>Study</span>
         </div>
       </div>
 
-      <div id="overview-bars" class="bars"></div>
-
-      <p class="muted" style="margin-top:14px">
-        Tipp: Klick auf ein Kapitel öffnet das Quiz. „Details“ zeigt Fragen/Dauer/Timeouts.
+      <p class="muted">
+        Tipp: Klick auf ein Kapitel öffnet das Quiz. “Details” zeigt Fragen/Dauer/Timeouts (kommt als nächstes).
       </p>
     </div>
   </section>
