@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard – NetAcad-Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/main.css">
+  <script defer src="/app.js"></script>
+</head>
+
+<body class="page">
+<header class="site-header">
+  <div class="logo">NetAcad-Quiz</div>
+  <button class="menu-toggle" aria-label="Menü öffnen" type="button">☰ Menü</button>
+  <nav class="site-nav" data-nav>
+    <a href="/index.html">Home</a>
+    <a href="/overview.html" class="active">Dashboard</a>
+    <a href="/profile.html">Profil</a>
+    <a href="/support.html">Support</a>
+  </nav>
+</header>
+
+<main class="main" id="overview-root">
+  <section class="grid-2">
+    <!-- LEFT: chapters -->
+    <div class="card">
+      <div class="row-between">
+        <h2>Kapitel</h2>
+        <select id="chapters-filter" class="select">
+          <option value="all">Alle</option>
+          <option value="incomplete">Nicht abgeschlossen</option>
+          <option value="completed">Abgeschlossen</option>
+          <option value="timeouts">Mit Timeouts</option>
+        </select>
+      </div>
+
+      <div id="chapters-list" class="chapters-scroll"></div>
+    </div>
+
+    <!-- RIGHT: dashboard -->
+    <div class="card">
+      <div class="row-between">
+        <h2>Oversight</h2>
+
+        <div class="practice-box">
+          <div class="practice-top">
+            <span class="muted">Mode:</span>
+            <strong id="practice-label">Off</strong>
+          </div>
+
+          <input id="practice-slider" class="slider" type="range" min="1" max="4" step="1" value="1" />
+          <div class="practice-steps">
+            <span>Off</span><span>Easy</span><span>Medium</span><span>Study</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="overview-bars" class="bars"></div>
+
+      <p class="muted" style="margin-top:14px">
+        Tipp: Klick auf ein Kapitel öffnet das Quiz. „Details“ zeigt Fragen/Dauer/Timeouts.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <small>© 2025 NetAcad-Quiz</small>
+</footer>
+</body>
+</html>

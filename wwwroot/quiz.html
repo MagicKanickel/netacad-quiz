@@ -4,57 +4,59 @@
   <meta charset="UTF-8" />
   <title>Quiz – NetAcad-Quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/css/main.css" />
-
-  <!-- JS -->
+  <link rel="stylesheet" href="/css/main.css">
   <script defer src="/app.js"></script>
 </head>
 
 <body class="page">
-
 <header class="site-header">
   <div class="logo">NetAcad-Quiz</div>
-
-  <button class="menu-toggle" aria-label="Menü öffnen" type="button">
-    ☰ Menü
-  </button>
-
+  <button class="menu-toggle" aria-label="Menü öffnen" type="button">☰ Menü</button>
   <nav class="site-nav" data-nav>
-    <a href="/index.html">Home</a>
-    <a href="/quiz.html" class="active">Quiz</a>
-    <a href="/info.html">Info</a>
+    <a href="/overview.html">Dashboard</a>
+    <a href="/profile.html">Profil</a>
     <a href="/support.html">Support</a>
   </nav>
 </header>
 
-<main class="main">
+<main class="main" id="quiz-root">
+  <section class="card quiz-card">
+    <div class="row-between">
+      <div>
+        <h1 id="quiz-chapter">Quiz</h1>
+        <div class="muted" id="multi-hint"></div>
+      </div>
 
-  <!-- Kapitel -->
-  <section class="card">
-    <h1>Kapitel wählen</h1>
-    <p>Wähle ein Kapitel, das du üben möchtest.</p>
-
-    <div id="chapter-list" class="chapter-list">
-      <p class="muted">Kapitel werden geladen …</p>
+      <div class="timer">
+        <span id="timer-icon">⏱</span>
+        <span id="timer">0:00</span>
+      </div>
     </div>
+
+    <div class="divider"></div>
+
+    <h2 class="qtext" id="q-text">Lade Frage …</h2>
+
+    <div id="answers" class="answers"></div>
+
+    <button id="btn-confirm" class="btn-primary" type="button" style="display:none;margin-top:14px">
+      Auswahl bestätigen
+    </button>
+
+    <div class="divider"></div>
+
+    <div id="question-nav" class="qnav"></div>
   </section>
 
-  <!-- Quiz -->
-  <section class="card">
-    <h2 id="quiz-title">Noch kein Kapitel ausgewählt</h2>
-
-    <div id="quiz-content" class="quiz-content muted">
-      <p>Wähle links ein Kapitel, um mit dem Quiz zu starten.</p>
+  <div id="timeout-overlay" class="overlay">
+    <div class="overlay-card">
+      <div class="overlay-text">Zeit abgelaufen</div>
     </div>
-  </section>
-
+  </div>
 </main>
 
 <footer class="site-footer">
   <small>© 2025 NetAcad-Quiz</small>
 </footer>
-
 </body>
 </html>

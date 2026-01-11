@@ -1,28 +1,19 @@
 ﻿// =========================================================
 // USINGs
 // =========================================================
-using MailKit.Net.Smtp;
-using MailKit.Security;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MimeKit;
 using QuizWeb;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
-
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 
 // Alias, damit es im Top-Level keine Mehrdeutigkeit gibt:
 using Db = QuizWeb.QuizDb;
@@ -38,9 +29,7 @@ var builder = WebApplication.CreateBuilder(args);
 // -----------------------------
 builder.Services.AddDbContext<Db>(opts =>
 {
-    // ConnectionString "db" aus appsettings.json oder Fallback
-    var cs = builder.Configuration.GetConnectionString("db")
-             ?? "Data Source=quiz.db";
+    var cs = builder.Configuration.GetConnectionString("db") ?? "Data Source=quiz.db";
     opts.UseSqlite(cs);
 });
 
@@ -48,9 +37,13 @@ builder.Services
     .AddIdentityCore<AppUser>(opt =>
     {
         opt.User.RequireUniqueEmail = true;
-        opt.SignIn.RequireConfirmedAccount = true;
-        opt.Password.RequiredLength = 8;
-        opt.Password.RequireDigit = true;
+
+        // WICHTIG: du wolltest "ohne E-Mail-Verifizierung" (vorerst)
+        opt.SignIn.RequireConfirmedEmail = false;
+        opt.SignIn.RequireConfirmedAccount = false;
+
+        opt.Password.RequiredLength = 6;
+        opt.Password.RequireDigit = false; // wenn du willst -> true
         opt.Password.RequireUppercase = false;
         opt.Password.RequireNonAlphanumeric = false;
     })
@@ -63,7 +56,9 @@ builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
     .AddCookie(IdentityConstants.ApplicationScheme, o =>
     {
         o.Cookie.Name = "quiz.auth";
-        o.LoginPath = "/";
+        o.LoginPath = "/login.html";
+        o.AccessDeniedPath = "/login.html";
+        o.SlidingExpiration = true;
     });
 
 builder.Services.AddAuthorization();
@@ -73,42 +68,33 @@ builder.Services.ConfigureHttpJsonOptions(o =>
     o.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
 });
 
-// -----------------------------
-// E-Mail Service (Brevo API bevorzugt, sonst SMTP)
-// -----------------------------
-if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("BREVO_API_KEY")))
-    builder.Services.AddSingleton<IEmailSender, BrevoApiEmailSender>();
-else
-    builder.Services.AddSingleton<IEmailSender, SmtpEmailSender>();
-
 var app = builder.Build();
 
 // -----------------------------
 // Pipeline
 // -----------------------------
-app.UseDefaultFiles();
+app.UseDefaultFiles();   // index.html etc.
 app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
 // -----------------------------
-// DB-Migrate + Import + Seed
+// DB-Migrate + Import
 // -----------------------------
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<QuizDb>();
     var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
 
-    // wwwroot setzen und Quiz-Ordner sicherstellen
     env.WebRootPath ??= Path.Combine(env.ContentRootPath, "wwwroot");
     Directory.CreateDirectory(env.WebRootPath);
+
     var quizRoot = Path.Combine(env.WebRootPath, "Quiz");
     Directory.CreateDirectory(quizRoot);
 
-    // Migrationen ausführen
     db.Database.Migrate();
 
-    // Wenn noch keine Fragen in der DB sind -> einmalig alles importieren
+    // Wenn noch keine Fragen in der DB sind -> einmalig importieren
     if (!db.Questions.Any())
     {
         Console.WriteLine("[Startup] Keine Fragen gefunden – starte Import aus wwwroot/Quiz …");
@@ -121,10 +107,19 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+// =========================================================
+// AUTH Endpunkte
+// =========================================================
 
-// =========================================================
-// AUTH Endpunkte (kannst du ignorieren, Quiz braucht sie nicht)
-// =========================================================
+static bool IsSchoolMail(string email)
+{
+    // 6 Ziffern + @studierende.htl-donaustadt.at
+    return System.Text.RegularExpressions.Regex.IsMatch(
+        email ?? "",
+        @"^\d{6}@studierende\.htl-donaustadt\.at$",
+        System.Text.RegularExpressions.RegexOptions.IgnoreCase
+    );
+}
 
 app.MapGet("/api/auth/status", (HttpContext ctx) =>
 {
@@ -134,87 +129,38 @@ app.MapGet("/api/auth/status", (HttpContext ctx) =>
 });
 
 app.MapPost("/api/auth/register",
-async (RegisterDto dto, UserManager<AppUser> users, SignInManager<AppUser> signIn,
-       Db db, IEmailSender mail, IConfiguration cfg, HttpContext ctx) =>
+async (RegisterDto dto, UserManager<AppUser> users, SignInManager<AppUser> signIn) =>
 {
-    if (!dto.AcceptTos) return Results.BadRequest(new { error = "Bitte AGB akzeptieren." });
+    if (string.IsNullOrWhiteSpace(dto.Email) || !IsSchoolMail(dto.Email))
+        return Results.BadRequest(new { error = "Nur Schul-E-Mail erlaubt (z.B. 230050@studierende.htl-donaustadt.at)." });
 
-    var key = await db.RegistrationKeys.FindAsync(dto.RegistrationKey);
-    if (key is null || key.Used || (key.ExpiresUtc.HasValue && key.ExpiresUtc < DateTime.UtcNow))
-        return Results.BadRequest(new { error = "Ungültiger oder bereits verwendeter Registrierungsschlüssel." });
+    if (string.IsNullOrWhiteSpace(dto.Password) || dto.Password.Length < 6)
+        return Results.BadRequest(new { error = "Passwort muss mindestens 6 Zeichen lang sein." });
 
     if (await users.FindByEmailAsync(dto.Email) is not null)
         return Results.BadRequest(new { error = "E-Mail ist bereits registriert." });
 
     var user = new AppUser { UserName = dto.Email, Email = dto.Email };
     var res = await users.CreateAsync(user, dto.Password);
-    if (!res.Succeeded) return Results.BadRequest(new { error = string.Join("; ", res.Errors.Select(e => e.Description)) });
+    if (!res.Succeeded)
+        return Results.BadRequest(new { error = string.Join("; ", res.Errors.Select(e => e.Description)) });
 
-    // Bestätigungslink
-    var token = await users.GenerateEmailConfirmationTokenAsync(user);
-    var baseUrl = cfg["APP_BASEURL"]?.TrimEnd('/') ?? $"{ctx.Request.Scheme}://{ctx.Request.Host}";
-    var url = $"{baseUrl}/api/auth/confirm?uid={Uri.EscapeDataString(user.Id)}&token={Uri.EscapeDataString(token)}&rk={Uri.EscapeDataString(dto.RegistrationKey)}";
+    // automatisch einloggen (optional)
+    await signIn.SignInAsync(user, isPersistent: dto.RememberMe);
 
-    await mail.SendAsync(
-        dto.Email,
-        "Bitte E-Mail bestätigen",
-        $@"
-<div style=""font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5;color:#111"">
-  <h2 style=""margin:0 0 12px"">Willkommen beim NetAcad-Quiz!</h2>
-  <p style=""margin:0 0 16px"">Klicke auf den Button, um deine Registrierung zu bestätigen und dich automatisch anzumelden:</p>
-
-  <p style=""margin:24px 0"">
-    <a href=""{WebUtility.HtmlEncode(url)}""
-       style=""display:inline-block;background:#111;color:#fff;text-decoration:none;
-              padding:12px 18px;border-radius:8px;font-weight:600"">
-      E-Mail jetzt bestätigen
-    </a>
-  </p>
-
-  <p style=""margin:16px 0"">Falls der Button nicht funktioniert, öffne diesen Link im Browser:<br>
-    <span style=""font-size:13px;color:#555"">{WebUtility.HtmlEncode(url)}</span>
-  </p>
-
-  <hr style=""border:none;border-top:1px solid #eee;margin:24px 0"">
-  <p style=""font-size:12px;color:#777;margin:0"">Diese E-Mail wurde automatisch versendet.</p>
-</div>"
-    );
-
-    return Results.Ok(new { ok = true, info = "Bestätigungs-E-Mail gesendet." });
-});
-
-app.MapGet("/api/auth/confirm",
-async (string uid, string token, string rk,
-       UserManager<AppUser> users, SignInManager<AppUser> signIn, Db db) =>
-{
-    var user = await users.FindByIdAsync(uid);
-    if (user == null) return Results.BadRequest("Ungültiger Benutzer.");
-
-    var res = await users.ConfirmEmailAsync(user, token);
-    if (!res.Succeeded) return Results.BadRequest("Bestätigung fehlgeschlagen.");
-
-    var key = await db.RegistrationKeys.FindAsync(rk);
-    if (key is not null && !key.Used)
-    {
-        key.Used = true;
-        key.UsedByUserId = user.Id;
-        key.UsedAtUtc = DateTime.UtcNow;
-        await db.SaveChangesAsync();
-    }
-
-    await signIn.SignInAsync(user, isPersistent: true);
-    var html = "<html><head><meta http-equiv='refresh' content='0;url=/' /></head><body>Verifiziert. Weiterleitung …</body></html>";
-    return Results.Content(html, "text/html");
+    return Results.Ok(new { ok = true });
 });
 
 app.MapPost("/api/auth/login",
 async (LoginDto dto, SignInManager<AppUser> signIn, UserManager<AppUser> users) =>
 {
+    if (string.IsNullOrWhiteSpace(dto.Email) || !IsSchoolMail(dto.Email))
+        return Results.BadRequest(new { error = "Nur Schul-E-Mail erlaubt." });
+
     var user = await users.FindByEmailAsync(dto.Email);
     if (user == null) return Results.BadRequest(new { error = "Falsche E-Mail oder Passwort." });
-    if (!await users.IsEmailConfirmedAsync(user)) return Results.BadRequest(new { error = "E-Mail noch nicht bestätigt." });
 
-    var res = await signIn.PasswordSignInAsync(user, dto.Password, isPersistent: true, lockoutOnFailure: false);
+    var res = await signIn.PasswordSignInAsync(user, dto.Password, isPersistent: dto.RememberMe, lockoutOnFailure: false);
     if (!res.Succeeded) return Results.BadRequest(new { error = "Falsche E-Mail oder Passwort." });
 
     return Results.Ok(new { ok = true });
@@ -224,36 +170,16 @@ app.MapPost("/api/auth/logout", async (SignInManager<AppUser> signIn) =>
 {
     await signIn.SignOutAsync();
     return Results.Ok(new { ok = true });
-});
-
-// ---------------------------------------------------------
-// Testmail
-// ---------------------------------------------------------
-app.MapGet("/api/testmail", async (IEmailSender mail, string to) =>
-{
-    try
-    {
-        await mail.SendAsync(
-            to,
-            "NetAcad-Quiz – Testmail",
-            "<h1>Glückwunsch 🎉</h1><p>Dein SMTP/Brevo-Setup funktioniert!</p>"
-        );
-        return Results.Ok(new { ok = true });
-    }
-    catch (Exception ex)
-    {
-        Console.Error.WriteLine(ex);
-        return Results.Problem(title: "SMTP/API error", detail: ex.Message);
-    }
-});
+}).RequireAuthorization();
 
 // =========================================================
-// QUIZ APIs (MIT LOGIN!)
+// QUIZ APIs (JETZT MIT LOGIN!)
 // =========================================================
 
-// Kapitel-Liste
+// Kapitel-Liste + Metadaten
 app.MapGet("/api/chapters", async (Db db) =>
 {
+    // Nur Namen
     var list = await db.Questions
         .Select(q => q.Chapter)
         .Distinct()
@@ -261,48 +187,120 @@ app.MapGet("/api/chapters", async (Db db) =>
         .ToListAsync();
 
     return Results.Ok(list);
-})
-.RequireAuthorization();
+}).RequireAuthorization();
 
 // Fragen für ein Kapitel
-app.MapGet("/api/quiz", async (Db db, string? chapter) =>
+app.MapGet("/api/quiz", async (Db db, string chapter) =>
 {
+    if (string.IsNullOrWhiteSpace(chapter))
+        return Results.BadRequest(new { error = "chapter fehlt." });
+
     var rng = new Random();
 
-    var q = db.Questions
+    var questions = await db.Questions
         .Include(x => x.Choices)
         .Include(x => x.Assets)
-        .AsQueryable();
-
-    if (!string.IsNullOrWhiteSpace(chapter))
-        q = q.Where(x => x.Chapter == chapter);
-
-    var questions = await q
+        .Where(x => x.Chapter == chapter)
         .OrderBy(_ => EF.Functions.Random())
         .ToListAsync();
 
     foreach (var item in questions)
         item.Choices = item.Choices.OrderBy(_ => rng.Next()).ToList();
 
-    // WICHTIG: KEIN IsCorrect an den Client schicken
+    // DTO: choices = [{id,text}] und assets = ["/..."]
     var dto = questions.Select(item => new
     {
         id = item.Id,
         text = item.Text,
         chapter = item.Chapter,
         timeLimitSeconds = item.TimeLimitSeconds,
+        // MULTI: wie viele richtige Antworten sind dabei?
+        correctRequired = item.Choices.Count(c => c.IsCorrect),
         choices = item.Choices.Select(c => new { id = c.Id, text = c.Text }),
         assets = item.Assets.Select(a => "/" + a.RelativePath)
     });
 
     return Results.Ok(dto);
-})
-.RequireAuthorization();
+}).RequireAuthorization();
 
-// Auswertung (später ersetzen wir das durch /api/answer pro Frage)
-app.MapPost("/api/submit", async (Db db, SubmitDTO payload) =>
+// Progress-Übersicht pro User (Dashboard)
+app.MapGet("/api/progress/chapters",
+async (HttpContext ctx, Db db) =>
 {
+    var userId = ctx.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+    if (string.IsNullOrWhiteSpace(userId)) return Results.Unauthorized();
+
+    // alle chapters mit counts
+    var chapters = await db.Questions
+        .GroupBy(q => q.Chapter)
+        .Select(g => new
+        {
+            chapter = g.Key,
+            questionCount = g.Count(),
+            totalTimeSeconds = g.Sum(x => x.TimeLimitSeconds)
+        })
+        .OrderBy(x => x.chapter)
+        .ToListAsync();
+
+    // stats pro question
+    var stats = await db.UserQuestionStats
+        .Where(s => s.UserId == userId)
+        .ToListAsync();
+
+    // Map QuestionId -> Stat
+    var statByQ = stats.ToDictionary(s => s.QuestionId, s => s);
+
+    // Für jedes Kapitel: wie viele Fragen wurden jemals korrekt beantwortet?
+    var questions = await db.Questions
+        .Select(q => new { q.Id, q.Chapter })
+        .ToListAsync();
+
+    var correctEverByChapter = questions
+        .GroupBy(q => q.Chapter)
+        .ToDictionary(
+            g => g.Key,
+            g => g.Count(q => statByQ.TryGetValue(q.Id, out var st) && st.CorrectEver)
+        );
+
+    var timeoutEverByChapter = questions
+        .GroupBy(q => q.Chapter)
+        .ToDictionary(
+            g => g.Key,
+            g => g.Count(q => statByQ.TryGetValue(q.Id, out var st) && st.TimeoutCount > 0)
+        );
+
+    var dto = chapters.Select(ch =>
+    {
+        var correctEver = correctEverByChapter.TryGetValue(ch.chapter, out var c) ? c : 0;
+        var timeouts = timeoutEverByChapter.TryGetValue(ch.chapter, out var t) ? t : 0;
+
+        var percent = ch.questionCount == 0 ? 0 : (int)Math.Round(100.0 * correctEver / ch.questionCount);
+        var completed = correctEver >= ch.questionCount && ch.questionCount > 0;
+
+        return new
+        {
+            ch.chapter,
+            ch.questionCount,
+            totalMinutes = (int)Math.Ceiling(ch.totalTimeSeconds / 60.0),
+            correctEver,
+            percent,
+            completed,
+            hasTimeouts = timeouts > 0
+        };
+    });
+
+    return Results.Ok(dto);
+}).RequireAuthorization();
+
+// Antwort-Submission + Speichern pro User
+app.MapPost("/api/submit",
+async (HttpContext ctx, Db db, SubmitDTO payload) =>
+{
+    var userId = ctx.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+    if (string.IsNullOrWhiteSpace(userId)) return Results.Unauthorized();
+
     int correct = 0;
+    int timedOut = 0;
     var wrongs = new List<object>();
 
     foreach (var ans in payload.Answers)
@@ -311,149 +309,95 @@ app.MapPost("/api/submit", async (Db db, SubmitDTO payload) =>
                                   .FirstOrDefaultAsync(x => x.Id == ans.QuestionId);
         if (q == null) continue;
 
+        // Timeout?
+        if (ans.TimedOut)
+        {
+            timedOut++;
+            await UpsertStat(db, userId, q.Id, correctEver: false, isTimeout: true);
+            continue;
+        }
+
         var chosen = (ans.ChoiceIds ?? new List<Guid>()).ToHashSet();
         var correctSet = q.Choices.Where(c => c.IsCorrect).Select(c => c.Id).ToHashSet();
 
         bool ok = chosen.SetEquals(correctSet);
         if (ok) correct++;
-        else
+
+        await UpsertStat(db, userId, q.Id, correctEver: ok, isTimeout: false, wasWrong: !ok);
+
+        if (!ok)
         {
             wrongs.Add(new
             {
-                Question = q.Text,
-                Your = string.Join(" | ", q.Choices.Where(c => chosen.Contains(c.Id)).Select(c => c.Text)),
-                Correct = string.Join(" | ", q.Choices.Where(c => c.IsCorrect).Select(c => c.Text))
+                question = q.Text,
+                your = string.Join(" | ", q.Choices.Where(c => chosen.Contains(c.Id)).Select(c => c.Text)),
+                correct = string.Join(" | ", q.Choices.Where(c => c.IsCorrect).Select(c => c.Text))
             });
         }
     }
 
-    return Results.Ok(new { total = payload.Answers.Count, correct, wrongs });
-})
-.RequireAuthorization();
+    await db.SaveChangesAsync();
 
+    return Results.Ok(new
+    {
+        total = payload.Answers.Count,
+        correct,
+        timedOut,
+        wrongs
+    });
+}).RequireAuthorization();
+
+// Reset (Profil -> Einstellungen)
+app.MapPost("/api/progress/reset", async (HttpContext ctx, Db db) =>
+{
+    var userId = ctx.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+    if (string.IsNullOrWhiteSpace(userId)) return Results.Unauthorized();
+
+    var rows = await db.UserQuestionStats.Where(x => x.UserId == userId).ToListAsync();
+    db.UserQuestionStats.RemoveRange(rows);
+    await db.SaveChangesAsync();
+
+    return Results.Ok(new { ok = true });
+}).RequireAuthorization();
 
 app.Run();
+
+// =========================================================
+// Helpers
+// =========================================================
+static async Task UpsertStat(Db db, string userId, Guid qid, bool correctEver, bool isTimeout, bool wasWrong = false)
+{
+    var st = await db.UserQuestionStats.FirstOrDefaultAsync(x => x.UserId == userId && x.QuestionId == qid);
+    if (st == null)
+    {
+        st = new UserQuestionStat
+        {
+            Id = Guid.NewGuid(),
+            UserId = userId,
+            QuestionId = qid,
+            CorrectEver = false,
+            WrongCount = 0,
+            TimeoutCount = 0,
+            LastAnsweredAtUtc = DateTime.UtcNow
+        };
+        await db.UserQuestionStats.AddAsync(st);
+    }
+
+    st.LastAnsweredAtUtc = DateTime.UtcNow;
+
+    if (isTimeout) st.TimeoutCount++;
+    if (wasWrong) st.WrongCount++;
+
+    if (correctEver) st.CorrectEver = true;
+}
 
 // =========================================================
 // NAMESPACE + MODELLE
 // =========================================================
 namespace QuizWeb
 {
-    // -------------------------
-    // E-Mail
-    // -------------------------
-    public interface IEmailSender { Task SendAsync(string to, string subject, string html); }
-
-    public class SmtpEmailSender : IEmailSender
-    {
-        private readonly IConfiguration _cfg;
-        public SmtpEmailSender(IConfiguration cfg) => _cfg = cfg;
-
-        public async Task SendAsync(string to, string subject, string html)
-        {
-            string Get(string env, string jsonPath, string? def = null) =>
-                Environment.GetEnvironmentVariable(env) ?? _cfg[jsonPath] ?? def;
-
-            var host = Get("SMTP_HOST", "EmailSettings:Host") ?? throw new InvalidOperationException("SMTP host missing");
-            var portStr = Get("SMTP_PORT", "EmailSettings:Port", "587");
-            var user = Get("SMTP_USER", "EmailSettings:UserName");
-            var pass = Get("SMTP_PASS", "EmailSettings:Password");
-            var from = Get("SMTP_FROM", "EmailSettings:SenderEmail", user ?? "no-reply@example.com")!;
-            var fromNm = Get("SMTP_FROM_NAME", "EmailSettings:SenderName", "NetAcad-Quiz")!;
-            if (!int.TryParse(portStr, out var port)) port = 587;
-
-            var msg = new MimeMessage();
-            msg.From.Add(new MailboxAddress(fromNm, from));
-            msg.To.Add(MailboxAddress.Parse(to));
-            msg.Subject = subject;
-            msg.Body = new BodyBuilder { HtmlBody = html }.ToMessageBody();
-
-            using var client = new MailKit.Net.Smtp.SmtpClient();
-            client.Timeout = 15000;
-            var ssl = port == 465 ? SecureSocketOptions.SslOnConnect : SecureSocketOptions.StartTls;
-
-            try
-            {
-                await client.ConnectAsync(host, port, ssl);
-
-                if (!string.IsNullOrWhiteSpace(user))
-                {
-                    if (string.IsNullOrWhiteSpace(pass))
-                        throw new InvalidOperationException("SMTP password missing (SMTP_PASS / EmailSettings:Password).");
-
-                    await client.AuthenticateAsync(user, pass);
-                }
-
-                await client.SendAsync(msg);
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine($"[SMTP] Host={host}:{port}, SSL={ssl}, User={(string.IsNullOrEmpty(user) ? "<none>" : "<set>")}");
-                Console.Error.WriteLine(ex);
-                throw;
-            }
-            finally
-            {
-                try { await client.DisconnectAsync(true); } catch { }
-            }
-        }
-    }
-
-    public class BrevoApiEmailSender : IEmailSender
-    {
-        private readonly HttpClient _http;
-        private readonly string _apiKey;
-        private readonly string _fromEmail;
-        private readonly string _fromName;
-
-        public BrevoApiEmailSender(IConfiguration cfg)
-        {
-            _http = new HttpClient { Timeout = TimeSpan.FromSeconds(15) };
-
-            _apiKey = Environment.GetEnvironmentVariable("BREVO_API_KEY")
-                         ?? cfg["EmailSettings:BrevoApiKey"]
-                         ?? throw new InvalidOperationException("BREVO_API_KEY fehlt.");
-            _fromEmail = Environment.GetEnvironmentVariable("BREVO_FROM_EMAIL")
-                         ?? cfg["EmailSettings:SenderEmail"]
-                         ?? throw new InvalidOperationException("BREVO_FROM_EMAIL/EmailSettings:SenderEmail fehlt.");
-            _fromName = Environment.GetEnvironmentVariable("BREVO_FROM_NAME")
-                         ?? cfg["EmailSettings:SenderName"]
-                         ?? "NetAcad-Quiz";
-
-            _http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _http.DefaultRequestHeaders.Add("api-key", _apiKey);
-        }
-
-        public async Task SendAsync(string to, string subject, string html)
-        {
-            var payload = new
-            {
-                sender = new { email = _fromEmail, name = _fromName },
-                to = new[] { new { email = to } },
-                subject,
-                htmlContent = html
-            };
-
-            var json = JsonSerializer.Serialize(payload);
-            using var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var resp = await _http.PostAsync("https://api.brevo.com/v3/smtp/email", content);
-            if (!resp.IsSuccessStatusCode)
-            {
-                var body = await resp.Content.ReadAsStringAsync();
-                throw new InvalidOperationException($"Brevo API error {(int)resp.StatusCode}: {body}");
-            }
-        }
-    }
-
-    // -------------------------
-    // Identity User
-    // -------------------------
     public class AppUser : IdentityUser { }
 
-    // -------------------------
-    // DbContext
-    // -------------------------
     public class QuizDb : IdentityDbContext<AppUser>
     {
         public QuizDb(DbContextOptions<QuizDb> opt) : base(opt) { }
@@ -461,8 +405,8 @@ namespace QuizWeb
         public DbSet<Question> Questions => Set<Question>();
         public DbSet<Choice> Choices => Set<Choice>();
         public DbSet<QuestionAsset> Assets => Set<QuestionAsset>();
-        public DbSet<Mistake> Mistakes => Set<Mistake>();
-        public DbSet<RegistrationKey> RegistrationKeys => Set<RegistrationKey>();
+
+        public DbSet<UserQuestionStat> UserQuestionStats => Set<UserQuestionStat>();
 
         protected override void OnModelCreating(ModelBuilder b)
         {
@@ -471,8 +415,11 @@ namespace QuizWeb
             b.Entity<Question>().HasKey(x => x.Id);
             b.Entity<Choice>().HasKey(x => x.Id);
             b.Entity<QuestionAsset>().HasKey(x => x.Id);
-            b.Entity<Mistake>().HasKey(x => x.Id);
-            b.Entity<RegistrationKey>().HasKey(x => x.Key);
+
+            b.Entity<UserQuestionStat>().HasKey(x => x.Id);
+            b.Entity<UserQuestionStat>()
+                .HasIndex(x => new { x.UserId, x.QuestionId })
+                .IsUnique();
 
             b.Entity<Question>()
                 .HasMany(x => x.Choices)
@@ -488,9 +435,7 @@ namespace QuizWeb
         }
     }
 
-    // -------------------------
     // Entities
-    // -------------------------
     public partial class Question
     {
         public Guid Id { get; set; }
@@ -519,29 +464,22 @@ namespace QuizWeb
         public string RelativePath { get; set; } = "";
     }
 
-    public class Mistake
+    // Progress pro User / Frage
+    public class UserQuestionStat
     {
         public Guid Id { get; set; }
         public string UserId { get; set; } = "";
         public Guid QuestionId { get; set; }
-        public string? ChosenChoiceIdsCsv { get; set; }
-        public DateTime CreatedAt { get; set; }
+
+        public bool CorrectEver { get; set; }
+        public int WrongCount { get; set; }
+        public int TimeoutCount { get; set; }
+        public DateTime LastAnsweredAtUtc { get; set; }
     }
 
-    public class RegistrationKey
-    {
-        public string Key { get; set; } = "";
-        public bool Used { get; set; }
-        public string? UsedByUserId { get; set; }
-        public DateTime? UsedAtUtc { get; set; }
-        public DateTime? ExpiresUtc { get; set; }
-    }
-
-    // -------------------------
     // DTOs
-    // -------------------------
-    public record RegisterDto(string Email, string Password, string RegistrationKey, bool AcceptTos);
-    public record LoginDto(string Email, string Password);
+    public record RegisterDto(string Email, string Password, bool RememberMe);
+    public record LoginDto(string Email, string Password, bool RememberMe);
     public record AuthStatusDto(bool IsAuthenticated, string? Email);
 
     public class SubmitDTO
@@ -553,5 +491,8 @@ namespace QuizWeb
     {
         public Guid QuestionId { get; set; }
         public List<Guid> ChoiceIds { get; set; } = new();
+
+        // NEU: Timeout-Flag
+        public bool TimedOut { get; set; }
     }
 }

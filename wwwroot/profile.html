@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profil – NetAcad-Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/main.css">
+  <script defer src="/app.js"></script>
+</head>
+
+<body class="page">
+<header class="site-header">
+  <div class="logo">NetAcad-Quiz</div>
+  <button class="menu-toggle" aria-label="Menü öffnen" type="button">☰ Menü</button>
+  <nav class="site-nav" data-nav>
+    <a href="/overview.html">Dashboard</a>
+    <a href="/profile.html" class="active">Profil</a>
+    <a href="/support.html">Support</a>
+  </nav>
+</header>
+
+<main class="main" id="profile-root">
+  <section class="card">
+    <h1>Profil</h1>
+    <p class="muted">Angemeldet als: <strong id="profile-email"></strong></p>
+
+    <div class="divider"></div>
+
+    <h2>Einstellungen</h2>
+    <p>Hier kannst du deinen Lernfortschritt zurücksetzen.</p>
+
+    <div class="row" style="gap:10px;flex-wrap:wrap">
+      <button id="btn-reset" class="btn-secondary" type="button">Fortschritt zurücksetzen</button>
+      <button id="btn-logout" class="btn-primary" type="button">Logout</button>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <small>© 2025 NetAcad-Quiz</small>
+</footer>
+</body>
+</html>
