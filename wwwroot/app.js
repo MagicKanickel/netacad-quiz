@@ -105,13 +105,12 @@ function setupQuizPage() {
     const session = requireLogin();
     if (!session) return;
 
-    const chapterListEl = $("#chapter-list");
-    const quizTitleEl = $("#quiz-title");
-    const quizContentEl = $("#quiz-content");
+    const chapterListEl = document.getElementById("chapter-list");
+    const quizTitleEl = document.getElementById("quiz-title");
+    const quizContentEl = document.getElementById("quiz-content");
 
     let questions = [];
     let currentIndex = 0;
-    let correctCount = 0;
 
     async function loadChapters() {
         try {
@@ -125,14 +124,14 @@ function setupQuizPage() {
             }
 
             chapterListEl.innerHTML = "";
-            chapters.forEach((name) => {
+            for (const name of chapters) {
                 const btn = document.createElement("button");
                 btn.className = "chapter-item";
-                btn.textContent = name;
                 btn.type = "button";
+                btn.textContent = name;
                 btn.addEventListener("click", () => startQuiz(name));
                 chapterListEl.appendChild(btn);
-            });
+            }
         } catch (err) {
             console.error(err);
             chapterListEl.innerHTML =
@@ -142,48 +141,22 @@ function setupQuizPage() {
 
     async function startQuiz(chapterName) {
         quizTitleEl.textContent = chapterName;
-        quizContentEl.classList.remove("muted");
         quizContentEl.innerHTML = "<p>Lade Fragen …</p>";
 
         try {
-            const res = await fetch(
-                "/api/questions?chapter=" + encodeURIComponent(chapterName)
-            );
+            // WICHTIG: Backend heißt /api/quiz (nicht /api/questions)
+            const res = await fetch("/api/quiz?chapter=" + encodeURIComponent(chapterName));
             if (!res.ok) throw new Error("HTTP " + res.status);
+
             const data = await res.json();
-
-            // Versuche verschiedene Property-Namen abzudecken
-            questions = (Array.isArray(data) ? data : []).map((q) => {
-                const answers =
-                    q.answers ||
-                    q.Answers ||
-                    q.choices ||
-                    q.Choices ||
-                    [];
-                const correctIndex =
-                    q.correctIndex ??
-                    q.CorrectIndex ??
-                    q.correct ??
-                    q.Correct ??
-                    0;
-
-                return {
-                    text: q.text || q.Text || "",
-                    answers,
-                    correctIndex: Number(correctIndex) || 0,
-                    imageUrl: q.imageUrl || q.ImageUrl || null
-                };
-            });
-
-            currentIndex = 0;
-            correctCount = 0;
-
-            if (questions.length === 0) {
+            if (!Array.isArray(data) || data.length === 0) {
                 quizContentEl.innerHTML =
                     "<p>Für dieses Kapitel wurden noch keine Fragen importiert.</p>";
                 return;
             }
 
+            questions = data;
+            currentIndex = 0;
             renderQuestion();
         } catch (err) {
             console.error(err);
@@ -196,88 +169,148 @@ function setupQuizPage() {
         const q = questions[currentIndex];
         if (!q) {
             quizContentEl.innerHTML = `
-                <h3>Fertig!</h3>
-                <p>Du hast <strong>${correctCount}</strong> von
-                   <strong>${questions.length}</strong> Fragen richtig beantwortet.</p>
-                <button class="btn-primary" id="restart-btn">Kapitel neu starten</button>
-            `;
-            const restartBtn = $("#restart-btn");
-            if (restartBtn) {
-                restartBtn.addEventListener("click", () => {
-                    currentIndex = 0;
-                    correctCount = 0;
-                    renderQuestion();
-                });
-            }
+        <h3>Fertig!</h3>
+        <p>Kapitel abgeschlossen.</p>
+      `;
             return;
         }
 
         const progress = `${currentIndex + 1} / ${questions.length}`;
-        let html = `
-            <div class="quiz-question-header">
-                <span class="quiz-progress">${progress}</span>
-            </div>
-            <h3 class="quiz-question-text">${q.text}</h3>
-        `;
 
-        if (q.imageUrl) {
-            html += `
-            <div class="quiz-image-wrapper">
-                <img src="${q.imageUrl}" alt="Fragebild">
-            </div>`;
-        }
+        const assetsHtml = (q.assets || [])
+            .map((src) => `
+        <div class="quiz-image-wrapper">
+          <img src="${src}" alt="Fragebild">
+        </div>
+      `)
+            .join("");
 
-        html += `<ul class="quiz-answers">`;
-        q.answers.forEach((ans, idx) => {
-            html += `
-                <li>
-                    <button class="answer-btn" data-index="${idx}">
-                        ${ans}
-                    </button>
-                </li>`;
-        });
-        html += `</ul>`;
+        const choices = Array.isArray(q.choices) ? q.choices : [];
+        const choiceItems = choices
+            .map((c) => `
+        <li>
+          <button class="answer-btn" type="button" data-choice-id="${c.id}">
+            ${escapeHtml(c.text)}
+          </button>
+        </li>
+      `)
+            .join("");
 
-        quizContentEl.innerHTML = html;
+        quizContentEl.innerHTML = `
+      <div class="quiz-question-header">
+        <span class="quiz-progress">${progress}</span>
+        ${q.timeLimitSeconds ? `<span class="quiz-timer">⏱ ${q.timeLimitSeconds}s</span>` : ""}
+      </div>
 
+      <h3 class="quiz-question-text">${escapeHtml(q.text || "")}</h3>
+      ${assetsHtml}
+
+      <p class="muted">Wähle deine Antwort(en) und klicke dann auf „Antwort prüfen“.</p>
+
+      <ul class="quiz-answers">
+        ${choiceItems}
+      </ul>
+
+      <div class="quiz-actions">
+        <button class="btn-primary" id="submit-answer">Antwort prüfen</button>
+        <span id="quiz-msg" class="muted"></span>
+      </div>
+    `;
+
+        // Multi-select: Buttons togglen
+        const selected = new Set();
         quizContentEl.querySelectorAll(".answer-btn").forEach((btn) => {
             btn.addEventListener("click", () => {
-                const idx = Number(btn.dataset.index);
-                handleAnswer(idx);
+                const id = btn.dataset.choiceId;
+                if (!id) return;
+
+                if (selected.has(id)) {
+                    selected.delete(id);
+                    btn.classList.remove("answer-selected");
+                } else {
+                    selected.add(id);
+                    btn.classList.add("answer-selected");
+                }
             });
+        });
+
+        // Prüfen über Backend (korrekt für "Choose two")
+        const submitBtn = document.getElementById("submit-answer");
+        const msgEl = document.getElementById("quiz-msg");
+
+        submitBtn.addEventListener("click", async () => {
+            msgEl.textContent = "";
+
+            if (selected.size === 0) {
+                msgEl.textContent = "Bitte mindestens eine Antwort auswählen.";
+                return;
+            }
+
+            submitBtn.disabled = true;
+
+            try {
+                const payload = {
+                    answers: [
+                        {
+                            questionId: q.id,
+                            choiceIds: Array.from(selected)
+                        }
+                    ]
+                };
+
+                const res = await fetch("/api/submit", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) throw new Error("HTTP " + res.status);
+                const result = await res.json();
+
+                const ok = result && result.correct === 1;
+                if (ok) {
+                    msgEl.textContent = "✅ Richtig!";
+                    msgEl.classList.remove("error");
+                } else {
+                    msgEl.textContent =
+                        "❌ Falsch. Richtige Antwort(en): " + (result.wrongs?.[0]?.correct || "");
+                    msgEl.classList.add("error");
+                }
+
+                // Buttons sperren
+                quizContentEl.querySelectorAll(".answer-btn").forEach((b) => (b.disabled = true));
+
+                // Next
+                const nextBtn = document.createElement("button");
+                nextBtn.className = "btn-primary quiz-next-btn";
+                nextBtn.textContent =
+                    currentIndex + 1 < questions.length ? "Nächste Frage" : "Fertig";
+                nextBtn.addEventListener("click", () => {
+                    currentIndex++;
+                    renderQuestion();
+                });
+                submitBtn.parentElement.appendChild(nextBtn);
+            } catch (err) {
+                console.error(err);
+                msgEl.textContent = "Fehler beim Prüfen. Bitte später erneut.";
+                msgEl.classList.add("error");
+                submitBtn.disabled = false;
+            }
         });
     }
 
-    function handleAnswer(selectedIndex) {
-        const q = questions[currentIndex];
-        const correctIndex = q.correctIndex;
-
-        const btns = quizContentEl.querySelectorAll(".answer-btn");
-        btns.forEach((b, idx) => {
-            if (idx === correctIndex) b.classList.add("answer-correct");
-            if (idx === selectedIndex && idx !== correctIndex) {
-                b.classList.add("answer-wrong");
-            }
-            b.disabled = true;
-        });
-
-        if (selectedIndex === correctIndex) correctCount++;
-
-        const nextBtn = document.createElement("button");
-        nextBtn.textContent =
-            currentIndex + 1 < questions.length
-                ? "Nächste Frage"
-                : "Ergebnis anzeigen";
-        nextBtn.className = "btn-primary quiz-next-btn";
-        nextBtn.addEventListener("click", () => {
-            currentIndex++;
-            renderQuestion();
-        });
-        quizContentEl.appendChild(nextBtn);
+    function escapeHtml(s) {
+        return String(s)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
     }
 
     loadChapters();
 }
+
 
 // ----------------- Init -----------------
 

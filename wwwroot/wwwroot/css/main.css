@@ -295,13 +295,6 @@ body {
   color: var(--muted);
 }
 
-.answer-selected {
-  outline: 2px solid rgba(255,255,255,0.65);
-  transform: translateY(-1px);
-}
-#quiz-msg.error { color: #ffb3b3; }
-
-
 /* Small screens */
 
 @media (max-width: 720px) {
